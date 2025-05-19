@@ -1,7 +1,7 @@
 export const storeDetailAssets = {
     '대가1호점': [
         {
-            text: '‘대가 1호점’은',
+            text: '좋은 고기와 정성을 담아\n 이름의 품격을 지켜가는 \n‘대가 1호점’은',
             className: 'deaga1-1',
         },
         {
