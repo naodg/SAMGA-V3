@@ -1,0 +1,110 @@
+.review-write-page {
+  padding: 140px 0 100px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.review-write-page h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.store-select-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.store-select-row label {
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.review-submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+
+.review-input,
+.review-textarea,
+.store-select-row select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.review-textarea {
+  height: 200px;
+  resize: vertical;
+  margin-top: 10px;
+}
+
+.review-submit-button {
+  padding: 12px 20px;
+  background-color: #AD5457;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.review-submit-button:hover {
+  background-color: #9c3e41;
+}
+
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  /* ⭐ 가운데 정렬 */
+  align-items: center;
+  /* 세로 정렬 */
+  gap: 8px;
+  /* ⭐ 별 사이 및 점수와 간격 */
+  margin: 15px 0;
+}
+
+.star-rating span {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.star-svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.star-rating .star-value {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #555;
+}
+
+
+
+
+/* ✅ 반응형 */
+@media (max-width: 900px) {
+  .review-write-page {
+    padding: 100px 20px;
+  }
+
+  .review-input,
+  .review-textarea {
+    font-size: 14px;
+  }
+
+  .review-submit-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}

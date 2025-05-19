@@ -1,0 +1,261 @@
+.review-detail-page {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 180px 20px 0 0;
+}
+
+.review-box {
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    background: #fff;
+}
+
+.review-sticker {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    z-index: 2;
+
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+    /* ✅ 이미지 비율 유지하면서 잘 들어가게 */
+    object-position: center;
+    /* ✅ 가운데 정렬 */
+    border-radius: 12px;
+    /* 선택: 둥글게 할 경우 */
+    background-color: white;
+    /* ✅ 투명 PNG일 경우 배경 채워주기 */
+    padding: 4px;
+    /* 선택: 이미지 안 잘리게 약간 여유 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* 살짝 입체감 */
+}
+
+/* 수정/삭제 아이콘 */
+.review-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.icon-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.icon-button:hover {
+    opacity: 1;
+}
+
+.review-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+    padding: 15px 0 0 0;
+}
+
+.review-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.review-star-value {
+    font-size: 14px;
+    margin-left: 6px;
+    color: #555;
+}
+
+.review-content {
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.review-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.review-icons img {
+    width: 20px;
+}
+
+.review-meta {
+    font-size: 13px;
+    color: #888;
+    text-align: right;
+}
+
+/* 댓글 */
+.comment-wrapper {
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* 왼쪽 로고 */
+.comment-sticker {
+  width: 120px;
+  height: 60px;
+  object-fit: contain;
+  /* border-radius: 999px; */
+  /* background-color: white; */
+  padding: 4px 14px 4px 4px;
+  /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); */
+}
+
+/* 오른쪽 말풍선 */
+.comment-bubble {
+  position: relative;
+  background: #ddd;
+  padding: 16px 20px;
+  border-radius: 20px;
+  min-height: 80px;
+  flex: 1;
+}
+
+/* 말풍선 꼬리 */
+.comment-bubble::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 20px solid #ddd;
+  border-bottom: 10px solid transparent;
+}
+
+
+/* 수정 / 삭제 */
+.comment-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.icon-button:hover {
+  opacity: 1;
+}
+
+/* 텍스트 */
+.comment-body {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+
+/* 댓글 작성 */
+.comment-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-form textarea {
+    max-width: 800px;
+    height: 100px;
+    resize: vertical;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.comment-form button {
+    align-self: flex-end;
+    background: #AD5457;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+
+
+/* textarea 넓이랑 스타일 */
+.edit-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+/* 버튼 컨테이너 */
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 저장 / 취소 버튼 스타일 */
+.edit-buttons button {
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* 저장 버튼 - 붉은색 */
+.edit-buttons button:first-child {
+  background-color: #AD5457;
+  color: white;
+}
+
+.edit-buttons button:first-child:hover {
+  background-color: #9e4549;
+}
+
+/* 취소 버튼 - 연회색 */
+.edit-buttons button:last-child {
+  background-color: #eee;
+  color: #333;
+}
+
+.edit-buttons button:last-child:hover {
+  background-color: #ddd;
+}

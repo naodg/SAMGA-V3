@@ -1,0 +1,1347 @@
+.store-detail-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.store-hero-image {
+  width: 100%;
+  height: 650px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.9);
+}
+
+.store-info-card {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  transform: translateX(160px);
+  /* → 기준점에서 오른쪽으로 이동 */
+  width: 400px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #AD5457;
+
+  z-index: 10;
+  text-align: start;
+}
+
+
+/* 전체 레이아웃 */
+.store-detail-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  font-family: 'sans-serif';
+}
+
+/* 로고 + 가게명 + 별점 묶음 */
+.store-main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 5px !important;
+  text-align: start;
+}
+
+.store-main-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 0px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 가게명 + 별점 가로정렬 */
+.store-name-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  height: 50px;
+}
+
+.store-name {
+  font-size: 23px !important;
+  font-weight: bold;
+  color: #222;
+  margin: 0px;
+}
+
+/* 별 아이콘 (텍스트 별 5개) */
+.star-icons {
+  font-size: 18px;
+  color: #AD5457;
+  /* 노란 별색 */
+  letter-spacing: 2px;
+  /* 별 간격 */
+}
+
+/* 가게 기본 정보 */
+.store-detail {
+  font-size: 15px;
+  margin: 3px 0 3px 10px;
+  color: #333;
+  display: flex;
+  justify-content: start;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+/* 포인트(주의사항) 문구 */
+.point {
+  color: #AD5457;
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+
+
+.store-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding: 0 12px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.action-item a {
+  text-decoration: none;
+  color: #555;
+  align-items: center;
+  justify-items: center;
+}
+
+.action-item a span {
+  text-decoration: none;
+  color: #555;
+  margin-left: 10px;
+}
+
+.action-item img {
+  width: 15px;
+  height: 15px;
+  margin-bottom: 3px;
+}
+
+
+
+
+/* 편의시설 섹션 전체 */
+.facility-section {
+  margin: 10px 10px 0 10px;
+  text-align: center;
+}
+
+/* 편의시설 타이틀 */
+.facility-title {
+  font-size: 15px;
+  /* font-weight: bold; */
+  color: #333;
+  /* border-bottom: 1px solid #AD5457; */
+  padding: 0 0 10px 0;
+}
+
+
+
+/* 편의시설 아이콘들 그리드 */
+.facility-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px 5px;
+  /* 가로/세로 간격 */
+  justify-items: center;
+  align-items: center;
+  padding: 10px 0;
+  /* border: 1px solid #9e9c9c; */
+  background-color: rgba(173, 84, 87, 0.1);
+}
+
+/* 편의시설 개별 아이템 */
+.facility-icon {
+  display: flex;
+  flex-direction: row;
+  /* 아이콘-텍스트 가로 배치 */
+  align-items: center;
+  /* 아이콘, 텍스트 수직 정렬 */
+  gap: 10px;
+  /* 아이콘과 텍스트 사이 */
+  font-size: 14px;
+  color: #333;
+  min-width: 140px;
+  /* ✅ 너비 고정해서 정렬 맞추기 */
+  justify-content: flex-start;
+  /* 아이콘+텍스트 묶음 왼쪽 정렬 */
+}
+
+/* 아이콘 이미지 래퍼 */
+.facility-icon-img-wrapper {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facility-icon-img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.wifi-padding img {
+  padding: 3px;
+  /* 예시로 3px, 원하는 값 넣기 */
+}
+
+
+/* 편의시설 더보기 버튼 */
+
+.button-location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  /* 추가 */
+  margin-top: 10px;
+  background-color: transparent;
+  padding: 5px 0;
+}
+
+.more-button {
+  font-size: 13px;
+  width: 100%;
+  color: #AD5457;
+  cursor: pointer;
+  border: none;
+  margin-top: 6px;
+  background: transparent;
+}
+
+.more-button:hover {
+  text-decoration: underline;
+}
+
+
+
+.no-bg {
+  background-color: transparent !important;
+}
+
+.store-story-wrapper {
+  width: 100%;
+  margin: auto;
+  text-align: start;
+  padding: 0 20px;
+  /* background-color: #f3ece9; */
+
+}
+
+.store-slogan {
+  font-size: 33px;
+  line-height: 1.3;
+  color: #4d4d4d;
+  white-space: pre-line;
+  /* ⭐️ \n 줄바꿈 적용 */
+  font-weight: 700;
+  padding: 30px 385px;
+  font-family: 'PurunMyungjo', serif;
+}
+
+.store-name-line {
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  margin-left: 385px;
+}
+
+.extra-padding {
+  padding-top: 3px;
+  /* 원하는 만큼 조절 */
+}
+
+
+.store-name-text {
+  font-size: 18px;
+  color: #ad5457;
+  font-weight: bold;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.store-name-bar {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ad5457;
+}
+
+@media (max-width: 900px) {
+  .store-name-line {
+    display: none;
+  }
+}
+
+.store-brand-wrapper {
+  width: 100%;
+  /* background: #f3ece9; */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px 80px;
+  box-sizing: border-box;
+  align-items: center;
+  /* ✅ 이거도 추가 추천 */
+}
+
+.brand-inner {
+  display: flex;
+  width: 100%;
+  /* max-width: 1100px; */
+  flex-direction: column;
+  align-items: center;
+  /* ✅ 수직 가운데 정렬 */
+  justify-content: center;
+}
+
+
+/* 이걸 추가해야 해! */
+.video-logo {
+  text-align: center;
+  width: 150px;
+  margin: 100px 0 0 0;
+  display: inline-block;
+}
+
+
+.brand-text {
+  font-size: 27px;
+  color: #b18978;
+  text-align: center;
+  margin: 30px 0;
+  /* font-family: 'NotoSansKR-Thin', sans-serif; */
+}
+
+.brand-divider {
+  width: 1100px;
+  border: none;
+  border-top: 1px solid #AD5457;
+  margin: 0 auto 30px;
+}
+
+.store-logo-bottom {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.store-logo-bottom img {
+  height: 100px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.store-sub-logo {
+  width: 220px;
+}
+
+
+
+.store-detail-images-separated {
+  display: flex;
+}
+
+
+.detail-images-pc img,
+.detail-images-mobile img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0 !important;
+}
+
+/* PC 전용 스타일 */
+.pc-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.pc-image-wrapper img {
+  width: 100%;
+  display: block;
+}
+
+.pc-image-text-overlay {
+  position: absolute;
+  color: #222;
+  font-family: 'NotoSansKR-Medium', sans-serif;
+  white-space: pre-line;
+}
+
+
+/* ✅ 각 텍스트 위치 및 스타일 개별 설정 */
+
+/* 대가 1호점 */
+.deaga1-1 {
+  top: 7.5%;
+  right: 24%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.deaga1-2 {
+  top: 14%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+/* .deaga1-2 div:last-child {
+  padding-left: 4em;
+} */
+
+
+.deaga1-3 {
+  top: 6.5%;
+  right: 29.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+/* 도원 */
+.dowon1 {
+  top: 55%;
+  right: 32%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.dowon2 {
+  top: 9%;
+  left: 20.5%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+
+}
+
+
+.dowon3 {
+  top: 30%;
+  right: 27%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+
+}
+
+/* 대가식육식당 */
+
+.deagaB1 {
+  top: 5%;
+  right: 30%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.deagaB2 {
+  top: 6%;
+  left: 41.5%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.deagaB3 {
+  top: 2%;
+  left: 21%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+
+/* 대가한우 */
+
+.deagaH1 {
+  top: 61%;
+  right: 22%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.deagaH2 {
+  top: 6%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.deagaH3 {
+  top: 11%;
+  right: 21.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+/* 대산식육식당 */
+
+.deasan1 {
+  top: 45%;
+  right: 36.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.deasan2 {
+  top: 20%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.deasan3 {
+  top: 9%;
+  right: 23.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+/* 대웅식육식당 */
+
+.deawoong1 {
+  top: 10.5%;
+  right: 27%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.deawoong2 {
+  top: 10%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+.highlight {
+  color: #999;
+  /* font-weight: bold; */
+}
+
+
+.deawoong3 {
+  top: 16%;
+  right: 28%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+/* 미로식육식당 */
+.miro1 {
+  top: 3%;
+  right: 27.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.miro2 {
+  top: 17%;
+  left: 21.5%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.miro3 {
+  top: 2%;
+  right: 29.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+/* 불난가 */
+
+.Fire1 {
+  top: 64%;
+  right: 21%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.Fire2 {
+  top: 5.5%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.Fire3 {
+  top: 8%;
+  right: 21.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+/* 상구 */
+.sanggu1 {
+  top: 25%;
+  right: 22%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.sanggu2 {
+  top: 11%;
+  left: 21.5%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.sanggu3 {
+  top: 50.5%;
+  right: 28%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+/* 삼가명품한우 */
+.samga1 {
+  top: 15%;
+  right: 24.3%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.samga2 {
+  top: 14%;
+  left: 21%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.samga3 {
+  top: 41%;
+  right: 36.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+/* 태영한우 */
+.teyoung1 {
+  top: 11%;
+  right: 24%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: -2px;
+
+}
+
+.teyoung2 {
+  top: 54%;
+  left: 21.5%;
+  transform: translateX(0);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+.teyoung3 {
+  top: 8%;
+  right: 30.5%;
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+
+
+
+
+
+
+.only-pc {
+  display: block;
+}
+
+.only-mobile {
+  display: none;
+}
+
+
+
+@media (max-width: 1600px) {
+  .only-pc {
+    display: none;
+  }
+
+  .only-mobile {
+    display: block;
+  }
+
+  .detail-images-mobile .store-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .detail-images-mobile {
+    width: 100%;
+  }
+}
+
+
+.dowon-product-section {
+  padding: 40px 20px;
+  background-color: #f3ece9;
+}
+
+.dowon-product-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dowon-product-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.dowon-product-title .highlight {
+  color: #AD5457;
+  /* 포인트 컬러 */
+  margin-left: 6px;
+}
+
+
+.dowon-product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 40px;
+  justify-content: space-between;
+}
+
+.dowon-product-item {
+  width: 180px;
+  text-align: start;
+}
+
+.dowon-product-item img {
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+}
+
+.dowon-product-name {
+  font-weight: bold;
+  color: #222;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+
+.dowon-only-mobile {
+  display: none;
+}
+
+.dowon-only-pc {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .store-brand-wrapper {
+    width: 100%;
+    background: #f3ece9;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px 20px;
+    box-sizing: border-box;
+    align-items: center;
+    /* ✅ 이거도 추가 추천 */
+  }
+
+  .dowon-only-pc {
+    display: none;
+  }
+
+  .dowon-product-inner {
+    max-width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+  }
+
+  .dowon-product-grid.dowon-only-mobile {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .dowon-product-item {
+    width: 47%;
+
+    text-align: center;
+  }
+
+  .dowon-product-item img {
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
+    border-radius: 6px;
+  }
+
+  .dowon-product-name {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .idius-all {
+    text-align: right;
+    margin-top: 12px;
+    padding: 0 16px;
+  }
+
+  .idius-all a {
+    font-size: 14px;
+    color: #AD5457;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+
+.idius-all {
+  text-align: right;
+  margin: 15px 310px 20px 0;
+  /* padding-right: 20px; */
+}
+
+.idius-all a {
+  font-size: 14px;
+  color: #AD5457;
+  /* 포인트 컬러 */
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.idius-all .arrow {
+  margin-left: 4px;
+}
+
+
+.store-detail-top-wrapper {
+  padding: 60px 20px 100px 410px;
+  background: #f3ece9;
+  text-align: start;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.tab-button {
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #fff;
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid #ccc;
+}
+
+.tab-button.active {
+  background-color: #AD5457;
+  color: #fff;
+  border: 1px solid #AD5457;
+}
+
+.store-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: start;
+}
+
+.store-image {
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+/* ✅ 리뷰 영역 전체 */
+.store-review-wrapper {
+  padding: 60px 370px 100px 410px;
+  text-align: start;
+}
+
+.review-item {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.review-item img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 3px;
+}
+
+.store-review-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.store-review-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #fff;
+}
+
+.review-titles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.review-content {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.review-meta {
+  font-size: 12px;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.star-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.review-star-value {
+  margin-left: 6px;
+  font-size: 13px;
+  color: #AD5457;
+  font-weight: 500;
+}
+
+.review-comment {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #333;
+}
+
+.review-comment .comment-nickname {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.review-comment .comment-date {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #888;
+  margin-top: 12px;
+}
+
+.review-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.review-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.review-nickname {
+  font-weight: bold;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review-star-value {
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+
+.no-store-review {
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+  margin: 40px 0;
+}
+
+.naver-review-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #AD5457;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+
+
+/* ✅ 기본 리뷰 박스 */
+.review-placeholder {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 40px 20px;
+  margin-top: 20px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.review-link-wrapper {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.review-more-link {
+  display: inline-block;
+  margin-top: 16px;
+  background-color: #AD5457;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+/* ✅ 네이버 리뷰 링크 버튼 */
+.naver-review-link {
+  display: inline-block;
+  margin-top: 16px;
+  background-color: #03c75a;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.naver-review-link:hover {
+  background-color: #029b46;
+}
+
+
+
+/* 반응형   */
+
+@media (max-width: 1700px) {
+  .deaga1-1 {
+    top: 5%;
+    right: 33%;
+    font-size: clamp(28px, 4vw, 60px);
+    font-weight: bold;
+    text-align: left;
+
+  }
+
+  .deaga1-2 {
+    top: 10%;
+    left: 16.5%;
+    transform: translateX(0);
+    font-size: clamp(28px, 4vw, 60px);
+    font-weight: 700;
+    text-align: start;
+    line-height: 1.2;
+  }
+
+  /* .deaga1-2 div:last-child {
+    padding-left: 4em;
+  } */
+
+  .deaga1-3 {
+    top: 6.5%;
+    right: 26.5%;
+    font-size: clamp(28px, 4vw, 60px);
+    font-weight: 700;
+    text-align: start;
+    line-height: 1.2;
+  }
+}
+
+
+
+
+
+@media (max-width: 1100px) {
+  .store-info-card {
+    position: absolute;
+    left: 50%;
+    top: 320px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    z-index: 10;
+  }
+
+  .store-main-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 0px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .store-slogan {
+    padding: 380px 20px 30px;
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: start;
+  }
+
+  .store-hero-image {
+    height: auto;
+    min-height: 350px;
+  }
+
+  .brand-text {
+    font-size: 20px;
+    color: #b18978;
+    text-align: center;
+    margin: 30px 0;
+    /* font-family: 'NotoSansKR-Thin', sans-serif; */
+  }
+
+  .brand-divider {
+    width: 300px;
+    border: none;
+    border-top: 1px solid #AD5457;
+    margin: 0 auto 30px;
+  }
+
+  .store-sub-logo {
+    width: 150px;
+  }
+
+  .store-detail-top-wrapper {
+    padding: 40px 20px;
+    min-height: 200px;
+    /* ✅ 공간 확보 */
+  }
+
+  .store-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .store-review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .store-review-wrapper {
+    padding: 40px 20px;
+    display: block;
+  }
+
+  .review-placeholder,
+  .review-item {
+    text-align: center;
+  }
+
+}

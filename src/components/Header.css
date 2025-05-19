@@ -1,0 +1,198 @@
+.header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header.white {
+  color: #fff !important; /* 스토어 상세페이지에서는 흰색 */
+}
+.header.white .user-menu {
+  color: #fff;
+}
+
+.header.white .nav-list li+li::before {
+  color: #fff;
+}
+
+
+.clickable {
+  cursor: pointer;
+}
+
+.header-inner-pc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header-inner-m {
+  display: none;
+}
+
+/* ✅ 로고 크기 키움 */
+.logo {
+  flex: 0 0 auto;
+  height: 80px;
+  cursor: pointer;
+  margin-left: -20px;
+  margin-top: 14px;
+}
+
+/* ✅ 네비게이션 Swiper 가운데로 */
+.nav {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.nav-list li {
+  position: relative;
+  cursor: pointer;
+  padding: 0 12px;
+  /* ✅ 텍스트 좌우에 여백 줌 */
+}
+
+.nav-list li+li::before {
+  content: '|';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-weight: normal;
+}
+
+
+/* ✅ 유저 메뉴 왼쪽 정렬 */
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 13px;
+  align-items: flex-start;
+  /* ← 요기 */
+  margin-top: 40px;
+  margin-right: -30px;
+  color: #896858;
+}
+
+
+
+
+/* ✅ 기본 header 구조는 그대로 두고 추가만! */
+
+@media (max-width: 900px) {
+  .header-inner-pc {
+    display: none;
+  }
+
+  .header-inner-m {
+    display: flex;
+    flex-direction: column;
+    /* ✅ 이거 추가해야 해! */
+    align-items: center;
+    /* ✅ 가운데 정렬 */
+    width: 100%;
+    padding: 20px;
+  }
+
+  .top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .logo {
+    height: 40px;
+    margin: 0;
+  }
+
+  /* 네비게이션 */
+  .nav {
+    position: static;
+    transform: none;
+  }
+
+  .nav-list {
+    gap: 1rem;
+    font-size: 14px;
+  }
+
+  /* 유저 메뉴 */
+  .mobile-menu-icon {
+    display: block;
+    position: absolute;
+    right: 30px;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 200;
+  }
+
+  .mobile-menu-icon span {
+    display: block;
+    height: 3px;
+    background: #896858;
+    margin: 5px 0;
+    border-radius: 2px;
+  }
+
+  /* ✅ 모바일 유저 메뉴 */
+  .mobile-user-menu {
+    width: 20%;
+    right: 10px;
+    top: 50px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    position: absolute;
+    z-index: 100;
+  }
+
+  .mobile-user-menu.open {
+    max-height: 500px;
+    /* 충분히 큰 값 */
+    opacity: 1;
+  }
+
+  .mobile-user-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0.7rem;
+    font-size: 14px;
+    color: #896858;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+
+
+}

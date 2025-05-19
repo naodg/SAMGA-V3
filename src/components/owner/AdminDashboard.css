@@ -1,0 +1,66 @@
+.admin-wrapper {
+    padding: 200px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+    /* ⭐ 가운데 정렬 */
+}
+
+
+.admin-header {
+  display: flex;
+  justify-content: flex-start; /* ✅ 제목은 왼쪽, 아이콘은 오른쪽 */
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 0px;
+  padding: 0 10px;
+}
+
+.admin-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.admin-icon {
+    width: 50px;
+}
+
+.admin-table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.admin-table th {
+    background-color: #a94d4d;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.admin-table td {
+    padding: 15px;
+    font-size: 15px;
+    background-color: #a94d4d42;
+}
+
+.admin-table tbody tr:nth-child(even) td {
+    background-color: #fcf5f5;
+}
+
+.download-icon {
+    width: 20px;
+    cursor: pointer;
+    float: right;
+}
