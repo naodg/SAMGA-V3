@@ -16,7 +16,7 @@
 .map-gallery-swiper-container {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 650px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   z-index: 5;
@@ -116,7 +116,7 @@
 /* 지도 */
 .map-gallery-map-container {
   position: absolute;
-  top: 630px;
+  top: 672px;
   left: 50%;
   transform: translateX(-50%);
   width: 76%;
