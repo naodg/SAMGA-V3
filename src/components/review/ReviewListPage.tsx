@@ -63,7 +63,7 @@ export default function ReviewListPage() {
     let q = query(
       collection(db, "reviews"),
       orderBy("createdAt", "desc"),
-      limit(5)
+      limit(12)
     )
 
     let storeId = selectedStoreId;
@@ -81,7 +81,7 @@ export default function ReviewListPage() {
         collection(db, "reviews"),
         where("storeId", "==", storeId),
         orderBy("createdAt", "desc"),
-        limit(5)
+        limit(12)
       );
     }
 

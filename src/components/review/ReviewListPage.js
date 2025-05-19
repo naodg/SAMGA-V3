@@ -24,7 +24,7 @@ export default function ReviewListPage() {
     const [likeMap, setLikeMap] = useState({});
     const [likeCountMap, setLikeCountMap] = useState({});
     const fetchReviews = async (initial = false) => {
-        let q = query(collection(db, "reviews"), orderBy("createdAt", "desc"), limit(5));
+        let q = query(collection(db, "reviews"), orderBy("createdAt", "desc"), limit(12));
         let storeId = selectedStoreId;
         if (selectedStoreId !== "all") {
             const matchedIndex = storeData.findIndex(s => s.name === selectedStoreId);
@@ -35,7 +35,7 @@ export default function ReviewListPage() {
                 console.error("해당 가게 이름이 storeData에 없습니다.");
                 return;
             }
-            q = query(collection(db, "reviews"), where("storeId", "==", storeId), orderBy("createdAt", "desc"), limit(5));
+            q = query(collection(db, "reviews"), where("storeId", "==", storeId), orderBy("createdAt", "desc"), limit(12));
         }
         if (!initial && lastDoc) {
             q = query(q, startAfter(lastDoc));
