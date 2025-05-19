@@ -264,8 +264,8 @@
 /* 리뷰 쓰기 버튼 */
 .write-review-fixed {
   position: fixed;
-  bottom: 300px;
-  right: 200px;
+  bottom: 30px;
+  right: 150px;
   padding: 12px 24px;
   background-color: #AD5457;
   color: white;
