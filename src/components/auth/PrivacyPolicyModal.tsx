@@ -96,8 +96,8 @@ export default function PrivacyPolicyModal({ onClose }: Props) {
 
           <h2>8. 개인정보 보호책임자</h2>
           <p>
-            - 이름: 합천군 도시재생지원 센터 <br />
-            - 전화번호: 055-933-8330 <br />
+            - 이름: 합천군청 <br />
+            - 전화번호: 055-933-3114 <br />
             - 담당업무: 개인정보 보호 총괄 책임
           </p>
 

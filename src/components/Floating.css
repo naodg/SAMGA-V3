@@ -13,10 +13,10 @@
   position: fixed;
   bottom: 20px;
   right: 40px;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background: red;
+  background: #ad5457;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   display: flex;
@@ -29,7 +29,7 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 12px;
+  margin-bottom: 90px;
   padding: 10px 0;
   width: 160px;
   animation: fadeInUp 0.2s ease;
