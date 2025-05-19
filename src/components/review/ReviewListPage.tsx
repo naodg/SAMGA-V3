@@ -324,7 +324,7 @@ export default function ReviewListPage() {
       )}
 
       <button className="write-review-fixed" onClick={() => navigate("/write")}>리뷰 쓰기</button>
-      <button className="reservation"  onClick={() => navigate("/write")}>예약 신청</button>
+      {/* <button className="reservation"  onClick={() => navigate("/write")}>예약 신청</button> */}
     </div>
   )
 }
