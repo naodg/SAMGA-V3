@@ -105,7 +105,7 @@ export default function ReviewListPage() {
       fetchCommentsForReview(review.id)
     })
 
-    if (snapshot.docs.length < 5) {
+    if (snapshot.docs.length < 12) {
       setIsEnd(true)
     }
 
