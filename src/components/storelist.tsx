@@ -10,27 +10,27 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const bannerImages = [
   {
-    src: '/SAMGA-V2/img/banner/banner5.png',
+    src: '/SAMGA-V3/img/banner/banner5.png',
     caption: '좋은사람과 같이 걷기 좋은 \n 삼가특화거리-소화잘되는 길',
     link: 'https://blog.naver.com/hc-urc/222571944010',
   },
   {
-    src: '/SAMGA-V2/img/banner/banner4.png',
+    src: '/SAMGA-V3/img/banner/banner4.png',
     caption: '4계절 각기다른 멋! 황매산 군립공원 \n 공식사이트 바로가기',
     link: 'https://www.hc.go.kr/09418/09425/09833.web'
   },
   {
-    src: '/SAMGA-V2/img/banner/banner3.png',
+    src: '/SAMGA-V3/img/banner/banner3.png',
     caption: '생명의 아름다운 멋으로 가득한 정양늪 \n 공식사이트 바로가기',
     link: 'https://www.youtube.com/watch?v=DjprccTSapc'
   },
   {
-    src: '/SAMGA-V2/img/banner/banner2.png',
+    src: '/SAMGA-V3/img/banner/banner2.png',
     caption: '삼가의 멋-삼가시장 \n합천 공식유튜브 바로가기',
     link: 'https://www.youtube.com/watch?v=ZLch32VzUb0'
   },
   {
-    src: '/SAMGA-V2/img/banner/banner1.png',
+    src: '/SAMGA-V3/img/banner/banner1.png',
     caption: '영화같은일상 합천영상테마파크 \n 공식사이트 바로가기',
     link: 'https://hcmoviethemepark.com/'
   },
@@ -62,7 +62,7 @@ export default function StoreList() {
     <div className="storelist-landing">
 
       <div className="landing-video-wrapper">
-        <img src="/SAMGA-V2/img/logo/videologo.svg" alt="삼가한우로고" className="landing-logo" />
+        <img src="/SAMGA-V3/img/logo/videologo.svg" alt="삼가한우로고" className="landing-logo" />
 
         <iframe
           src="https://drive.google.com/file/d/1WF-K2Nu6Jer87imLhWAyKXeWraxIkvVP/preview"
@@ -77,7 +77,7 @@ export default function StoreList() {
       </div>
 
       <div className="landing-text">
-        <img src="/SAMGA-V2/img/logo/tasty.svg" alt="tasty" className="tasty" />
+        <img src="/SAMGA-V3/img/logo/tasty.svg" alt="tasty" className="tasty" />
         <h2 className="landing-title">
           삼가에선 한우가 일상,<br />
           매일 특별한 고기 한 끼
@@ -105,7 +105,7 @@ export default function StoreList() {
                 }}
               >
                 <img
-                  src="/SAMGA-V2/img/logo/제목옆아이콘.svg"
+                  src="/SAMGA-V3/img/logo/제목옆아이콘.svg"
                   alt="아이콘"
                   style={{
                     width: '18px',
@@ -155,7 +155,7 @@ export default function StoreList() {
             }}
           >
             <img
-              src="/SAMGA-V2/img/logo/제목옆아이콘.svg"
+              src="/SAMGA-V3/img/logo/제목옆아이콘.svg"
               alt="아이콘"
               style={{
                 width: '18px',
@@ -166,7 +166,7 @@ export default function StoreList() {
             牛리마을
           </h3>
           <div className="store-card">
-            <img src={"/SAMGA-V2/samga/store/소탈이.jpg"} alt={"소탈이"} className="store-card-image" />
+            <img src={"/SAMGA-V3/samga/store/소탈이.jpg"} alt={"소탈이"} className="store-card-image" />
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ export default function StoreList() {
 
       <div className="banner-wrapper">
         <div className="banner-title-area">
-          <img src="/SAMGA-V2/img/logo/bannerlogo.svg" alt="타이틀로고" className="slogan-img" />
+          <img src="/SAMGA-V3/img/logo/bannerlogo.svg" alt="타이틀로고" className="slogan-img" />
           <div className="banner-subtitle">
             <span className="bolder">맛!</span>있는
             <span className="bolder">멋!</span>있는 좋은

@@ -15,7 +15,7 @@ import PrivacyPolicy from './components/auth/Privacy'
 
 function App() {
   return (
-    <Router basename="/SAMGA-V2">
+    <Router basename="/SAMGA-V3">
       {/* ✅ Header는 Routes 바깥에 넣기 (공통 레이아웃 영역) */}
       <Header />
 

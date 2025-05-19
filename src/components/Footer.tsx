@@ -60,7 +60,7 @@ export default function Footer() {
 
         {/* 1. 로고 + 기본 정보 */}
         <div className="footer-column left">
-          <img src="/SAMGA-V2/img/logo/logo.svg" alt="우리마을삼가 로고" className="footer-logo" />
+          <img src="/SAMGA-V3/img/logo/logo.svg" alt="우리마을삼가 로고" className="footer-logo" />
           <p>
             대표 : 합천군청<br />
             사업자 등록번호 : 611-83-01516<br />

@@ -134,7 +134,7 @@ export default function MapGallery() {
     //   document.addEventListener('mousedown', handleClickOutside);
     //   return () => document.removeEventListener('mousedown', handleClickOutside);
     // }, []);
-    return (_jsxs("div", { className: "map-gallery-wrapper", children: [_jsxs("div", { className: "map-gallery-inner", children: [_jsxs("div", { className: "map-gallery-swiper-container", children: [_jsx(Swiper, { className: "map-gallery-swiper", modules: [Navigation, Pagination, Autoplay], navigation: true, pagination: { clickable: true }, autoplay: { delay: 2000, disableOnInteraction: false, }, loop: true, grabCursor: true, simulateTouch: true, touchRatio: 1, allowTouchMove: true, children: ['대가1호점', '대가식육식당', '대가한우', '대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (_jsx(SwiperSlide, { children: _jsx("img", { src: `/SAMGA-V2/img/landing/${name}_1.jpg`, alt: name, className: "map-gallery-slide-img", draggable: false }) }, i))) }), _jsxs("div", { className: "map-gallery-searchbar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
+    return (_jsxs("div", { className: "map-gallery-wrapper", children: [_jsxs("div", { className: "map-gallery-inner", children: [_jsxs("div", { className: "map-gallery-swiper-container", children: [_jsx(Swiper, { className: "map-gallery-swiper", modules: [Navigation, Pagination, Autoplay], navigation: true, pagination: { clickable: true }, autoplay: { delay: 2000, disableOnInteraction: false, }, loop: true, grabCursor: true, simulateTouch: true, touchRatio: 1, allowTouchMove: true, children: ['대가1호점', '대가식육식당', '대가한우', '대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (_jsx(SwiperSlide, { children: _jsx("img", { src: `/SAMGA-V3/img/landing/${name}_1.jpg`, alt: name, className: "map-gallery-slide-img", draggable: false }) }, i))) }), _jsxs("div", { className: "map-gallery-searchbar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
                                             if (searchQuery.trim() === '') {
                                                 setFilteredStores(storeData);
                                                 setSelectedStore(null);
@@ -144,7 +144,7 @@ export default function MapGallery() {
                                                 setFilteredStores(results);
                                                 setSelectedStore(results[0] ?? null);
                                             }
-                                        }, children: _jsx("img", { src: "/SAMGA-V2/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58", className: "search-icon-img" }) }), _jsx("input", { type: "text", value: searchQuery, placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", onFocus: () => setShowMap(true), onChange: (e) => {
+                                        }, children: _jsx("img", { src: "/SAMGA-V3/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58", className: "search-icon-img" }) }), _jsx("input", { type: "text", value: searchQuery, placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", onFocus: () => setShowMap(true), onChange: (e) => {
                                             const keyword = e.target.value;
                                             setSearchQuery(keyword);
                                             if (keyword.trim() === '') {
@@ -172,13 +172,13 @@ export default function MapGallery() {
                                                                     const value = i + 1;
                                                                     let imgSrc = "";
                                                                     if (rating?.average >= value) {
-                                                                        imgSrc = "/SAMGA-V2/img/icon/단골등록해제.svg";
+                                                                        imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg";
                                                                     }
                                                                     else if (rating?.average + 0.5 >= value) {
-                                                                        imgSrc = "/SAMGA-V2/img/icon/반쪽자리별.svg";
+                                                                        imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg";
                                                                     }
                                                                     else {
-                                                                        imgSrc = "/SAMGA-V2/img/icon/단골등록.svg";
+                                                                        imgSrc = "/SAMGA-V3/img/icon/단골등록.svg";
                                                                     }
                                                                     return (_jsx("img", { src: imgSrc, alt: "\uBCC4\uC810", className: "star-icon", style: { width: 16, height: 16 } }, i));
                                                                 }), _jsxs("span", { className: "review-score", children: [rating?.average?.toFixed(1) || "0.0", "\uC810"] }), _jsxs("span", { className: "review-count", children: ["(", rating?.count || 0, "\uAC1C \uB9AC\uBDF0)"] })] })] }), _jsxs("div", { className: "menu-links", children: [_jsx("span", { className: "link", onClick: () => navigate("/review"), children: "Review" }), _jsx("span", { className: "divider", children: "|" }), _jsx("a", { href: "#", className: "link", children: "\uBA54\uB274\uBCF4\uAE30" })] })] }), _jsxs("p", { className: "store-detail", children: [_jsx("span", { className: "label", children: "\uC8FC\uC18C :" }), " ", selectedStore.address, " T. ", _jsx("b", { children: selectedStore.phone })] }), _jsxs("p", { className: "store-detail", children: [_jsx("span", { className: "label", children: "\uC601\uC5C5\uC2DC\uAC04 :" }), " ", selectedStore.hours.split('/')[0], selectedStore.point && (_jsxs("span", { className: "point", children: [" \u203B ", selectedStore.point] }))] }), _jsxs("p", { className: "store-detail", children: [_jsx("span", { className: "label", children: "\uD734\uBB34 :" }), " ", selectedStore.hours.split('/')[1].replace('휴무', '')] }), _jsxs("div", { className: "map-footer-links", children: [_jsx("a", { href: `https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`, target: "_blank", rel: "noopener noreferrer", className: "map-link", children: "\uAE38\uCC3E\uAE30" }), _jsx("span", { className: "divider", children: "/" }), _jsx("button", { className: "map-link", onClick: () => navigate(`/store/${encodeURIComponent(selectedStore.name)}`), children: "\uC0C1\uC138\uD398\uC774\uC9C0\uB85C \uAC00\uAE30" })] })] }));

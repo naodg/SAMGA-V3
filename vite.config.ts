@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/SAMGA-V2/',
+  base: '/SAMGA-V3/',
   plugins: [react()],
   server: {
     watch: {

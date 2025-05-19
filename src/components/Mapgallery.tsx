@@ -201,7 +201,7 @@ export default function MapGallery() {
             {['대가1호점', '대가식육식당', '대가한우', '대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (
               <SwiperSlide key={i}>
                 <img
-                  src={`/SAMGA-V2/img/landing/${name}_1.jpg`}
+                  src={`/SAMGA-V3/img/landing/${name}_1.jpg`}
                   alt={name}
                   className="map-gallery-slide-img"
                   draggable={false}
@@ -226,7 +226,7 @@ export default function MapGallery() {
                 }
               }}
             >
-              <img src="/SAMGA-V2/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
+              <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
             </button>
             <input
               type="text"
@@ -287,11 +287,11 @@ export default function MapGallery() {
                           let imgSrc = ""
 
                           if (rating?.average >= value) {
-                            imgSrc = "/SAMGA-V2/img/icon/단골등록해제.svg"
+                            imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg"
                           } else if (rating?.average + 0.5 >= value) {
-                            imgSrc = "/SAMGA-V2/img/icon/반쪽자리별.svg"
+                            imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg"
                           } else {
-                            imgSrc = "/SAMGA-V2/img/icon/단골등록.svg"
+                            imgSrc = "/SAMGA-V3/img/icon/단골등록.svg"
                           }
 
                           return (

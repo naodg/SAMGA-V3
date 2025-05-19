@@ -168,7 +168,7 @@ export default function ReviewDetailPage() {
                 {auth.currentUser?.uid === review.userId && (
                     <div className="review-actions">
                         <img
-                            src="/SAMGA-V2/img/icon/수정.svg"
+                            src="/SAMGA-V3/img/icon/수정.svg"
                             alt="수정"
                             className="icon-button"
                             onClick={() => {
@@ -177,7 +177,7 @@ export default function ReviewDetailPage() {
                             }}
                         />
                         <img
-                            src="/SAMGA-V2/img/icon/삭제.svg"
+                            src="/SAMGA-V3/img/icon/삭제.svg"
                             alt="삭제"
                             className="icon-button"
                             onClick={handleDelete}
@@ -193,8 +193,8 @@ export default function ReviewDetailPage() {
                                 key={i}
                                 src={
                                     review.star >= i + 1
-                                        ? "/SAMGA-V2/img/icon/단골등록해제.svg"
-                                        : "/SAMGA-V2/img/icon/단골등록.svg"
+                                        ? "/SAMGA-V3/img/icon/단골등록해제.svg"
+                                        : "/SAMGA-V3/img/icon/단골등록.svg"
                                 }
                                 alt="별"
                                 className="star-icon"
@@ -226,8 +226,8 @@ export default function ReviewDetailPage() {
                         <img
                             src={
                                 liked
-                                    ? "/SAMGA-V2/img/icon/좋아용누름.svg"
-                                    : "/SAMGA-V2/img/icon/좋아용.svg"
+                                    ? "/SAMGA-V3/img/icon/좋아용누름.svg"
+                                    : "/SAMGA-V3/img/icon/좋아용.svg"
                             }
                             alt="좋아요"
                             className="heart-icon"
@@ -237,8 +237,8 @@ export default function ReviewDetailPage() {
                         <img
                             src={
                                 comment
-                                    ? "/SAMGA-V2/img/icon/댓글있음.svg"
-                                    : "/SAMGA-V2/img/icon/댓글.svg"
+                                    ? "/SAMGA-V3/img/icon/댓글있음.svg"
+                                    : "/SAMGA-V3/img/icon/댓글.svg"
                             }
                             alt="댓글"
                         />
@@ -265,7 +265,7 @@ export default function ReviewDetailPage() {
                                     ) : (
                                         <>
                                             <img
-                                                src="/SAMGA-V2/img/icon/수정.svg"
+                                                src="/SAMGA-V3/img/icon/수정.svg"
                                                 alt="수정"
                                                 className="icon-button"
                                                 onClick={() => {
@@ -274,7 +274,7 @@ export default function ReviewDetailPage() {
                                                 }}
                                             />
                                             <img
-                                                src="/SAMGA-V2/img/icon/삭제.svg"
+                                                src="/SAMGA-V3/img/icon/삭제.svg"
                                                 alt="삭제"
                                                 className="icon-button"
                                                 onClick={handleDeleteComment}

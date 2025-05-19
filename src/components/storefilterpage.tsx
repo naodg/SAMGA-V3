@@ -201,7 +201,7 @@ export default function StoreFilterPage() {
                   setSelectedStore(results[0] ?? null);
                 }
               }}>
-                <img src="/SAMGA-V2/img/logo/search.svg" alt="검색 아이콘" />
+                <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" />
               </button>
 
               <input
@@ -240,7 +240,7 @@ export default function StoreFilterPage() {
           {/* ✅ 2. 필터 버튼 */}
           <div className="mobile-filter-bar">
             <button onClick={() => setShowMap(!showMap)} className="toggle-map-button">
-              <img src='/SAMGA-V2/img/icon/map.svg' width="15px" />
+              <img src='/SAMGA-V3/img/icon/map.svg' width="15px" />
             </button>
 
             {filters.map(({ label, key }) => (
@@ -294,7 +294,7 @@ export default function StoreFilterPage() {
                 >
                   <div className="store-item-header">
                     <img
-                      src={store.image || '/SAMGA-V2/img/default.jpg'}
+                      src={store.image || '/SAMGA-V3/img/default.jpg'}
                       alt={store.name}
                       className="store-thumbnail"
                     />
@@ -308,11 +308,11 @@ export default function StoreFilterPage() {
                           let imgSrc = ""
 
                           if ((rating?.average ?? 0) >= value) {
-                            imgSrc = "/SAMGA-V2/img/icon/단골등록해제.svg" // 가득 찬 별
+                            imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
                           } else if ((rating?.average ?? 0) + 0.25 >= value) {
-                            imgSrc = "/SAMGA-V2/img/icon/반쪽자리별.svg" // 반쪽 별
+                            imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
                           } else {
-                            imgSrc = "/SAMGA-V2/img/icon/단골등록.svg" // 빈 별
+                            imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
                           }
 
                           return (
@@ -413,7 +413,7 @@ export default function StoreFilterPage() {
                     setSelectedStore(results[0] ?? null);
                   }
                 }}>
-                  <img src="/SAMGA-V2/img/logo/search.svg" alt="검색 아이콘" />
+                  <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" />
                 </button>
 
                 <input
@@ -479,7 +479,7 @@ export default function StoreFilterPage() {
                         onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}
                       >
                         <img
-                          src={store.filterimage || '/SAMGA-V2/img/default.jpg'}
+                          src={store.filterimage || '/SAMGA-V3/img/default.jpg'}
                           alt={store.name}
                           className="store-thumbnail"
                         />
@@ -494,11 +494,11 @@ export default function StoreFilterPage() {
                                 let imgSrc = ""
 
                                 if ((rating?.average ?? 0) >= value) {
-                                  imgSrc = "/SAMGA-V2/img/icon/단골등록해제.svg" // 가득 찬 별
+                                  imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
                                 } else if ((rating?.average ?? 0) + 0.25 >= value) {
-                                  imgSrc = "/SAMGA-V2/img/icon/반쪽자리별.svg" // 반쪽 별
+                                  imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
                                 } else {
-                                  imgSrc = "/SAMGA-V2/img/icon/단골등록.svg" // 빈 별
+                                  imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
                                 }
 
                                 return (

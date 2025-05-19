@@ -2,7 +2,7 @@
   "name": "samga-v1",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://naodg.github.io/SAMGA-V2",
+  "homepage": "https://naodg.github.io/SAMGA-V3",
   "type": "module",
   "scripts": {
     "dev": "vite",
