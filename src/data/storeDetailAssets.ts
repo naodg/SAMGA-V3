@@ -27,6 +27,20 @@ export const storeDetailAssets = {
             className: 'deagaH3',
         },
     ],
+     '대가식육식당': [
+        {
+            text: '삼가에서 \n한우가 시작된 곳 \n‘대가 식육식당’은',
+            className: 'deagaB1',
+        },
+        {
+            text: '양보다 질,\n숫자보다 신념을\n더 중요하게 생각합니다.',
+            className: 'deagaB2',
+        },
+        {
+            text: '진심은 맛으로,\n전해진다고 믿습니다.',
+            className: 'deagaB3',
+        },
+    ],
     '대산식육식당': [
         {
             text: '삼가에 뿌리내린 \n 어머니의 고깃집 \n‘대산 식육식당’은',
