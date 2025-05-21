@@ -310,9 +310,9 @@ export default function MapGallery() {
                     </h3>
 
                     <div className="menu-links">
-                      <span className="link" onClick={() => navigate("/review")}>Review</span>
+                      <div className="link" onClick={() => navigate("/review")}>Review</div>
                       <span className="divider">|</span>
-                      <span className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}>상세페이지 바로가기</span>
+                      <div className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}>상세페이지 바로가기</div>
                     </div>
 
                   </div>
