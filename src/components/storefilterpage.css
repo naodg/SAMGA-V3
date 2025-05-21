@@ -440,6 +440,11 @@
   }
   
 
+  .reservation-tag{
+    text-decoration: underline;
+    color: #AD5457;
+  }
+
 
   @media (max-width: 1200px) {
     .pc-wrapper {
