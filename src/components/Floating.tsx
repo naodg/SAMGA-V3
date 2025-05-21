@@ -1,35 +1,95 @@
-import React, { useState } from "react"
-import "./Floating.css"
+import React, { useState } from "react";
+import "./Floating.css";
 
 export default function Floating() {
-    const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [selectedStore, setSelectedStore] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [selectedTime, setSelectedTime] = useState<string>("");
+  const [guestCount, setGuestCount] = useState<number>(1);
 
+  const reservableStores = [
+    "대가식육식당",
+    "대가한우",
+    "대산식육식당",
+    "대웅식육식당",
+    "태영한우",
+  ];
 
-    const reservableStores = [
-        "대가식육식당",
-        "대가한우",
-        "대산식육식당",
-        "대웅식육식당",
-        "태영한우"
-    ]
+  const times = ["11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00"];
 
-    return (
-        <div className="floating-wrapper">
-            {/* 드롭다운 메뉴 */}
-            {open && (
-                <div className="dropdown-menu">
-                    {reservableStores.map((store, i) => (
-                        <div key={i} className="dropdown-item">
-                            {store}
-                        </div>
-                    ))}
-                </div>
-            )}
+  const handleStoreClick = (store: string) => {
+    setSelectedStore(store);
+  };
 
-            <div className="floating-mascot" onClick={() => setOpen(!open)}>
-                <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg" className="happy-sotal"/>
-                예약
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedDate(e.target.value);
+  };
+
+  const handleReservation = () => {
+    if (!selectedDate || !selectedTime || !guestCount) {
+      alert("날짜, 시간, 인원수를 모두 선택해주세요!");
+      return;
+    }
+    alert(`${selectedStore} 예약 완료: ${selectedDate} ${selectedTime}, ${guestCount}명`);
+    setSelectedStore(null); // 팝업 닫기
+  };
+
+  return (
+    <div className="floating-wrapper">
+      {/* 가게 리스트 드롭다운 */}
+      {open && (
+        <div className="dropdown-menu">
+          {reservableStores.map((store, i) => (
+            <div key={i} className="dropdown-item" onClick={() => handleStoreClick(store)}>
+              {store}
             </div>
+          ))}
         </div>
-    )
+      )}
+
+      {/* 예약 플로팅 버튼 */}
+      <div className="floating-mascot" onClick={() => setOpen(!open)}>
+        <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg" className="happy-sotal" />
+        예약
+      </div>
+
+      {/* 예약 팝업 */}
+      {selectedStore && (
+        <div className="reservation-popup">
+          <h3>{selectedStore} 예약하기</h3>
+
+          <label>날짜 선택:</label>
+          <input type="date" value={selectedDate} onChange={handleDateChange} />
+
+          <label>시간 선택:</label>
+          <div className="time-buttons">
+            {times.map((time, i) => (
+              <button
+                key={i}
+                className={selectedTime === time ? "active" : ""}
+                onClick={() => setSelectedTime(time)}
+              >
+                {time}
+              </button>
+            ))}
+          </div>
+
+          <label>인원 수:</label>
+          <select value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))}>
+            {[...Array(10)].map((_, i) => (
+              <option key={i + 1} value={i + 1}>
+                {i + 1}명
+              </option>
+            ))}
+          </select>
+
+          <div className="popup-buttons">
+            <button onClick={handleReservation}>예약하기</button>
+            <button onClick={() => setSelectedStore(null)}>취소</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
