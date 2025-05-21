@@ -321,13 +321,16 @@ export default function MapGallery() {
                       <span className="label">주소 :</span> {selectedStore.address}
                     </div>
 
-                    <div className="store-phone-box">
-                      <span className="phone-text">T. <b>{selectedStore.phone}</b></span>
-                      <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
-                        <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
-                      </a>
-                    </div>
+                    <a
+                      href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`}
+                      className="store-phone-box"
+                      aria-label="전화 걸기"
+                    >
+                      <span className="phone-text">T. {selectedStore.phone}</span>
+                      <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
+                    </a>
                   </div>
+
 
 
 
