@@ -80,33 +80,33 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ✅ 메뉴 열렸을 때만 보여주기 */}
+        {/* ✅ 유저 메뉴만 조건부 렌더링 */}
         {menuOpen && (
-          <>
-            <div className="mobile-user-menu open">
-              {user ? (
-                <>
-                  <span onClick={() => navigate("/mypage")}>마이페이지</span>
-                  <span onClick={handleLogout}>로그아웃</span>
-                </>
-              ) : (
-                <>
-                  <span onClick={() => navigate("/signup")}>회원가입</span>
-                  <span onClick={() => navigate("/login")}>로그인</span>
-                </>
-              )}
-            </div>
-
-            <nav className="nav">
-              <ul className="nav-list">
-                <li>소개</li>
-                <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
-                <li onClick={() => navigate('/review')}>리뷰</li>
-              </ul>
-            </nav>
-          </>
+          <div className="mobile-user-menu open">
+            {user ? (
+              <>
+                <span onClick={() => navigate("/mypage")}>마이페이지</span>
+                <span onClick={handleLogout}>로그아웃</span>
+              </>
+            ) : (
+              <>
+                <span onClick={() => navigate("/signup")}>회원가입</span>
+                <span onClick={() => navigate("/login")}>로그인</span>
+              </>
+            )}
+          </div>
         )}
+
+        {/* ✅ 이건 항상 보여야 함 */}
+        <nav className="nav">
+          <ul className="nav-list">
+            <li>소개</li>
+            <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
+            <li onClick={() => navigate('/review')}>리뷰</li>
+          </ul>
+        </nav>
       </div>
+
     </header>
   );
 }
