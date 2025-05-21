@@ -193,8 +193,8 @@
 /* ✅ 공통 팝업 카드 (PC, Mobile) */
 .popup-store-card {
   position: absolute;
-  right: 50px;
-  bottom: 120px;
+  right: 200px;
+  top: 20px;
   width: 260px;
   background: #fff;
   border-radius: 12px;
@@ -210,9 +210,9 @@
   margin-bottom: 8px;
 }
 
-.map-link {
+.filter-map-link {
   font-size: 13px;
-  color: #0077cc;
+  color: #AD5457;
   text-decoration: underline;
   display: inline-block;
   margin-top: 10px;

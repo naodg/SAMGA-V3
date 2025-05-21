@@ -200,7 +200,7 @@
   cursor: pointer;
 }
 
-.menu-links .link :hover{
+.link:hover{
   cursor: pointer;
   color: #AD5457;
 }
