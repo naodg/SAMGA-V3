@@ -1,12 +1,15 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { storeData } from "../data/storeData";
 import "./Floating.css";
 export default function Floating() {
     const [open, setOpen] = useState(false);
     const [selectedStore, setSelectedStore] = useState(null);
-    const [selectedDate, setSelectedDate] = useState("");
-    const [selectedTime, setSelectedTime] = useState("");
-    const [guestCount, setGuestCount] = useState(1);
+    const [selectedAction, setSelectedAction] = useState(null);
+    const [messageText, setMessageText] = useState("");
+    const location = useLocation();
+    const pathname = location.pathname;
     const reservableStores = [
         "대가식육식당",
         "대가한우",
@@ -14,23 +17,31 @@ export default function Floating() {
         "대웅식육식당",
         "태영한우",
     ];
-    const times = ["11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00"];
-    const handleStoreClick = (store) => {
-        setSelectedStore(store);
-    };
-    const handleDateChange = (e) => {
-        setSelectedDate(e.target.value);
-    };
-    const handleReservation = () => {
-        if (!selectedDate || !selectedTime || !guestCount) {
-            alert("날짜, 시간, 인원수를 모두 선택해주세요!");
-            return;
+    // 상세페이지인 경우 자동으로 해당 가게 선택
+    useEffect(() => {
+        if (pathname.startsWith("/store/")) {
+            const storeName = decodeURIComponent(pathname.replace("/store/", ""));
+            const found = storeData.find((store) => store.name === storeName);
+            if (found) {
+                setSelectedStore(found);
+                setOpen(false);
+            }
         }
-        alert(`${selectedStore} 예약 완료: ${selectedDate} ${selectedTime}, ${guestCount}명`);
-        setSelectedStore(null); // 팝업 닫기
+    }, [pathname]);
+    const handleStoreClick = (storeName) => {
+        const found = storeData.find((store) => store.name === storeName);
+        if (found) {
+            setSelectedStore(found);
+            setSelectedAction(null);
+        }
     };
-    return (_jsxs("div", { className: "floating-wrapper", children: [open && (_jsx("div", { className: "dropdown-menu", children: reservableStores.map((store, i) => (_jsx("div", { className: "dropdown-item", onClick: () => handleStoreClick(store), children: store }, i))) })), _jsx("div", { className: "floating-mascot", onClick: () => setOpen(!open), children: _jsx("img", { src: "/SAMGA-V3/img/icon/message2.svg", className: "happy-sotal" }) }), selectedStore && (_jsxs("div", { className: "reservation-popup", children: [_jsxs("h3", { children: [selectedStore, " \uC608\uC57D\uD558\uAE30"] }), _jsxs("div", { className: "popup-row", children: [_jsx("label", { children: "\uB0A0\uC9DC \uC120\uD0DD:" }), _jsx("input", { type: "date", value: selectedDate, onChange: (e) => setSelectedDate(e.target.value), className: "input-date" })] }), _jsx("label", { children: "\uC2DC\uAC04 \uC120\uD0DD:" }), _jsx("div", { className: "time-row", children: _jsx("div", { className: "time-buttons", children: times.map((time, i) => (_jsx("button", { className: selectedTime === time ? "active" : "", onClick: () => setSelectedTime(time), children: time }, i))) }) }), _jsxs("div", { className: "popup-row", children: [_jsx("label", { children: "\uC778\uC6D0 \uC218:" }), _jsx("select", { value: guestCount, onChange: (e) => setGuestCount(parseInt(e.target.value)), children: [...Array(14)].map((_, i) => {
-                                    const count = i + 1;
-                                    return (_jsx("option", { value: count, children: count <= 10 ? `${count}명` : `단체 (${count}명)` }, count));
-                                }) })] }), _jsxs("div", { className: "popup-buttons", children: [_jsx("button", { onClick: handleReservation, children: "\uC608\uC57D\uD558\uAE30" }), _jsx("button", { onClick: () => setSelectedStore(null), children: "\uCDE8\uC18C" })] })] }))] }));
+    const handleClose = () => {
+        setSelectedStore(null);
+        setSelectedAction(null);
+        setMessageText("");
+    };
+    return (_jsxs("div", { className: "floating-wrapper", children: [open && (_jsx("div", { className: "dropdown-menu", children: storeData.map((store, i) => (_jsx("div", { className: "dropdown-item", onClick: () => handleStoreClick(store.name), children: store.name }, i))) })), _jsx("div", { className: "floating-mascot", onClick: () => setOpen(!open), children: _jsx("img", { src: "/SAMGA-V3/img/icon/message.svg", className: "happy-sotal" }) }), selectedStore && !selectedAction && (_jsxs("div", { className: "contact-choice-popup", children: [_jsxs("h3", { children: [selectedStore.name, " \uBB38\uC758\uD558\uAE30"] }), _jsxs("div", { className: "contact-options", children: [_jsxs("div", { className: "option", onClick: () => setSelectedAction("call"), children: [_jsx("img", { src: "/SAMGA-V3/img/icon/call.svg", alt: "\uC804\uD654" }), _jsx("span", { children: "\uC804\uD654\uD558\uAE30" })] }), reservableStores.includes(selectedStore.name) && (_jsxs("div", { className: "option", onClick: () => setSelectedAction("message"), children: [_jsx("img", { src: "/SAMGA-V3/img/icon/message.svg", alt: "\uBB38\uC790" }), _jsx("span", { children: "\uBB38\uC790 \uBCF4\uB0B4\uAE30" })] }))] }), _jsx("button", { className: "close-btn", onClick: handleClose, children: "\uB2EB\uAE30" })] })), selectedStore && selectedAction === "call" && (_jsxs("div", { className: "call-popup", children: [_jsxs("a", { href: `tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`, className: "call-button", children: [selectedStore.phone, " \uB85C \uC804\uD654 \uAC78\uAE30"] }), _jsx("button", { className: "close-btn", onClick: handleClose, children: "\uB2EB\uAE30" })] })), selectedStore && selectedAction === "message" && (_jsxs("div", { className: "message-popup", children: [_jsxs("h3", { children: [selectedStore.name, "\uC5D0 \uBB38\uC790 \uBCF4\uB0B4\uAE30"] }), _jsx("textarea", { placeholder: "\uBB38\uC758\uD558\uC2E4 \uB0B4\uC6A9\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: messageText, onChange: (e) => setMessageText(e.target.value), className: "message-textarea" }), _jsxs("div", { className: "popup-buttons", children: [_jsx("button", { onClick: () => {
+                                    alert(`${selectedStore.name}에 보낸 문자:\n\n${messageText}`);
+                                    handleClose();
+                                }, children: "\uBCF4\uB0B4\uAE30" }), _jsx("button", { onClick: handleClose, children: "\uCDE8\uC18C" })] })] }))] }));
 }

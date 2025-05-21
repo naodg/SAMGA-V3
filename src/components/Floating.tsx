@@ -1,109 +1,121 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { storeData } from "../data/storeData";
 import "./Floating.css";
 
 export default function Floating() {
-    const [open, setOpen] = useState(false);
-    const [selectedStore, setSelectedStore] = useState<string | null>(null);
-    const [selectedDate, setSelectedDate] = useState<string>("");
-    const [selectedTime, setSelectedTime] = useState<string>("");
-    const [guestCount, setGuestCount] = useState<number>(1);
+  const [open, setOpen] = useState(false);
+  const [selectedStore, setSelectedStore] = useState<typeof storeData[0] | null>(null);
+  const [selectedAction, setSelectedAction] = useState<"call" | "message" | null>(null);
+  const [messageText, setMessageText] = useState<string>("");
 
-    const reservableStores = [
-        "대가식육식당",
-        "대가한우",
-        "대산식육식당",
-        "대웅식육식당",
-        "태영한우",
-    ];
+  const location = useLocation();
+  const pathname = location.pathname;
 
-    const times = ["11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00"];
+  const reservableStores = [
+    "대가식육식당",
+    "대가한우",
+    "대산식육식당",
+    "대웅식육식당",
+    "태영한우",
+  ];
 
-    const handleStoreClick = (store: string) => {
-        setSelectedStore(store);
-    };
+  // 상세페이지인 경우 자동으로 해당 가게 선택
+  useEffect(() => {
+    if (pathname.startsWith("/store/")) {
+      const storeName = decodeURIComponent(pathname.replace("/store/", ""));
+      const found = storeData.find((store) => store.name === storeName);
+      if (found) {
+        setSelectedStore(found);
+        setOpen(false);
+      }
+    }
+  }, [pathname]);
 
-    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedDate(e.target.value);
-    };
+  const handleStoreClick = (storeName: string) => {
+    const found = storeData.find((store) => store.name === storeName);
+    if (found) {
+      setSelectedStore(found);
+      setSelectedAction(null);
+    }
+  };
 
-    const handleReservation = () => {
-        if (!selectedDate || !selectedTime || !guestCount) {
-            alert("날짜, 시간, 인원수를 모두 선택해주세요!");
-            return;
-        }
-        alert(`${selectedStore} 예약 완료: ${selectedDate} ${selectedTime}, ${guestCount}명`);
-        setSelectedStore(null); // 팝업 닫기
-    };
+  const handleClose = () => {
+    setSelectedStore(null);
+    setSelectedAction(null);
+    setMessageText("");
+  };
 
-    return (
-        <div className="floating-wrapper">
-            {/* 가게 리스트 드롭다운 */}
-            {open && (
-                <div className="dropdown-menu">
-                    {reservableStores.map((store, i) => (
-                        <div key={i} className="dropdown-item" onClick={() => handleStoreClick(store)}>
-                            {store}
-                        </div>
-                    ))}
-                </div>
-            )}
+  return (
+    <div className="floating-wrapper">
+      {open && (
+        <div className="dropdown-menu">
+          {storeData.map((store, i) => (
+            <div key={i} className="dropdown-item" onClick={() => handleStoreClick(store.name)}>
+              {store.name}
+            </div>
+          ))}
+        </div>
+      )}
 
-            {/* 예약 플로팅 버튼 */}
-            <div className="floating-mascot" onClick={() => setOpen(!open)}>
-                <img src="/SAMGA-V3/img/icon/message2.svg" className="happy-sotal" />
-                
+      <div className="floating-mascot" onClick={() => setOpen(!open)}>
+        <img src="/SAMGA-V3/img/icon/message.svg" className="happy-sotal" />
+      </div>
+
+      {selectedStore && !selectedAction && (
+        <div className="contact-choice-popup">
+          <h3>{selectedStore.name} 문의하기</h3>
+          <div className="contact-options">
+            <div className="option" onClick={() => setSelectedAction("call")}>
+              <img src="/SAMGA-V3/img/icon/call.svg" alt="전화" />
+              <span>전화하기</span>
             </div>
 
-            {/* 예약 팝업 */}
-            {selectedStore && (
-                <div className="reservation-popup">
-                    <h3>{selectedStore} 예약하기</h3>
-
-                    <div className="popup-row">
-                        <label>날짜 선택:</label>
-                        <input
-                            type="date"
-                            value={selectedDate}
-                            onChange={(e) => setSelectedDate(e.target.value)}
-                            className="input-date"
-                        />
-                    </div>
-
-                    <label>시간 선택:</label>
-                    <div className="time-row">
-                        <div className="time-buttons">
-                            {times.map((time, i) => (
-                                <button
-                                    key={i}
-                                    className={selectedTime === time ? "active" : ""}
-                                    onClick={() => setSelectedTime(time)}
-                                >
-                                    {time}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="popup-row">
-                        <label>인원 수:</label>
-                        <select value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))}>
-                            {[...Array(14)].map((_, i) => {
-                                const count = i + 1;
-                                return (
-                                    <option key={count} value={count}>
-                                        {count <= 10 ? `${count}명` : `단체 (${count}명)`}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </div>
-
-                    <div className="popup-buttons">
-                        <button onClick={handleReservation}>예약하기</button>
-                        <button onClick={() => setSelectedStore(null)}>취소</button>
-                    </div>
-                </div>
+            {reservableStores.includes(selectedStore.name) && (
+              <div className="option" onClick={() => setSelectedAction("message")}>
+                <img src="/SAMGA-V3/img/icon/message.svg" alt="문자" />
+                <span>문자 보내기</span>
+              </div>
             )}
+          </div>
+          <button className="close-btn" onClick={handleClose}>닫기</button>
         </div>
-    );
+      )}
+
+      {selectedStore && selectedAction === "call" && (
+        <div className="call-popup">
+          <a
+            href={`tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
+            className="call-button"
+          >
+            {selectedStore.phone} 로 전화 걸기
+          </a>
+          <button className="close-btn" onClick={handleClose}>닫기</button>
+        </div>
+      )}
+
+      {selectedStore && selectedAction === "message" && (
+        <div className="message-popup">
+          <h3>{selectedStore.name}에 문자 보내기</h3>
+          <textarea
+            placeholder="문의하실 내용을 입력해주세요."
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+            className="message-textarea"
+          />
+          <div className="popup-buttons">
+            <button
+              onClick={() => {
+                alert(`${selectedStore.name}에 보낸 문자:\n\n${messageText}`);
+                handleClose();
+              }}
+            >
+              보내기
+            </button>
+            <button onClick={handleClose}>취소</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

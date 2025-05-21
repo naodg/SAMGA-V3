@@ -2,141 +2,144 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-end;
+  z-index: 1000;
 }
 
-
-.floating-mascot {
-  position: fixed;
-  bottom: 20px;
-  right: 60px;
-  width: 80px;
-  height: 80px;
-  /* border-radius: 40px; */
-  /* background: #ad5457; */
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
-  z-index: 9999;
+/* .floating-mascot {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #AD5457;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #f3ece9;
-  gap: 10px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+} */
+
+.happy-sotal {
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 }
 
-/* .happy-sotal {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-} */
-
-
 .dropdown-menu {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
   background: white;
+  border: 1px solid #AD5457;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 90px;
-  padding: 10px 0;
+  padding: 10px;
+  /* max-height: 300px; */
+  overflow-y: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   width: 160px;
-  animation: fadeInUp 0.2s ease;
 }
 
 .dropdown-item {
-  padding: 8px 16px;
+  padding: 8px 12px;
   cursor: pointer;
-  font-size: 16px;
-  color: #333;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .dropdown-item:hover {
-  background-color: #f3ece9;
-  font-weight: bold;
+  background-color: #fcecec;
 }
 
-
-.reservation-popup {
+/* 문의 선택 팝업 */
+.contact-choice-popup,
+.call-popup,
+.message-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  border-radius: 12px;
   padding: 20px;
-  z-index: 9999;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
   width: 400px;
+  z-index: 2000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-family: 'Pretendard', sans-serif;
 }
 
-.popup-row {
-  margin: 10px 0;
+.contact-options {
   display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-}
-
-.reservation-popup label {
-  display: block;
-  margin: 12px 0;
-}
-
-
-.time-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.time-buttons button {
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #f3f3f3;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 12px;
+  /* transition: background 0.2s ease; */
+}
+
+.option:hover {
+  background-color: #f9f4f4;
+}
+
+.option img {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 6px;
+}
+
+.option span {
   font-size: 14px;
-  transition: all 0.2s ease;
+  color: #AD5457;
+  font-weight: 500;
 }
 
-.time-buttons button.active {
-  background-color: #ad5457;
+.call-button {
+  display: inline-block;
+  background-color: #AD5457;
   color: white;
-  border-color: #ad5457;
-  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 20px 0;
+  font-size: 14px;
 }
 
+.message-textarea {
+  width: 90%;
+  height: 100px;
+  resize: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+}
 
 .popup-buttons {
-  margin-top: 16px;
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
 }
 
-.popup-buttons button {
-  padding: 8px 12px;
+.popup-buttons button,
+.close-btn {
+  padding: 8px 14px;
   border: none;
-  background-color: #ad5457;
-  color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  background-color: #eee;
+  font-size: 14px;
   cursor: pointer;
+  font-family: 'Pretendard', sans-serif;
+  /* transition: background 0.2s ease; */
 }
 
-.popup-buttons button:last-child {
-  background-color: #333;
-}
-
-
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.popup-buttons button:hover,
+.close-btn:hover {
+  background-color: #e4e4e4;
 }
