@@ -294,46 +294,51 @@ export default function StoreFilterPage() {
                 >
                   <div className="store-item-header">
                     <img
-                      src={store.image || '/SAMGA-V3/img/default.jpg'}
+                      src={store.filterimage || '/SAMGA-V3/img/default.jpg'}
                       alt={store.name}
-                      className="store-thumbnail"
+                      className="m-store-thumbnail"
                     />
                     <div className="store-info-text">
                       <h3 className="store-name">{store.name}</h3>
 
-                      {/* ⭐ 평균 별점과 리뷰 수 표시 */}
-                      <div className="store-stars">
-                        {[...Array(5)].map((_, i) => {
-                          const value = i + 1
-                          let imgSrc = ""
+                      {/* ⭐ 별점과 리뷰 수 반영 */}
+                      <div className="rating-review">
+                        <div className="store-stars">
+                          {[...Array(5)].map((_, i) => {
+                            const value = i + 1
+                            let imgSrc = ""
 
-                          if ((rating?.average ?? 0) >= value) {
-                            imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
-                          } else if ((rating?.average ?? 0) + 0.25 >= value) {
-                            imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
-                          } else {
-                            imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
-                          }
+                            if ((rating?.average ?? 0) >= value) {
+                              imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
+                            } else if ((rating?.average ?? 0) + 0.25 >= value) {
+                              imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
+                            } else {
+                              imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
+                            }
 
-                          return (
-                            <img
-                              key={i}
-                              src={imgSrc}
-                              alt="별"
-                              className="star-icon"
-                            />
-                          )
-                        })}
-                        <span className="review-star-value">
-                          {(rating?.average ?? 0).toFixed(1)}점
+                            return (
+                              <img
+                                key={i}
+                                src={imgSrc}
+                                alt="별"
+                                className="star-icon"
+                              />
+                            )
+                          })}
+                          <span className="review-star-value">
+                            {(rating?.average ?? 0).toFixed(1)}점
+                          </span>
+                        </div>
+                        <span className="review-count">
+                          ({rating?.count || 0} 리뷰)
                         </span>
                       </div>
-                      <span className="review-count">
-                        ({rating?.count || 0} 리뷰)
-                      </span>
 
                       <p className="store-address">{store.address}</p>
                       <p className="store-phone">{store.phone}</p>
+                      {activeFilters.includes('예약가능') && store.options?.includes('예약가능') && (
+                        <div className="reservation-tag">📌 예약</div>
+                      )}
                     </div>
                   </div>
 
@@ -521,6 +526,9 @@ export default function StoreFilterPage() {
 
                           <p className="store-address"><strong>주소:</strong> {store.address}</p>
                           <p className="store-phone"><strong>T.</strong> {store.phone}</p>
+                          {activeFilters.includes('예약가능') && store.options?.includes('예약가능') && (
+                            <div className="reservation-tag">📌 예약</div>
+                          )}
                         </div>
                       </div>
 
