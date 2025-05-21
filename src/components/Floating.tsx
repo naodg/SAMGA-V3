@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { storeData } from "../data/storeData";
 import "./Floating.css";
@@ -11,6 +11,7 @@ export default function Floating() {
 
   const location = useLocation();
   const pathname = location.pathname;
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const reservableStores = [
     "대가식육식당",
@@ -20,23 +21,49 @@ export default function Floating() {
     "태영한우",
   ];
 
-  // 상세페이지인 경우 자동으로 해당 가게 선택
+  // 상세페이지인지 확인
+  const isDetailPage = pathname.startsWith("/store/");
+  const currentStoreName = decodeURIComponent(pathname.replace("/store/", ""));
+  const currentStore = storeData.find((store) => store.name === currentStoreName);
+
+  // 팝업 바깥 클릭 시 닫기
   useEffect(() => {
-    if (pathname.startsWith("/store/")) {
-      const storeName = decodeURIComponent(pathname.replace("/store/", ""));
-      const found = storeData.find((store) => store.name === storeName);
-      if (found) {
-        setSelectedStore(found);
-        setOpen(false);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(e.target as Node)
+      ) {
+        setSelectedStore(null);
+        setSelectedAction(null);
+        setMessageText("");
       }
+    };
+
+    if (selectedStore) {
+      document.addEventListener("mousedown", handleClickOutside);
     }
-  }, [pathname]);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedStore]);
 
   const handleStoreClick = (storeName: string) => {
     const found = storeData.find((store) => store.name === storeName);
     if (found) {
       setSelectedStore(found);
       setSelectedAction(null);
+    }
+  };
+
+  const handleFloatingClick = () => {
+    if (isDetailPage && currentStore) {
+      // 상세페이지에서는 바로 해당 가게 선택
+      setSelectedStore(currentStore);
+      setSelectedAction(null);
+    } else {
+      // 일반 페이지는 드롭다운 열기
+      setOpen(!open);
     }
   };
 
@@ -48,7 +75,8 @@ export default function Floating() {
 
   return (
     <div className="floating-wrapper">
-      {open && (
+      {/* 전체 페이지에서 플로팅 항상 보임 */}
+      {open && !isDetailPage && (
         <div className="dropdown-menu">
           {storeData.map((store, i) => (
             <div key={i} className="dropdown-item" onClick={() => handleStoreClick(store.name)}>
@@ -58,22 +86,22 @@ export default function Floating() {
         </div>
       )}
 
-      <div className="floating-mascot" onClick={() => setOpen(!open)}>
+      <div className="floating-mascot" onClick={handleFloatingClick}>
         <img src="/SAMGA-V3/img/icon/message.svg" className="happy-sotal" />
       </div>
 
       {selectedStore && !selectedAction && (
-        <div className="contact-choice-popup">
+        <div className="contact-choice-popup" ref={popupRef}>
           <h3>{selectedStore.name} 문의하기</h3>
           <div className="contact-options">
             <div className="option" onClick={() => setSelectedAction("call")}>
-              <img src="/SAMGA-V3/img/icon/전화걸기.svg" alt="전화" />
+              <img src="/SAMGA-V3/img/icon/call.svg" alt="전화" />
               <span>전화하기</span>
             </div>
 
             {reservableStores.includes(selectedStore.name) && (
               <div className="option" onClick={() => setSelectedAction("message")}>
-                <img src="/SAMGA-V3/img/icon/문자보내기.svg" alt="문자" />
+                <img src="/SAMGA-V3/img/icon/message.svg" alt="문자" />
                 <span>문자 보내기</span>
               </div>
             )}
@@ -83,7 +111,7 @@ export default function Floating() {
       )}
 
       {selectedStore && selectedAction === "call" && (
-        <div className="call-popup">
+        <div className="call-popup" ref={popupRef}>
           <a
             href={`tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
             className="call-button"
@@ -95,7 +123,7 @@ export default function Floating() {
       )}
 
       {selectedStore && selectedAction === "message" && (
-        <div className="message-popup">
+        <div className="message-popup" ref={popupRef}>
           <h3>{selectedStore.name}에 문자 보내기</h3>
           <textarea
             placeholder="문의하실 내용을 입력해주세요."
