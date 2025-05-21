@@ -328,10 +328,30 @@
   }
 }
 
-.call-icon {
-  display: inline-block;
-  margin-left: 6px;
-  vertical-align: middle;
+.store-detail {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.store-address {
+  margin-bottom: 6px;
+}
+
+.store-phone-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f9f4f2;
+  border: 1px solid #AD5457;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.phone-text {
+  font-weight: 500;
 }
 
 .call-icon img {
