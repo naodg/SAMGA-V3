@@ -350,7 +350,9 @@ export default function MapGallery() {
                     >
                       길찾기
                     </a>
-                    <span className="divider">/</span>
+
+                  </div>
+                  <div className="subpage-links">
                     <button
                       className="map-link"
                       onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}

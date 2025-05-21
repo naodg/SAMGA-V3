@@ -339,13 +339,13 @@
   margin-bottom: 6px;
 }
 
-.store-phone-box {
+.call-icon {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background-color: #AD5457;
   border: 1px solid #AD5457;
-  padding: 8px 12px;
+  padding: 3px;
   border-radius: 8px;
   width: fit-content;
 }
@@ -356,7 +356,7 @@
 }
 
 .call-icon img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
