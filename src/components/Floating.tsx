@@ -6,11 +6,11 @@ export default function Floating() {
 
 
     const reservableStores = [
-        "대가1호점",
+        "대가식육식당",
         "대가한우",
         "대산식육식당",
-        "상구한우",
-        "삼가명품한우"
+        "대웅식육식당",
+        "태영한우"
     ]
 
     return (
@@ -27,6 +27,7 @@ export default function Floating() {
             )}
 
             <div className="floating-mascot" onClick={() => setOpen(!open)}>
+                <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg"/>
                 예약
             </div>
         </div>
