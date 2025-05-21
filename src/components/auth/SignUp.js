@@ -121,5 +121,5 @@ export default function SignUp() {
                                 const formatted = formatPhoneNumber(e.target.value);
                                 setPhone(formatted);
                                 validatePhone(formatted);
-                            }, required: true }), _jsx("br", {}), phoneError && _jsx("p", { style: { color: "red" }, children: phoneError }), _jsx("button", { type: "submit", className: "Buttons", children: "\uD68C\uC6D0\uAC00\uC785" }), _jsx("button", { type: "button", onClick: handleKakaoLogin, className: "kakao", children: "\uCE74\uCE74\uC624\uB85C \uD68C\uC6D0\uAC00\uC785" })] }), error && _jsx("p", { style: { color: "red" }, children: error }), success && _jsx("p", { style: { color: "green" }, children: success })] }) }));
+                            }, required: true }), _jsx("br", {}), phoneError && _jsx("p", { style: { color: "red" }, children: phoneError }), _jsx("button", { type: "submit", className: "Buttons", children: "\uD68C\uC6D0\uAC00\uC785" })] }), error && _jsx("p", { style: { color: "red" }, children: error }), success && _jsx("p", { style: { color: "green" }, children: success })] }) }));
 }

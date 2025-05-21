@@ -188,9 +188,9 @@ export default function SignUp() {
 
                     <button type="submit" className="Buttons">회원가입</button>
 
-                    <button type="button" onClick={handleKakaoLogin} className="kakao">
+                    {/* <button type="button" onClick={handleKakaoLogin} className="kakao">
                         카카오로 회원가입
-                    </button>
+                    </button> */}
 
                 </form>
 

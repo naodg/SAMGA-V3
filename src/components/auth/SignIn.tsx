@@ -103,7 +103,7 @@ export default function Signin() {
                     <button type="submit" className="Buttons">로그인</button>
                 </form>
 
-                <button onClick={handleKakaoLogin} className="kakao">카카오로 로그인</button>
+                {/* <button onClick={handleKakaoLogin} className="kakao">카카오로 로그인</button> */}
 
                 {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
