@@ -17,6 +17,8 @@ import {
 } from "firebase/firestore"
 
 
+
+
 export default function MapGallery() {
   const [selectedStore, setSelectedStore] = useState<typeof storeData[0] | null>(null)
   const [searchQuery, setSearchQuery] = useState('');
