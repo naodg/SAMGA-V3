@@ -320,7 +320,10 @@ export default function MapGallery() {
                     <div className="store-address">
                       <span className="label">주소 :</span> {selectedStore.address}
                     </div>
+                  </div>
 
+
+                  <div className='store-detail'>
                     <a
                       href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`}
                       className="store-phone-box"
@@ -330,9 +333,6 @@ export default function MapGallery() {
                       <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
                     </a>
                   </div>
-
-
-
 
                   <p className="store-detail">
                     <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
