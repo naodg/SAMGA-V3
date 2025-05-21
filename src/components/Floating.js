@@ -10,5 +10,5 @@ export default function Floating() {
         "대웅식육식당",
         "태영한우"
     ];
-    return (_jsxs("div", { className: "floating-wrapper", children: [open && (_jsx("div", { className: "dropdown-menu", children: reservableStores.map((store, i) => (_jsx("div", { className: "dropdown-item", children: store }, i))) })), _jsxs("div", { className: "floating-mascot", onClick: () => setOpen(!open), children: [_jsx("img", { src: "/SAMGA-V3/img/logo/\uD589\uBCF5\uD55C \uC18C\uD0C8\uC774.svg" }), "\uC608\uC57D"] })] }));
+    return (_jsxs("div", { className: "floating-wrapper", children: [open && (_jsx("div", { className: "dropdown-menu", children: reservableStores.map((store, i) => (_jsx("div", { className: "dropdown-item", children: store }, i))) })), _jsxs("div", { className: "floating-mascot", onClick: () => setOpen(!open), children: [_jsx("img", { src: "/SAMGA-V3/img/logo/\uD589\uBCF5\uD55C \uC18C\uD0C8\uC774.svg", className: "happy-sotal" }), "\uC608\uC57D"] })] }));
 }

@@ -27,7 +27,7 @@ export default function Floating() {
             )}
 
             <div className="floating-mascot" onClick={() => setOpen(!open)}>
-                <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg"/>
+                <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg" className="happy-sotal"/>
                 예약
             </div>
         </div>

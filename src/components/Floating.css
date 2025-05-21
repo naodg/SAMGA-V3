@@ -13,20 +13,26 @@
   position: fixed;
   bottom: 20px;
   right: 40px;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+  width: 150px;
+  height: 60px;
+  border-radius: 40px;
   background: #ad5457;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #f3ece9;
+  gap: 10px;
+  cursor: pointer;
 }
 
-.floating-mascot-sotal{
-
+.happy-sotal {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: contain;
 }
+
 
 .dropdown-menu {
   background: white;
@@ -55,6 +61,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

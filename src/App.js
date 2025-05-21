@@ -1,5 +1,5 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StoreDetail from './components/store/store_detail';
@@ -14,7 +14,13 @@ import ReviewDetailPage from './components/review/ReviewDetailPage';
 import ScrollToTop from './components/ScrollTop';
 import PrivacyPolicy from './components/auth/Privacy';
 import Floating from './components/Floating';
+function AppContent() {
+    const location = useLocation();
+    const hideFloatingRoutes = ["/login", "/signup", "/review"];
+    const shouldHideFloating = hideFloatingRoutes.some(path => location.pathname.startsWith(path));
+    return (_jsxs(_Fragment, { children: [_jsx(Header, {}), _jsx(ScrollToTop, {}), _jsxs(Routes, { children: [_jsx(Route, { path: "/signup", element: _jsx(SignUp, {}) }), _jsx(Route, { path: "/login", element: _jsx(SignIn, {}) }), _jsx(Route, { path: '/privacy', element: _jsx(PrivacyPolicy, {}) }), _jsx(Route, { path: "/", element: _jsx(Mainthing, {}) }), _jsx(Route, { path: "/store/:name", element: _jsx(StoreDetail, {}) }), _jsx(Route, { path: "/storefilterpage", element: _jsx(StoreFilterPage, {}) }), _jsx(Route, { path: "/review", element: _jsx(ReviewListPage, {}) }), _jsx(Route, { path: "/write", element: _jsx(ReviewWritePage, {}) }), _jsx(Route, { path: "/review/:id", element: _jsx(ReviewDetailPage, {}) }), _jsx(Route, { path: "/admin/:storeId", element: _jsx(AdminDashboard, {}) })] }), !shouldHideFloating && _jsx(Floating, {}), _jsx(Footer, {})] }));
+}
 function App() {
-    return (_jsxs(Router, { basename: "/SAMGA-V3", children: [_jsx(Header, {}), _jsx(ScrollToTop, {}), _jsxs(Routes, { children: [_jsx(Route, { path: "/signup", element: _jsx(SignUp, {}) }), _jsx(Route, { path: "/login", element: _jsx(SignIn, {}) }), _jsx(Route, { path: '/privacy', element: _jsx(PrivacyPolicy, {}) }), _jsx(Route, { path: "/", element: _jsx(Mainthing, {}) }), _jsx(Route, { path: "/store/:name", element: _jsx(StoreDetail, {}) }), _jsx(Route, { path: "/storefilterpage", element: _jsx(StoreFilterPage, {}) }), _jsx(Route, { path: "/review", element: _jsx(ReviewListPage, {}) }), _jsx(Route, { path: "/write", element: _jsx(ReviewWritePage, {}) }), _jsx(Route, { path: "/review/:id", element: _jsx(ReviewDetailPage, {}) }), _jsx(Route, { path: "/admin/:storeId", element: _jsx(AdminDashboard, {}) })] }), _jsx(Floating, {}), _jsx(Footer, {})] }));
+    return (_jsx(Router, { basename: "/SAMGA-V3", children: _jsx(AppContent, {}) }));
 }
 export default App;

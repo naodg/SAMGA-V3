@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import StoreDetail from './components/store/store_detail'
@@ -14,12 +14,16 @@ import ScrollToTop from './components/ScrollTop'
 import PrivacyPolicy from './components/auth/Privacy'
 import Floating from './components/Floating'
 
-function App() {
-  return (
-    <Router basename="/SAMGA-V3">
-      {/* ✅ Header는 Routes 바깥에 넣기 (공통 레이아웃 영역) */}
-      <Header />
 
+function AppContent() {
+  const location = useLocation()
+  const hideFloatingRoutes = ["/login", "/signup", "/review"]
+  const shouldHideFloating = hideFloatingRoutes.some(path => location.pathname.startsWith(path))
+
+
+  return (
+    <>
+      <Header />
       <ScrollToTop />
 
       <Routes>
@@ -33,15 +37,19 @@ function App() {
         <Route path="/review" element={<ReviewListPage />} />
         <Route path="/write" element={<ReviewWritePage />} />
         <Route path="/review/:id" element={<ReviewDetailPage />} />
-
-
         <Route path="/admin/:storeId" element={<AdminDashboard />} />
       </Routes>
 
-      <Floating />
-
-      {/* ❓ Footer도 모든 페이지에 나오게 하려면 여기에 둬도 됨 */}
+      {!shouldHideFloating && <Floating />}
       <Footer />
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router basename="/SAMGA-V3">
+      <AppContent />
     </Router>
   )
 }
