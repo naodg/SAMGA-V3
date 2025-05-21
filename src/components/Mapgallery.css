@@ -343,7 +343,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #f9f4f2;
+  background-color: #AD5457;
   border: 1px solid #AD5457;
   padding: 8px 12px;
   border-radius: 8px;
@@ -352,6 +352,7 @@
 
 .phone-text {
   font-weight: 500;
+  margin-right: 10px;
 }
 
 .call-icon img {

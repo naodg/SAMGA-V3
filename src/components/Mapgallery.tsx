@@ -325,12 +325,8 @@ export default function MapGallery() {
 
                   <div className='store-detail'>
                     <span className="phone-text">전화번호 : {selectedStore.phone}</span>
-                    <a
-                      href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`}
-                      className="store-phone-box"
-                      aria-label="전화 걸기"
-                    >
-                      <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" className='call-icon'/>
+                    <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
+                      <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
                     </a>
                   </div>
 
