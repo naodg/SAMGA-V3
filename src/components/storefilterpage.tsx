@@ -182,6 +182,19 @@ export default function StoreFilterPage() {
   }, [])
 
 
+
+  // 예약하기
+useEffect(() => {
+  const handler = (e: any) => {
+    if (e.detail && e.detail.store) {
+      setSelectedStore(e.detail.store);
+      // setSelectedAction(""); 
+    }
+  };
+  window.addEventListener("openFloatingPopup", handler);
+  return () => window.removeEventListener("openFloatingPopup", handler);
+}, []);
+
   return (
     <div>
       {isMobile ? (

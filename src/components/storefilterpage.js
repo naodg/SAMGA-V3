@@ -139,6 +139,17 @@ export default function StoreFilterPage() {
         };
         fetchAllRatings();
     }, []);
+    // 예약하기
+    useEffect(() => {
+        const handler = (e) => {
+            if (e.detail && e.detail.store) {
+                setSelectedStore(e.detail.store);
+                // setSelectedAction(""); 
+            }
+        };
+        window.addEventListener("openFloatingPopup", handler);
+        return () => window.removeEventListener("openFloatingPopup", handler);
+    }, []);
     return (_jsx("div", { children: isMobile ? (_jsxs(_Fragment, { children: [_jsx("div", { className: "mobile-search-wrapper", children: _jsxs("div", { className: "mobile-search-bar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
                                     if (searchQuery.trim() === '') {
                                         setFilteredStores(storeData);
