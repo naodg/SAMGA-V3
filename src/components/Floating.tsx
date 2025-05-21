@@ -87,7 +87,7 @@ export default function Floating() {
       )}
 
       <div className="floating-mascot" onClick={handleFloatingClick}>
-        <img src="/SAMGA-V3/img/icon/message.svg" className="happy-sotal" />
+        <img src="/SAMGA-V3/img/icon/문자보내기.svg" className="happy-sotal" />
       </div>
 
       {selectedStore && !selectedAction && (

@@ -312,7 +312,7 @@ export default function MapGallery() {
                     <div className="menu-links">
                       <span className="link" onClick={() => navigate("/review")}>Review</span>
                       <span className="divider">|</span>
-                      <span className="link">메뉴보기</span>
+                      <span className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}>상세페이지 바로가기</span>
                     </div>
 
                   </div>
@@ -352,14 +352,14 @@ export default function MapGallery() {
 
                 
 
-                  <div className="subpage-links">
+                  {/* <div className="subpage-links">
                     <button
                       className="sub-link"
                       onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}
                     >
                       상세페이지로 가기
                     </button>
-                  </div>
+                  </div> */}
 
                 </div>
               )

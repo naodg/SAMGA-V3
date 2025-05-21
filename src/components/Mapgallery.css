@@ -348,7 +348,7 @@
   margin-bottom: 6px;
 }
 
-.call-icon {
+/* .call-icon {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -357,7 +357,7 @@
   padding: 3px;
   border-radius: 8px;
   width: fit-content;
-}
+} */
 
 .phone-text {
   font-weight: 500;
@@ -365,7 +365,7 @@
 }
 
 .call-icon img {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
 }
