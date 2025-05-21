@@ -131,9 +131,7 @@ export default function Footer() {
                 key={index}
                 onClick={() => handleClick(`store${index + 1}`)}
               >
-                <div>
-                  {store.name}
-                </div>
+                {store.name}
               </li>
             ))}
 
