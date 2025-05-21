@@ -318,8 +318,12 @@ export default function MapGallery() {
 
                   <p className="store-detail">
                     <span className="label">주소 :</span> {selectedStore.address}
-                    T. <a href={`tel:${selectedStore.phone}`} className="phone-link"><b>{selectedStore.phone}</b></a>
+                    T. <b>{selectedStore.phone}</b>
+                    <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
+                      <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
+                    </a>
                   </p>
+
 
                   <p className="store-detail">
                     <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
