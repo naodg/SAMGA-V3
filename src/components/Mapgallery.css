@@ -3,7 +3,7 @@
   background: #f3ece9;
   overflow: hidden;
   position: relative;
-  min-height: 1250px;
+  min-height: 1280px;
 }
 
 .map-gallery-inner {
@@ -195,23 +195,6 @@
   color: #444;
 }
 
-/* 🔧 링크 자체 */
-.link {
-  color: #000;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-/* 🔧 중간 구분자 */
-.divider {
-  color: #aaa;
-}
-
 
 .map-gallery-info-card .rating {
   margin-left: 8px;
@@ -240,20 +223,40 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  margin: 12px 0;
+  margin: 5px 0;
 }
 
-.subpage-links{
+.subpage-links {
+  margin-left: 6px;
+}
+
+.sub-link {
+  background-color: #fff;
+  border: 1px solid #AD5457;
   color: #AD5457;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.sub-link:hover {
+  background-color: #AD5457;
+  color: #fff;
 }
 
 .map-link {
+  all: unset;
   background: none;
   border: none;
   color: #AD5457;
-  font-size: 14px;
+  /* ✅ 이게 빠졌을 수도 있음 */
+  font-size: 15px;
   cursor: pointer;
-  padding: 0;
+  padding-left: 10px;
   text-decoration: underline;
 }
 
@@ -261,10 +264,6 @@
   text-decoration: none;
 }
 
-.divider {
-  color: #999;
-  font-size: 14px;
-}
 
 
 
@@ -272,24 +271,24 @@
 @media (max-width: 900px) {
 
   .map-gallery-wrapper {
-  width: 100%;
-  background: #f3ece9;
-  overflow: hidden;
-  position: relative;
-  min-height: 1000px;
-}
+    width: 100%;
+    background: #f3ece9;
+    overflow: hidden;
+    position: relative;
+    min-height: 1000px;
+  }
 
   .map-gallery-map-container {
-  position: absolute;
-  top: 372px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid #AD5457;
-  z-index: 100;
-  padding: 11px;
-}
+    position: absolute;
+    top: 372px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #AD5457;
+    z-index: 100;
+    padding: 11px;
+  }
 
 
 
@@ -310,17 +309,17 @@
   }
 
   .map-gallery-searchbar {
-  position: absolute;
-  bottom: 390px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  font-size: 14px;
-  background: white;
-  border: 1px solid #AD5457;
-  display: flex;
-  z-index: 200;
-}
+    position: absolute;
+    bottom: 390px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    font-size: 14px;
+    background: white;
+    border: 1px solid #AD5457;
+    display: flex;
+    z-index: 200;
+  }
 
 
   .map-gallery-info-card {
@@ -330,12 +329,18 @@
   .swiper-pagination {
     top: 10px !important;
   }
+
+
+  .menu-links {
+    display: none;
+  }
+
 }
 
 .store-detail {
   font-size: 14px;
   line-height: 1.6;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   color: #333;
 }
 

@@ -50,8 +50,8 @@ export default function Floating() {
 
             {/* 예약 플로팅 버튼 */}
             <div className="floating-mascot" onClick={() => setOpen(!open)}>
-                <img src="/SAMGA-V3/img/logo/행복한 소탈이.svg" className="happy-sotal" />
-                예약
+                <img src="/SAMGA-V3/img/icon/message.svg" className="happy-sotal" />
+                
             </div>
 
             {/* 예약 팝업 */}

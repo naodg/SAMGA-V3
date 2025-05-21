@@ -312,13 +312,22 @@ export default function MapGallery() {
                     <div className="menu-links">
                       <span className="link" onClick={() => navigate("/review")}>Review</span>
                       <span className="divider">|</span>
-                      <a href="#" className="link">메뉴보기</a>
+                      <span className="link">메뉴보기</span>
                     </div>
+
                   </div>
 
                   <div className="store-detail">
                     <div className="store-address">
                       <span className="label">주소 :</span> {selectedStore.address}
+                      <a
+                      href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="map-link"
+                    >
+                      길찾기
+                    </a>
                     </div>
                   </div>
 
@@ -341,20 +350,11 @@ export default function MapGallery() {
                     <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
                   </p>
 
-                  <div className="map-footer-links">
-                    <a
-                      href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="map-link"
-                    >
-                      길찾기
-                    </a>
+                
 
-                  </div>
                   <div className="subpage-links">
                     <button
-                      className="map-link"
+                      className="sub-link"
                       onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}
                     >
                       상세페이지로 가기

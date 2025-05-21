@@ -245,6 +245,12 @@ export default function ReviewListPage() {
                 <>
                   <div className="store-badge">
                     
+                    {/* <img
+                      src={`/SAMGA-V3/img/review_icons/ex.svg`}
+                      className="store-badge-icon"
+                      alt={store.name}
+                    /> */}
+
                     <img
                       src={`/SAMGA-V3/img/review_icons/${store.name}.jpg`}
                       className="store-badge-icon"
