@@ -39,6 +39,50 @@ export default function StoreFilterPage() {
   const overlaysRef = useRef<any[]>([]);
   const navigate = useNavigate();
 
+  // 예약하기
+
+  const [selectedAction, setSelectedAction] = useState<"call" | "message" | null>(null);
+  const [messageText, setMessageText] = useState<string>("");
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(e.target as Node)
+      ) {
+        setSelectedStore(null);
+        setSelectedAction(null);
+        setMessageText("");
+      }
+    };
+
+    if (selectedStore) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedStore]);
+
+
+  const reservableStores = [
+  "대가식육식당",
+  "대가한우",
+  "대산식육식당",
+  "대웅식육식당",
+  "태영한우",
+];
+
+ const handleClose = () => {
+    setSelectedStore(null);
+    setSelectedAction(null);
+    setMessageText("");
+  };
+
+// ----------------------------------------------------
+
 
   const mapId = isMobile ? 'mobileMap' : 'filterMap';
 
@@ -181,19 +225,6 @@ export default function StoreFilterPage() {
     fetchAllRatings()
   }, [])
 
-
-
-  // 예약하기
-useEffect(() => {
-  const handler = (e: any) => {
-    if (e.detail && e.detail.store) {
-      setSelectedStore(e.detail.store);
-      // setSelectedAction(""); 
-    }
-  };
-  window.addEventListener("openFloatingPopup", handler);
-  return () => window.removeEventListener("openFloatingPopup", handler);
-}, []);
 
   return (
     <div>
@@ -353,14 +384,14 @@ useEffect(() => {
                         <div
                           className="reservation-tag"
                           onClick={(e) => {
-                            e.stopPropagation(); // navigate 막기
-                            window.dispatchEvent(new CustomEvent("openFloatingPopup", {
-                              detail: { store }
-                            }));
+                            e.stopPropagation();
+                            setSelectedStore(store);
+                            setSelectedAction(null);
                           }}
                         >
                           예약하기
                         </div>
+
                       )}
                     </div>
                   </div>
@@ -553,14 +584,14 @@ useEffect(() => {
                             <div
                               className="reservation-tag"
                               onClick={(e) => {
-                                e.stopPropagation(); // navigate 막기
-                                window.dispatchEvent(new CustomEvent("openFloatingPopup", {
-                                  detail: { store }
-                                }));
+                                e.stopPropagation();
+                                setSelectedStore(store);
+                                setSelectedAction(null);
                               }}
                             >
                               예약하기
                             </div>
+
                           )}
                         </div>
                       </div>
@@ -622,6 +653,63 @@ useEffect(() => {
           </div>
         </>
       )}
+
+
+      {selectedStore && !selectedAction && (
+        <div className="contact-choice-popup" ref={popupRef}>
+          <h3>{selectedStore.name} 문의하기</h3>
+          <div className="contact-options">
+            <div className="option" onClick={() => setSelectedAction("call")}>
+              <img src="/SAMGA-V3/img/icon/전화걸기.svg" alt="전화" />
+              <span>전화하기</span>
+            </div>
+
+            {reservableStores.includes(selectedStore.name) && (
+              <div className="option" onClick={() => setSelectedAction("message")}>
+                <img src="/SAMGA-V3/img/icon/문자보내기.svg" alt="문자" />
+                <span>문자 보내기</span>
+              </div>
+            )}
+          </div>
+          <button className="close-btn" onClick={handleClose}>닫기</button>
+        </div>
+      )}
+
+      {selectedStore && selectedAction === "call" && (
+        <div className="call-popup" ref={popupRef}>
+          <a
+            href={`tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
+            className="call-button"
+          >
+            {selectedStore.phone} 로 전화 걸기
+          </a>
+          <button className="close-btn" onClick={handleClose}>닫기</button>
+        </div>
+      )}
+
+      {selectedStore && selectedAction === "message" && (
+        <div className="message-popup" ref={popupRef}>
+          <h3>{selectedStore.name}에 문자 보내기</h3>
+          <textarea
+            placeholder="문의하실 내용을 입력해주세요."
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+            className="message-textarea"
+          />
+          <div className="popup-buttons">
+            <button
+              onClick={() => {
+                alert(`${selectedStore.name}에 보낸 문자:\n\n${messageText}`);
+                handleClose();
+              }}
+            >
+              보내기
+            </button>
+            <button onClick={handleClose}>취소</button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
