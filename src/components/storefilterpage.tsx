@@ -630,7 +630,7 @@ export default function StoreFilterPage() {
               {/* ✅ 지도 + 팝업 */}
               <div className="pc-map-wrapper">
                 <div id="filterMap" className="pc-map" />
-                {selectedStore && (
+                {selectedStore && !triggeredFromReservation &&(
                   <div className="popup-store-card">
                     <div className="card-header">
                       <h3 className="store-name">{selectedStore.name}</h3>
