@@ -1,11 +1,10 @@
 import './Footer.css';
-import { useNavigate,Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { storeData } from "../data/storeData"
 import { useEffect, useState } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { auth, db } from "../firebase"
 import PrivacyPolicyModal from './auth/PrivacyPolicyModal';
-
 
 export default function Footer() {
 
@@ -99,9 +98,9 @@ export default function Footer() {
           <ul className="store-list">
             {storeData.map((store, i) => (
               <li key={i}>
-                <Link to={`/store/${encodeURIComponent(store.name)}`}>
+                <div  onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>
                   {store.name}
-                </Link>
+                </div>
               </li>
             ))}
           </ul>
