@@ -243,6 +243,10 @@
   margin: 12px 0;
 }
 
+.subpage-links{
+  color: #AD5457;
+}
+
 .map-link {
   background: none;
   border: none;
