@@ -87,11 +87,14 @@ export default function Floating() {
                     <div className="popup-row">
                         <label>인원 수:</label>
                         <select value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))}>
-                            {[...Array(10)].map((_, i) => (
-                                <option key={i + 1} value={i + 1}>
-                                    {i + 1}명
-                                </option>
-                            ))}
+                            {[...Array(14)].map((_, i) => {
+                                const count = i + 1;
+                                return (
+                                    <option key={count} value={count}>
+                                        {count <= 10 ? `${count}명` : `단체 (${count}명)`}
+                                    </option>
+                                );
+                            })}
                         </select>
                     </div>
 
