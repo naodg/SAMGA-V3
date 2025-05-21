@@ -64,7 +64,7 @@ export default function StoreList() {
       <div className="landing-video-wrapper">
         <img src="/SAMGA-V3/img/logo/videologo.svg" alt="삼가한우로고" className="landing-logo" />
 
-        <iframe
+        <iframe className="video"
           src="https://drive.google.com/file/d/1WF-K2Nu6Jer87imLhWAyKXeWraxIkvVP/preview"
           width="85%"
           height="400px"

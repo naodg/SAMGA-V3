@@ -382,7 +382,6 @@ export default function MapGallery() {
       </div>
       <div className="map-gallery-pattern" />
 
-      <div className="map-gallery-bottom" />
 
 
     </div>

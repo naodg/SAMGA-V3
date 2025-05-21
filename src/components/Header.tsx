@@ -71,7 +71,7 @@ export default function Header() {
       <div className="header-inner-m">
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
-            <img src="/SAMGA-V3/img/logo/logo.svg" alt="로고" className='logo' />
+            <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
           <div className="mobile-menu-icon" onClick={toggleMenu}>
             <span></span>

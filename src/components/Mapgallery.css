@@ -19,7 +19,6 @@
   height: 650px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  z-index: 5;
 }
 
 .map-gallery-swiper {
@@ -64,13 +63,6 @@
 }
 
 
-.swiper-button-next,
-.swiper-button-prev {
-  display: none !important;
-}
-
-
-
 /*  검색 */
 
 .map-gallery-searchbar {
@@ -83,6 +75,7 @@
   border: 1px solid #AD5457;
   display: flex;
   z-index: 20;
+  pointer-events: none;
 }
 
 .search-icon-button {
@@ -112,6 +105,16 @@
   font-family: 'Noto Sans', sans-serif;
 }
 
+.map-gallery-searchbar input,
+.map-gallery-searchbar button {
+  pointer-events: auto; /* 이건 클릭/입력 가능하게 허용 */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  z-index: 15; /* 검색창보다 높아야 클릭됨 */
+  color: white;
+}
 
 
 /* 지도 */
@@ -144,10 +147,10 @@
 }
 
 /* 3. 하단 크림색 배경 */
-.map-gallery-bottom {
+/*.map-gallery-bottom {
   height: 200px;
   background-color: #f3ece9;
-}
+}*/
 
 /* 가게 정보 카드 */
 .map-gallery-info-card {
@@ -193,7 +196,7 @@
   gap: 8px;
   font-size: 14px;
   color: #444;
-  
+
 }
 
 .menu-links .link{
@@ -287,19 +290,25 @@
     min-height: 1000px;
   }
 
+  .map-gallery-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 110px;
+  }
+
   .map-gallery-map-container {
     position: absolute;
-    top: 372px;
+    top: 620px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     background-color: rgba(255, 255, 255, 0.75);
     border: 1px solid #AD5457;
-    z-index: 100;
+    z-index: 10;
     padding: 11px;
+    pointer-events: auto;
   }
-
-
 
   .map-gallery-slide-img {
     width: 100%;
@@ -310,16 +319,11 @@
     object-position: top;
   }
 
-  .map-gallery-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 110px;
-  }
+
 
   .map-gallery-searchbar {
     position: absolute;
-    bottom: 390px;
+    bottom: 150px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -327,8 +331,20 @@
     background: white;
     border: 1px solid #AD5457;
     display: flex;
-    z-index: 200;
+    z-index: 20;
+    pointer-events: none;
   }
+
+  .map-gallery-searchbar input,
+.map-gallery-searchbar button {
+  pointer-events: auto; /* 이건 클릭/입력 가능하게 허용 */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 40%;
+  color: white;
+}
 
 
   .map-gallery-info-card {
@@ -377,4 +393,32 @@
   width: 15px;
   height: 15px;
   cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .map-gallery-map-container {
+    top: 520px;
+  }
+  .map-gallery-searchbar {
+    bottom: 250px;
+  }
+  .swiper-button-prev,
+.swiper-button-next {
+  top: 30%;
+  color: white;
+}
+}
+
+@media (max-width: 500px) {
+  .map-gallery-map-container {
+    top: 420px;
+  }
+  .map-gallery-searchbar {
+    bottom: 350px;
+  }
+  .swiper-button-prev,
+.swiper-button-next {
+  top: 25%;
+  color: white;
+}
 }
