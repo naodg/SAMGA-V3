@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
-import { auth } from "../firebase"
-import { onAuthStateChanged, signOut } from "firebase/auth"
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Header() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false); // ✅ 메뉴 열기/닫기 상태 추가
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   const isStoreDetailPage = location.pathname.startsWith('/store/');
@@ -17,45 +17,42 @@ export default function Header() {
     setMenuOpen(prev => !prev);
   };
 
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    })
-    return () => unsubscribe()
-  }, [])
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleLogout = async () => {
-    await signOut(auth)
-    navigate("/")
-  }
-
+    await signOut(auth);
+    navigate("/");
+  };
 
   return (
     <header className={isStoreDetailPage ? 'header white' : 'header'}>
+      {/* PC 헤더 */}
       <div className="header-inner-pc">
-
         {/* 로고 */}
         <div className="logo" onClick={() => navigate('/')}>
-          <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
+          <img
+            src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"}
+            alt="로고"
+            className='logo'
+          />
         </div>
 
         {/* 네비게이션 */}
         <nav className="nav">
           <ul className="nav-list">
-            {/* <li onClick={() => navigate('/about')}>牛리마을 소개</li> */}
-            <li >牛리마을 소개</li>
+            <li>牛리마을 소개</li>
             <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
-            {/* <li onClick={() => navigate('/review')}>리뷰 쓰기</li> */}
             <li onClick={() => navigate('/review')}>리뷰</li>
           </ul>
         </nav>
 
         {/* 유저 메뉴 */}
         <div className="user-menu">
-          {/* <span onClick={() => navigate('/login')}>로그인</span>
-          <span onClick={() => navigate('/signup')}>회원가입</span>
-          <span onClick={() => navigate('/mypage')}>마이페이지</span> */}
           {user ? (
             <>
               <span onClick={() => navigate("/mypage")} className="clickable">마이페이지</span>
@@ -68,13 +65,9 @@ export default function Header() {
             </>
           )}
         </div>
-
-
       </div>
 
-
-
-      {/* 헤더 모바일  */}
+      {/* 모바일 헤더 */}
       <div className="header-inner-m">
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
@@ -87,35 +80,33 @@ export default function Header() {
           </div>
         </div>
 
+        {/* ✅ 메뉴 열렸을 때만 보여주기 */}
+        {menuOpen && (
+          <>
+            <div className="mobile-user-menu open">
+              {user ? (
+                <>
+                  <span onClick={() => navigate("/mypage")}>마이페이지</span>
+                  <span onClick={handleLogout}>로그아웃</span>
+                </>
+              ) : (
+                <>
+                  <span onClick={() => navigate("/signup")}>회원가입</span>
+                  <span onClick={() => navigate("/login")}>로그인</span>
+                </>
+              )}
+            </div>
 
-        <div className={`mobile-user-menu ${menuOpen ? 'open' : ''}`}>
-          {user ? (
-            <>
-              <span onClick={() => navigate("/mypage")}>마이페이지</span>
-              <span onClick={handleLogout}>로그아웃</span>
-            </>
-          ) : (
-            <>
-              <span onClick={() => navigate("/signup")}>회원가입</span>
-              <span onClick={() => navigate("/login")}>로그인</span>
-            </>
-          )}
-        </div>
-
-
-        <nav className="nav">
-          <ul className="nav-list">
-            <li>소개</li>
-            <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
-            <li  onClick={() => navigate('/review')}>리뷰</li>
-          </ul>
-        </nav>
-
-
-
+            <nav className="nav">
+              <ul className="nav-list">
+                <li>소개</li>
+                <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
+                <li onClick={() => navigate('/review')}>리뷰</li>
+              </ul>
+            </nav>
+          </>
+        )}
       </div>
-
-
     </header>
   );
 }
