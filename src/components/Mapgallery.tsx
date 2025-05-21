@@ -381,9 +381,6 @@ export default function MapGallery() {
         {/* 배경 패턴 */}
       </div>
       <div className="map-gallery-pattern" />
-
-
-
     </div>
 
   );
