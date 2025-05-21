@@ -66,7 +66,7 @@
   border-radius: 12px;
   padding: 20px;
   z-index: 9999;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   width: 400px;
 }
 
@@ -83,13 +83,30 @@
 }
 
 
-.time-row {
-  margin: 10px 0;
+.time-buttons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* gap: 10px; */
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
 }
+
+.time-buttons button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f3f3f3;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.time-buttons button.active {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+  font-weight: bold;
+}
+
 
 .popup-buttons {
   margin-top: 16px;
