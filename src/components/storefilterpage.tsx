@@ -337,7 +337,17 @@ export default function StoreFilterPage() {
                       <p className="store-address">{store.address}</p>
                       <p className="store-phone">{store.phone}</p>
                       {activeFilters.includes('예약가능') && store.options?.includes('예약가능') && (
-                        <div className="reservation-tag">예약하기</div>
+                        <div
+                          className="reservation-tag"
+                          onClick={(e) => {
+                            e.stopPropagation(); // navigate 막기
+                            window.dispatchEvent(new CustomEvent("openFloatingPopup", {
+                              detail: { store }
+                            }));
+                          }}
+                        >
+                          예약하기
+                        </div>
                       )}
                     </div>
                   </div>
@@ -527,7 +537,17 @@ export default function StoreFilterPage() {
                           <p className="store-address"><strong>주소:</strong> {store.address}</p>
                           <p className="store-phone"><strong>T.</strong> {store.phone}</p>
                           {activeFilters.includes('예약가능') && store.options?.includes('예약가능') && (
-                            <div className="reservation-tag">예약하기</div>
+                            <div
+                              className="reservation-tag"
+                              onClick={(e) => {
+                                e.stopPropagation(); // navigate 막기
+                                window.dispatchEvent(new CustomEvent("openFloatingPopup", {
+                                  detail: { store }
+                                }));
+                              }}
+                            >
+                              예약하기
+                            </div>
                           )}
                         </div>
                       </div>
