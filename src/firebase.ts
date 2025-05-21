@@ -1,17 +1,22 @@
 // src/firebase.ts
-import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
-import { getFirestore } from "firebase/firestore"
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCvNmPkmwMeq7LMbiTkUKpXDn6tXO_GcVQ",
-  authDomain: "samga-2ba55.firebaseapp.com",
-  projectId: "samga-2ba55",
-  storageBucket: "samga-2ba55.appspot.com",
-  messagingSenderId: "650876987710",
-  appId: "1:650876987710:web:xxxxx"
-}
+  apiKey: "AIzaSyD14pfYMFzHtSZpo4K6j-uzv9H9SbqMbLg",
+  authDomain: "samgabeef.firebaseapp.com",
+  projectId: "samgabeef",
+  storageBucket: "samgabeef.firebasestorage.app",
+  messagingSenderId: "211043237282",
+  appId: "1:211043237282:web:50294933424dcba04e86fb",
+  measurementId: "G-JNZJXH57QZ"
+};
 
-const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
-export const db = getFirestore(app)
+// ✅ 중복 초기화 방지
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const storage = getStorage(app);
