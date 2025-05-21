@@ -1,10 +1,11 @@
 import './Footer.css';
-import { useNavigate } from "react-router-dom"
+import { useNavigate,Link } from "react-router-dom"
 import { storeData } from "../data/storeData"
 import { useEffect, useState } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { auth, db } from "../firebase"
 import PrivacyPolicyModal from './auth/PrivacyPolicyModal';
+
 
 export default function Footer() {
 
@@ -96,17 +97,13 @@ export default function Footer() {
         <div className="footer-column store">
           <h4>가게 리스트</h4>
           <ul className="store-list">
-            <li>대가1호점</li>
-            <li>대가식육식당</li>
-            <li>대가한우</li>
-            <li>대산식육식당</li>
-            <li>대웅식육식당</li>
-            <li>도원식육식당</li>
-            <li>미로식육식당</li>
-            <li>불난가한우</li>
-            <li>삼가명품한우</li>
-            <li>상구한우</li>
-            <li>태영한우</li>
+            {storeData.map((store, i) => (
+              <li key={i}>
+                <Link to={`/store/${encodeURIComponent(store.name)}`}>
+                  {store.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
