@@ -129,6 +129,22 @@
 
 /* 반응형 */
 @media (max-width: 900px) {
+  .tour-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .store-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .manager-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
