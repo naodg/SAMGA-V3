@@ -44,6 +44,8 @@ export default function StoreFilterPage() {
   const [selectedAction, setSelectedAction] = useState<"call" | "message" | null>(null);
   const [messageText, setMessageText] = useState<string>("");
   const popupRef = useRef<HTMLDivElement>(null);
+  const [triggeredFromReservation, setTriggeredFromReservation] = useState(false);
+
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -79,6 +81,7 @@ export default function StoreFilterPage() {
     setSelectedStore(null);
     setSelectedAction(null);
     setMessageText("");
+    setTriggeredFromReservation(false);
   };
 
 // ----------------------------------------------------
@@ -385,6 +388,7 @@ export default function StoreFilterPage() {
                           className="reservation-tag"
                           onClick={(e) => {
                             e.stopPropagation();
+                             setTriggeredFromReservation(true); // 문의 팝업용
                             setSelectedStore(store);
                             setSelectedAction(null);
                           }}
@@ -585,6 +589,7 @@ export default function StoreFilterPage() {
                               className="reservation-tag"
                               onClick={(e) => {
                                 e.stopPropagation();
+                                 setTriggeredFromReservation(true); // 문의 팝업용
                                 setSelectedStore(store);
                                 setSelectedAction(null);
                               }}
@@ -655,7 +660,7 @@ export default function StoreFilterPage() {
       )}
 
 
-      {selectedStore && !selectedAction && (
+      {selectedStore && !selectedAction && !triggeredFromReservation && (
         <div className="contact-choice-popup" ref={popupRef}>
           <h3>{selectedStore.name} 문의하기</h3>
           <div className="contact-options">
@@ -675,7 +680,7 @@ export default function StoreFilterPage() {
         </div>
       )}
 
-      {selectedStore && selectedAction === "call" && (
+      {selectedStore && selectedAction === "call" &&  (
         <div className="call-popup" ref={popupRef}>
           <a
             href={`tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
