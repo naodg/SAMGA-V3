@@ -387,7 +387,7 @@ export default function StoreFilterPage() {
                   href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="map-link"
+                  className="filter-map-link"
                 >
                   길찾기
                 </a>
@@ -578,7 +578,7 @@ export default function StoreFilterPage() {
                       href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="map-link"
+                      className="filter-map-link"
                     >
                       길찾기
                     </a>
