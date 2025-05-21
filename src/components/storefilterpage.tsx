@@ -428,7 +428,7 @@ export default function StoreFilterPage() {
 
 
             {/* 팝업 카드 */}
-            {selectedStore && (
+            {selectedStore && !triggeredFromReservation && (
               <div className="popup-store-card">
                 <div className="card-header">
                   <h3 className="store-name">{selectedStore.name}</h3>
@@ -660,7 +660,7 @@ export default function StoreFilterPage() {
       )}
 
 
-      {selectedStore && !selectedAction && !triggeredFromReservation && (
+      {selectedStore && !selectedAction && triggeredFromReservation && (
         <div className="contact-choice-popup" ref={popupRef}>
           <h3>{selectedStore.name} 문의하기</h3>
           <div className="contact-options">
