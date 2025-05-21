@@ -130,7 +130,6 @@ export default function Footer() {
               <li
                 key={index}
                 onClick={() => handleClick(`store${index + 1}`)}
-                style={{ cursor: "pointer", marginBottom: "4px" }}
               >
                 {store.name}
               </li>
