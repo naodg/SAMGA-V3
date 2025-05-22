@@ -183,10 +183,9 @@
 /* 🔧 info-header 정렬 */
 .info-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  /* 여백 추가 */
+  flex-wrap: wrap; /* ✅ 줄바꿈 허용 */
+  align-items: flex-start;
+  gap: 12px;
 }
 
 /* 🔧 가게명 + 별점 */
@@ -194,12 +193,20 @@
   font-size: 18px;
   font-weight: bold;
   display: flex;
+  flex-wrap: wrap; /* ✅ 이름 + 별점도 줄바꿈 */
   align-items: center;
   gap: 8px;
+  min-width: 0; /* ✅ overflow 방지 */
+  flex: 1 1 auto; /* ✅ 너비 조절 가능하게 */
 }
 
 /* 🔧 별점 */
 .rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
   color: #AD5457;
   font-size: 16px;
 }
@@ -207,19 +214,19 @@
 /* 🔧 메뉴 링크 묶음 */
 .menu-links {
   display: flex;
+  flex-wrap: wrap; /* ✅ 좁아지면 줄바꿈 */
   align-items: center;
   gap: 8px;
   font-size: 14px;
   color: #444;
-
+  flex-shrink: 0;
 }
 
-.menu-links .link{
+.menu-links .link {
   cursor: pointer;
 }
 
-.link:hover{
-  cursor: pointer;
+.link:hover {
   color: #AD5457;
 }
 
@@ -317,7 +324,7 @@
     top: 620px;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
+    width: 85%;
     background-color: rgba(255, 255, 255, 0.75);
     border: 1px solid #AD5457;
     z-index: 10;
@@ -341,7 +348,7 @@
     bottom: 150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
+    width: 85%;
     font-size: 14px;
     background: white;
     border: 1px solid #AD5457;
@@ -380,9 +387,7 @@
   }
 
 
-  .menu-links {
-    display: none;
-  }
+
 
 }
 
@@ -394,7 +399,11 @@
 }
 
 .store-address {
+  display: flex;
+  flex-wrap: wrap; /* ✅ 줄바꿈 허용 */
+  align-items: center;
   margin-bottom: 6px;
+  gap: 4px; /* 주소와 길찾기 사이 공간 */
 }
 
 /* .call-icon {
@@ -420,6 +429,9 @@
 }
 
 @media (max-width: 700px) {
+    body {
+    font-size: 93%;
+  }
   .map-gallery-map-container {
     top: 520px;
   }
@@ -462,5 +474,4 @@
     .map-gallery-wrapper {
     min-height: 850px;
   }
-
 }
