@@ -16,7 +16,7 @@ export default function Mypage() {
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
                 const data = userSnap.data();
-                setUserType(data.userType === 'owner' ? 'owner' : 'user');
+                setUserType(data.role === 'owner' ? 'owner' : 'user');
             }
             setLoading(false);
         };
