@@ -59,3 +59,12 @@
     background-color: #fceee7;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 900px) {
+
+    .owner-view,
+    .user-view{
+        margin: 0 60px;
+    }
+}
