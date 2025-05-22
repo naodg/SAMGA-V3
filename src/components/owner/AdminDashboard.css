@@ -9,13 +9,14 @@
 
 
 .admin-header {
-  display: flex;
-  justify-content: flex-start; /* ✅ 제목은 왼쪽, 아이콘은 오른쪽 */
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 0px;
-  padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    /* ✅ 제목은 왼쪽, 아이콘은 오른쪽 */
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 0px;
+    padding: 0 10px;
 }
 
 .admin-title {
@@ -63,4 +64,46 @@
     width: 20px;
     cursor: pointer;
     float: right;
+}
+
+
+@media (max-width: 768px) {
+    .admin-wrapper {
+        padding: 100px 20px;
+        overflow: hidden;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+    }
+
+    .admin-title {
+        font-size: 18px;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .admin-icon {
+        width: 40px;
+    }
+
+    .admin-table {
+        font-size: 14px;
+        max-width: 100%;
+        overflow-x: auto;
+        border-radius: 15px;
+        border-collapse: collapse;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .download-icon {
+        width: 16px;
+    }
 }

@@ -2,17 +2,20 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { auth, db } from "../../firebase"
-import { doc, getDoc, getDocs, collection } from "firebase/firestore"
+import { doc, getDoc, getDocs, collection,  } from "firebase/firestore"
 import './AdminDashboard.css'
 import { storeData } from "../../data/storeData"
 import * as XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
+import { onAuthStateChanged } from "firebase/auth";
+
 
 export default function AdminDashboard() {
   const { storeId } = useParams() // store1 등
   const [userStoreId, setUserStoreId] = useState("")
   const [favorites, setFavorites] = useState<any[]>([])
   const [authChecked, setAuthChecked] = useState(false)
+  const [UserType, setUserType] = ("")
 
   const storeIndex = parseInt((storeId || "").replace("store", "")) - 1
   const storeName = storeData[storeIndex]?.name || storeId
@@ -39,6 +42,25 @@ export default function AdminDashboard() {
 
     fetch()
   }, [storeId])
+
+
+  useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        setUserType(data.role === "owner" ? "owner" : "user");
+      }
+    }
+    setLoading(false); // ✅ 항상 마지막에 로딩 false!
+  });
+
+  return () => unsubscribe(); // ✅ cleanup
+}, []);
+
+
 
   // 엑셀로 다운로드
   const handleDownload = () => {
