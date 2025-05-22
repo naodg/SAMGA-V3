@@ -33,24 +33,24 @@ export default function Mypage() {
 
   return (
     <div className="mypage-container">
-      <h2>마이페이지</h2>
+      {/* <h2>마이페이지</h2> */}
 
       {userType === 'owner' ? (
         <div className="owner-view">
-          <h3>👑 사장님 전용 기능</h3>
+          <h3>사장님 전용 기능</h3>
           <ul>
-            <li>📌 내 가게 정보 수정</li>
-            <li>⭐ 단골 고객 목록 보기</li>
-            <li>📝 등록된 리뷰 확인</li>
+            <li>이미지 추가하기</li>
+            <li>단골 고객 목록 보기 </li>
+            {/* <li>📝 등록된 리뷰 확인</li> */}
           </ul>
         </div>
       ) : (
         <div className="user-view">
-          <h3>🙋‍♀️ 사용자 마이페이지</h3>
+          <h3>사용자 마이페이지</h3>
           <ul>
-            <li>📝 내가 쓴 리뷰 보기</li>
-            <li>❤️ 찜한 가게 목록</li>
-            <li>⚙️ 내 정보 수정</li>
+            <li>내가 쓴 리뷰 보기</li>
+            <li>찜한 가게 목록</li>
+            <li>내 정보 수정</li>
           </ul>
         </div>
       )}
