@@ -35,7 +35,7 @@ export default function Mypage() {
         return _jsx("div", { children: "\uB85C\uB529 \uC911..." });
     return (_jsx("div", { className: "mypage-container", children: userType === 'owner' ? (_jsxs("div", { className: "owner-view", children: [_jsx("h3", { children: "\uC0AC\uC7A5\uB2D8 \uC804\uC6A9 \uAE30\uB2A5" }), _jsxs("ul", { children: [_jsx("li", { children: "\uC774\uBBF8\uC9C0 \uCD94\uAC00\uD558\uAE30" }), _jsx("li", { onClick: () => {
                                 if (storeId) {
-                                    navigate(`/admin/storeId=${storeId}`);
+                                    navigate(`/admin/${storeId}`);
                                 }
                                 else {
                                     alert("가게 정보가 없습니다.");
