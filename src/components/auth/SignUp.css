@@ -30,6 +30,81 @@
   opacity: 0.15;
 }
 
+
+.signup-text {
+  font-size: 36px;
+  color: #896858;
+  margin-bottom: 15px;
+  z-index: 20;
+}
+
+.signup-wrapper input {
+  position: relative; 
+  min-width: 400px;
+  min-height: 35px;
+  margin-bottom: 15px;
+  z-index: 20;
+  border-radius: 20px;
+  text-indent: 12px;
+}
+
+/* 일반 버튼 (회원가입 / 로그인 등) */
+.Buttons {
+  background-color: #896858; /* 따뜻한 갈색 */
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 40px;
+  min-width: 400px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-weight: bold;
+  z-index: 20;
+}
+
+.Buttons:hover {
+  background-color: #6e5343; /* 살짝 어둡게 */
+}
+
+
+/* 카카오 버튼 */
+.kakao {
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 40px;
+  min-width: 400px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.kakao:hover {
+  background-color: #f7d600;
+}
+
+/* 카카오 말풍선 아이콘 (선택) */
+.kakao::before {
+  content: '';
+  background-image: url('/img/icon/kakao-icon.svg'); /* ← 경로 맞춰줘 */
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+
 /* ✅ 모바일용 이미지로 변경 */
 @media screen and (max-width: 900px) {
     .auth-image {
@@ -87,77 +162,4 @@
         justify-content: center;
         z-index: 20;
     }
-}
-
-
-.signup-text {
-  font-size: 36px;
-  color: #896858;
-  margin-bottom: 15px;
-  z-index: 20;
-}
-
-.signup-wrapper input {
-  position: relative; 
-  min-width: 400px;
-  min-height: 35px;
-  margin-bottom: 15px;
-  z-index: 20;
-  border-radius: 20px;
-}
-
-/* 일반 버튼 (회원가입 / 로그인 등) */
-.Buttons {
-  background-color: #896858; /* 따뜻한 갈색 */
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 40px;
-  min-width: 400px;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 16px;
-  font-weight: bold;
-  z-index: 20;
-}
-
-.Buttons:hover {
-  background-color: #6e5343; /* 살짝 어둡게 */
-}
-
-
-/* 카카오 버튼 */
-.kakao {
-  background-color: #FEE500;
-  color: #3C1E1E;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 40px;
-  min-width: 400px;
-  text-align: center;
-  cursor: pointer;
-  font-weight: bold;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-
-.kakao:hover {
-  background-color: #f7d600;
-}
-
-/* 카카오 말풍선 아이콘 (선택) */
-.kakao::before {
-  content: '';
-  background-image: url('/img/icon/kakao-icon.svg'); /* ← 경로 맞춰줘 */
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  display: inline-block;
 }

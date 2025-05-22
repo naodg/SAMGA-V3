@@ -1,0 +1,60 @@
+.mypage-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 24px;
+  background-color: #fff8f2;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  font-family: 'Pretendard', sans-serif;
+}
+
+.mypage-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #AD5457;
+  text-align: center;
+}
+
+.owner-view,
+.user-view {
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fdf4ef;
+  border: 1px solid #f0dcd4;
+}
+
+.owner-view h3,
+.user-view h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #7d4b3b;
+}
+
+.owner-view ul,
+.user-view ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.owner-view li,
+.user-view li {
+  background-color: #fff;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #444;
+  border: 1px solid #e4ccc1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.owner-view li:hover,
+.user-view li:hover {
+  background-color: #fceee7;
+  cursor: pointer;
+}
