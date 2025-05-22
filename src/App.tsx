@@ -13,6 +13,7 @@ import ReviewDetailPage from './components/review/ReviewDetailPage'
 import ScrollToTop from './components/ScrollTop'
 import PrivacyPolicy from './components/auth/Privacy'
 import Floating from './components/Floating'
+import Mypage from './components/auth/Mypage'
 
 
 function AppContent() {
@@ -30,6 +31,7 @@ function AppContent() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<SignIn />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
+        <Route path='/mypage' element={<Mypage/>}/>
 
         <Route path="/" element={<Mainthing />} />
         <Route path="/store/:name" element={<StoreDetail />} />
