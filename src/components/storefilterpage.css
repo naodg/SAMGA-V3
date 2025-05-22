@@ -80,7 +80,7 @@
 }
 
 .toggle-map-button {
-  /* margin-left: auto; */
+  margin-right: 15px;
   padding: 5px 12px;
   border-radius: 8px;
   background: #AD5457;

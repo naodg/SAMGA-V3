@@ -360,14 +360,6 @@ export default function MapGallery() {
 
 
 
-                  {/* <div className="subpage-links">
-                    <button
-                      className="sub-link"
-                      onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}
-                    >
-                      상세페이지로 가기
-                    </button>
-                  </div> */}
 
                 </div>
               )

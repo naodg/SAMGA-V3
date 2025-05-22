@@ -409,7 +409,7 @@
 }
 
 .deaga1-2 {
-  top: 14%;
+  top: 8%;
   left: 21%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -786,19 +786,74 @@
 
 
 
-
-
+/* ✅ 처음엔 다 숨기기 */
 .only-pc {
-  display: block;
+  display: none;
 }
 
 .only-mobile {
   display: none;
 }
 
+.only-smobile {
+  display: none;
+}
+
+/* ✅ PC 전용 (1601px 이상) */
+@media (min-width: 1601px) {
+  .only-pc {
+    display: block;
+  }
+}
+
+/* ✅ 모바일 전용 (901px ~ 1600px) */
+@media (max-width: 1600px) and (min-width: 901px) {
+  .only-mobile {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  .detail-images-mobile .store-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .detail-images-mobile {
+    width: 100%;
+  }
+
+}
+
+/* ✅ 소형 모바일 전용 (900px 이하) */
+@media (max-width: 900px) {
+  .only-smobile {
+    display: block;
+    /* object-fit: cover; */
+    width: 100%;
+    height: auto;
+  }
 
 
-@media (max-width: 1600px) {
+  .detail-images-smobile .store-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .detail-images-smobile {
+    width: 100%;
+  }
+}
+
+
+
+
+/* @media (max-width: 1600px) {
   .only-pc {
     display: none;
   }
@@ -818,7 +873,7 @@
     width: 100%;
   }
 }
-
+ */
 
 .dowon-product-section {
   padding: 40px 20px;
@@ -886,7 +941,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px 20px;
+    padding: 270px 20px 20px;
     box-sizing: border-box;
     align-items: center;
     /* ✅ 이거도 추가 추천 */
@@ -1285,10 +1340,7 @@
   }
 
   .store-slogan {
-    padding: 380px 20px 30px;
-    font-size: 24px;
-    line-height: 1.4;
-    text-align: start;
+    display: none;
   }
 
   .store-hero-image {

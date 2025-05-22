@@ -155,6 +155,7 @@ export default function StoreDetail() {
     if (!selectedStore) return <div>가게 정보를 찾을 수 없습니다.</div>
 
 
+    console.log(selectedStore.detailImagelist)
 
     useEffect(() => {
         const checkFavorite = async () => {
@@ -389,6 +390,21 @@ export default function StoreDetail() {
                 <div className="detail-images-mobile only-mobile">
                     {selectedStore.detailImagelist
                         .filter((src) => /상세페이지_M_\d+\.(jpg|png)$/i.test(src))
+                        .map((src, idx) => (
+                            <img
+                                key={`m-${idx}`}
+                                src={src}
+                                alt={`모바일 상세 이미지 ${idx + 1}`}
+                                className="store-image"
+                            />
+                        ))}
+                </div>
+
+
+                 {/* ✅ 모바일 환경일 때만 보여짐 */}
+                <div className="detail-images-smobile only-smobile">
+                    {selectedStore.detailImagelist
+                        .filter((src) => /상세페이지_SM_\d+\.(jpg|png)$/i.test(src))
                         .map((src, idx) => (
                             <img
                                 key={`m-${idx}`}
