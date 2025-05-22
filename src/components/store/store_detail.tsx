@@ -504,7 +504,7 @@ export default function StoreDetail() {
             {/* 👇 상세 이미지 탭 */}
             <div className="store-detail-top-wrapper">
 
-                <h2 className="section-title">가게 상세 이미지</h2>
+                {/* <h2 className="section-title">가게 상세 이미지</h2> */}
 
                 {/* 탭 버튼들 */}
                 <div className="tab-buttons">
