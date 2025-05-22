@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { auth, db } from "../../firebase"
-import { doc, getDoc, getDocs, collection,  } from "firebase/firestore"
+import { doc, getDoc, getDocs, collection, } from "firebase/firestore"
 import './AdminDashboard.css'
 import { storeData } from "../../data/storeData"
 import * as XLSX from 'xlsx'
@@ -15,7 +15,8 @@ export default function AdminDashboard() {
   const [userStoreId, setUserStoreId] = useState("")
   const [favorites, setFavorites] = useState<any[]>([])
   const [authChecked, setAuthChecked] = useState(false)
-  const [UserType, setUserType] = ("")
+  const [UserType, setUserType] = useState<'owner' | 'user' | null>(null)
+  const [loading, setLoading] = useState(true)
 
   const storeIndex = parseInt((storeId || "").replace("store", "")) - 1
   const storeName = storeData[storeIndex]?.name || storeId
@@ -45,37 +46,37 @@ export default function AdminDashboard() {
 
 
   useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) {
-        const data = userSnap.data();
-        setUserType(data.role === "owner" ? "owner" : "user");
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          setUserType(data.role === "owner" ? "owner" : "user");
+        }
       }
-    }
-    setLoading(false); // ✅ 항상 마지막에 로딩 false!
-  });
+      setLoading(false); // ✅ 항상 마지막에 로딩 false!
+    });
 
-  return () => unsubscribe(); // ✅ cleanup
-}, []);
+    return () => unsubscribe(); // ✅ cleanup
+  }, []);
 
 
 
   // 엑셀로 다운로드
   const handleDownload = () => {
-  // favorites 배열을 시트로 변환
-  const worksheet = XLSX.utils.json_to_sheet(favorites)
-  const workbook = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Favorites")
+    // favorites 배열을 시트로 변환
+    const worksheet = XLSX.utils.json_to_sheet(favorites)
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Favorites")
 
-  // 파일로 변환
-  const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" })
-  const blob = new Blob([excelBuffer], { type: "application/octet-stream" })
+    // 파일로 변환
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" })
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" })
 
-  // 저장
-  saveAs(blob, `${storeName}_단골리스트.xlsx`)
-}
+    // 저장
+    saveAs(blob, `${storeName}_단골리스트.xlsx`)
+  }
 
   if (!authChecked) return <p>로딩 중...</p>
   if (userStoreId !== storeId) return <p>해당 가게에 대한 접근 권한이 없습니다.</p>
@@ -97,7 +98,7 @@ export default function AdminDashboard() {
             <th>전화번호</th>
             <th>이메일</th>
             <th>
-              <img src="/SAMGA-V3//img/icon/다운로드.svg" alt="다운로드" className="download-icon"  onClick={handleDownload}/>
+              <img src="/SAMGA-V3//img/icon/다운로드.svg" alt="다운로드" className="download-icon" onClick={handleDownload} />
             </th>
           </tr>
         </thead>

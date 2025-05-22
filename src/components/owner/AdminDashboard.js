@@ -14,7 +14,8 @@ export default function AdminDashboard() {
     const [userStoreId, setUserStoreId] = useState("");
     const [favorites, setFavorites] = useState([]);
     const [authChecked, setAuthChecked] = useState(false);
-    const [UserType, setUserType] = ("");
+    const [UserType, setUserType] = useState(null);
+    const [loading, setLoading] = useState(true);
     const storeIndex = parseInt((storeId || "").replace("store", "")) - 1;
     const storeName = storeData[storeIndex]?.name || storeId;
     useEffect(() => {
