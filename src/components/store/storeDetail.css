@@ -830,6 +830,17 @@
 
 /* ✅ 소형 모바일 전용 (900px 이하) */
 @media (max-width: 900px) {
+
+  .store-hero-image {
+    width: 100%;
+    height: 650px;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    filter: brightness(0.9);
+  }
+
+
   .only-smobile {
     display: block;
     /* object-fit: cover; */
