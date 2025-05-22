@@ -50,8 +50,8 @@
 }
 
 .swiper-pagination-bullet {
-  width: 12px !important;
-  height: 12px !important;
+  width: 10px !important;
+  height: 10px !important;
   background: #999 !important;
   margin: 0 6px !important;
   /* 간격도 살짝 조정 */
@@ -61,6 +61,21 @@
 .swiper-pagination-bullet-active {
   background: #AD5457 !important;
 }
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #AD5457 !important;
+  width: 50px !important;   /* 버튼 너비 */
+  height: 50px !important;  /* 높이도 같이 줄게 */
+}
+
+/* 아이콘 자체 크기 줄이기 */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 30px !important;  /* 기본은 44px 정도 */
+}
+
 
 
 /*  검색 */
@@ -81,7 +96,7 @@
 .search-icon-button {
   background: #ad5457;
   border: none;
-  padding: 24px 24px;
+  padding: 10px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;

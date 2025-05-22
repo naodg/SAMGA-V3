@@ -9,12 +9,12 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import './storefilterpage.css';
 const filters = [
     { label: '주차장', key: '주차장' },
-    { label: '남여 화장실 구분', key: '남여화장실구분' },
     { label: '예약 가능', key: '예약가능' },
-    { label: '단체 이용.예약 가능', key: '단체이용예약가능' },
     { label: '무료 WIFI', key: '무료wifi' },
-    { label: '유아의자', key: '유아의자' },
     { label: '일반 식사 메뉴', key: '일반식사메뉴' },
+    { label: '유아의자', key: '유아의자' },
+    { label: '남여 화장실 구분', key: '남여화장실구분' },
+    { label: '단체 이용.예약 가능', key: '단체이용예약가능' },
     { label: '주문 배송', key: '주문배송' },
     { label: '포장가능', key: '포장가능' },
     { label: '제로페이', key: '제로페이' },
@@ -65,6 +65,7 @@ export default function StoreFilterPage() {
     };
     // ----------------------------------------------------
     const mapId = isMobile ? 'mobileMap' : 'filterMap';
+    const [isFilterExpanded, setIsFilterExpanded] = useState(false);
     const [paddingSize, setPaddingSize] = useState('120px');
     const [openOptions, setOpenOptions] = useState({});
     // ✅ 먼저 상태 추가
@@ -174,7 +175,7 @@ export default function StoreFilterPage() {
         };
         fetchAllRatings();
     }, []);
-    return (_jsxs("div", { children: [isMobile ? (_jsxs(_Fragment, { children: [_jsx("div", { className: "mobile-search-wrapper", children: _jsxs("div", { className: "mobile-search-bar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
+    return (_jsxs("div", { children: [isMobile ? (_jsxs(_Fragment, { children: [_jsx("div", { className: "mobile-search-wrapper", children: _jsxs("div", { className: "mobile-search-bar", children: [_jsx("button", { className: "mobile-search-icon-button", onClick: () => {
                                         if (searchQuery.trim() === '') {
                                             setFilteredStores(storeData);
                                             setSelectedStore(null);
@@ -202,7 +203,10 @@ export default function StoreFilterPage() {
                                             setFilteredStores(results);
                                             setSelectedStore(results[0] ?? null);
                                         }
-                                    } })] }) }), _jsxs("div", { className: "mobile-filter-bar", children: [_jsx("button", { onClick: () => setShowMap(!showMap), className: "toggle-map-button", children: _jsx("img", { src: '/SAMGA-V3/img/icon/map.svg', width: "15px" }) }), filters.map(({ label, key }) => (_jsxs("button", { onClick: () => toggleFilter(key), className: `filter-button ${activeFilters.includes(key) ? 'active' : ''}`, children: [label, " ", activeFilters.includes(key) && _jsx("span", { className: "remove-x", children: "\u00D7" })] }, key)))] }), showMap && (_jsxs("div", { className: "mobile-map-wrapper", children: [_jsx("div", { id: "mobileMap", className: "mobile-map" }), selectedStore && (_jsxs("div", { className: "mobile-map-store-card", children: [_jsxs("div", { className: "store-card-header", children: [_jsx("h3", { children: selectedStore.name }), _jsx("button", { onClick: () => setShowMap(false), className: "close-button", children: "\u2716" })] }), _jsx("p", { className: "store-address", children: selectedStore.address }), _jsx("p", { className: "store-phone", children: selectedStore.phone }), _jsx("a", { href: `https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`, target: "_blank", rel: "noopener noreferrer", className: "map-link", children: "\uAE38\uCC3E\uAE30" })] }))] })), _jsxs("div", { className: "mobile-store-list", children: [filteredStores.map((store, index) => {
+                                    } })] }) }), _jsxs("div", { className: `mobile-filter-bar ${isFilterExpanded ? 'expanded' : ''}`, children: [_jsx("button", { onClick: () => setShowMap(!showMap), className: "toggle-map-button", children: _jsx("img", { src: '/SAMGA-V3/img/icon/map.svg', width: "15px" }) }), _jsx("div", { className: "filter-button-group", children: (isFilterExpanded ? filters : filters.slice(0, 4)).map(({ label, key }) => (_jsxs("button", { onClick: () => toggleFilter(key), className: `mobile-filter-button ${activeFilters.includes(key) ? 'active' : ''}`, children: [label, " ", activeFilters.includes(key) && _jsx("span", { className: "remove-x", children: "\u00D7" })] }, key))) }), filters.length > 4 && (_jsx("button", { className: "toggle-expand-button", onClick: (e) => {
+                                    e.stopPropagation();
+                                    setIsFilterExpanded(prev => !prev);
+                                }, children: _jsx("img", { src: `/SAMGA-V3/img/icon/${isFilterExpanded ? 'up' : 'down'}.svg`, width: "15px", alt: "\uD3BC\uCE68 \uD1A0\uAE00" }) }))] }), showMap && (_jsxs("div", { className: "mobile-map-wrapper", children: [_jsx("div", { id: "mobileMap", className: "mobile-map" }), selectedStore && (_jsxs("div", { className: "mobile-map-store-card", children: [_jsxs("div", { className: "store-card-header", children: [_jsx("h3", { children: selectedStore.name }), _jsx("button", { onClick: () => setShowMap(false), className: "close-button", children: "\u2716" })] }), _jsx("p", { className: "store-address", children: selectedStore.address }), _jsx("p", { className: "store-phone", children: selectedStore.phone }), _jsx("a", { href: `https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`, target: "_blank", rel: "noopener noreferrer", className: "map-link", children: "\uAE38\uCC3E\uAE30" })] }))] })), _jsxs("div", { className: "mobile-store-list", children: [filteredStores.map((store, index) => {
                                 const storeId = `store${index + 1}`;
                                 const rating = storeRatings[storeId];
                                 return (_jsxs("div", { className: "mobile-store-item", onClick: () => navigate(`/store/${encodeURIComponent(store.name)}`), children: [_jsxs("div", { className: "store-item-header", children: [_jsx("img", { src: store.filterimage || '/SAMGA-V3/img/default.jpg', alt: store.name, className: "m-store-thumbnail" }), _jsxs("div", { className: "store-info-text", children: [_jsx("h3", { className: "store-name", children: store.name }), _jsxs("div", { className: "rating-review", children: [_jsxs("div", { className: "store-stars", children: [[...Array(5)].map((_, i) => {

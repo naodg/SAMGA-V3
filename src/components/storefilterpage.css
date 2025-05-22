@@ -20,7 +20,7 @@
   margin: 90px 0 10px;
 }
 
-.search-icon-button {
+.mobile-search-icon-button {
   background: #AD5457;
   border: none;
   cursor: pointer;
@@ -28,7 +28,7 @@
   width: 40px;
 }
 
-.search-icon-button img {
+.mobile-search-icon-button img {
   width: 20px;
   height: 20px;
 }
@@ -47,19 +47,51 @@
   overflow-x: auto;
   padding: 10px 10px;
   gap: 8px;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+/* 필터 펼쳐진 상태면 wrap */
+.mobile-filter-bar.expanded {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+/* 필터 버튼 묶음 */
+.filter-button-group {
+  display: flex;
+  flex-wrap: inherit; /* 부모의 wrap 상태 따라감 */
+  gap: 6px;
+  flex: 1;
+  overflow-x: hidden;
+  /* max-width: 373px; */
+}
+
+
+/* 필터 펼침/접힘 토글 버튼 */
+.toggle-expand-button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #AD5457;
+  color: white;
+  border: none;
+  flex-shrink: 0;
+  max-height: 35px;
 }
 
 .toggle-map-button {
-  margin-left: auto;
+  /* margin-left: auto; */
   padding: 5px 12px;
   border-radius: 8px;
   background: #AD5457;
   color: #fff;
   border: none;
+  max-height: 35px;
 }
 
-.filter-button {
-  padding: 2px 12px;
+.mobile-filter-button {
+  font-size: 12px;
+  padding: 8px 10px;
   border-radius: 16px;
   background-color: #eee;
   color: #333;
@@ -67,8 +99,8 @@
   white-space: nowrap;
 }
 
-.filter-button.active {
-  background-color: #C8102E;
+.mobile-filter-button.active {
+  background-color: #AD5457;
   color: #fff;
 }
 

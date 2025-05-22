@@ -17,12 +17,12 @@ import './storefilterpage.css'
 
 const filters = [
   { label: '주차장', key: '주차장' },
-  { label: '남여 화장실 구분', key: '남여화장실구분' },
   { label: '예약 가능', key: '예약가능' },
-  { label: '단체 이용.예약 가능', key: '단체이용예약가능' },
   { label: '무료 WIFI', key: '무료wifi' },
-  { label: '유아의자', key: '유아의자' },
   { label: '일반 식사 메뉴', key: '일반식사메뉴' },
+  { label: '유아의자', key: '유아의자' },
+  { label: '남여 화장실 구분', key: '남여화장실구분' },
+  { label: '단체 이용.예약 가능', key: '단체이용예약가능' },
   { label: '주문 배송', key: '주문배송' },
   { label: '포장가능', key: '포장가능' },
   { label: '제로페이', key: '제로페이' },
@@ -70,24 +70,26 @@ export default function StoreFilterPage() {
 
 
   const reservableStores = [
-  "대가식육식당",
-  "대가한우",
-  "대산식육식당",
-  "대웅식육식당",
-  "태영한우",
-];
+    "대가식육식당",
+    "대가한우",
+    "대산식육식당",
+    "대웅식육식당",
+    "태영한우",
+  ];
 
- const handleClose = () => {
+  const handleClose = () => {
     setSelectedStore(null);
     setSelectedAction(null);
     setMessageText("");
     setTriggeredFromReservation(false);
   };
 
-// ----------------------------------------------------
+  // ----------------------------------------------------
 
 
   const mapId = isMobile ? 'mobileMap' : 'filterMap';
+  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+
 
   const [paddingSize, setPaddingSize] = useState('120px');
 
@@ -236,7 +238,7 @@ export default function StoreFilterPage() {
           {/* ✅ 1. 검색바 (최상단) */}
           <div className="mobile-search-wrapper">
             <div className="mobile-search-bar">
-              <button className="search-icon-button" onClick={() => {
+              <button className="mobile-search-icon-button" onClick={() => {
                 if (searchQuery.trim() === '') {
                   setFilteredStores(storeData);
                   setSelectedStore(null);
@@ -285,20 +287,49 @@ export default function StoreFilterPage() {
           </div>
 
           {/* ✅ 2. 필터 버튼 */}
-          <div className="mobile-filter-bar">
+          <div className={`mobile-filter-bar ${isFilterExpanded ? 'expanded' : ''}`}>
+
             <button onClick={() => setShowMap(!showMap)} className="toggle-map-button">
               <img src='/SAMGA-V3/img/icon/map.svg' width="15px" />
             </button>
 
-            {filters.map(({ label, key }) => (
+
+            {/* 필터 버튼들 */}
+            <div className="filter-button-group">
+
+
+              {/* 필터 버튼 목록 (3개까지만 보여주고, 펼치면 전체 보여줌) */}
+              {(isFilterExpanded ? filters : filters.slice(0, 4)).map(({ label, key }) => (
+                <button
+                  key={key}
+                  onClick={() => toggleFilter(key)}
+                  className={`mobile-filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
+                >
+                  {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
+                </button>
+              ))}
+
+            </div>
+
+            {/* 필터 펼침 토글 버튼 (오른쪽 고정) */}
+
+            {filters.length > 4 && (
               <button
-                key={key}
-                onClick={() => toggleFilter(key)}
-                className={`filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
+                className="toggle-expand-button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsFilterExpanded(prev => !prev)
+                }}
               >
-                {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
+                <img
+                  src={`/SAMGA-V3/img/icon/${isFilterExpanded ? 'up' : 'down'}.svg`}
+                  width="15px"
+                  alt="펼침 토글"
+                />
               </button>
-            ))}
+            )}
+
+
           </div>
 
           {/* ✅ 3. 지도 표시 */}
@@ -388,7 +419,7 @@ export default function StoreFilterPage() {
                           className="reservation-tag"
                           onClick={(e) => {
                             e.stopPropagation();
-                             setTriggeredFromReservation(true); // 문의 팝업용
+                            setTriggeredFromReservation(true); // 문의 팝업용
                             setSelectedStore(store);
                             setSelectedAction(null);
                           }}
@@ -589,7 +620,7 @@ export default function StoreFilterPage() {
                               className="reservation-tag"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                 setTriggeredFromReservation(true); // 문의 팝업용
+                                setTriggeredFromReservation(true); // 문의 팝업용
                                 setSelectedStore(store);
                                 setSelectedAction(null);
                               }}
@@ -630,7 +661,7 @@ export default function StoreFilterPage() {
               {/* ✅ 지도 + 팝업 */}
               <div className="pc-map-wrapper">
                 <div id="filterMap" className="pc-map" />
-                {selectedStore && !triggeredFromReservation &&(
+                {selectedStore && !triggeredFromReservation && (
                   <div className="popup-store-card">
                     <div className="card-header">
                       <h3 className="store-name">{selectedStore.name}</h3>
@@ -680,7 +711,7 @@ export default function StoreFilterPage() {
         </div>
       )}
 
-      {selectedStore && selectedAction === "call" &&  (
+      {selectedStore && selectedAction === "call" && (
         <div className="call-popup" ref={popupRef}>
           <a
             href={`tel:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
