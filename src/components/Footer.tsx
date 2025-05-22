@@ -11,7 +11,11 @@ export default function Footer() {
   const [userStoreId, setUserStoreId] = useState("")
   const [showPrivacy, setShowPrivacy] = useState(false);
 
-  const [expandedSection, setExpandedSection] = useState<string | null>(null)
+  const [openSections, setOpenSections] = useState({
+    store: true,
+    tour: true,
+    manager: true
+  });
 
   useEffect(() => {
     const fetchUserStoreId = async () => {
@@ -23,12 +27,9 @@ export default function Footer() {
         setUserStoreId(snap.data().storeId || "")
       }
     }
+
     fetchUserStoreId()
   }, [])
-
-  const toggleSection = (section: string) => {
-    setExpandedSection(prev => prev === section ? null : section)
-  }
 
   const handleClick = async (storeId: string) => {
     const user = auth.currentUser
@@ -54,9 +55,18 @@ export default function Footer() {
     navigate(`/admin/${storeId}`)
   }
 
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
+
   return (
     <footer className="custom-footer">
       <div className="footer-inner">
+
+        {/* 1. 로고 + 기본 정보 */}
         <div className="footer-column left">
           <img src="/SAMGA-V3/img/logo/whitelogo.svg" alt="우리마을삼가 로고" className="footer-logo" />
           <p>
@@ -65,32 +75,46 @@ export default function Footer() {
             주소 : 50231 경상남도 합천군 합천읍 동서로 119<br />
             대표전화번호 : 055-930-3114<br />
           </p>
+
           <ul className="footer-links">
             <li><a>이용약관</a></li>
             <li><a onClick={() => setShowPrivacy(true)} style={{ cursor: "pointer" }}>개인정보처리방침</a></li>
           </ul>
+
           <p className="copyright">
-            Copyright © 우리마을삼가. All rights reserved.<br />
+            Copyright © 우리마을삼가. All rights reserved.
             디자인 by naon
           </p>
         </div>
 
         {showPrivacy && <PrivacyPolicyModal onClose={() => setShowPrivacy(false)} />}
 
-        <div className="footer-column">
-          <h4 onClick={() => toggleSection('store')} style={{ cursor: 'pointer' }}>가게 리스트</h4>
-          {expandedSection === 'store' && (
+        {/* 2. 가게 리스트 */}
+        <div className="footer-column store">
+          <h4 onClick={() => toggleSection('store')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+            가게 리스트
+            <img src={`/SAMGA-V3/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+          </h4>
+          {openSections.store && (
             <ul className="store-list">
               {storeData.map((store, i) => (
-                <li key={i} onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>{store.name}</li>
+                <li key={i}>
+                  <div onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>
+                    {store.name}
+                  </div>
+                </li>
               ))}
             </ul>
           )}
         </div>
 
-        <div className="footer-column">
-          <h4 onClick={() => toggleSection('tour')} style={{ cursor: 'pointer' }}>주변관광지</h4>
-          {expandedSection === 'tour' && (
+        {/* 3. 주변 관광지 */}
+        <div className="footer-column tourism">
+          <h4 onClick={() => toggleSection('tour')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+            주변관광지
+            <img src={`/SAMGA-V3/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+          </h4>
+          {openSections.tour && (
             <ul className="tour-list">
               <li><a href="https://blog.naver.com/hc-urc/222571944010" target="_blank" rel="noopener noreferrer">삼가특화거리</a></li>
               <li><a href="https://www.hc.go.kr/09418/09425/09833.web" target="_blank" rel="noopener noreferrer">황매산</a></li>
@@ -101,12 +125,21 @@ export default function Footer() {
           )}
         </div>
 
-        <div className="footer-column">
-          <h4 onClick={() => toggleSection('manager')} style={{ cursor: 'pointer' }}>가게 관리자 페이지</h4>
-          {expandedSection === 'manager' && (
+        {/* 4. 가게 관리자 페이지 */}
+        <div className="footer-column manager">
+          <h4 onClick={() => toggleSection('manager')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+            가게 관리자 페이지
+            <img src={`/SAMGA-V3/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+          </h4>
+          {openSections.manager && (
             <ul className="manager-list">
               {storeData.map((store, index) => (
-                <li key={index} onClick={() => handleClick(`store${index + 1}`)}>{store.name}</li>
+                <li
+                  key={index}
+                  onClick={() => handleClick(`store${index + 1}`)}
+                >
+                  {store.name}
+                </li>
               ))}
             </ul>
           )}
