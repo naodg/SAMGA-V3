@@ -2,6 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { auth, db } from '../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import './Mypage.css';
 export default function Mypage() {
     const [userType, setUserType] = useState(null);
     const [loading, setLoading] = useState(true);

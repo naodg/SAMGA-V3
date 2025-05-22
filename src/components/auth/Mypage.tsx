@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import './Mypage.css'
 
 export default function Mypage() {
   const [userType, setUserType] = useState<'owner' | 'user' | null>(null);
