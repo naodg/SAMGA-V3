@@ -55,7 +55,7 @@ export default function Mypage() {
             <li
               onClick={() => {
                 if (storeId) {
-                  navigate(`/admin?storeId=${storeId}`);
+                  navigate(`/admin/storeId=${storeId}`);
                 } else {
                   alert("가게 정보가 없습니다.");
                 }
