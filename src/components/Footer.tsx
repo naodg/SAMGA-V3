@@ -123,7 +123,7 @@ export default function Footer() {
 
 
         {/* 4. 가게 관리자 페이지 */}
-        {/* <div className="footer-column manager">
+        <div className="footer-column manager">
           <h4>가게 관리자 페이지</h4>
           <ul className="manager-list">
             {storeData.map((store, index) => (
@@ -136,7 +136,7 @@ export default function Footer() {
             ))}
 
           </ul>
-        </div> */}
+        </div>
 
       </div>
 

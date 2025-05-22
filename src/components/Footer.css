@@ -7,12 +7,12 @@
 }
 
 .footer-inner {
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 40px;
 }
 
 .footer-column {

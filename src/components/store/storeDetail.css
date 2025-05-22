@@ -832,11 +832,11 @@
 @media (max-width: 900px) {
 
   .video-logo {
-  text-align: center;
-  width: 130px;
-  margin: 120px 0 0 0;
-  display: inline-block;
-}
+    text-align: center;
+    width: 130px;
+    margin: 120px 0 0 0;
+    display: inline-block;
+  }
 
 
 
@@ -1344,7 +1344,7 @@
   .store-info-card {
     position: absolute;
     left: 50%;
-    top: 320px;
+    top: 290px;
     transform: translateX(-50%);
     width: 90%;
     max-width: 400px;
@@ -1393,8 +1393,15 @@
     /* ✅ 공간 확보 */
   }
 
+  .store-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+  }
+
   .store-images img {
-    width: 100%;
+    width: 40%;
     height: auto;
     display: block;
   }
