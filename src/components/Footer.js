@@ -11,9 +11,9 @@ export default function Footer() {
     const [userStoreId, setUserStoreId] = useState("");
     const [showPrivacy, setShowPrivacy] = useState(false);
     const [openSections, setOpenSections] = useState({
-        store: true,
-        tour: true,
-        manager: true
+        store: false,
+        tour: false,
+        manager: false
     });
     useEffect(() => {
         const fetchUserStoreId = async () => {
