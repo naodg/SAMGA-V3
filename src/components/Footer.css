@@ -132,18 +132,18 @@
 
   .footer-column {
   flex: none;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 
   .tour-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
   .store-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
   .manager-list {

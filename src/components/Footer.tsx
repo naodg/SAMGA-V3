@@ -82,7 +82,7 @@ export default function Footer() {
           </div> */}
 
           <p className="copyright">
-            Copyright © 우리마을삼가. All rights reserved.<br />
+            Copyright © 우리마을삼가. All rights reserved.
             디자인 by naon
           </p>
 
