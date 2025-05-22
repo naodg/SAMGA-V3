@@ -78,7 +78,7 @@ export default function Footer() {
 
           <ul className="footer-links">
             <li><a>이용약관</a></li>
-            <li><a onClick={() => setShowPrivacy(true)} style={{ cursor: "pointer" }}>개인정보처리방침</a></li>
+            <li><a onClick={() => setShowPrivacy(true)} >개인정보처리방침</a></li>
           </ul>
 
           <p className="copyright">
@@ -91,7 +91,7 @@ export default function Footer() {
 
         {/* 2. 가게 리스트 */}
         <div className="footer-column store">
-          <h4 onClick={() => toggleSection('store')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <h4 onClick={() => toggleSection('store')} >
             가게 리스트
             <img src={`/SAMGA-V3/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
@@ -110,7 +110,7 @@ export default function Footer() {
 
         {/* 3. 주변 관광지 */}
         <div className="footer-column tourism">
-          <h4 onClick={() => toggleSection('tour')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <h4 onClick={() => toggleSection('tour')}>
             주변관광지
             <img src={`/SAMGA-V3/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
@@ -127,7 +127,7 @@ export default function Footer() {
 
         {/* 4. 가게 관리자 페이지 */}
         <div className="footer-column manager">
-          <h4 onClick={() => toggleSection('manager')} style={{ cursor: "pointer", display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <h4 onClick={() => toggleSection('manager')}>
             가게 관리자 페이지
             <img src={`/SAMGA-V3/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>

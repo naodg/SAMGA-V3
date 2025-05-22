@@ -15,21 +15,77 @@
   gap: 20px;
 }
 
-.footer-column {
-  flex: none;
-  min-width: 230px;
-}
 
 .footer-logo {
   width: 50px;
   margin-bottom: 20px;
 }
 
+/* Footer 드롭다운 토글 스타일 */
 .footer-column h4 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
+
+.footer-column h4 img {
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.footer-toggle-list {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.footer-toggle-list.open {
+  display: flex;
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* 기존 리스트 스타일 유지 */
+.store-list li,
+.tour-list li,
+.manager-list li {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.store-list.open,
+.tour-list.open,
+.manager-list.open {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 
 /* 리스트 공통 */
 .store-list,
