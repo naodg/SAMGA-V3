@@ -168,13 +168,13 @@
 }*/
 
 /* 가게 정보 카드 */
-.pc-map-gallery-info-card {
+.map-gallery-info-card {
   z-index: 1000;
   font-family: 'Pretendard', sans-serif;
   line-height: 1.6;
 }
 
-.pc-map-gallery-info-card .store-name {
+.map-gallery-info-card .store-name {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -223,7 +223,7 @@
   color: #AD5457;
 }
 
-.pc-map-gallery-info-card .rating {
+.map-gallery-info-card .rating {
   margin-left: 8px;
   color: #AD5457;
   font-size: 16px;
@@ -235,12 +235,12 @@
   color: #333;
 } */
 
-.pc-map-gallery-info-card .label {
+.map-gallery-info-card .label {
   font-weight: 500;
   color: #000;
 }
 
-.pc-map-gallery-info-card .point {
+.map-gallery-info-card .point {
   color: #AD5457;
   font-size: 13px;
   margin-left: 6px;

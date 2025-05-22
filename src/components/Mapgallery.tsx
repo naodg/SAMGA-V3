@@ -182,7 +182,7 @@ export default function MapGallery() {
 
 
 
-
+  const isMobile = window.innerWidth <= 768;
 
   return (
     <div className="map-gallery-wrapper">
@@ -269,6 +269,12 @@ export default function MapGallery() {
         {showMap && (
           <div className="map-gallery-map-container">
 
+            {isMobile ? (
+              <div id="map" ref={mapContainerRef} />
+            ) : (
+              <div></div>
+            )}
+
             {/* ✅ 지도 위에 겹쳐진 정보 카드 */}
             {selectedStore && (() => {
               const storeIndex = storeData.findIndex(s => s.name === selectedStore.name)
@@ -323,13 +329,13 @@ export default function MapGallery() {
                     <div className="store-address">
                       <span className="label">주소 :</span> {selectedStore.address}
                       <a
-                      href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="map-link"
-                    >
-                      길찾기
-                    </a>
+                        href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="map-link"
+                      >
+                        길찾기
+                      </a>
                     </div>
                   </div>
 
@@ -352,7 +358,7 @@ export default function MapGallery() {
                     <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
                   </p>
 
-                
+
 
                   {/* <div className="subpage-links">
                     <button
@@ -368,8 +374,11 @@ export default function MapGallery() {
             })()}
 
 
-            {/* ✅ 실제 지도 div */}
-            <div id="map" ref={mapContainerRef} />
+            {isMobile ? (
+              <div></div>
+            ) : (
+              <div id="map" ref={mapContainerRef} />
+            )}
 
 
 

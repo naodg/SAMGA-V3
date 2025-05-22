@@ -9,11 +9,11 @@ export default function Mainthing() {
         <MapGallery />
       </section>
       <section
-        style={{
-          marginTop: "-280px",
-          position: "relative",
-          zIndex: 10,
-        }}
+        // style={{
+        //   marginTop: "-280px",
+        //   position: "relative",
+        //   zIndex: 10,
+        // }}
       >
         <StoreList />
       </section>
