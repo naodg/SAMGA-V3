@@ -1,6 +1,6 @@
 /* 전체 푸터 영역 */
 .custom-footer {
-  background-color: #6b4c43;
+  background-color: #A18577;
   color: white;
   padding: 40px 20px;
   font-size: 14px;
@@ -122,4 +122,19 @@
     width: 100%;
     margin-top: 8px;
   }
+}
+
+
+/* a 태그에 hover 스타일도 적용 */
+.tour-list li a {
+  display: block;
+  font-size: 14px;
+  white-space: nowrap;
+  color: black;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.tour-list li a:hover {
+  background-color: #f3ece9;
 }

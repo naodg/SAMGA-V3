@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { auth, db } from "../firebase"
 import PrivacyPolicyModal from './auth/PrivacyPolicyModal';
+import { useRef } from "react"
 
 export default function Footer() {
   const navigate = useNavigate()
@@ -16,6 +17,10 @@ export default function Footer() {
     tour: false,
     manager: false
   });
+
+  const storeRef = useRef<HTMLDivElement>(null)
+  const tourRef = useRef<HTMLDivElement>(null)
+  const managerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const fetchUserStoreId = async () => {
@@ -62,6 +67,27 @@ export default function Footer() {
     }))
   }
 
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        storeRef.current?.contains(e.target as Node) ||
+        tourRef.current?.contains(e.target as Node) ||
+        managerRef.current?.contains(e.target as Node)
+      ) {
+        return // 내부 클릭이면 무시
+      }
+      setOpenSections({ store: false, tour: false, manager: false }) // 바깥 클릭 시 닫기
+    }
+
+    document.addEventListener("click", handleClickOutside)
+    return () => {
+      document.removeEventListener("click", handleClickOutside)
+    }
+  }, [])
+
+
+
   return (
     <footer className="custom-footer">
       <div className="footer-inner">
@@ -90,18 +116,16 @@ export default function Footer() {
         {showPrivacy && <PrivacyPolicyModal onClose={() => setShowPrivacy(false)} />}
 
         {/* 2. 가게 리스트 */}
-        <div className="footer-column store">
-          <h4 onClick={() => toggleSection('store')} >
+        <div className="footer-column store" ref={storeRef}>
+          <h4 onClick={() => toggleSection('store')}>
             가게 리스트
             <img src={`/SAMGA-V3/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.store && (
             <ul className="store-list">
               {storeData.map((store, i) => (
-                <li key={i}>
-                  <div onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>
-                    {store.name}
-                  </div>
+                <li key={i} onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>
+                  {store.name}
                 </li>
               ))}
             </ul>
@@ -109,7 +133,7 @@ export default function Footer() {
         </div>
 
         {/* 3. 주변 관광지 */}
-        <div className="footer-column tourism">
+        <div className="footer-column tourism" ref={tourRef}>
           <h4 onClick={() => toggleSection('tour')}>
             주변관광지
             <img src={`/SAMGA-V3/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
@@ -126,7 +150,7 @@ export default function Footer() {
         </div>
 
         {/* 4. 가게 관리자 페이지 */}
-        <div className="footer-column manager">
+        <div className="footer-column manager" ref={managerRef}>
           <h4 onClick={() => toggleSection('manager')}>
             가게 관리자 페이지
             <img src={`/SAMGA-V3/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
@@ -134,10 +158,7 @@ export default function Footer() {
           {openSections.manager && (
             <ul className="manager-list">
               {storeData.map((store, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleClick(`store${index + 1}`)}
-                >
+                <li key={index} onClick={() => handleClick(`store${index + 1}`)}>
                   {store.name}
                 </li>
               ))}
