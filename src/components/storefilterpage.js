@@ -227,7 +227,7 @@ export default function StoreFilterPage() {
                                                                 setTriggeredFromReservation(true); // 문의 팝업용
                                                                 setSelectedStore(store);
                                                                 setSelectedAction(null);
-                                                            }, children: "\uC608\uC57D\uD558\uAE30" }))] })] }), store.options?.length > 0 && (_jsxs("div", { className: "option-list", children: [(openOptions[store.name] ? store.options : store.options.slice(0, 3)).map(opt => (_jsxs("span", { className: "option-tag", children: ["#", opt] }, opt))), store.options.length > 3 && (_jsx("button", { className: "toggle-options-button", onClick: (e) => {
+                                                            }, children: "\uC608\uC57D\uBB38\uC758\uD558\uAE30" }))] })] }), store.options?.length > 0 && (_jsxs("div", { className: "option-list", children: [(openOptions[store.name] ? store.options : store.options.slice(0, 3)).map(opt => (_jsxs("span", { className: "option-tag", children: ["#", opt] }, opt))), store.options.length > 3 && (_jsx("button", { className: "toggle-options-button", onClick: (e) => {
                                                         e.stopPropagation();
                                                         setOpenOptions(prev => ({
                                                             ...prev,
@@ -283,7 +283,7 @@ export default function StoreFilterPage() {
                                                                         setTriggeredFromReservation(true); // 문의 팝업용
                                                                         setSelectedStore(store);
                                                                         setSelectedAction(null);
-                                                                    }, children: "\uC608\uC57D\uD558\uAE30" }))] })] }), store.options?.length > 0 && (_jsxs("div", { className: "option-list", children: [(openOptions[store.name] ? store.options : store.options.slice(0, 5)).map(opt => (_jsxs("span", { className: "option-tag", children: ["#", opt] }, opt))), store.options.length > 5 && (_jsx("button", { className: "toggle-options-button", onClick: (e) => {
+                                                                    }, children: "\uC608\uC57D\uBB38\uC758\uD558\uAE30" }))] })] }), store.options?.length > 0 && (_jsxs("div", { className: "option-list", children: [(openOptions[store.name] ? store.options : store.options.slice(0, 5)).map(opt => (_jsxs("span", { className: "option-tag", children: ["#", opt] }, opt))), store.options.length > 5 && (_jsx("button", { className: "toggle-options-button", onClick: (e) => {
                                                                 e.stopPropagation();
                                                                 setOpenOptions(prev => ({
                                                                     ...prev,

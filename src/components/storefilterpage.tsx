@@ -424,7 +424,7 @@ export default function StoreFilterPage() {
                             setSelectedAction(null);
                           }}
                         >
-                          예약하기
+                          예약문의하기
                         </div>
 
                       )}
@@ -625,7 +625,7 @@ export default function StoreFilterPage() {
                                 setSelectedAction(null);
                               }}
                             >
-                              예약하기
+                              예약문의하기
                             </div>
 
                           )}
