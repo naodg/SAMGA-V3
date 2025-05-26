@@ -306,7 +306,18 @@
 }
 
 
+@media (max-width: 1200px) {
+  .map-gallery-wrapper {
+    min-height: 1500px;
+  }
 
+  .map-gallery-pattern {
+    background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
+    background-color: #B58575;
+    /* height: 200px; */
+    top: 950px;
+  }
+}
 
 
 @media (max-width: 900px) {
