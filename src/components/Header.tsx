@@ -10,12 +10,23 @@ export default function Header() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false)
 
   const isStoreDetailPage = location.pathname.startsWith('/store/');
 
   const toggleMenu = () => {
     setMenuOpen(prev => !prev);
   };
+
+  useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768)
+  }
+
+  handleResize() // 초기값 세팅
+  window.addEventListener("resize", handleResize)
+  return () => window.removeEventListener("resize", handleResize)
+}, [])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -102,7 +113,7 @@ export default function Header() {
         <nav className="nav">
           <ul className="nav-list">
             <li>소개</li>
-            <li onClick={() => navigate('/storefilterpage')}>식육<br/>식당</li>
+            <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
             <li onClick={() => navigate('/review')}>리뷰</li>
           </ul>
         </nav>
