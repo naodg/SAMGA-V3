@@ -71,7 +71,7 @@ export const storeDetailAssets = {
     ],
     '도원식육식당': [
         {
-            text: '‘도원 식육식당’은',
+            text: '매일 정직하게 고기의 본질로 \n승부하는 ‘도원 식육식당’은',
             className: 'dowon1',
         },
         {

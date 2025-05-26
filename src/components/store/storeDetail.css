@@ -425,7 +425,7 @@
 
 
 .deaga1-3 {
-  top: 30%;
+  top: 6.5%;
   right: 29.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -437,7 +437,7 @@
 /* 도원 */
 .dowon1 {
   top: 55%;
-  right: 32%;
+  right: 15%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
   text-align: left;
@@ -482,7 +482,7 @@
 }
 
 .deagaB2 {
-  top: 6%;
+  top: 10%;
   left: 41.5%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -494,7 +494,7 @@
 
 
 .deagaB3 {
-  top: 2%;
+  top: 10%;
   left: 21%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -508,7 +508,7 @@
 /* 대가한우 */
 
 .deagaH1 {
-  top: 61%;
+  top: 58%;
   right: 22%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
@@ -530,7 +530,7 @@
 
 
 .deagaH3 {
-  top: 11%;
+  top: 7%;
   right: 21.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -543,7 +543,7 @@
 /* 대산식육식당 */
 
 .deasan1 {
-  top: 45%;
+  top: 42%;
   right: 36.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
@@ -553,8 +553,8 @@
 }
 
 .deasan2 {
-  top: 20%;
-  left: 21%;
+  top: 7%;
+  left: 21.5%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -565,7 +565,7 @@
 
 
 .deasan3 {
-  top: 9%;
+  top: 5.5%;
   right: 23.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -800,14 +800,14 @@
 }
 
 /* ✅ PC 전용 (1601px 이상) */
-@media (min-width: 1601px) {
+@media (min-width: 1661px) {
   .only-pc {
     display: block;
   }
 }
 
 /* ✅ 모바일 전용 (901px ~ 1600px) */
-@media (max-width: 1600px) and (min-width: 901px) {
+@media (max-width: 1660px) and (min-width: 901px) {
   .only-mobile {
     display: block;
     object-fit: cover;
