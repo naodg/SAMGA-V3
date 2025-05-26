@@ -171,6 +171,14 @@
     border-radius: 2px;
   }
 
+  .mobile-menu-icon.white-logo span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 2px;
+  }
+
   /* ✅ 모바일 유저 메뉴 */
   .mobile-user-menu {
     width: 20%;

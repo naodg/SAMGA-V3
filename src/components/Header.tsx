@@ -73,7 +73,8 @@ export default function Header() {
           <div className="logo" onClick={() => navigate('/')}>
             <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
-          <div className="mobile-menu-icon" onClick={toggleMenu}>
+          <div className={`mobile-menu-icon ${isStoreDetailPage ? 'white-logo' : ''
+            }`} onClick={toggleMenu}>
             <span></span>
             <span></span>
             <span></span>
