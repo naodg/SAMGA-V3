@@ -3,7 +3,7 @@
   background: #f3ece9;
   overflow: hidden;
   position: relative;
-  min-height: 1280px;
+  min-height: 1580px;
 }
 
 .map-gallery-inner {
@@ -158,7 +158,7 @@
 /* 패턴 배경 */
 .map-gallery-pattern {
   position: absolute;
-  top: 500px;
+  top: 950px;
   width: 100vw;
   height: 360px;
   background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
