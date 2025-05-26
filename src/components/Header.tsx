@@ -102,7 +102,7 @@ export default function Header() {
         <nav className="nav">
           <ul className="nav-list">
             <li>소개</li>
-            <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
+            <li onClick={() => navigate('/storefilterpage')}>식육<br/>식당</li>
             <li onClick={() => navigate('/review')}>리뷰</li>
           </ul>
         </nav>
