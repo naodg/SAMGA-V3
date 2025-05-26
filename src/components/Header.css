@@ -106,7 +106,7 @@
 
 /* ✅ 기본 header 구조는 그대로 두고 추가만! */
 
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .header-inner-pc {
     display: none;
   }
@@ -213,4 +213,16 @@
   }
 
 
+}
+
+
+@media (max-width: 400px) {
+   .nav-list {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+  }
 }
