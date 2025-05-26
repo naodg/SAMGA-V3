@@ -293,10 +293,10 @@
   }
 
   .landing-title {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     line-height: 1.4;
-    letter-spacing: -1px;
+    letter-spacing: -4px;
     padding-top: 90px;
   }
 
@@ -310,8 +310,7 @@
 
   .landing-tagline {
     color: #AD5457;
-    font-size: 20px;
-    /* font-family: 'NotoSansKR-Thin', sans-serif; */
+    font-size: 1.2rem;
   }
 
   .slogan-img {
