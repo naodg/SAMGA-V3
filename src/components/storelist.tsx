@@ -66,7 +66,7 @@ export default function StoreList() {
 
         <iframe className="video"
           src="https://drive.google.com/file/d/1WF-K2Nu6Jer87imLhWAyKXeWraxIkvVP/preview"
-          width="85%"
+          width="92%"
           height="400px"
           frameBorder="0"
           style={{ borderRadius: '12px', padding: '110px 0 0' }}

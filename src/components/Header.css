@@ -170,6 +170,7 @@ flex: 1;
   cursor: pointer;
   flex: 0 0 auto; /* ✅ 플렉스 아이템으로 배치 */
   z-index: 200;
+  padding-right: 10px;
   }
 
   .mobile-menu-icon span {
