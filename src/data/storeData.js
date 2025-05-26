@@ -20,11 +20,11 @@ export const storeData = [
         detailImagelist: [
             '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_M_2.jpg',
-            // '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_M_3.jpg',
+            '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_M_3.jpg',
             '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_SM_1.jpg',
             '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_PC_1.jpg',
             '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_PC_2.jpg',
-            // '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_PC_3.jpg',
+            '/SAMGA-V3/samga/store/deaga1/대가1호점상세페이지_PC_3.jpg',
         ]
     },
     {
@@ -46,11 +46,11 @@ export const storeData = [
         detailImagelist: [
             '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_M_2.jpg',
-            // '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_M_3.jpg',
+            '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_M_3.jpg',
             '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_SM_1.jpg',
             '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_PC_1.jpg',
             '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_PC_2.jpg',
-            // '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_PC_3.jpg',
+            '/SAMGA-V3/samga/store/deagaB/대가식육식당상세페이지_PC_3.jpg',
         ]
     },
     {
@@ -231,11 +231,11 @@ export const storeData = [
         detailImagelist: [
             '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_M_2.jpg',
-            // '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_M_3.jpg',
+            '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_M_3.jpg',
             '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_PC_1.jpg',
             '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_PC_2.jpg',
-            // '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_PC_3.jpg',
+            '/SAMGA-V3/samga/store/samga/삼가명품한우상세페이지_PC_3.jpg',
         ],
     },
     {
@@ -258,6 +258,7 @@ export const storeData = [
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_M_2.jpg',
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_M_3.jpg',
+            '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_SM_1.jpg',
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_PC_1.jpg',
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_PC_2.jpg',
             '/SAMGA-V3/samga/store/sanggu/상구한우상세페이지_PC_3.jpg',
@@ -283,6 +284,7 @@ export const storeData = [
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_M_1.jpg',
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_M_2.jpg',
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_M_3.jpg',
+            '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_SM_1.jpg',
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_PC_1.jpg',
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_PC_2.jpg',
             '/SAMGA-V3/samga/store/teyoung/태영한우상세페이지_PC_3.jpg',
