@@ -499,6 +499,21 @@
   }
 }
 
+
+@media(max-width:900px){
+  .popup-store-card {
+  position: absolute;
+  right: 120px;
+  top: 500px;
+  width: 260px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+}
+
 .reservation-tag {
   text-decoration: underline;
   color: #AD5457;

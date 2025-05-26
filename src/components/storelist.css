@@ -302,7 +302,7 @@
   }
 
   .landing-divider {
-  width: 280px;
+  width: 80%;
   max-width: 1100px;
   border: none;
   border-top: 1px solid #AD5457;
@@ -319,7 +319,7 @@
   }
 
   .store-card {
-    height: 480px;
+    height: 540px;
   }
 
   .store-title {
