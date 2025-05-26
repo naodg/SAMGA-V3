@@ -118,11 +118,27 @@
     position: static;
     border-radius: 8px;
     box-shadow: none;
-    background-color: white;
-    color: black;
+    background-color: #A18577;
+    color: #fff;
     width: 100%;
-    margin-top: 8px;
+    /* margin-top: 8px; */
   }
+
+  .store-list li,
+  .tour-list li,
+  .manager-list li{
+    padding: 7px 0;
+    margin: 0 10px;
+    font-size: 16px;
+    border-bottom: 1px dashed #fff;
+  }
+
+  .tour-list li a{
+    color: #fff !important;
+    font-size: 16px !important;
+  }
+
+
 }
 
 

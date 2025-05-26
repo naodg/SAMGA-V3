@@ -64,7 +64,7 @@ export default function Mypage() {
             >
               단골 고객 목록 보기
             </li>
-            {/* <li>📝 등록된 리뷰 확인</li> */}
+            {/* <li> 내 정보 수정</li> */}
           </ul>
         </div>
       ) : (
