@@ -44,6 +44,7 @@
   font-size: 42px;
   font-weight: bold;
   line-height: 1.4;
+  letter-spacing: -0.7px;
   padding-top: 100px;
 }
 
@@ -273,7 +274,7 @@
   top: -55px;
   left: 50%;
   transform: translateX(-50%);
-  width: 150px;
+  width: 10px;
   z-index: 10;
 }
 
