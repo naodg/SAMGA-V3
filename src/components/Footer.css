@@ -91,11 +91,12 @@
 .store-list li,
 .tour-list li,
 .manager-list li {
-  padding: 8px 16px;
+  padding: 4px 16px;
   font-size: 14px;
   white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  letter-spacing: -0.1em;
 }
 
 .store-list li:hover,
