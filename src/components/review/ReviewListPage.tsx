@@ -69,13 +69,13 @@ export default function ReviewListPage() {
     let storeId = selectedStoreId;
 
     if (selectedStoreId !== "all") {
-      const matchedIndex = storeData.findIndex(s => s.name === selectedStoreId);
-      if (matchedIndex !== -1) {
-        storeId = `store${matchedIndex + 1}`;
-      } else {
-        console.error("해당 가게 이름이 storeData에 없습니다.");
+      const matchedStore = storeData.find(s => s.name === selectedStoreId);
+      if (!matchedStore) {
+        console.error("선택된 가게를 storeData에서 찾을 수 없습니다.");
         return;
       }
+
+      const storeId = `store${storeData.indexOf(matchedStore) + 1}`;
 
       q = query(
         collection(db, "reviews"),
@@ -84,6 +84,7 @@ export default function ReviewListPage() {
         limit(12)
       );
     }
+
 
     if (!initial && lastDoc) {
       q = query(q, startAfter(lastDoc))
@@ -244,7 +245,7 @@ export default function ReviewListPage() {
               {store && (
                 <>
                   <div className="store-badge">
-                    
+
                     {/* <img
                       src={`/SAMGA-V3/img/review_icons/ex.svg`}
                       className="store-badge-icon"

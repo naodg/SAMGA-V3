@@ -27,14 +27,12 @@ export default function ReviewListPage() {
         let q = query(collection(db, "reviews"), orderBy("createdAt", "desc"), limit(12));
         let storeId = selectedStoreId;
         if (selectedStoreId !== "all") {
-            const matchedIndex = storeData.findIndex(s => s.name === selectedStoreId);
-            if (matchedIndex !== -1) {
-                storeId = `store${matchedIndex + 1}`;
-            }
-            else {
-                console.error("해당 가게 이름이 storeData에 없습니다.");
+            const matchedStore = storeData.find(s => s.name === selectedStoreId);
+            if (!matchedStore) {
+                console.error("선택된 가게를 storeData에서 찾을 수 없습니다.");
                 return;
             }
+            const storeId = `store${storeData.indexOf(matchedStore) + 1}`;
             q = query(collection(db, "reviews"), where("storeId", "==", storeId), orderBy("createdAt", "desc"), limit(12));
         }
         if (!initial && lastDoc) {
