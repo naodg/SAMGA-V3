@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* ✅ 이게 핵심 */
-  font-family: 'NotoSansKR-Medium', sans-serif;
+  font-family: 'NotoSansKR-Medium';
 }
 
 
