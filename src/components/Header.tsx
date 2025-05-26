@@ -84,6 +84,14 @@ export default function Header() {
           <div className="logo" onClick={() => navigate('/')}>
             <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
+          {/* ✅ 이건 항상 보여야 함 */}
+          <nav className="nav">
+            <ul className="nav-list">
+              <li>牛리마을{isMobile && <br />}소개</li>
+              <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
+              <li onClick={() => navigate('/review')}>리뷰</li>
+            </ul>
+          </nav>
           <div className={`mobile-menu-icon ${isStoreDetailPage ? 'white-logo' : ''
             }`} onClick={toggleMenu}>
             <span></span>
@@ -109,14 +117,7 @@ export default function Header() {
           </div>
         )}
 
-        {/* ✅ 이건 항상 보여야 함 */}
-        <nav className="nav">
-          <ul className="nav-list">
-            <li>牛리마을{isMobile && <br />}소개</li>
-            <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
-            <li onClick={() => navigate('/review')}>리뷰</li>
-          </ul>
-        </nav>
+
       </div>
 
     </header>

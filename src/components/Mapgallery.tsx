@@ -212,6 +212,10 @@ export default function MapGallery() {
             ))}
           </Swiper>
 
+        </div>
+
+
+        <div className="map-gallery-floating-box">
           <div className="map-gallery-searchbar">
             <button
               className="search-icon-button"
@@ -261,10 +265,6 @@ export default function MapGallery() {
               }}
             />
           </div>
-
-
-        </div>
-
         {/* 지도 */}
         {showMap && (
           <div className="map-gallery-map-container">
@@ -377,6 +377,9 @@ export default function MapGallery() {
 
           </div>
         )}
+
+        </div>
+
 
 
         {/* 배경 패턴 */}
