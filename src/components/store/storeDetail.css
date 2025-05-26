@@ -340,12 +340,17 @@
   /* font-family: 'NotoSansKR-Thin', sans-serif; */
 }
 
-.brand-divider {
+.brand-divider-pc {
   width: 1100px;
   border: none;
   border-top: 1px solid #AD5457;
   margin: 0 auto 30px;
 }
+
+.brand-divider-m {
+  display: none;
+}
+
 
 .store-logo-bottom {
   text-align: center;
@@ -830,6 +835,18 @@
 
 /* ✅ 소형 모바일 전용 (900px 이하) */
 @media (max-width: 900px) {
+
+  .brand-divider-pc {
+   display: none;
+  }
+
+  .brand-divider-m {
+   display: block;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #AD5457;
+    margin: 30px auto 30px;
+  }
 
   .video-logo {
     text-align: center;

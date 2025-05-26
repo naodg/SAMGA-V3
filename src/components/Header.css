@@ -10,8 +10,10 @@
 }
 
 .header.white {
-  color: #fff !important; /* 스토어 상세페이지에서는 흰색 */
+  color: #fff !important;
+  /* 스토어 상세페이지에서는 흰색 */
 }
+
 .header.white .user-menu {
   color: #fff;
 }
@@ -116,7 +118,7 @@
     align-items: center;
     /* ✅ 가운데 정렬 */
 
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     box-sizing: border-box;
   }
 
@@ -129,19 +131,25 @@
   }
 
   .logo {
-    height: 40px;
+    height: 45px;
     margin: 0;
   }
 
-  /* 네비게이션 */
+  /* ✅ 모바일에서 nav도 한 줄에 넣기 */
   .nav {
-    position: static;
-    transform: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
   }
 
   .nav-list {
-    gap: 1rem;
-    font-size: 14px;
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
   }
 
   /* 유저 메뉴 */
@@ -149,15 +157,15 @@
     display: block;
     position: absolute;
     right: 10px;
-    width: 28px;
-    height: 24px;
+    width: 25px;
+    height: 20px;
     cursor: pointer;
     z-index: 200;
   }
 
   .mobile-menu-icon span {
     display: block;
-    height: 3px;
+    height: 2px;
     background: #896858;
     margin: 5px 0;
     border-radius: 2px;

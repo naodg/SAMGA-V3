@@ -17,7 +17,7 @@
   position: relative;
   width: 100%;
   height: 650px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
   overflow: hidden;
 }
 
@@ -323,12 +323,12 @@
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    padding-top: 110px;
+    padding-top: 80px;
   }
 
   .map-gallery-map-container {
     position: absolute;
-    top: 620px;
+    top: 583px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -382,6 +382,7 @@
   }
 
   .map-gallery-pattern {
+    top: 500px;
     height: 310px;
   }
 
@@ -444,7 +445,7 @@
   }
 
   .map-gallery-map-container {
-    top: 520px;
+    top: 486px;
   }
 
   .map-gallery-searchbar {
@@ -469,13 +470,14 @@
   .map-gallery-pattern {
     background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
     background-color: #B58575;
-    height: 260px;
+    height: 200px;
+    top: 500px;
   }
 }
 
 @media (max-width: 500px) {
   .map-gallery-map-container {
-    top: 390px;
+    top: 370px;
   }
 
   .map-gallery-searchbar {
@@ -531,7 +533,7 @@
 
 @media (max-width: 500px) {
   .map-gallery-map-container {
-    top: 350px;
+    top: 318px;
   }
   
 
@@ -571,7 +573,7 @@
 
   .swiper-button-prev,
   .swiper-button-next {
-    top: 25%;
+    top: 18%;
     color: white;
   }
 
@@ -613,6 +615,10 @@
 
 
 @media (max-width: 500px) {
+   .map-gallery-wrapper {
+    min-height: 800px;
+  }
+
   .map-gallery-searchbar {
     bottom: 415px;
     width: 91%;

@@ -328,8 +328,9 @@ export default function StoreDetail() {
                 {/* 👇 브랜드 로고 + 서브로고 */}
                 <div className={`store-brand-wrapper`}>
                     <img src="/SAMGA-V3/img/logo/videologo.svg" alt="videologo" className="video-logo" />
+                    <hr className="brand-divider-m" />
                     <div className="brand-text">KOREAN BEEF VILLAGE SAMGA</div>
-                    <hr className="brand-divider" />
+                    <hr className="brand-divider-pc" />
                     {/* {[ "대가1호점"].includes(selectedStore.name) && (
                         <img src={selectedStore.logo} alt="logo" className="store-sub-logo" />
                     )} */}

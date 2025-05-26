@@ -69,23 +69,28 @@
 
 .store-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 350px); /* ✅ 카드 크기 고정 */
+  grid-template-columns: repeat(3, 350px);
+  /* ✅ 카드 크기 고정 */
   gap: 25px;
-  justify-content: center; /* ✅ 그리드 전체 가운데 정렬 */
+  justify-content: center;
+  /* ✅ 그리드 전체 가운데 정렬 */
   padding: 0 10px;
   margin: 150px auto;
-  max-width: calc(400px * 3 + 25px * 2 + 600px); /* ✅ 카드 너비 + 여백 기준 */
+  max-width: calc(400px * 3 + 25px * 2 + 600px);
+  /* ✅ 카드 너비 + 여백 기준 */
   box-sizing: border-box;
 }
 
 /* ✅ 모바일 대응 */
 @media (max-width: 1024px) {
   .store-card-grid {
-    grid-template-columns: 1fr; /* 모바일 1열 */
+    grid-template-columns: 1fr;
+    /* 모바일 1열 */
     max-width: 100%;
     padding: 0 20px;
   }
 }
+
 @media (max-width: 768px) {
   .store-card-grid {
     grid-template-columns: 1fr;
@@ -179,7 +184,8 @@
 }
 
 .banner-swiper {
-  margin-top: 60px; /* ✅ 슬라이더 간격 여기서 줘! */
+  margin-top: 60px;
+  /* ✅ 슬라이더 간격 여기서 줘! */
 }
 
 /* 타이틀 영역 */
@@ -199,7 +205,8 @@
 }
 
 .bolder {
-  font-weight: 700; /* 또는 bold */
+  font-weight: 700;
+  /* 또는 bold */
 }
 
 .banner-title {
@@ -261,17 +268,54 @@
     margin: 40px 16px;
   } */
 
+  .landing-logo {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  z-index: 10;
+}
+
+
   .video {
     height: 200px;
+  }
+
+  .tasty {
+    position: absolute;
+    /* top: -70px; */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    z-index: 10;
   }
 
   .landing-title {
     font-size: 30px;
     font-weight: bold;
     line-height: 1.4;
-    padding-top: 100px;
+    letter-spacing: -0.7px;
+    padding-top: 90px;
   }
-  
+
+  .landing-divider {
+  width: 280px;
+  max-width: 1100px;
+  border: none;
+  border-top: 1px solid #AD5457;
+  margin: 24px auto 12px;
+}
+
+  .landing-tagline {
+    color: #AD5457;
+    font-size: 18px;
+    /* font-family: 'NotoSansKR-Thin', sans-serif; */
+  }
+
+  .slogan-img {
+    height: 150px;
+  }
 
   .store-card {
     height: 480px;
@@ -301,8 +345,9 @@
     margin: auto;
     padding: 100px 0 0;
   }
-  
-   .banner-hover-caption {
+
+  .banner-hover-caption {
+    font-size: 14px;
     opacity: 1 !important;
   }
 
