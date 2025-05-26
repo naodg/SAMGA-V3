@@ -28,8 +28,6 @@ export default function MapGallery() {
   const mapRef = useRef(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
 
-  const [mapActive, setMapActive] = useState(false)
-
 
   const navigate = useNavigate();
 
@@ -369,21 +367,7 @@ export default function MapGallery() {
 
 
             {isMobile ? (
-              <div className="mobile-map-wrapper">
-                {!mapActive && (
-                  <div
-                    className="map-overlay"
-                    onClick={() => setMapActive(true)}
-                  >
-                    <p>지도를 보려면 터치하세요</p>
-                  </div>
-                )}
-                <div
-                  id="map"
-                  ref={mapContainerRef}
-                  style={{ pointerEvents: mapActive ? 'auto' : 'none' }}
-                />
-              </div>
+              <div></div>
             ) : (
               <div id="map" ref={mapContainerRef} />
             )}
