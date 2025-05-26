@@ -436,8 +436,8 @@
 
 /* 도원 */
 .dowon1 {
-  top: 55%;
-  right: 15%;
+  top: 51%;
+  right: 18%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
   text-align: left;
@@ -446,8 +446,8 @@
 }
 
 .dowon2 {
-  top: 9%;
-  left: 20.5%;
+  top: 15%;
+  left: 16%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -459,8 +459,8 @@
 
 
 .dowon3 {
-  top: 30%;
-  right: 27%;
+  top: 32%;
+  right: 28.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
   text-align: start;
@@ -661,7 +661,7 @@
 }
 
 .Fire2 {
-  top: 5.5%;
+  top: 11%;
   left: 21%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -685,7 +685,7 @@
 
 /* 상구 */
 .sanggu1 {
-  top: 25%;
+  top: 28%;
   right: 22%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
@@ -695,7 +695,7 @@
 }
 
 .sanggu2 {
-  top: 11%;
+  top: 5%;
   left: 21.5%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -718,8 +718,8 @@
 
 /* 삼가명품한우 */
 .samga1 {
-  top: 15%;
-  right: 24.3%;
+  top: 20%;
+  right: 22%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
   text-align: left;
@@ -728,7 +728,7 @@
 }
 
 .samga2 {
-  top: 14%;
+  top: 8%;
   left: 21%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -740,7 +740,7 @@
 
 
 .samga3 {
-  top: 41%;
+  top: 43%;
   right: 36.5%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
