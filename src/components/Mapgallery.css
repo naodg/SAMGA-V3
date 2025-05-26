@@ -382,7 +382,7 @@
   }
 
   .map-gallery-pattern {
-    top: 500px;
+    top: 750px;
     height: 310px;
   }
 
@@ -471,7 +471,7 @@
     background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
     background-color: #B58575;
     height: 200px;
-    top: 500px;
+    top: 650px;
   }
 }
 
@@ -622,5 +622,19 @@
   .map-gallery-searchbar {
     bottom: 415px;
     width: 91%;
+  }
+}
+
+
+
+@media (max-width: 450px) {
+  .map-gallery-wrapper {
+    min-height: 800px;
+  }
+  .map-gallery-pattern {
+    background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
+    background-color: #B58575;
+    height: 150px;
+    top: 520px;
   }
 }
