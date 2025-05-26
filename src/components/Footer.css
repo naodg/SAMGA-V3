@@ -138,9 +138,9 @@
     font-size: 16px !important;
   }
 
-  .store-list li,
-  .tour-list li,
-  .manager-list li :last-child {
+  .store-list li:last-child,
+  .tour-list li:last-child,
+  .manager-list li:last-child {
     border-bottom: none;
   }
 
