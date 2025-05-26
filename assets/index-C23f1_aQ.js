@@ -3409,7 +3409,8 @@ ${this.customData.serverResponse}`:this.message=this._baseMessage}}var as;(funct
 고기가 더 맛있다는
 손님의 말씀처럼.`,className:"deawoong2"},{text:`직접 농사지은
 건강한 식재료로 
-음식을 준비하고 있습니다.`,className:"deawoong3"}],도원식육식당:[{text:"‘도원 식육식당’은",className:"dowon1"},{text:`고기의 본질은 결국
+음식을 준비하고 있습니다.`,className:"deawoong3"}],도원식육식당:[{text:`매일 정직하게 고기의 본질로 
+승부하는 ‘도원 식육식당’은`,className:"dowon1"},{text:`고기의 본질은 결국
 ‘고기’
 그 자체입니다.`,className:"dowon2"},{text:`우리집 식탁에서
 만나 볼 수 있는 삼가 한우`,className:"dowon3"}],미로식육식당:[{text:`삼가에서 40년 동안 
