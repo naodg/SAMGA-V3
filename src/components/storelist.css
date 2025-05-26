@@ -97,6 +97,8 @@
   .store-card-grid {
     grid-template-columns: 1fr;
     margin: 60px 0;
+    padding: 0px;
+    place-items: center; 
     /* 또는 margin: 0; 으로 완전 제거도 가능 */
   }
 }
@@ -319,7 +321,8 @@
   }
 
   .store-card {
-    height: 540px;
+    height: auto;
+    width: 300px;
   }
 
   .store-title {
