@@ -326,7 +326,7 @@ export default function StoreDetail() {
             <div className="brand-inner">
 
                 {/* 👇 브랜드 로고 + 서브로고 */}
-                <div className={`store-brand-wrapper ${selectedStore.name === "대가한우" ? "no-bg" : ""}`}>
+                <div className={`store-brand-wrapper`}>
                     <img src="/SAMGA-V3/img/logo/videologo.svg" alt="videologo" className="video-logo" />
                     <div className="brand-text">KOREAN BEEF VILLAGE SAMGA</div>
                     <hr className="brand-divider" />

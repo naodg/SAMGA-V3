@@ -532,6 +532,32 @@
     top: 350px;
   }
 
+  .mobile-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 높이 설정 필요 */
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7); /* 반투명 효과 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 14px;
+  z-index: 10;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 10px;
+  border-radius: 8px;
+}
+
+
   .map-gallery-searchbar {
     bottom: 415px;
     width: 88%;
