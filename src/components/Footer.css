@@ -126,16 +126,22 @@
 
   .store-list li,
   .tour-list li,
-  .manager-list li{
+  .manager-list li {
     padding: 7px 0;
     margin: 0 10px;
     font-size: 16px;
     border-bottom: 1px dashed #fff;
   }
 
-  .tour-list li a{
+  .tour-list li a {
     color: #fff !important;
     font-size: 16px !important;
+  }
+
+  .store-list li,
+  .tour-list li,
+  .manager-list li :last-child {
+    border-bottom: none;
   }
 
 

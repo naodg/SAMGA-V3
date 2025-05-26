@@ -144,6 +144,8 @@
     margin-top: 10px;
   }
 
+
+
   .nav-list {
     display: flex;
     gap: 16px;
@@ -151,6 +153,19 @@
     padding: 0;
     margin: 0;
     font-size: 13px;
+  }
+
+  .nav-list li {
+    display: flex;
+    flex-direction: column;
+    /* 줄바꿈 대응 */
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    text-align: center;
+    padding: 4px 8px;
   }
 
   /* 유저 메뉴 */
@@ -218,7 +233,7 @@
 
 
 @media (max-width: 400px) {
-   .nav-list {
+  .nav-list {
     display: flex;
     gap: 10px;
     list-style: none;
