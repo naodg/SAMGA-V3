@@ -302,7 +302,7 @@
 
 .store-brand-wrapper {
   width: 100%;
-  /* background: #f3ece9; */
+  background: #fff;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -695,7 +695,7 @@
 }
 
 .sanggu2 {
-  top: 5%;
+  top: 11%;
   left: 21.5%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
@@ -707,7 +707,7 @@
 
 
 .sanggu3 {
-  top: 50.5%;
+  top: 54%;
   right: 28%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: 700;
@@ -751,7 +751,7 @@
 
 /* 태영한우 */
 .teyoung1 {
-  top: 11%;
+  top: 4%;
   right: 24%;
   font-size: clamp(28px, 4vw, 60px);
   font-weight: bold;
@@ -761,7 +761,7 @@
 }
 
 .teyoung2 {
-  top: 54%;
+  top: 52%;
   left: 21.5%;
   transform: translateX(0);
   font-size: clamp(28px, 4vw, 60px);
