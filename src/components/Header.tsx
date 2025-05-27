@@ -49,7 +49,7 @@ export default function Header() {
           <img
             src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"}
             alt="로고"
-            className='logo-img'
+            className='logo'
           />
         </div>
 
@@ -82,7 +82,7 @@ export default function Header() {
       <div className="header-inner-m">
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
-            <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo-img' />
+            <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
           {/* ✅ 이건 항상 보여야 함 */}
           <nav className="nav">
