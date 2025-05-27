@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { storeData } from '../../data/storeData'
 import './storeDetail.css'
 import { storeDetailAssets } from '../../data/storeDetailAssets'
-import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, } from "firebase/firestore"
+import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove,arrayUnion, } from "firebase/firestore"
 import { auth, db } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -171,54 +171,46 @@ export default function StoreDetail() {
     }, [storeId])
 
 
-    import {
-  doc,
-  getDoc,
-  setDoc,
-  deleteDoc,
-  updateDoc,
-  arrayUnion,
-  arrayRemove,
-} from "firebase/firestore";
 
-const handleToggle = async () => {
-  const user = auth.currentUser;
-  if (!user) return alert("로그인 후 이용해주세요.");
 
-  const userRef = doc(db, "users", user.uid);
-  const userDoc = await getDoc(userRef);
-  if (!userDoc.exists()) return alert("유저 정보가 없습니다.");
+    const handleToggle = async () => {
+        const user = auth.currentUser;
+        if (!user) return alert("로그인 후 이용해주세요.");
 
-  const { nickname, phone, email } = userDoc.data();
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
+        if (!userDoc.exists()) return alert("유저 정보가 없습니다.");
 
-  const favRef = doc(db, "favorites", storeId, "users", user.uid);
-  const favSnap = await getDoc(favRef);
+        const { nickname, phone, email } = userDoc.data();
 
-  if (favSnap.exists()) {
-    // 단골 해제
-    await deleteDoc(favRef);
-    await updateDoc(userRef, {
-      favorites: arrayRemove(storeId),
-    });
-    setIsFavorite(false);
-    alert("단골이 해제되었습니다!");
-  } else {
-    // 단골 등록
-    await setDoc(favRef, {
-      nickname,
-      phone,
-      email,
-      createdAt: new Date(),
-    });
+        const favRef = doc(db, "favorites", storeId, "users", user.uid);
+        const favSnap = await getDoc(favRef);
 
-    await updateDoc(userRef, {
-      favorites: arrayUnion(storeId),
-    });
+        if (favSnap.exists()) {
+            // 단골 해제
+            await deleteDoc(favRef);
+            await updateDoc(userRef, {
+                favorites: arrayRemove(storeId),
+            });
+            setIsFavorite(false);
+            alert("단골이 해제되었습니다!");
+        } else {
+            // 단골 등록
+            await setDoc(favRef, {
+                nickname,
+                phone,
+                email,
+                createdAt: new Date(),
+            });
 
-    setIsFavorite(true);
-    alert("단골로 등록되었습니다!");
-  }
-};
+            await updateDoc(userRef, {
+                favorites: arrayUnion(storeId),
+            });
+
+            setIsFavorite(true);
+            alert("단골로 등록되었습니다!");
+        }
+    };
 
     // console.log(selectedStore.detailImagelist)
 
@@ -425,7 +417,7 @@ const handleToggle = async () => {
                 </div>
 
 
-                 {/* ✅ 모바일 환경일 때만 보여짐 */}
+                {/* ✅ 모바일 환경일 때만 보여짐 */}
                 <div className="detail-images-smobile only-smobile">
                     {selectedStore.detailImagelist
                         .filter((src) => /상세페이지_SM_\d+\.(jpg|png)$/i.test(src))
