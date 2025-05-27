@@ -403,6 +403,26 @@
 
 
 
+@media (max-width: 370px) {
+
+    .map-gallery-wrapper {
+    min-height: calc(145vw * 1.35);
+    }
+
+    .map-gallery-floating-box {
+      top: calc(120vw * 0.65);
+    }
+
+    #map {
+      min-height: calc(100vw * 0.35);
+    }
+
+    .map-gallery-pattern {
+      top: calc(125vw * 0.99);
+      height: calc(90vw * 0.25);
+    }
+
+}
 
 
 
