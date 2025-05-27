@@ -72,9 +72,12 @@ export default function Mypage() {
           <h3>사용자 마이페이지</h3>
           <ul>
             <li>내가 쓴 리뷰 보기</li>
-            <li onClick={() => {navigate(`/mypage/mystore`);
-              }}>찜한 가게 목록</li>
-            <li>내 정보 수정</li>
+            <li
+              onClick={() => { navigate(`/mypage/mystore`); }}
+            >찜한 가게 목록</li>
+            <li
+              onClick={() => { navigate(`/mypage/myreview`); }}
+            >내 정보 수정</li>
           </ul>
         </div>
       )}
