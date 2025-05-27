@@ -1,7 +1,7 @@
 .storelist-landing {
   /* background: #f3ece9; */
   text-align: center;
-  padding: 100px 20px 0 20px;
+  padding: 120px 20px 0 20px;
   position: relative;
   justify-content: "center"
 }
@@ -15,12 +15,13 @@
 
 
 .landing-logo {
-  position: absolute;
+  /* position: absolute; */
   top: -55px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 170px;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  width: 10rem;
   z-index: 10;
+  margin-bottom: 70px;
 }
 
 .landing-video {
@@ -28,7 +29,7 @@
   border-radius: 0px;
   display: block;
   margin: auto;
-  padding: 110px 0 0;
+  padding: 10px 0 0;
 }
 
 .tasty {
@@ -180,7 +181,7 @@
 .banner-wrapper {
   background: #fff;
   text-align: center;
-  padding: 60px 5px;
+  padding: 60px 5px 5px 5px;
 }
 
 .banner-swiper {
@@ -226,7 +227,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  /* border-radius: 8px; */
+  border-radius: 0px;
 }
 
 .banner-img {
@@ -269,17 +270,17 @@
   } */
 
   .landing-logo {
-  position: absolute;
+  /* position: absolute;
   top: -55px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   width: 150px;
   z-index: 10;
 }
 
 
   .video {
-    height: calc(100vw * 0.35);
+    height: calc(100vw * 0.45);
   }
 
   .tasty {
@@ -317,7 +318,7 @@
   }
 
   .store-title {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 8px;
   }
 

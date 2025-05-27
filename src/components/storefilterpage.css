@@ -1,7 +1,7 @@
 /* ✅ 모바일 검색창 */
 .mobile-search-wrapper {
   width: 100%;
-  padding: 20px 10px 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,11 +13,11 @@
   gap: 8px;
   border: 1px solid #AD5457;
   background: #fff;
-  width: 100%;
+  width: 90%;
   max-width: 380px;
   height: 40px;
   box-sizing: border-box;
-  margin: 90px 0 10px;
+  margin: 90px 0 10px 0;
 }
 
 .mobile-search-icon-button {
@@ -45,7 +45,7 @@
 .mobile-filter-bar {
   display: flex;
   overflow-x: auto;
-  padding: 10px 10px;
+  padding: 10px 18px;
   gap: 8px;
   flex-wrap: nowrap;
   position: relative;
@@ -60,7 +60,8 @@
 /* 필터 버튼 묶음 */
 .filter-button-group {
   display: flex;
-  flex-wrap: inherit; /* 부모의 wrap 상태 따라감 */
+  flex-wrap: inherit;
+  /* 부모의 wrap 상태 따라감 */
   gap: 6px;
   flex: 1;
   overflow-x: hidden;
@@ -516,16 +517,16 @@
 
 @media(max-width:900px){
   .popup-store-card {
-  position: absolute;
-  right: 120px;
-  top: 500px;
-  width: 260px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
+    position: absolute;
+    right: 120px;
+    top: 500px;
+    width: 260px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
 }
 
 .reservation-tag {
