@@ -5,39 +5,47 @@ import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { storeData } from "../../data/storeData"; // 로컬에 store 정보 있을 경우
 import { useNavigate } from "react-router-dom";
-import './MyStore.css';
+import './myStore.css';
 
 export default function MyStore() {
     const [favoriteStores, setFavoriteStores] = useState<typeof storeData>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchFavorites = async () => {
-            const user = auth.currentUser;
-            if (!user) return;
+useEffect(() => {
+  if (!storeData.length) return; // storeData가 비었으면 잠깐 기다려!
 
-            const userRef = doc(db, "users", user.uid);
-            const userSnap = await getDoc(userRef);
-            console.log(favoriteStores)
+  const fetchFavorites = async () => {
+    const user = auth.currentUser;
+    if (!user) return;
 
-            if (userSnap.exists()) {
-                const favorites: string[] = userSnap.data().favorites || [];
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
 
-                const filtered = favorites.map((name) => {
-                    const index = storeData.findIndex((store) => store.name === name);
-                    if (index === -1) return null;
-                    return storeData[index];
-                }).filter(Boolean); // null 제거
+    if (userSnap.exists()) {
+      const favorites: string[] = userSnap.data().favorites || [];
+
+      const storeDataWithId = storeData.map((store, i) => ({
+        ...store,
+        id: `store${i + 1}`,
+      }));
+
+      const filtered = storeDataWithId.filter((store) =>
+        favorites.includes(store.id)
+      );
+
+      setFavoriteStores(filtered);
+    }
+
+    setLoading(false);
+  };
+
+  fetchFavorites();
+}, [storeData]); // ✅ storeData 준비될 때까지 기다렸다 실행!
 
 
-                setFavoriteStores(filtered);
-            }
-            setLoading(false);
-        };
 
-        fetchFavorites();
-    }, []);
+
 
     return (
         <div className="mystore-container">
@@ -48,13 +56,18 @@ export default function MyStore() {
                 <p>단골 등록한 가게가 없습니다.</p>
             ) : (
                 <div className="store-list">
-                    {favoriteStores.map((store) => (
+                    {favoriteStores.map((store, index) => (
                         <div
-                            // key={store.id}
+                            key={store.name || index}
                             className="store-card"
-                            onClick={() =>  navigate(`/store/${encodeURIComponent(store.name)}`)}
+                            onClick={() =>
+                                store.name && navigate(`/store/${encodeURIComponent(store.name)}`)
+                            }
                         >
-                            <img src={store.filterimage} alt={store.name} />
+                            <img
+                                src={store.filterimage || "/default.jpg"}
+                                alt={store.name || "가게 이미지"}
+                            />
                             <div className="store-name">{store.name}</div>
                             <div className="store-address">{store.address}</div>
                         </div>
