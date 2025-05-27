@@ -547,19 +547,21 @@ export default function StoreFilterPage() {
 
             {/* ✅ 필터 */}
             <div className="pc-filter-bar">
-              {filters.map(({ label, key }) => (
-                <button
-                  key={key}
-                  onClick={() => toggleFilter(key)}
-                  className={`filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
-                >
-                  {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
-                </button>
-              ))}
+              <div className="filter-content">
+                {filters.map(({ label, key }) => (
+                  <button
+                    key={key}
+                    onClick={() => toggleFilter(key)}
+                    className={`filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
+                  >
+                    {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* ✅ 본문: 가게 리스트 + 지도 */}
-            <div className="pc-main-layout" style={{ padding: `0 ${paddingSize}` }}>
+            <div className="pc-main-layout" >
               <div className="pc-store-list">
                 {filteredStores.map((store, index) => {
                   const storeId = `store${index + 1}`
