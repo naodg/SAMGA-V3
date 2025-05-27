@@ -19,6 +19,7 @@ export default function MyStore() {
 
             const userRef = doc(db, "users", user.uid);
             const userSnap = await getDoc(userRef);
+            console.log(favoriteStores)
 
             if (userSnap.exists()) {
                 const favorites: string[] = userSnap.data().favorites || [];
