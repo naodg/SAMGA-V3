@@ -362,7 +362,7 @@
 @media (max-width: 500px) {
 
     .map-gallery-wrapper {
-    min-height: calc(115vw * 1.55);
+    min-height: calc(115vw * 1.60);
     }
 
     .map-gallery-floating-box {
