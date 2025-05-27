@@ -8,7 +8,7 @@
   background: #f3ece9;
   overflow: hidden;
   position: relative;
-  min-height: calc(var(--default-pixel) * 1.5);
+  min-height: calc(var(--default-pixel) * 1.6);
 }
 
 .map-gallery-inner {
@@ -47,9 +47,9 @@
 /* 패턴 배경 */
 .map-gallery-pattern {
   position: absolute;
-  top: var(--default-pixel);
+  top: calc(var(--default-pixel) * 1.03);
   width: 100vw;
-  height: 250px;
+  height: calc(var(--default-pixel) * 0.35);
   background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
   background-color: #B58575;
   z-index: 1;
