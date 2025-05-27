@@ -69,7 +69,6 @@ export default function StoreList() {
           width="92%"
           height="400px"
           frameBorder="0"
-          style={{ borderRadius: '12px', padding: '110px 0 0' }}
           allow="autoplay; encrypted-media"
           allowFullScreen
         ></iframe>
