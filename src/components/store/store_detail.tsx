@@ -171,32 +171,55 @@ export default function StoreDetail() {
     }, [storeId])
 
 
-    const handleToggle = async () => {
-        const user = auth.currentUser
-        if (!user) return alert("로그인 후 이용해주세요.")
+    import {
+  doc,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 
-        const userDoc = await getDoc(doc(db, "users", user.uid))
-        if (!userDoc.exists()) return alert("유저 정보가 없습니다.")
-        const { nickname, phone, email } = userDoc.data()
+const handleToggle = async () => {
+  const user = auth.currentUser;
+  if (!user) return alert("로그인 후 이용해주세요.");
 
-        const favRef = doc(db, "favorites", storeId, "users", user.uid)
-        const favSnap = await getDoc(favRef)
+  const userRef = doc(db, "users", user.uid);
+  const userDoc = await getDoc(userRef);
+  if (!userDoc.exists()) return alert("유저 정보가 없습니다.");
 
-        if (favSnap.exists()) {
-            await deleteDoc(favRef)
-            setIsFavorite(false)
-            alert("단골이 해제되었습니다!")
-        } else {
-            await setDoc(favRef, {
-                nickname,
-                phone,
-                email,
-                createdAt: new Date()
-            })
-            setIsFavorite(true)
-            alert("단골로 등록되었습니다!")
-        }
-    }
+  const { nickname, phone, email } = userDoc.data();
+
+  const favRef = doc(db, "favorites", storeId, "users", user.uid);
+  const favSnap = await getDoc(favRef);
+
+  if (favSnap.exists()) {
+    // 단골 해제
+    await deleteDoc(favRef);
+    await updateDoc(userRef, {
+      favorites: arrayRemove(storeId),
+    });
+    setIsFavorite(false);
+    alert("단골이 해제되었습니다!");
+  } else {
+    // 단골 등록
+    await setDoc(favRef, {
+      nickname,
+      phone,
+      email,
+      createdAt: new Date(),
+    });
+
+    await updateDoc(userRef, {
+      favorites: arrayUnion(storeId),
+    });
+
+    setIsFavorite(true);
+    alert("단골로 등록되었습니다!");
+  }
+};
+
     // console.log(selectedStore.detailImagelist)
 
     return (

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { storeData } from '../../data/storeData';
 import './storeDetail.css';
 import { storeDetailAssets } from '../../data/storeDetailAssets';
-import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, } from "firebase/firestore";
+import { query, collection, where, getDocs, } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { useNavigate } from 'react-router-dom';
 const tabs = ['가게메뉴', '상차림', '편의시설'];
@@ -116,27 +116,37 @@ export default function StoreDetail() {
         };
         checkFavorite();
     }, [storeId]);
+    import { doc, getDoc, setDoc, deleteDoc, updateDoc, arrayUnion, arrayRemove, } from "firebase/firestore";
     const handleToggle = async () => {
         const user = auth.currentUser;
         if (!user)
             return alert("로그인 후 이용해주세요.");
-        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
         if (!userDoc.exists())
             return alert("유저 정보가 없습니다.");
         const { nickname, phone, email } = userDoc.data();
         const favRef = doc(db, "favorites", storeId, "users", user.uid);
         const favSnap = await getDoc(favRef);
         if (favSnap.exists()) {
+            // 단골 해제
             await deleteDoc(favRef);
+            await updateDoc(userRef, {
+                favorites: arrayRemove(storeId),
+            });
             setIsFavorite(false);
             alert("단골이 해제되었습니다!");
         }
         else {
+            // 단골 등록
             await setDoc(favRef, {
                 nickname,
                 phone,
                 email,
-                createdAt: new Date()
+                createdAt: new Date(),
+            });
+            await updateDoc(userRef, {
+                favorites: arrayUnion(storeId),
             });
             setIsFavorite(true);
             alert("단골로 등록되었습니다!");
