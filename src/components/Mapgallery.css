@@ -220,6 +220,8 @@
   /* ✅ overflow 방지 */
   flex: 1 1 auto;
   /* ✅ 너비 조절 가능하게 */
+  padding: 0px !important;
+  margin-left: 10px;
 }
 
 /* 🔧 별점 */
@@ -537,6 +539,7 @@
   align-items: center;
   margin-bottom: 6px;
   gap: 4px;
+  padding: 0px !important;
   /* 주소와 길찾기 사이 공간 */
 }
 
