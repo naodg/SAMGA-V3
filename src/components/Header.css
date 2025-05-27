@@ -44,7 +44,7 @@
 }
 
 /* ✅ 로고 크기 키움 */
-.logo {
+.logo-img {
   flex: 0 0 auto;
   height: 75px;
   cursor: pointer;
@@ -126,7 +126,7 @@
     position: relative;
   }
 
-  .logo {
+  .logo-img {
     height: 50px;
     margin: 0;
     flex: 0 0 auto;
