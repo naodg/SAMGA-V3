@@ -160,8 +160,14 @@
     letter-spacing: -0.3px;
     line-height: 1.2;
     text-align: center;
-    padding: 4px 8px;
+    /* padding: 4px 8px; */
   }
+
+  .nav-list li+li::before {
+  content: '|';
+  position: absolute;
+  left: -7px;
+}
 
   /* 유저 메뉴 */
   .mobile-menu-icon {
