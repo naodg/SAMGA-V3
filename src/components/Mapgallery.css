@@ -362,7 +362,7 @@
 @media (max-width: 500px) {
 
     .map-gallery-wrapper {
-    min-height: calc(110vw * 1.55);
+    min-height: calc(110vw * 1.65);
     }
 
     .map-gallery-floating-box {
@@ -383,7 +383,7 @@
 @media (max-width: 400px) {
 
     .map-gallery-wrapper {
-    min-height: calc(120vw * 1.55);
+    min-height: calc(120vw * 1.65);
     }
 
     .map-gallery-floating-box {
