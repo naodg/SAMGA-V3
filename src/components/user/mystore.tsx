@@ -49,11 +49,11 @@ export default function MyStore() {
                 <div className="store-list">
                     {favoriteStores.map((store) => (
                         <div
-                            key={store.id}
+                            // key={store.id}
                             className="store-card"
-                            onClick={() => navigate(`/store/${store.id}`)}
+                            onClick={() =>  navigate(`/store/${encodeURIComponent(store.name)}`)}
                         >
-                            <img src={store.imageUrl} alt={store.name} />
+                            <img src={store.filterimage} alt={store.name} />
                             <div className="store-name">{store.name}</div>
                             <div className="store-address">{store.address}</div>
                         </div>

@@ -31,5 +31,7 @@ export default function MyStore() {
         };
         fetchFavorites();
     }, []);
-    return (_jsxs("div", { className: "mystore-container", children: [_jsx("h2", { children: "\uD83D\uDCCC \uB0B4\uAC00 \uB2E8\uACE8 \uB4F1\uB85D\uD55C \uAC00\uAC8C" }), loading ? (_jsx("p", { children: "\uB85C\uB529 \uC911..." })) : favoriteStores.length === 0 ? (_jsx("p", { children: "\uB2E8\uACE8 \uB4F1\uB85D\uD55C \uAC00\uAC8C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (_jsx("div", { className: "store-list", children: favoriteStores.map((store) => (_jsxs("div", { className: "store-card", onClick: () => navigate(`/store/${store.id}`), children: [_jsx("img", { src: store.imageUrl, alt: store.name }), _jsx("div", { className: "store-name", children: store.name }), _jsx("div", { className: "store-address", children: store.address })] }, store.id))) }))] }));
+    return (_jsxs("div", { className: "mystore-container", children: [_jsx("h2", { children: "\uD83D\uDCCC \uB0B4\uAC00 \uB2E8\uACE8 \uB4F1\uB85D\uD55C \uAC00\uAC8C" }), loading ? (_jsx("p", { children: "\uB85C\uB529 \uC911..." })) : favoriteStores.length === 0 ? (_jsx("p", { children: "\uB2E8\uACE8 \uB4F1\uB85D\uD55C \uAC00\uAC8C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (_jsx("div", { className: "store-list", children: favoriteStores.map((store) => (_jsxs("div", { 
+                    // key={store.id}
+                    className: "store-card", onClick: () => navigate(`/store/${encodeURIComponent(store.name)}`), children: [_jsx("img", { src: store.filterimage, alt: store.name }), _jsx("div", { className: "store-name", children: store.name }), _jsx("div", { className: "store-address", children: store.address })] }))) }))] }));
 }
