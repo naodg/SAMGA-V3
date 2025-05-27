@@ -14,7 +14,7 @@ import ScrollToTop from './components/ScrollTop'
 import PrivacyPolicy from './components/auth/Privacy'
 import Floating from './components/Floating'
 import Mypage from './components/auth/Mypage'
-
+import MyStore from './components/user/mystore'
 
 function AppContent() {
   const location = useLocation()
@@ -32,6 +32,7 @@ function AppContent() {
         <Route path="/login" element={<SignIn />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path='/mypage' element={<Mypage/>}/>
+        <Route path='/mypage/mystore' element={<MyStore/>} />
 
         <Route path="/" element={<Mainthing />} />
         <Route path="/store/:name" element={<StoreDetail />} />
