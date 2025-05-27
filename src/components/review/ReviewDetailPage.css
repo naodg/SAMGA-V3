@@ -1,110 +1,110 @@
 .review-detail-page {
-    max-width: 800px;
-    margin: 100px auto;
-    padding: 180px 20px 0 0;
+  max-width: 800px;
+  margin: 0px auto 180px;
+  padding: 180px 20px 0 0;
 }
 
 .review-box {
-    border: 1px solid #ccc;
-    border-radius: 16px;
-    padding: 24px;
-    position: relative;
-    background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  background: #fff;
 }
 
 .review-sticker {
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    z-index: 2;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  z-index: 2;
 
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 
-    object-fit: contain;
-    /* ✅ 이미지 비율 유지하면서 잘 들어가게 */
-    object-position: center;
-    /* ✅ 가운데 정렬 */
-    border-radius: 12px;
-    /* 선택: 둥글게 할 경우 */
-    background-color: white;
-    /* ✅ 투명 PNG일 경우 배경 채워주기 */
-    padding: 4px;
-    /* 선택: 이미지 안 잘리게 약간 여유 */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    /* 살짝 입체감 */
+  object-fit: contain;
+  /* ✅ 이미지 비율 유지하면서 잘 들어가게 */
+  object-position: center;
+  /* ✅ 가운데 정렬 */
+  border-radius: 12px;
+  /* 선택: 둥글게 할 경우 */
+  background-color: white;
+  /* ✅ 투명 PNG일 경우 배경 채워주기 */
+  padding: 4px;
+  /* 선택: 이미지 안 잘리게 약간 여유 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* 살짝 입체감 */
 }
 
 /* 수정/삭제 아이콘 */
 .review-actions {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    gap: 10px;
-    padding: 10px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
 }
 
 .icon-button {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    opacity: 0.8;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .icon-button:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .review-header {
-    display: flex;
-    justify-content: flex-start;
-    gap: 15px;
-    align-items: center;
-    padding: 15px 0 0 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 0 0 0;
 }
 
 .review-stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .star-icon {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 .review-star-value {
-    font-size: 14px;
-    margin-left: 6px;
-    color: #555;
+  font-size: 14px;
+  margin-left: 6px;
+  color: #555;
 }
 
 .review-content {
-    margin: 16px 0;
-    font-size: 16px;
+  margin: 16px 0;
+  font-size: 16px;
 }
 
 .review-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .review-icons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .review-icons img {
-    width: 20px;
+  width: 20px;
 }
 
 .review-meta {
-    font-size: 13px;
-    color: #888;
-    text-align: right;
+  font-size: 13px;
+  color: #888;
+  text-align: right;
 }
 
 /* 댓글 */
@@ -166,6 +166,7 @@
   cursor: pointer;
   opacity: 0.85;
 }
+
 .icon-button:hover {
   opacity: 1;
 }
@@ -181,30 +182,30 @@
 
 /* 댓글 작성 */
 .comment-form {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .comment-form textarea {
-    max-width: 800px;
-    height: 100px;
-    resize: vertical;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 14px;
+  max-width: 800px;
+  height: 100px;
+  resize: vertical;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 14px;
 }
 
 .comment-form button {
-    align-self: flex-end;
-    background: #AD5457;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 20px;
-    cursor: pointer;
+  align-self: flex-end;
+  background: #AD5457;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  cursor: pointer;
 }
 
 
@@ -258,4 +259,17 @@
 
 .edit-buttons button:last-child:hover {
   background-color: #ddd;
+}
+
+
+
+
+@media (max-width: 900px) {
+
+  .review-detail-page {
+    max-width: 800px;
+    /* margin: 100px auto; */
+    padding: 5rem 2rem;
+  }
+
 }
