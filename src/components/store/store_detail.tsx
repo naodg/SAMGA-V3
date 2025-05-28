@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { storeData } from '../../data/storeData'
 import './storeDetail.css'
 import { storeDetailAssets } from '../../data/storeDetailAssets'
-import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove,arrayUnion, } from "firebase/firestore"
+import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore"
 import { auth, db } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -47,6 +47,9 @@ export default function StoreDetail() {
 
     const storeIndex = storeData.findIndex(s => s.name === selectedStore.name)
     const average = storeRatings[storeId]?.average || 0
+
+    const [tabImages, setTabImages] = useState<string[]>([])
+
 
     //  별
     const getStoreRatingData = async (storeId: string) => {
@@ -213,6 +216,24 @@ export default function StoreDetail() {
     };
 
     // console.log(selectedStore.detailImagelist)
+
+    // tab이미지
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const folder = tabToFolderMap[activeTab]
+                const snap = await getDocs(collection(db, "stores", storeId, folder))
+                const urls = snap.docs.map((doc) => doc.data().url as string)
+                setTabImages(urls)
+            } catch (err) {
+                console.error("이미지 불러오기 오류:", err)
+                setTabImages([])
+            }
+        }
+
+        if (storeId) fetchImages()
+    }, [activeTab, storeId])
+
 
     return (
         <div className="store-detail-wrapper">
@@ -537,23 +558,20 @@ export default function StoreDetail() {
 
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
-                    {imageCandidates.map((name, idx) => (
-                        ['.jpg', '.JPG', '.png'].map((ext) => {
-                            const src = `/SAMGA-V3/samga/store/${currentFolder}/${name}${ext}`
-                            return (
-                                <img
-                                    key={src}
-                                    src={src}
-                                    alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                    className="store-image"
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).style.display = 'none'
-                                    }}
-                                />
-                            )
-                        })
-                    ))}
+                    {tabImages.length === 0 ? (
+                        <p style={{ padding: '20px', color: '#999' }}>등록된 이미지가 없습니다.</p>
+                    ) : (
+                        tabImages.map((url, idx) => (
+                            <img
+                                key={url}
+                                src={url}
+                                alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                className="store-image"
+                            />
+                        ))
+                    )}
                 </div>
+
             </div>
 
 

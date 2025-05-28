@@ -1,54 +1,51 @@
 .admin-uploader-container {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 32px;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 130px;
+    min-height: calc(100vh - 350px);
 }
 
 .admin-uploader-container h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
 }
 
 .admin-uploader-container label {
-  font-weight: 600;
-  margin-right: 8px;
+    font-weight: 600;
+    margin-right: 8px;
 }
 
 .admin-uploader-container select {
-  padding: 10px 14px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 24px;
+    padding: 10px 14px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 24px;
 }
 
 .admin-uploader-container input[type="file"] {
-  display: block;
-  margin: 12px 0 24px;
+    display: block;
+    margin: 12px 0 24px;
 }
 
 .admin-uploader-container button {
-  padding: 12px 24px;
-  background-color: #e86157;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+    padding: 12px 24px;
+    background-color: #e86157;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
 }
 
 .admin-uploader-container button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .admin-uploader-container button:hover:not(:disabled) {
-  background-color: #d14e46;
+    background-color: #d14e46;
 }
