@@ -5,8 +5,9 @@ import { storeData } from '../../data/storeData';
 import './storeDetail.css';
 import { storeDetailAssets } from '../../data/storeDetailAssets';
 import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore";
-import { auth, db } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
 import { useNavigate } from 'react-router-dom';
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 const tabs = ['가게메뉴', '상차림', '편의시설'];
 export default function StoreDetail() {
     const { name } = useParams();
@@ -100,9 +101,7 @@ export default function StoreDetail() {
         '상차림': 'side',
         '편의시설': 'amenities',
     };
-    const currentFolder = tabToFolderMap[activeTab];
     const MAX_IMAGES = 10;
-    const imageCandidates = Array.from({ length: MAX_IMAGES }, (_, i) => `${storeName}_${i + 1}`);
     if (!selectedStore)
         return _jsx("div", { children: "\uAC00\uAC8C \uC815\uBCF4\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4." });
     useEffect(() => {
@@ -157,8 +156,9 @@ export default function StoreDetail() {
         const fetchImages = async () => {
             try {
                 const folder = tabToFolderMap[activeTab];
-                const snap = await getDocs(collection(db, "stores", storeId, folder));
-                const urls = snap.docs.map((doc) => doc.data().url);
+                const folderRef = ref(storage, `stores/${storeId}/${folder}`);
+                const res = await listAll(folderRef);
+                const urls = await Promise.all(res.items.map((itemRef) => getDownloadURL(itemRef)));
                 setTabImages(urls);
             }
             catch (err) {
@@ -166,7 +166,6 @@ export default function StoreDetail() {
                 setTabImages([]);
             }
         };
-        console.log(tabImages);
         if (storeId)
             fetchImages();
     }, [activeTab, storeId]);

@@ -4,8 +4,9 @@ import { storeData } from '../../data/storeData'
 import './storeDetail.css'
 import { storeDetailAssets } from '../../data/storeDetailAssets'
 import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore"
-import { auth, db } from "../../firebase"
+import { auth, db, storage } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
+import { ref, listAll, getDownloadURL } from "firebase/storage"
 
 const tabs = ['가게메뉴', '상차림', '편의시설'] as const
 type Tab = typeof tabs[number]
@@ -151,9 +152,9 @@ export default function StoreDetail() {
         '편의시설': 'amenities',
     }
 
-    const currentFolder = tabToFolderMap[activeTab]
+
     const MAX_IMAGES = 10
-    const imageCandidates = Array.from({ length: MAX_IMAGES }, (_, i) => `${storeName}_${i + 1}`)
+
 
     if (!selectedStore) return <div>가게 정보를 찾을 수 없습니다.</div>
 
@@ -221,19 +222,22 @@ export default function StoreDetail() {
         const fetchImages = async () => {
             try {
                 const folder = tabToFolderMap[activeTab]
-                const snap = await getDocs(collection(db, "stores", storeId, folder))
-                const urls = snap.docs.map((doc) => doc.data().url as string)
+                const folderRef = ref(storage, `stores/${storeId}/${folder}`)
+                const res = await listAll(folderRef)
+
+                const urls = await Promise.all(
+                    res.items.map((itemRef) => getDownloadURL(itemRef))
+                )
+
                 setTabImages(urls)
             } catch (err) {
                 console.error("이미지 불러오기 오류:", err)
                 setTabImages([])
             }
         }
-        console.log(tabImages)
 
         if (storeId) fetchImages()
     }, [activeTab, storeId])
-
 
     return (
         <div className="store-detail-wrapper">
