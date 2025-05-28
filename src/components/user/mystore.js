@@ -5,7 +5,7 @@ import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { storeData } from "../../data/storeData"; // 로컬에 store 정보 있을 경우
 import { useNavigate } from "react-router-dom";
-import './myStore.css';
+import './mystore.css';
 export default function MyStore() {
     const [favoriteStores, setFavoriteStores] = useState([]);
     const [loading, setLoading] = useState(true);
