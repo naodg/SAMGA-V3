@@ -16,7 +16,7 @@ import Floating from './components/Floating'
 import Mypage from './components/auth/Mypage'
 import MyStore from './components/user/mystore'
 import MyReview from './components/user/myreview'
-import Myinfo from './components/user/MyInfo'
+import Myinfo from './components/user/Myinfo'
 import AdminImageUploader from './components/owner/AdminImageUploader'
 
 function AppContent() {
