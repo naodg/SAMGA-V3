@@ -2,9 +2,6 @@
   max-width: 500px;
   margin: 60px auto;
   padding: 160px 24px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
 .form-group {

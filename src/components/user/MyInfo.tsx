@@ -44,7 +44,7 @@ export default function Myinfo() {
 
   return (
     <div className="myinfo-container">
-      <h2>🛠 내 정보 수정</h2>
+      <h2>내 정보 수정</h2>
       <div className="form-group">
         <label>이름</label>
         <input value={nickname} onChange={(e) => setNickname(e.target.value)} />
