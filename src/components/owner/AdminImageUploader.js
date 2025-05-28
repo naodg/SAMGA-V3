@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage, auth } from "../../firebase";
 import { doc, getDoc, collection, addDoc, serverTimestamp, } from "firebase/firestore";
+import "./AdminImageUploader.css";
 export default function AdminImageUploader() {
     const { storeId } = useParams();
     const [tab, setTab] = useState("menu");
@@ -63,5 +64,5 @@ export default function AdminImageUploader() {
     };
     if (!storeId)
         return _jsx("div", { children: "\uAC00\uAC8C \uC815\uBCF4\uB97C \uBD88\uB7EC\uC624\uB294 \uC911\uC785\uB2C8\uB2E4..." });
-    return (_jsxs("div", { style: { padding: "20px" }, children: [_jsx("h2", { children: "\uD83D\uDCE4 \uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC (\uC0AC\uC7A5\uB2D8 \uC804\uC6A9)" }), _jsxs("div", { children: [_jsx("label", { children: "\uD0ED \uC120\uD0DD: " }), _jsxs("select", { value: tab, onChange: (e) => setTab(e.target.value), children: [_jsx("option", { value: "menu", children: "\uBA54\uB274" }), _jsx("option", { value: "side", children: "\uC0C1\uCC28\uB9BC" }), _jsx("option", { value: "amenities", children: "\uD3B8\uC758\uC2DC\uC124" })] })] }), _jsx("input", { type: "file", accept: "image/*", onChange: (e) => setFile(e.target.files?.[0] || null), disabled: uploading }), _jsx("button", { onClick: handleUpload, disabled: uploading || !file, children: uploading ? "업로드 중..." : "업로드" })] }));
+    return (_jsxs("div", { className: "admin-uploader-container", children: [_jsxs("div", { children: [_jsx("label", { children: "\uD0ED \uC120\uD0DD: " }), _jsxs("select", { value: tab, onChange: (e) => setTab(e.target.value), children: [_jsx("option", { value: "menu", children: "\uBA54\uB274" }), _jsx("option", { value: "side", children: "\uC0C1\uCC28\uB9BC" }), _jsx("option", { value: "amenities", children: "\uD3B8\uC758\uC2DC\uC124" })] })] }), _jsx("input", { type: "file", accept: "image/*", onChange: (e) => setFile(e.target.files?.[0] || null), disabled: uploading }), _jsx("button", { onClick: handleUpload, disabled: uploading || !file, children: uploading ? "업로드 중..." : "업로드" })] }));
 }

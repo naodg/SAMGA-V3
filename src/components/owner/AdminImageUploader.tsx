@@ -9,6 +9,7 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore"
+import "./AdminImageUploader.css"
 
 export default function AdminImageUploader() {
   const { storeId } = useParams<{ storeId: string }>()
@@ -81,9 +82,7 @@ export default function AdminImageUploader() {
   if (!storeId) return <div>가게 정보를 불러오는 중입니다...</div>
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>📤 이미지 업로드 (사장님 전용)</h2>
-
+    <div className="admin-uploader-container">
       <div>
         <label>탭 선택: </label>
         <select value={tab} onChange={(e) => setTab(e.target.value)}>
