@@ -166,7 +166,7 @@
   .nav-list li+li::before {
   content: '|';
   position: absolute;
-  left: -7px;
+  left: -10px;
 }
 
   /* 유저 메뉴 */
