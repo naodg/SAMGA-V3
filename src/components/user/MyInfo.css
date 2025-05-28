@@ -1,7 +1,7 @@
 .myinfo-container {
   max-width: 500px;
   margin: 60px auto;
-  padding: 160px 24px;
+  padding: 120px 24px;
 }
 
 .form-group {
@@ -23,7 +23,7 @@ input {
 
 button {
   padding: 12px 20px;
-  background: #e86157;
+  background: #ad5457;
   color: #fff;
   border: none;
   border-radius: 8px;

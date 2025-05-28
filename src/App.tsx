@@ -17,6 +17,7 @@ import Mypage from './components/auth/Mypage'
 import MyStore from './components/user/mystore'
 import MyReview from './components/user/myreview'
 import Myinfo from './components/user/Myinfo'
+import AdminImageUploader from './components/owner/AdminImageUploader'
 
 function AppContent() {
   const location = useLocation()
@@ -45,6 +46,7 @@ function AppContent() {
         <Route path="/write" element={<ReviewWritePage />} />
         <Route path="/review/:id" element={<ReviewDetailPage />} />
         <Route path="/admin/:storeId" element={<AdminDashboard />} />
+        <Route path="/admin/:storeId" element={<AdminImageUploader />} />
       </Routes>
 
       {!shouldHideFloating && <Floating />}
