@@ -3,7 +3,7 @@ import { auth, db } from "../../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import "./MyInfo.css";
 
-export default function MyInfo() {
+export default function Myinfo() {
   const [nickname, setNickname] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(true);

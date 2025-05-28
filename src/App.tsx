@@ -16,7 +16,7 @@ import Floating from './components/Floating'
 import Mypage from './components/auth/Mypage'
 import MyStore from './components/user/mystore'
 import MyReview from './components/user/myreview'
-import MyInfo from './components/user/Myinfo'
+import Myinfo from './components/user/Myinfo'
 
 function AppContent() {
   const location = useLocation()
@@ -36,7 +36,7 @@ function AppContent() {
         <Route path='/mypage' element={<Mypage/>}/>
         <Route path='/mypage/mystore' element={<MyStore/>} />
         <Route path='/myreview' element={<MyReview/>} />
-         <Route path='/myinfo' element={<MyInfo/>} />
+         <Route path='/myinfo' element={<Myinfo/>} />
 
         <Route path="/" element={<Mainthing />} />
         <Route path="/store/:name" element={<StoreDetail />} />
