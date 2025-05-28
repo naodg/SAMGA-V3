@@ -837,11 +837,11 @@
 @media (max-width: 900px) {
 
   .brand-divider-pc {
-   display: none;
+    display: none;
   }
 
   .brand-divider-m {
-   display: block;
+    display: block;
     width: 100%;
     border: none;
     border-top: 1px solid #AD5457;
@@ -854,7 +854,7 @@
     margin: 120px 0 0 0;
     display: inline-block;
   }
-  
+
 
 
 
@@ -973,6 +973,16 @@
 }
 
 @media (max-width: 900px) {
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    gap: 5px;
+  }
+
   .store-brand-wrapper {
     width: 100%;
     background: #fff;

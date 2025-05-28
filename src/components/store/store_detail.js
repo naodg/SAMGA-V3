@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { storeData } from '../../data/storeData';
 import './storeDetail.css';
 import { storeDetailAssets } from '../../data/storeDetailAssets';
-import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, } from "firebase/firestore";
+import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { useNavigate } from 'react-router-dom';
 const tabs = ['가게메뉴', '상차림', '편의시설'];
@@ -21,6 +21,7 @@ export default function StoreDetail() {
     const [storeRatings, setStoreRatings] = useState({});
     const storeIndex = storeData.findIndex(s => s.name === selectedStore.name);
     const average = storeRatings[storeId]?.average || 0;
+    const [tabImages, setTabImages] = useState([]);
     //  별
     const getStoreRatingData = async (storeId) => {
         const q = query(collection(db, "reviews"), where("storeId", "==", storeId));
@@ -120,29 +121,55 @@ export default function StoreDetail() {
         const user = auth.currentUser;
         if (!user)
             return alert("로그인 후 이용해주세요.");
-        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
         if (!userDoc.exists())
             return alert("유저 정보가 없습니다.");
         const { nickname, phone, email } = userDoc.data();
         const favRef = doc(db, "favorites", storeId, "users", user.uid);
         const favSnap = await getDoc(favRef);
         if (favSnap.exists()) {
+            // 단골 해제
             await deleteDoc(favRef);
+            await updateDoc(userRef, {
+                favorites: arrayRemove(storeId),
+            });
             setIsFavorite(false);
             alert("단골이 해제되었습니다!");
         }
         else {
+            // 단골 등록
             await setDoc(favRef, {
                 nickname,
                 phone,
                 email,
-                createdAt: new Date()
+                createdAt: new Date(),
+            });
+            await updateDoc(userRef, {
+                favorites: arrayUnion(storeId),
             });
             setIsFavorite(true);
             alert("단골로 등록되었습니다!");
         }
     };
     // console.log(selectedStore.detailImagelist)
+    // tab이미지
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const folder = tabToFolderMap[activeTab];
+                const snap = await getDocs(collection(db, "stores", storeId, folder));
+                const urls = snap.docs.map((doc) => doc.data().url);
+                setTabImages(urls);
+            }
+            catch (err) {
+                console.error("이미지 불러오기 오류:", err);
+                setTabImages([]);
+            }
+        };
+        if (storeId)
+            fetchImages();
+    }, [activeTab, storeId]);
     return (_jsxs("div", { className: "store-detail-wrapper", children: [_jsx("div", { className: "store-hero-image", style: { backgroundImage: `url(${selectedStore.detailimage})` } }), _jsxs("div", { className: "store-info-card", children: [_jsxs("div", { className: "store-name-stars", children: [_jsx("h2", { className: "store-name", children: selectedStore.name }), _jsxs("div", { className: "star-icons", children: [[...Array(5)].map((_, i) => {
                                         const value = i + 1;
                                         let src = '';
@@ -179,12 +206,7 @@ export default function StoreDetail() {
                             .filter((src) => /상세페이지_M_\d+\.(jpg|png)$/i.test(src))
                             .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) }), _jsx("div", { className: "detail-images-smobile only-smobile", children: selectedStore.detailImagelist
                             .filter((src) => /상세페이지_SM_\d+\.(jpg|png)$/i.test(src))
-                            .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) })] }), selectedStore.name === "도원식육식당" && (_jsxs("div", { className: "dowon-product-section", children: [_jsxs("div", { className: "dowon-product-inner", children: [_jsxs("div", { className: "dowon-product-title", children: ["\uC544\uC774\uB514\uC5B4\uC2A4 \uC778\uAE30\uC81C\uD488 ", _jsx("span", { className: "highlight", children: "\uAD6C\uB9E4\uD558\uAE30" })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-pc", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/bd28e21e-e78c-4296-ae61-1f48da56bbe2?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/5.png", alt: "5\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uBA85\uD488\uD55C\uC6B0\uC120\uBB3C)\uD55C\uC6B0\uD2B9\uBAA8\uB4EC0.6KG" })] }) })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-mobile", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) })] })] }), _jsx("div", { className: "idius-all", children: _jsxs("a", { href: "https://www.idus.com/v2/search?keyword=%EB%8F%84%EC%9B%90%20%ED%95%9C%EC%9A%B0&keyword_channel=user", target: "_blank", rel: "noopener noreferrer", children: ["\uBAA8\uB4E0 \uC0C1\uD488 \uBCF4\uAE30 ", _jsx("span", { className: "arrow", children: ">" })] }) })] })), _jsxs("div", { className: "store-detail-top-wrapper", children: [_jsx("div", { className: "tab-buttons", children: tabs.map(tab => (_jsx("button", { className: `tab-button ${activeTab === tab ? 'active' : ''}`, onClick: () => setActiveTab(tab), children: tab }, tab))) }), _jsx("div", { className: "store-images", children: imageCandidates.map((name, idx) => (['.jpg', '.JPG', '.png'].map((ext) => {
-                            const src = `/SAMGA-V3/samga/store/${currentFolder}/${name}${ext}`;
-                            return (_jsx("img", { src: src, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "store-image", onError: (e) => {
-                                    e.target.style.display = 'none';
-                                } }, src));
-                        }))) })] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/SAMGA-V3/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
+                            .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) })] }), selectedStore.name === "도원식육식당" && (_jsxs("div", { className: "dowon-product-section", children: [_jsxs("div", { className: "dowon-product-inner", children: [_jsxs("div", { className: "dowon-product-title", children: ["\uC544\uC774\uB514\uC5B4\uC2A4 \uC778\uAE30\uC81C\uD488 ", _jsx("span", { className: "highlight", children: "\uAD6C\uB9E4\uD558\uAE30" })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-pc", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/bd28e21e-e78c-4296-ae61-1f48da56bbe2?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/5.png", alt: "5\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uBA85\uD488\uD55C\uC6B0\uC120\uBB3C)\uD55C\uC6B0\uD2B9\uBAA8\uB4EC0.6KG" })] }) })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-mobile", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/SAMGA-V3/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) })] })] }), _jsx("div", { className: "idius-all", children: _jsxs("a", { href: "https://www.idus.com/v2/search?keyword=%EB%8F%84%EC%9B%90%20%ED%95%9C%EC%9A%B0&keyword_channel=user", target: "_blank", rel: "noopener noreferrer", children: ["\uBAA8\uB4E0 \uC0C1\uD488 \uBCF4\uAE30 ", _jsx("span", { className: "arrow", children: ">" })] }) })] })), _jsxs("div", { className: "store-detail-top-wrapper", children: [_jsx("div", { className: "tab-buttons", children: tabs.map(tab => (_jsx("button", { className: `tab-button ${activeTab === tab ? 'active' : ''}`, onClick: () => setActiveTab(tab), children: tab }, tab))) }), _jsx("div", { className: "store-images", children: tabImages.length === 0 ? (_jsx("p", { style: { padding: '20px', color: '#999' }, children: "\uB4F1\uB85D\uB41C \uC774\uBBF8\uC9C0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (tabImages.map((url, idx) => (_jsx("img", { src: url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "store-image" }, url)))) })] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/SAMGA-V3/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
                     // 리뷰가 있을 때
                     _jsx("div", { className: "store-review-list", children: storeReviews.map((review, idx) => {
                             const comments = reviewComments[review.id] || [];

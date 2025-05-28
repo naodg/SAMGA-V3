@@ -8,7 +8,7 @@
   background: #f3ece9;
   overflow: hidden;
   position: relative;
-  min-height: calc(var(--default-pixel) * 1.5);
+  min-height: calc(var(--default-pixel) * 1.75);
 }
 
 .map-gallery-inner {
@@ -47,9 +47,9 @@
 /* 패턴 배경 */
 .map-gallery-pattern {
   position: absolute;
-  top: var(--default-pixel);
+  top: calc(var(--default-pixel) * 1.03);
   width: 100vw;
-  height: 250px;
+  height: calc(var(--default-pixel) * 0.35);
   background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
   background-color: #B58575;
   z-index: 1;
@@ -220,6 +220,8 @@
   /* ✅ overflow 방지 */
   flex: 1 1 auto;
   /* ✅ 너비 조절 가능하게 */
+  padding: 0px !important;
+  margin-left: 10px;
 }
 
 /* 🔧 별점 */
@@ -335,7 +337,7 @@
 @media (max-width: 1000px) {
 
     .map-gallery-wrapper {
-    min-height: calc(120vw * 1.35);
+    min-height: calc(110vw * 1.5);
     }
 
     .map-gallery-floating-box {
@@ -362,7 +364,7 @@
 @media (max-width: 500px) {
 
     .map-gallery-wrapper {
-    min-height: calc(125vw * 1.35);
+    min-height: calc(120vw * 1.55);
     }
 
     .map-gallery-floating-box {
@@ -383,7 +385,30 @@
 @media (max-width: 400px) {
 
     .map-gallery-wrapper {
-    min-height: calc(140vw * 1.35);
+    min-height: calc(135vw * 1.35);
+    }
+
+    .map-gallery-floating-box {
+      top: calc(120vw * 0.65);
+    }
+
+    #map {
+      min-height: calc(100vw * 0.35);
+    }
+
+    .map-gallery-pattern {
+      top: calc(135vw * 0.99);
+      height: calc(90vw * 0.25);
+    }
+
+}
+
+
+
+@media (max-width: 370px) {
+
+    .map-gallery-wrapper {
+    min-height: calc(145vw * 1.35);
     }
 
     .map-gallery-floating-box {
@@ -400,9 +425,6 @@
     }
 
 }
-
-
-
 
 
 
@@ -517,6 +539,7 @@
   align-items: center;
   margin-bottom: 6px;
   gap: 4px;
+  padding: 0px !important;
   /* 주소와 길찾기 사이 공간 */
 }
 

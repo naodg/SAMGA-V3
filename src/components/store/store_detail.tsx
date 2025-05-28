@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { storeData } from '../../data/storeData'
 import './storeDetail.css'
 import { storeDetailAssets } from '../../data/storeDetailAssets'
-import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, } from "firebase/firestore"
+import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore"
 import { auth, db } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -47,6 +47,9 @@ export default function StoreDetail() {
 
     const storeIndex = storeData.findIndex(s => s.name === selectedStore.name)
     const average = storeRatings[storeId]?.average || 0
+
+    const [tabImages, setTabImages] = useState<string[]>([])
+
 
     //  별
     const getStoreRatingData = async (storeId: string) => {
@@ -171,33 +174,66 @@ export default function StoreDetail() {
     }, [storeId])
 
 
+
+
     const handleToggle = async () => {
-        const user = auth.currentUser
-        if (!user) return alert("로그인 후 이용해주세요.")
+        const user = auth.currentUser;
+        if (!user) return alert("로그인 후 이용해주세요.");
 
-        const userDoc = await getDoc(doc(db, "users", user.uid))
-        if (!userDoc.exists()) return alert("유저 정보가 없습니다.")
-        const { nickname, phone, email } = userDoc.data()
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
+        if (!userDoc.exists()) return alert("유저 정보가 없습니다.");
 
-        const favRef = doc(db, "favorites", storeId, "users", user.uid)
-        const favSnap = await getDoc(favRef)
+        const { nickname, phone, email } = userDoc.data();
+
+        const favRef = doc(db, "favorites", storeId, "users", user.uid);
+        const favSnap = await getDoc(favRef);
 
         if (favSnap.exists()) {
-            await deleteDoc(favRef)
-            setIsFavorite(false)
-            alert("단골이 해제되었습니다!")
+            // 단골 해제
+            await deleteDoc(favRef);
+            await updateDoc(userRef, {
+                favorites: arrayRemove(storeId),
+            });
+            setIsFavorite(false);
+            alert("단골이 해제되었습니다!");
         } else {
+            // 단골 등록
             await setDoc(favRef, {
                 nickname,
                 phone,
                 email,
-                createdAt: new Date()
-            })
-            setIsFavorite(true)
-            alert("단골로 등록되었습니다!")
+                createdAt: new Date(),
+            });
+
+            await updateDoc(userRef, {
+                favorites: arrayUnion(storeId),
+            });
+
+            setIsFavorite(true);
+            alert("단골로 등록되었습니다!");
         }
-    }
+    };
+
     // console.log(selectedStore.detailImagelist)
+
+    // tab이미지
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const folder = tabToFolderMap[activeTab]
+                const snap = await getDocs(collection(db, "stores", storeId, folder))
+                const urls = snap.docs.map((doc) => doc.data().url as string)
+                setTabImages(urls)
+            } catch (err) {
+                console.error("이미지 불러오기 오류:", err)
+                setTabImages([])
+            }
+        }
+
+        if (storeId) fetchImages()
+    }, [activeTab, storeId])
+
 
     return (
         <div className="store-detail-wrapper">
@@ -402,7 +438,7 @@ export default function StoreDetail() {
                 </div>
 
 
-                 {/* ✅ 모바일 환경일 때만 보여짐 */}
+                {/* ✅ 모바일 환경일 때만 보여짐 */}
                 <div className="detail-images-smobile only-smobile">
                     {selectedStore.detailImagelist
                         .filter((src) => /상세페이지_SM_\d+\.(jpg|png)$/i.test(src))
@@ -522,23 +558,20 @@ export default function StoreDetail() {
 
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
-                    {imageCandidates.map((name, idx) => (
-                        ['.jpg', '.JPG', '.png'].map((ext) => {
-                            const src = `/SAMGA-V3/samga/store/${currentFolder}/${name}${ext}`
-                            return (
-                                <img
-                                    key={src}
-                                    src={src}
-                                    alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                    className="store-image"
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).style.display = 'none'
-                                    }}
-                                />
-                            )
-                        })
-                    ))}
+                    {tabImages.length === 0 ? (
+                        <p style={{ padding: '20px', color: '#999' }}>등록된 이미지가 없습니다.</p>
+                    ) : (
+                        tabImages.map((url, idx) => (
+                            <img
+                                key={url}
+                                src={url}
+                                alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                className="store-image"
+                            />
+                        ))
+                    )}
                 </div>
+
             </div>
 
 

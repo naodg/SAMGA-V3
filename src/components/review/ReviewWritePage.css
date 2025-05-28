@@ -95,7 +95,7 @@
 /* ✅ 반응형 */
 @media (max-width: 900px) {
   .review-write-page {
-    padding: 100px 20px;
+    padding: 80px 20px 100px;
   }
 
   .review-input,

@@ -19,7 +19,6 @@ import MyReview from './components/user/myreview'
 import Myinfo from './components/user/Myinfo'
 import AdminImageUploader from './components/owner/AdminImageUploader'
 
-
 function AppContent() {
   const location = useLocation()
   const hideFloatingRoutes = ["/login", "/signup", "/review"]
