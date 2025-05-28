@@ -44,7 +44,7 @@ export default function MyReview() {
 
   return (
     <div className="myreview-container">
-      <h2>📝 내가 작성한 리뷰</h2>
+      {/* <h2>📝 내가 작성한 리뷰</h2> */}
       {myReviews.length === 0 ? (
         <p>작성한 리뷰가 없습니다.</p>
       ) : (
