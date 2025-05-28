@@ -78,7 +78,7 @@ export default function Mypage() {
               onClick={() => {navigate("/mypage/mystore") }}
             >찜한 가게 목록</li>
             <li
-            // onClick={() => { navigate(`/mypage/myreview`); }}
+            onClick={() => { navigate(`/myinfo`); }}
             >내 정보 수정</li>
           </ul>
         </div>
