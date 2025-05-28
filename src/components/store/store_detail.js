@@ -105,7 +105,6 @@ export default function StoreDetail() {
     const imageCandidates = Array.from({ length: MAX_IMAGES }, (_, i) => `${storeName}_${i + 1}`);
     if (!selectedStore)
         return _jsx("div", { children: "\uAC00\uAC8C \uC815\uBCF4\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4." });
-    console.log(selectedStore.detailImagelist);
     useEffect(() => {
         const checkFavorite = async () => {
             const user = auth.currentUser;
@@ -167,6 +166,7 @@ export default function StoreDetail() {
                 setTabImages([]);
             }
         };
+        console.log(tabImages);
         if (storeId)
             fetchImages();
     }, [activeTab, storeId]);

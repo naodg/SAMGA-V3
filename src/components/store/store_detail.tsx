@@ -158,7 +158,6 @@ export default function StoreDetail() {
     if (!selectedStore) return <div>가게 정보를 찾을 수 없습니다.</div>
 
 
-    console.log(selectedStore.detailImagelist)
 
     useEffect(() => {
         const checkFavorite = async () => {
@@ -230,6 +229,7 @@ export default function StoreDetail() {
                 setTabImages([])
             }
         }
+        console.log(tabImages)
 
         if (storeId) fetchImages()
     }, [activeTab, storeId])

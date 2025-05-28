@@ -55,11 +55,11 @@ useEffect(() => {
             ) : favoriteStores.length === 0 ? (
                 <p>단골 등록한 가게가 없습니다.</p>
             ) : (
-                <div className="store-list">
+                <div className="mystore-list">
                     {favoriteStores.map((store, index) => (
                         <div
                             key={store.name || index}
-                            className="store-card"
+                            className="mystore-card"
                             onClick={() =>
                                 store.name && navigate(`/store/${encodeURIComponent(store.name)}`)
                             }
@@ -68,8 +68,8 @@ useEffect(() => {
                                 src={store.filterimage || "/default.jpg"}
                                 alt={store.name || "가게 이미지"}
                             />
-                            <div className="store-name">{store.name}</div>
-                            <div className="store-address">{store.address}</div>
+                            <div className="mystore-name">{store.name}</div>
+                            <div className="mystore-address">{store.address}</div>
                         </div>
                     ))}
                 </div>
