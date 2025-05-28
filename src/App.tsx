@@ -46,7 +46,7 @@ function AppContent() {
         <Route path="/write" element={<ReviewWritePage />} />
         <Route path="/review/:id" element={<ReviewDetailPage />} />
         <Route path="/admin/:storeId" element={<AdminDashboard />} />
-        <Route path="/admin/:storeId" element={<AdminImageUploader />} />
+        <Route path="/uploader/:storeId" element={<AdminImageUploader />} />
       </Routes>
 
       {!shouldHideFloating && <Floating />}
