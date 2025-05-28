@@ -51,14 +51,14 @@ export default function MyReview() {
         <div className="review-list">
           {myReviews.map((review) => {
             const storeIndex = parseInt(review.storeId.replace("store", ""));
-            const store = storeData[storeIndex - 1]; // store9 → storeData[8]
+            const store = storeData[storeIndex - 1];
             return (
               <div
                 className="review-card"
                 key={review.id}
-                onClick={() => navigate(`/store/${store?.name}`)}
+                onClick={() => navigate(`/review/${review.id}`)}  // ✅ 여기!!
               >
-                <div className="review-store">🏪 {store?.name || "알 수 없는 가게"}</div>
+                <div className="review-store">{store?.name || "알 수 없는 가게"}</div>
                 <div className="review-star">⭐ {review.star}</div>
                 <div className="review-content">{review.content}</div>
                 <div className="review-date">
@@ -67,6 +67,7 @@ export default function MyReview() {
               </div>
             );
           })}
+
         </div>
       )}
     </div>
