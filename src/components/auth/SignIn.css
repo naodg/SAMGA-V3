@@ -1,7 +1,4 @@
 .signin-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background: #f3ece9;
 }
 
@@ -18,16 +15,26 @@
 }
 
 .auth-image {
-    position: absolute;
-    top: 386px;
-    width: 1600px;
-    height: 1000px;
-    right: 24%;
-    background-image: url("/img/logo/짤린소탈이.svg");
-    z-index: 15;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.15;
+  position: absolute;
+  top: 386px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+
+  width: 90vw; /* 뷰포트 너비의 90% */
+  max-width: 1600px;
+
+  height: 80vw;
+  max-height: 800px;
+
+  background-image: url("/img/logo/짤린소탈이.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; /* 이미지 비율 유지하며 축소 */
+
+  z-index: 15;
+  opacity: 0.15;
+  pointer-events: none; /* 클릭 막기 */
 }
 
 /* ✅ 모바일용 이미지로 변경 */
