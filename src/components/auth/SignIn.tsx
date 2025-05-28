@@ -79,10 +79,10 @@ export default function Signin() {
     }
 
     return (
-        <div className="signup-page">
-            <div className="signup-wrapper">
+        <div className="signin-page">
+            <div className="signin-wrapper">
                 <div className="auth-image" />
-                <div className="signup-text">로그인</div>
+                <div className="signin-text">로그인</div>
                 <form onSubmit={handleLogin}>
                     <input
                         type="email"
