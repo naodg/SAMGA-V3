@@ -51,7 +51,15 @@ export default function Mypage() {
         <div className="owner-view">
           <h3>사장님 전용 기능</h3>
           <ul>
-            <li>이미지 추가하기</li>
+            <li
+              onClick={() => {
+                if (storeId) {
+                  navigate(`/adminuploader/${storeId}`);
+                } else {
+                  alert("가게 정보가 없습니다.");
+                }
+              }}
+            >이미지 추가하기</li>
             <li
               onClick={() => {
                 if (storeId) {
@@ -75,10 +83,10 @@ export default function Mypage() {
               onClick={() => navigate("/myreview")}
             >내가 쓴 리뷰 보기</li>
             <li
-              onClick={() => {navigate("/mypage/mystore") }}
+              onClick={() => { navigate("/mypage/mystore") }}
             >찜한 가게 목록</li>
             <li
-            onClick={() => { navigate(`/myinfo`); }}
+              onClick={() => { navigate(`/myinfo`); }}
             >내 정보 수정</li>
           </ul>
         </div>
