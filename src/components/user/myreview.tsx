@@ -36,6 +36,7 @@ export default function MyReview() {
       const snap = await getDocs(q);
       const list = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Review[];
       setMyReviews(list);
+      // console.log(list)
     };
 
     fetchReviews();
