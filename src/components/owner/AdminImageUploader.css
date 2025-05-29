@@ -6,46 +6,71 @@
 }
 
 .admin-uploader-container h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #222;
+  text-align: center;
 }
 
 .admin-uploader-container label {
-    font-weight: 600;
-    margin-right: 8px;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
 }
 
-.admin-uploader-container select {
-    padding: 10px 14px;
-    font-size: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 24px;
-}
-
+.admin-uploader-container select,
 .admin-uploader-container input[type="file"] {
-    display: block;
-    margin: 12px 0 24px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.admin-uploader-container select:focus,
+.admin-uploader-container input[type="file"]:focus {
+  outline: none;
+  border-color: #ad5457;
+  box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.2);
 }
 
 .admin-uploader-container button {
-    padding: 12px 24px;
-    background-color: #e86157;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
+  width: 100%;
+  padding: 14px;
+  background-color: #ad5457;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .admin-uploader-container button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-.admin-uploader-container button:hover:not(:disabled) {
-    background-color: #d14e46;
+.admin-uploader-container button:hover:enabled {
+  background-color: #863f41;
+}
+
+.preview-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .admin-uploader-container {
+    margin: 60px 16px;
+    padding: 30px 20px;
+  }
 }

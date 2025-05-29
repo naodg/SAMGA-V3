@@ -17,18 +17,18 @@
   z-index: 10;
 }
 
-.auth-image {
+/* .auth-image {
   position: absolute;
   top: 386px;
   width: 1600px;
   height: 1000px;
   right: 24%;
-  background-image: url("/img/logo/짤린소탈이.svg");
+  background-image: url("/img/logo/짤린소탈이.png");
   z-index: 15;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.15;
-}
+} */
 
 
 .signup-text {
@@ -38,7 +38,7 @@
   z-index: 20;
 }
 
-.signup-wrapper input {
+.signup-wrapper .siginup-input  {
   position: relative; 
   min-width: 400px;
   min-height: 35px;
@@ -119,7 +119,7 @@
         background-position: center;
     }
 
-    .signup-wrapper input {
+    .signup-wrapper .siginup-input {
         position: relative;
         max-width: 300px;
         min-height: 35px;
@@ -143,6 +143,68 @@
         margin-bottom: 16px;
         font-weight: bold;
         z-index: 20;
+    }
+
+    .kakao {
+        background-color: #FEE500;
+        color: #3C1E1E;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 400px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+    }
+}
+
+
+/* ✅ 모바일용 이미지로 변경 */
+@media screen and (max-width: 376px) {
+    .auth-image {
+        width: 600px;
+        height: 800px;
+        top: 15px;
+        left: calc(105vh * -0.5);
+        /* transform: translateX(-25%); */
+        background-image: url("/img/logo/정직한 소탈이.svg");
+        /* ✅ 모바일용 이미지 */
+        background-size: contain;
+        background-position: center;
+    }
+
+    .signup-wrapper .siginup-input {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        min-height: 35px;
+        margin-bottom: 15px;
+        z-index: 20;
+        border-radius: 20px;
+    }
+
+    /* 일반 버튼 (회원가입 / 로그인 등) */
+    .Buttons {
+        position: relative;
+        background-color: #896858;
+        /* 따뜻한 갈색 */
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 300px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        font-weight: bold;
+        z-index: 200;
     }
 
     .kakao {

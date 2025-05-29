@@ -85,6 +85,7 @@ export default function Signin() {
                 <div className="signin-text">로그인</div>
                 <form onSubmit={handleLogin}>
                     <input
+                        className="siginin-input"
                         type="email"
                         placeholder="이메일"
                         value={email}
@@ -93,6 +94,7 @@ export default function Signin() {
                     />
                     <br />
                     <input
+                        className="siginin-input"
                         type="password"
                         placeholder="비밀번호"
                         value={password}

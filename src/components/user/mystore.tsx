@@ -49,7 +49,7 @@ useEffect(() => {
 
     return (
         <div className="mystore-container">
-            <h2>📌 내가 단골 등록한 가게</h2>
+            <h2>내가 단골 등록한 가게</h2>
             {loading ? (
                 <p>로딩 중...</p>
             ) : favoriteStores.length === 0 ? (

@@ -47,13 +47,13 @@ export default function Myinfo() {
       <h2>내 정보 수정</h2>
       <div className="form-group">
         <label>이름</label>
-        <input value={nickname} onChange={(e) => setNickname(e.target.value)} />
+        <input className="myinfo-input" value={nickname} onChange={(e) => setNickname(e.target.value)} />
       </div>
       <div className="form-group">
         <label>전화번호</label>
-        <input value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <input className="myinfo-input" value={phone} onChange={(e) => setPhone(e.target.value)} />
       </div>
-      <button onClick={handleUpdate}>저장</button>
+      <button className="myinfo-button" onClick={handleUpdate}>저장</button>
     </div>
   );
 }

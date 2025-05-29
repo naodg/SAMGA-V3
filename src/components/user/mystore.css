@@ -1,5 +1,5 @@
 .mystore-container {
-  padding: 120px 24px;
+  padding: 130px 24px;
   max-width: 1100px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 32px;
-  margin-top: 60px;
+  margin-top: 30px;
   min-height: 300px; /* 👈 이거 추가 */
 }
 
@@ -23,7 +23,6 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-   border: 2px solid red;
 }
 
 .mystore-card:hover {
@@ -51,4 +50,11 @@
   color: #555;
   padding: 0 16px 16px;
   line-height: 1.4;
+}
+
+
+@media screen and (max-width: 900px) {
+  .mystore-container {
+  padding: 60px 24px;
+}
 }

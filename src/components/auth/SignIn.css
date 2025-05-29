@@ -15,88 +15,31 @@
 }
 
 .auth-image {
-  position: absolute;
-  top: calc(105vw * 0.06);
-  right: 0;
-  left: 0;
-  margin: 0 auto;
+    position: absolute;
+    top: calc(105vw * 0.06);
+    right: 0;
+    left: 0;
+    margin: 0 auto;
 
-  width: 90vw; /* 뷰포트 너비의 90% */
-  max-width: 1600px;
+    width: 90vw;
+    /* 뷰포트 너비의 90% */
+    max-width: 1600px;
 
-  height: 80vw;
-  max-height: 800px;
+    height: 80vw;
+    max-height: 800px;
 
-  background-image: url("/img/logo/짤린소탈이.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* 이미지 비율 유지하며 축소 */
+    background-image: url("/img/logo/짤린소탈이.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* 이미지 비율 유지하며 축소 */
 
-  z-index: 15;
-  opacity: 0.25;
-  pointer-events: none; /* 클릭 막기 */
+    z-index: 15;
+    opacity: 0.25;
+    pointer-events: none;
+    /* 클릭 막기 */
 }
 
-/* ✅ 모바일용 이미지로 변경 */
-@media screen and (max-width: 900px) {
-    .auth-image {
-        width: 600px;
-        height: 800px;
-        top: 15px;
-        left: -55%;
-        /* transform: translateX(-25%); */
-        background-image: url("/img/logo/정직한 소탈이.svg");
-        /* ✅ 모바일용 이미지 */
-        background-size: contain;
-        /* 필요 시 contain → cover로 변경 */
-        background-position: center;
-    }
-
-    .signin-wrapper input {
-        position: relative;
-        max-width: 300px;
-        min-height: 35px;
-        margin-bottom: 15px;
-        z-index: 20;
-        border-radius: 20px;
-    }
-
-    /* 일반 버튼 (회원가입 / 로그인 등) */
-    .Buttons {
-        position: relative;
-        background-color: #896858;
-        /* 따뜻한 갈색 */
-        color: white;
-        font-size: 16px;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 40px;
-        max-width: 300px;
-        text-align: center;
-        cursor: pointer;
-        margin-bottom: 16px;
-        font-weight: bold;
-        z-index: 200;
-    }
-
-    .kakao {
-        background-color: #FEE500;
-        color: #3C1E1E;
-        font-size: 16px;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 40px;
-        max-width: 400px;
-        text-align: center;
-        cursor: pointer;
-        font-weight: bold;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 20;
-    }
-}
 
 
 .signin-text {
@@ -106,7 +49,7 @@
     z-index: 20;
 }
 
-.signin-wrapper input {
+.signin-wrapper .siginin-input {
     position: relative;
     min-width: 400px;
     min-height: 35px;
@@ -163,6 +106,7 @@
     background-color: #f7d600;
 }
 
+
 /* 카카오 말풍선 아이콘 (선택) */
 .kakao::before {
     content: '';
@@ -174,4 +118,130 @@
     height: 20px;
     margin-right: 8px;
     display: inline-block;
+}
+
+
+/* ✅ 모바일용 이미지로 변경 */
+@media screen and (max-width: 900px) {
+    
+    .auth-image {
+        width: 600px;
+        height: 800px;
+        top: 15px;
+        left: calc(105vh * -0.4);
+        /* transform: translateX(-25%); */
+        background-image: url("/img/logo/정직한 소탈이.svg");
+        /* ✅ 모바일용 이미지 */
+        background-size: contain;
+        background-position: center;
+    }
+
+    .signin-wrapper .siginin-input {
+        position: relative;
+        max-width: 250px !;
+        min-height: 35px;
+        margin-bottom: 15px;
+        z-index: 20;
+        border-radius: 20px;
+    }
+
+    /* 일반 버튼 (회원가입 / 로그인 등) */
+    .Buttons {
+        position: relative;
+        background-color: #896858;
+        /* 따뜻한 갈색 */
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 300px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        font-weight: bold;
+        z-index: 200;
+    }
+
+    .kakao {
+        background-color: #FEE500;
+        color: #3C1E1E;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 400px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+    }
+}
+
+
+
+
+/* ✅ 모바일용 이미지로 변경 */
+@media screen and (max-width: 376px) {
+    .auth-image {
+        width: 600px;
+        height: 800px;
+        top: 15px;
+        left: calc(105vh * -0.5);
+        /* transform: translateX(-25%); */
+        background-image: url("/img/logo/정직한 소탈이.svg");
+        /* ✅ 모바일용 이미지 */
+        background-size: contain;
+        background-position: center;
+    }
+
+    .signin-wrapper .siginin-input {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        min-height: 35px;
+        margin-bottom: 15px;
+        z-index: 20;
+        border-radius: 20px;
+    }
+
+    /* 일반 버튼 (회원가입 / 로그인 등) */
+    .Buttons {
+        position: relative;
+        background-color: #896858;
+        /* 따뜻한 갈색 */
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 300px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        font-weight: bold;
+        z-index: 200;
+    }
+
+    .kakao {
+        background-color: #FEE500;
+        color: #3C1E1E;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 40px;
+        max-width: 400px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+    }
 }
