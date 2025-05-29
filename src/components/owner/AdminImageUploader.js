@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from "firebase/storage";
-import { storage } from "../../firebase";
+import { storage, auth } from "../../firebase";
 import "./AdminImageUploader.css";
 export default function AdminImageUploader() {
     const { storeId } = useParams();
@@ -60,8 +60,11 @@ export default function AdminImageUploader() {
         if (!confirmDelete)
             return;
         try {
+            console.log("현재 로그인된 유저:", auth.currentUser?.uid);
             const pathStart = `https://firebasestorage.googleapis.com/v0/b/`;
-            const filePath = decodeURIComponent(url.split("?alt=")[0].replace(pathStart, ""));
+            // const filePath = decodeURIComponent(url.split("?alt=")[0].replace(pathStart, ""))
+            const filePath = decodeURIComponent(url.split("/o/")[1].split("?")[0]); // ✅ 'stores/store1/menu/대가1호점_1.jpg'
+            console.log("path:", filePath);
             const storageRef = ref(storage, filePath);
             await deleteObject(storageRef);
             alert("삭제 완료!");
