@@ -6,7 +6,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore"
 import "./SignUp.css"
 import { useEffect } from "react"
 import { getAuth, signInWithCustomToken } from "firebase/auth"
-
+import { useNavigate } from "react-router-dom"
 
 declare global {
     interface Window {
@@ -24,6 +24,8 @@ export default function SignUp() {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
 
+    const navigate = useNavigate()
+    
     const validatePhone = (value: string) => {
         const phoneRegex = /^01[016789]-\d{3,4}-\d{4}$/;
 
@@ -66,13 +68,14 @@ export default function SignUp() {
                 createdAt: new Date()
             })
 
-            await sendEmailVerification(user)
-            setSuccess("회원가입이 완료되었습니다! 이메일을 확인해주세요.")
+            // await sendEmailVerification(user)
+            setSuccess("회원가입이 완료되었습니다! ")
 
             setEmail("")
             setPassword("")
             setNickname("")
             setPhone("")
+            navigate("/") // ✅ 메인 페이지로 이동
         } catch (err: any) {
             if (err.code === "auth/email-already-in-use") {
                 setError("이미 가입된 이메일입니다.")

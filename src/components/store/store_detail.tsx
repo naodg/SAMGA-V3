@@ -38,6 +38,7 @@ export default function StoreDetail() {
     const [activeTab, setActiveTab] = useState<Tab>('가게메뉴')
     const [showAllFacilities, setShowAllFacilities] = useState(false)
     const titles = storeDetailAssets[selectedStore.name] || []
+    const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
     const navigate = useNavigate();
 
@@ -238,6 +239,15 @@ export default function StoreDetail() {
 
         if (storeId) fetchImages()
     }, [activeTab, storeId])
+
+    // 이미지 확대
+    const handleImageClick = (url: string) => {
+        setSelectedImage(url)
+    }
+
+    const handleCloseModal = () => {
+        setSelectedImage(null)
+    }
 
     return (
         <div className="store-detail-wrapper">
@@ -571,10 +581,21 @@ export default function StoreDetail() {
                                 src={url}
                                 alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
                                 className="store-image"
+                                onClick={() => handleImageClick(url)} // ✅ 클릭 이벤트 추가
                             />
                         ))
                     )}
+
                 </div>
+                {/* ✅ 모달 */}
+                {selectedImage && (
+                    <div className="image-modal-overlay" onClick={handleCloseModal}>
+                        <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                            <img src={selectedImage} alt="확대 이미지" />
+                            <button className="image-modal-close" onClick={handleCloseModal}>×</button>
+                        </div>
+                    </div>
+                )}
 
             </div>
 

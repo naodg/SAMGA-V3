@@ -40,7 +40,8 @@ export default function AdminImageUploader() {
         setUploading(true);
         try {
             const sanitizedFileName = file.name.replaceAll("/", "_").replaceAll(" ", "_");
-            const path = `stores/${storeId}/${tab}/${sanitizedFileName}`;
+            const sanitizedStoreId = storeId.replaceAll("/", "_");
+            const path = `stores/${sanitizedStoreId}/${tab}/${sanitizedFileName}`;
             const storageRef = ref(storage, path);
             await uploadBytes(storageRef, file);
             alert("업로드 완료!");
