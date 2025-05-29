@@ -41,7 +41,7 @@
 .myinfo-button {
   width: 100%;
   padding: 14px;
-  background-color: #8b4245;
+  background-color: #ad5457;
   color: white;
   border: none;
   border-radius: 8px;
@@ -52,7 +52,11 @@
 }
 
 .myinfo-button:hover {
-  background-color: #e0752d;
+  background-color: #8b4245;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 @media (max-width: 600px) {

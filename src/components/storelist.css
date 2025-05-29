@@ -196,13 +196,14 @@
 }
 
 .slogan-img {
-  height: 170px;
+  height: 150px;
 }
 
 .banner-subtitle {
   /* color: #912c2c; */
   font-size: 25px;
   margin-top: 30px;
+  letter-spacing: -0.6px; 
 }
 
 .bolder {
@@ -213,6 +214,7 @@
 .banner-title {
   font-size: 52px;
   font-weight: bold;
+  letter-spacing: -0.6px; 
 }
 
 /* 슬라이드 카드 */
