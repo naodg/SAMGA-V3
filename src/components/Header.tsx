@@ -92,11 +92,8 @@ export default function Header() {
               <li onClick={() => navigate('/review')}>리뷰</li>
             </ul>
           </nav>
-          <div className={`mobile-menu-icon ${isStoreDetailPage ? 'white-logo' : ''
-            }`} onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className={`mobile-menu-icon`} onClick={toggleMenu}>
+            <img src={isStoreDetailPage ? "/SAMGA-V3/img/icon/mypagewhite.svg" : "/SAMGA-V3/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
           </div>
         </div>
 
