@@ -140,29 +140,6 @@ export default function ReviewListPage() {
     fetchUserInfo()
   }, [])
 
-  const handleSubmitReply = async (reviewId: string) => {
-    const user = auth.currentUser
-    if (!user) return alert("로그인 필요")
-
-    const docRef = doc(db, "users", user.uid)
-    const snap = await getDoc(docRef)
-    const nickname = snap.exists() ? snap.data().nickname : "알 수 없음"
-
-    if (!replyContent[reviewId]?.trim()) {
-      return alert("내용을 입력해주세요.")
-    }
-
-    await addDoc(collection(db, "reviews", reviewId, "comments"), {
-      content: replyContent[reviewId],
-      createdAt: serverTimestamp(),
-      nickname,
-      userId: user.uid,
-    })
-
-    alert("답글이 등록되었습니다!")
-    setReplyContent(prev => ({ ...prev, [reviewId]: "" }))
-    setShowReplyForm(prev => ({ ...prev, [reviewId]: false }))
-  }
 
   const fetchCommentsForReview = async (reviewId: string) => {
     const commentSnapshot = await getDocs(
@@ -261,7 +238,8 @@ export default function ReviewListPage() {
 
                   <div className="review-main">
                     <div className="review-header">
-                      <h3 className="store-name">{store.name}</h3>
+                      <span className="review-nickname">작성자: {review.nickname}</span>
+                      {/* <h3 className="store-name">{store.name}</h3>
                       <div className="review-stars">
                         {[...Array(5)].map((_, i) => {
                           const value = i + 1;
@@ -274,11 +252,25 @@ export default function ReviewListPage() {
                           return <img key={i} src={src} className="star-icon" alt="별" />;
                         })}
                         <span className="review-star-value">{(review.star ?? 0).toFixed(1)}점</span>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="review-content">
                       <p>{review.content}</p>
+                    </div>
+
+                    <div className="review-stars">
+                      {[...Array(5)].map((_, i) => {
+                        const value = i + 1;
+                        const src =
+                          review.star >= value
+                            ? "/SAMGA-V3/img/icon/단골등록해제.svg"
+                            : review.star + 0.5 >= value
+                              ? "/SAMGA-V3/img/icon/반쪽자리별.svg"
+                              : "/SAMGA-V3/img/icon/단골등록.svg";
+                        return <img key={i} src={src} className="star-icon" alt="별" />;
+                      })}
+                      <span className="review-star-value">{(review.star ?? 0).toFixed(1)}점</span>
                     </div>
 
                     <div className="review-footer">
@@ -309,8 +301,8 @@ export default function ReviewListPage() {
                         <span>{commentsMap[review.id]?.length}</span>
                       </div>
                       <div className="review-meta">
-                        <span className="review-nickname">작성자: {review.nickname}</span>
-                        <br />
+                        {/* <span className="review-nickname">작성자: {review.nickname}</span>
+                        <br /> */}
                         <span className="review-date">
                           {review.createdAt?.toDate().toLocaleString() || "날짜 없음"}
                         </span>

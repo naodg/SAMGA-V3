@@ -45,7 +45,7 @@
   /* ✅ grid overflow 방지 */
   box-sizing: border-box;
   /* ✅ padding 포함 계산 */
-  
+
 }
 
 
@@ -124,7 +124,7 @@
 .review-content p {
   font-size: 16px;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.2;
   height: 72px;
   /* 2~3줄 정도 높이 제한 */
   overflow: hidden;
@@ -160,8 +160,10 @@
   color: #888;
   text-align: right;
   display: flex;
-  flex-direction: column; /* 세로 정렬 */
-  align-items: flex-start;   /* 오른쪽 정렬 유지 */
+  flex-direction: column;
+  /* 세로 정렬 */
+  align-items: flex-start;
+  /* 오른쪽 정렬 유지 */
 }
 
 .review-meta span {
@@ -171,10 +173,11 @@
 }
 
 
-.review-meta .review-nickname {
+.review-header .review-nickname {
   font-weight: bold;
-   display: block;
-  margin-right: 0; /* 세로 정렬이니까 오른쪽 여백 필요 없음 */
+  display: block;
+  margin-right: 0;
+  /* 세로 정렬이니까 오른쪽 여백 필요 없음 */
 }
 
 

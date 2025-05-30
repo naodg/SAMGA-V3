@@ -573,14 +573,14 @@ export default function StoreDetail() {
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
                     {tabImages.length === 0 ? (
-                        <p style={{ padding: '20px', color: '#999' }}>등록된 이미지가 없습니다.</p>
+                        <p style={{ textAlign:'center', color: '#999' }}>등록된 이미지가 없습니다.</p>
                     ) : (
                         tabImages.map((url, idx) => (
                             <img
                                 key={url}
                                 src={url}
                                 alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                className="store-image"
+                                className="store-tab-image"
                                 onClick={() => handleImageClick(url)} // ✅ 클릭 이벤트 추가
                             />
                         ))
