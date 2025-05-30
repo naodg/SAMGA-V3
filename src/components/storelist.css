@@ -128,7 +128,7 @@
   transition: transform 0.3s ease;
 }
 
-.store-card :hover .store-card-image {
+.store-card:hover .store-card-image {
   transform: scale(1.05);
 }
 

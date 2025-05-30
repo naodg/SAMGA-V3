@@ -152,7 +152,7 @@ export default function SignUp() {
                 <div className="signup-text">회원가입</div>
                 <form onSubmit={handleSignUp}>
                     <input
-                        className="siginup-input"
+                        className="signup-input"
                         type="text"
                         placeholder="본인 이름"
                         value={nickname}
@@ -161,7 +161,7 @@ export default function SignUp() {
                     />
                     <br />
                     <input
-                        className="siginup-input"
+                        className="signup-input"
                         type="email"
                         placeholder="이메일"
                         value={email}
@@ -170,7 +170,7 @@ export default function SignUp() {
                     />
                     <br />
                     <input
-                        className="siginup-input"
+                        className="signup-input"
                         type="password"
                         placeholder="비밀번호"
                         value={password}
@@ -179,7 +179,7 @@ export default function SignUp() {
                     />
                     <br />
                     <input
-                        className="siginup-input"
+                        className="signup-input"
                         type="text"
                         placeholder="전화번호 - 제외후 입력해주세요"
                         value={phone}
