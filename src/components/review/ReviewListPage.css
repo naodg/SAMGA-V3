@@ -116,12 +116,12 @@
 
 /* 본문 내용 */
 
-.review-content h3 {
+.reviewlist-content h3 {
   font-size: 20px;
   margin-bottom: 6px;
 }
 
-.review-content p {
+.reviewlist-content p {
   font-size: 16px;
   color: #333;
   line-height: 1.2;
@@ -173,7 +173,7 @@
 }
 
 
-.review-header .review-nickname {
+.review-header .reviewlist-nickname {
   font-weight: bold;
   display: block;
   margin-right: 0;
