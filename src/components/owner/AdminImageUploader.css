@@ -83,6 +83,13 @@
 }
 
 @media (max-width: 768px) {
+
+  .admin-uploader-container {
+
+    padding: 80px 10px;
+
+}
+
   .uploaded-image-list {
     grid-template-columns: 1fr; /* 모바일: 1열 */
   }
