@@ -56,13 +56,15 @@
   opacity: 1;
 }
 
-.review-header {
+.reviewdetail-header {
   display: flex;
   justify-content: flex-start;
   gap: 15px;
   align-items: center;
-  padding: 15px 0 0 0;
+  padding: 0;
 }
+
+.reviewdetail-storename {}
 
 .review-stars {
   display: flex;
@@ -265,6 +267,13 @@
 
 
 @media (max-width: 900px) {
+  .review-box {
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    padding: 10px;
+    position: relative;
+    background: #fff;
+  }
 
   .review-detail-page {
     max-width: 800px;
@@ -272,4 +281,55 @@
     padding: 5rem 2rem;
   }
 
+  .reviewdetail-storename {
+    font-size: 18px;
+  }
+
+  .star-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .comment-wrapper {
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .comment-bubble {
+    position: relative;
+    background: #ddd;
+    padding: 16px 20px;
+    border-radius: 20px;
+    min-height: 80px;
+    flex: 1;
+    width: 100%;
+  }
+
+  /* 말풍선 꼬리 */
+  .comment-bubble::before {
+    display: none;
+  }
+
+
+}
+
+@media (max-width: 300px) {
+  .review-detail-page {
+    max-width: 800px;
+    margin: 0px auto 180px;
+    padding: 6rem 1rem 3rem 1rem;
+  }
+
+  .reviewdetail-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+  }
 }

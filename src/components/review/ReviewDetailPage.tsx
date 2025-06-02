@@ -185,8 +185,8 @@ export default function ReviewDetailPage() {
                     </div>
                 )}
 
-                <div className="review-header">
-                    <h2>{store.name}</h2>
+                <div className="reviewdetail-header">
+                    <div className="reviewdetail-storename">{store.name}</div>
                     <div className="review-stars">
                         {[...Array(5)].map((_, i) => (
                             <img
