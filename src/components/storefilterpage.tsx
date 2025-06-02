@@ -377,7 +377,7 @@ export default function StoreFilterPage() {
                       className="m-store-thumbnail"
                     />
                     <div className="store-info-text">
-                      <h3 className="store-name">{store.name}</h3>
+                      <h3 className="fillter-store-name">{store.name}</h3>
 
                       {/* ⭐ 별점과 리뷰 수 반영 */}
                       <div className="rating-review">
@@ -462,7 +462,7 @@ export default function StoreFilterPage() {
             {selectedStore && !triggeredFromReservation && (
               <div className="popup-store-card">
                 <div className="card-header">
-                  <h3 className="store-name">{selectedStore.name}</h3>
+                  <h3 className="filter-store-name">{selectedStore.name}</h3>
                   <button
                     onClick={() => setSelectedStore(null)}
                     className="close-button"

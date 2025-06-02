@@ -176,7 +176,7 @@
   flex: 1;
 }
 
-.store-name {
+.filter-store-name {
   font-size: 16px;
   margin-bottom: 2px;
 }
@@ -423,7 +423,7 @@
   flex: 1;
 }
 
-.store-name {
+.filter-store-name {
   font-size: 18px;
   margin-bottom: 4px;
 }
@@ -518,8 +518,8 @@
 @media(max-width:900px){
   .popup-store-card {
     position: absolute;
-    right: 120px;
-    top: 500px;
+    right: 10px;
+    top: 200px;
     width: 260px;
     background: #fff;
     border-radius: 12px;
