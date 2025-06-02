@@ -63,7 +63,7 @@
   height: 50px;
 }
 
-.store-name {
+.store-name-stars .store-name {
   font-size: 23px !important;
   font-weight: bold;
   color: #222;
@@ -835,6 +835,16 @@
 
 /* ✅ 소형 모바일 전용 (900px 이하) */
 @media (max-width: 900px) {
+  .store-name-stars {
+    margin-left: 0;
+  }
+
+  .store-name-stars .store-name {
+    font-size: 20px !important;
+    font-weight: bold;
+    color: #222;
+    margin: 0px;
+  }
 
   .brand-divider-pc {
     display: none;
