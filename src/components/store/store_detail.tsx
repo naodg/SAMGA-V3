@@ -285,7 +285,7 @@ export default function StoreDetail() {
                                 src = '/SAMGA-V3/img/icon/단골등록.svg' // 빈 별
                             }
 
-                            return <img key={i} src={src} alt="별" style={{ width: '18px', height: '18px', marginRight: '2px' }} />
+                            return <img key={i} src={src} alt="별" style={{ width: '16px', height: '16px', marginRight: '2px' }} />
                         })}
                         <span style={{ marginLeft: '6px', fontSize: '14px', color: '#444' }}>{average.toFixed(1)}점</span>
                     </div>
