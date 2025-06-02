@@ -238,7 +238,7 @@ export default function ReviewListPage() {
 
                   <div className="review-main">
                     <div className="review-header">
-                      <span className="review-nickname">작성자: {review.nickname}</span>
+                      <span className="reviewlist-nickname">작성자: {review.nickname}</span>
                       {/* <h3 className="store-name">{store.name}</h3>
                       <div className="review-stars">
                         {[...Array(5)].map((_, i) => {
@@ -255,7 +255,7 @@ export default function ReviewListPage() {
                       </div> */}
                     </div>
 
-                    <div className="review-content">
+                    <div className="reviewlist-content">
                       <p>{review.content}</p>
                     </div>
 
