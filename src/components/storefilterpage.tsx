@@ -265,12 +265,14 @@ export default function StoreFilterPage() {
                   if (keyword.trim() === '') {
                     setFilteredStores(storeData);
                     setSelectedStore(null);
+                    updateMarkers(storeData);
                   } else {
                     const results = storeData.filter(store =>
                       store.name.includes(keyword)
                     );
                     setFilteredStores(results);
                     setSelectedStore(results[0] ?? null);
+                    updateMarkers(results); 
                   }
                 }}
                 onKeyDown={(e) => {
@@ -280,6 +282,7 @@ export default function StoreFilterPage() {
                     );
                     setFilteredStores(results);
                     setSelectedStore(results[0] ?? null);
+                    updateMarkers(results); 
                   }
                 }}
               />
