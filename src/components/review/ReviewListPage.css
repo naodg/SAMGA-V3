@@ -177,6 +177,7 @@
   font-weight: bold;
   display: block;
   margin-right: 0;
+  padding-top: 10px;
   /* 세로 정렬이니까 오른쪽 여백 필요 없음 */
 }
 
