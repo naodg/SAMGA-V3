@@ -249,6 +249,17 @@ export default function StoreDetail() {
         setSelectedImage(null)
     }
 
+    const handleCopyLink = () => {
+        const currentUrl = window.location.href;
+        navigator.clipboard.writeText(currentUrl)
+            .then(() => {
+                alert("링크가 복사되었습니다!");
+            })
+            .catch(() => {
+                alert("복사에 실패했습니다 ㅠㅠ");
+            });
+    };
+
     return (
         <div className="store-detail-wrapper">
             {/* 👇 대표 이미지 */}
@@ -302,7 +313,7 @@ export default function StoreDetail() {
                         </a>
                     </div>
 
-                    <div className="action-item">
+                    <div className="action-item"  onClick={handleCopyLink}>
                         <img src="/SAMGA-V3/img/icon/공유하기.svg" alt="공유하기" />
                         <span>공유하기</span>
                     </div>
@@ -573,7 +584,7 @@ export default function StoreDetail() {
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
                     {tabImages.length === 0 ? (
-                        <p style={{ textAlign:'center', color: '#999' }}>등록된 이미지가 없습니다.</p>
+                        <p style={{ textAlign: 'center', color: '#999' }}>등록된 이미지가 없습니다.</p>
                     ) : (
                         tabImages.map((url, idx) => (
                             <img

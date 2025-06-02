@@ -191,20 +191,17 @@ export default function StoreFilterPage() {
                                         if (keyword.trim() === '') {
                                             setFilteredStores(storeData);
                                             setSelectedStore(null);
-                                            updateMarkers(storeData);
                                         }
                                         else {
                                             const results = storeData.filter(store => store.name.includes(keyword));
                                             setFilteredStores(results);
                                             setSelectedStore(results[0] ?? null);
-                                            updateMarkers(results);
                                         }
                                     }, onKeyDown: (e) => {
                                         if (e.key === 'Enter') {
                                             const results = storeData.filter(store => store.name.includes(searchQuery));
                                             setFilteredStores(results);
                                             setSelectedStore(results[0] ?? null);
-                                            updateMarkers(results);
                                         }
                                     } })] }) }), _jsxs("div", { className: `mobile-filter-bar ${isFilterExpanded ? 'expanded' : ''}`, children: [_jsx("button", { onClick: () => setShowMap(!showMap), className: "toggle-map-button", children: _jsx("img", { src: '/SAMGA-V3/img/icon/map.svg', width: "15px" }) }), _jsx("div", { className: "filter-button-group", children: (isFilterExpanded ? filters : filters.slice(0, 4)).map(({ label, key }) => (_jsxs("button", { onClick: () => toggleFilter(key), className: `mobile-filter-button ${activeFilters.includes(key) ? 'active' : ''}`, children: [label, " ", activeFilters.includes(key) && _jsx("span", { className: "remove-x", children: "\u00D7" })] }, key))) }), filters.length > 4 && (_jsx("button", { className: "toggle-expand-button", onClick: (e) => {
                                     e.stopPropagation();
