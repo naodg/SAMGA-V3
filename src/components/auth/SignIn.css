@@ -34,7 +34,7 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    z-index: 15;
+    z-index: 0;
     opacity: 0.25;
     pointer-events: none;
 }
@@ -49,7 +49,8 @@
 }
 
 form {
-  font-size: 0; /* ✅ 줄바꿈 공백 제거용 */
+    font-size: 0;
+    /* ✅ 줄바꿈 공백 제거용 */
 }
 
 /* input 필드 */
@@ -67,9 +68,11 @@ form {
 
 .signin-input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(173, 84, 87, 0.2); /* 부드러운 포커스 효과 */
+    box-shadow: 0 0 0 2px rgba(173, 84, 87, 0.2);
+    /* 부드러운 포커스 효과 */
     border: 1px solid #ad5457;
-    background-color: #fff; /* 선택 사항, 배경 통일감 줄 수 있음 */
+    background-color: #fff;
+    /* 선택 사항, 배경 통일감 줄 수 있음 */
 }
 
 /* 로그인 버튼 */
@@ -135,10 +138,13 @@ form {
 /* ✅ 모바일용 900px 이하 */
 @media screen and (max-width: 900px) {
     .auth-image {
+        /* position: fixed; */
         width: 600px;
         height: 800px;
-        top: 15px;
-        left: calc(105vh * -0.4);
+        /* top: 15px; */
+        top: 50%;
+        left: 50%;
+        transform: translate(-70%, -50%);
         background-image: url("/img/logo/정직한 소탈이.svg");
         background-size: contain;
         background-position: center;
@@ -148,16 +154,20 @@ form {
     .Buttons,
     .kakao {
         max-width: 300px;
+        z-index: 20;
     }
 }
 
 /* ✅ 더 작은 모바일 376px 이하 */
 @media screen and (max-width: 376px) {
     .auth-image {
+        /* position: fixed; */
         width: 600px;
         height: 800px;
-        top: 15px;
-        left: calc(105vh * -0.35);
+        /* top: 15px; */
+        top: 50%;
+        left: 50%;
+        transform: translate(-70%, -50%);
         background-image: url("/img/logo/정직한 소탈이.svg");
         background-size: contain;
         background-position: center;
@@ -167,5 +177,6 @@ form {
     .Buttons,
     .kakao {
         max-width: 260px;
+        z-index: 20;
     }
 }
