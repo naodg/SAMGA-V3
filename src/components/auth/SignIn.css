@@ -157,7 +157,7 @@ form {
         width: 600px;
         height: 800px;
         top: 15px;
-        left: calc(105vh * -0.5);
+        left: calc(105vh * -0.35);
         background-image: url("/img/logo/정직한 소탈이.svg");
         background-size: contain;
         background-position: center;
