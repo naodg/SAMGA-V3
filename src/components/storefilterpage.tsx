@@ -158,9 +158,10 @@ export default function StoreFilterPage() {
 
         // ✅ showMap이 true일 때만 초기 마커 렌더링
         if (showMap) {
-          const markersToShow = searchQuery.trim() === ''
-            ? (activeFilters.length === 0 ? storeData : filteredStores)
-            : filteredStores;
+          const markersToShow =
+            searchQuery.trim() === ''
+              ? (activeFilters.length === 0 ? storeData : filteredStores)
+              : filteredStores;
 
           updateMarkers(markersToShow);
           setTimeout(() => {
@@ -170,7 +171,23 @@ export default function StoreFilterPage() {
       });
     };
     document.head.appendChild(script);
-  }, [showMap]); // ✅ filteredStores 제거!
+  }, []); // ✅ filteredStores 제거!
+
+  useEffect(() => {
+    if (!showMap || !mapRef.current) return;
+
+    const markersToShow =
+      searchQuery.trim() === ''
+        ? (activeFilters.length === 0 ? storeData : filteredStores)
+        : filteredStores;
+
+    updateMarkers(markersToShow);
+
+    setTimeout(() => {
+      window.kakao.maps.event.trigger(mapRef.current, 'resize');
+    }, 200);
+  }, [showMap, filteredStores, searchQuery]);
+
 
 
   const updateMarkers = (stores: Store[]) => {
@@ -237,6 +254,8 @@ export default function StoreFilterPage() {
   }, [])
 
 
+
+
   return (
     <div>
       {isMobile ? (
@@ -266,9 +285,9 @@ export default function StoreFilterPage() {
                 placeholder="내가 찾는 식당을 검색해보세요."
                 onFocus={() => {
                   setShowMap(true);
-                  setTimeout(() => {
-                    updateMarkers(storeData); // ✅ 마커 수동 호출
-                  }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                  // setTimeout(() => {
+                  //   updateMarkers(storeData); 
+                  // }, 100); 
                 }}
                 onChange={(e) => {
                   const keyword = e.target.value;
@@ -530,9 +549,9 @@ export default function StoreFilterPage() {
                   className="search-input"
                   onFocus={() => {
                     setShowMap(true);
-                    setTimeout(() => {
-                      updateMarkers(storeData); // ✅ 마커 수동 호출
-                    }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                    // setTimeout(() => {
+                    //   updateMarkers(storeData); 
+                    // }, 100); 
                   }}
                   onChange={(e) => {
                     const keyword = e.target.value;

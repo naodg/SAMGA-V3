@@ -127,7 +127,18 @@ export default function StoreFilterPage() {
             });
         };
         document.head.appendChild(script);
-    }, [showMap]); // ✅ filteredStores 제거!
+    }, []); // ✅ filteredStores 제거!
+    useEffect(() => {
+        if (!showMap || !mapRef.current)
+            return;
+        const markersToShow = searchQuery.trim() === ''
+            ? (activeFilters.length === 0 ? storeData : filteredStores)
+            : filteredStores;
+        updateMarkers(markersToShow);
+        setTimeout(() => {
+            window.kakao.maps.event.trigger(mapRef.current, 'resize');
+        }, 200);
+    }, [showMap, filteredStores, searchQuery]);
     const updateMarkers = (stores) => {
         const map = mapRef.current;
         if (!map)
@@ -192,9 +203,9 @@ export default function StoreFilterPage() {
                                         }
                                     }, children: _jsx("img", { src: "/SAMGA-V3/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58" }) }), _jsx("input", { type: "text", value: searchQuery, className: "search-input", placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", onFocus: () => {
                                         setShowMap(true);
-                                        setTimeout(() => {
-                                            updateMarkers(storeData); // ✅ 마커 수동 호출
-                                        }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                                        // setTimeout(() => {
+                                        //   updateMarkers(storeData); 
+                                        // }, 100); 
                                     }, onChange: (e) => {
                                         const keyword = e.target.value;
                                         setSearchQuery(keyword);
@@ -258,9 +269,9 @@ export default function StoreFilterPage() {
                                             }
                                         }, children: _jsx("img", { src: "/SAMGA-V3/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58" }) }), _jsx("input", { type: "text", value: searchQuery, placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", className: "search-input", onFocus: () => {
                                             setShowMap(true);
-                                            setTimeout(() => {
-                                                updateMarkers(storeData); // ✅ 마커 수동 호출
-                                            }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                                            // setTimeout(() => {
+                                            //   updateMarkers(storeData); 
+                                            // }, 100); 
                                         }, onChange: (e) => {
                                             const keyword = e.target.value;
                                             setSearchQuery(keyword);
