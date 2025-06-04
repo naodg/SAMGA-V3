@@ -32,12 +32,13 @@ export default function StoreFilterPage() {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [filteredStores, setFilteredStores] = useState<Store[]>([]);
   const [selectedStore, setSelectedStore] = useState<Store | null>(null);
-  const [showMap, setShowMap] = useState(false);
   const isMobile = window.innerWidth <= 1200;
+  const [showMap, setShowMap] = useState(!isMobile ? true : false);
   const mapRef = useRef<any>(null);
   const markersRef = useRef<any[]>([]);
   const overlaysRef = useRef<any[]>([]);
   const navigate = useNavigate();
+
 
   // 예약하기
 
@@ -175,6 +176,7 @@ export default function StoreFilterPage() {
 
   useEffect(() => {
     if (!showMap || !mapRef.current) return;
+    console.log('dfdfdf')
 
     const markersToShow =
       searchQuery.trim() === ''

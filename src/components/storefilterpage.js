@@ -23,8 +23,8 @@ export default function StoreFilterPage() {
     const [activeFilters, setActiveFilters] = useState([]);
     const [filteredStores, setFilteredStores] = useState([]);
     const [selectedStore, setSelectedStore] = useState(null);
-    const [showMap, setShowMap] = useState(false);
     const isMobile = window.innerWidth <= 1200;
+    const [showMap, setShowMap] = useState(!isMobile ? true : false);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const overlaysRef = useRef([]);
@@ -131,6 +131,7 @@ export default function StoreFilterPage() {
     useEffect(() => {
         if (!showMap || !mapRef.current)
             return;
+        console.log('dfdfdf');
         const markersToShow = searchQuery.trim() === ''
             ? (activeFilters.length === 0 ? storeData : filteredStores)
             : filteredStores;
