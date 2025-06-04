@@ -224,11 +224,25 @@
 }
 
 /* ✅ 공통 팝업 카드 (PC, Mobile) */
-.popup-store-card {
+/* .popup-store-card {
   position: absolute;
   right: 200px;
   top: 20px;
   width: 260px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+} */
+
+.popup-store-card {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 320px;
   background: #fff;
   border-radius: 12px;
   padding: 16px;
@@ -516,7 +530,7 @@
 
 
 @media(max-width:900px){
-  .popup-store-card {
+  /* .popup-store-card {
     position: absolute;
     right: 10px;
     top: 200px;
@@ -526,7 +540,14 @@
     padding: 16px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     z-index: 1000;
+  } */
+
+  .popup-store-card {
+    top: 450px;
+    padding: 12px;
+    font-size: 14px;
   }
+  
 }
 
 .reservation-tag {

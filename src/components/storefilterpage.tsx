@@ -155,17 +155,19 @@ export default function StoreFilterPage() {
           level: 4
         });
         mapRef.current = map;
-        updateMarkers(activeFilters.length === 0 ? storeData : filteredStores);
 
-        // 지도 초기화 후 강제로 리사이즈
-        setTimeout(() => {
-          window.kakao.maps.event.trigger(map, 'resize');
-        }, 200); // 지도 생성 후 살짝 delay 줘도 좋아
-
+        // ✅ showMap이 true일 때만 초기 마커 렌더링
+        if (showMap) {
+          updateMarkers(activeFilters.length === 0 ? storeData : filteredStores);
+          setTimeout(() => {
+            window.kakao.maps.event.trigger(map, 'resize');
+          }, 200);
+        }
       });
     };
     document.head.appendChild(script);
-  }, [showMap, filteredStores]);
+  }, [showMap]); // ✅ filteredStores 제거!
+
 
   const updateMarkers = (stores: Store[]) => {
     const map = mapRef.current;
@@ -265,12 +267,14 @@ export default function StoreFilterPage() {
                   if (keyword.trim() === '') {
                     setFilteredStores(storeData);
                     setSelectedStore(null);
+                    updateMarkers(storeData);
                   } else {
                     const results = storeData.filter(store =>
                       store.name.includes(keyword)
                     );
                     setFilteredStores(results);
                     setSelectedStore(results[0] ?? null);
+                    updateMarkers(results);
                   }
                 }}
                 onKeyDown={(e) => {
@@ -522,12 +526,14 @@ export default function StoreFilterPage() {
                     if (keyword.trim() === '') {
                       setFilteredStores(storeData);
                       setSelectedStore(null);
+                      updateMarkers(storeData);
                     } else {
                       const results = storeData.filter(store =>
                         store.name.includes(keyword)
                       );
                       setFilteredStores(results);
                       setSelectedStore(results[0] ?? null);
+                      updateMarkers(results);
                     }
                   }}
                   onKeyDown={(e) => {
