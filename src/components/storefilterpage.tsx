@@ -158,7 +158,11 @@ export default function StoreFilterPage() {
 
         // ✅ showMap이 true일 때만 초기 마커 렌더링
         if (showMap) {
-          updateMarkers(activeFilters.length === 0 ? storeData : filteredStores);
+          const markersToShow = searchQuery.trim() === ''
+            ? (activeFilters.length === 0 ? storeData : filteredStores)
+            : filteredStores;
+
+          updateMarkers(markersToShow);
           setTimeout(() => {
             window.kakao.maps.event.trigger(map, 'resize');
           }, 200);
@@ -260,7 +264,12 @@ export default function StoreFilterPage() {
                 value={searchQuery}
                 className="search-input"
                 placeholder="내가 찾는 식당을 검색해보세요."
-                onFocus={() => setShowMap(true)}
+                onFocus={() => {
+                  setShowMap(true);
+                  setTimeout(() => {
+                    updateMarkers(storeData); // ✅ 마커 수동 호출
+                  }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                }}
                 onChange={(e) => {
                   const keyword = e.target.value;
                   setSearchQuery(keyword);
@@ -519,7 +528,12 @@ export default function StoreFilterPage() {
                   value={searchQuery}
                   placeholder="내가 찾는 식당을 검색해보세요."
                   className="search-input"
-                  onFocus={() => setShowMap(true)}
+                  onFocus={() => {
+                    setShowMap(true);
+                    setTimeout(() => {
+                      updateMarkers(storeData); // ✅ 마커 수동 호출
+                    }, 100); // 지도가 DOM에 뜬 직후 실행되도록
+                  }}
                   onChange={(e) => {
                     const keyword = e.target.value;
                     setSearchQuery(keyword);
