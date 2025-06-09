@@ -165,10 +165,10 @@
   }
 
   .nav-list li+li::before {
-  content: '|';
-  position: absolute;
-  left: -10px;
-}
+    content: '|';
+    position: absolute;
+    left: -10px;
+  }
 
   /* 유저 메뉴 */
   .mobile-menu-icon {
@@ -234,6 +234,18 @@
 
 }
 
+
+@media (max-width: 600px) {
+  .header-inner-m {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.6);
+    /* 필요하면 배경색 추가 */
+  }
+}
 
 @media (max-width: 400px) {
   .nav-list {
