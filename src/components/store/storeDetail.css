@@ -1086,7 +1086,7 @@
 
 .idius-all {
   text-align: right;
-  margin: 15px 310px 20px 0;
+  /* margin: 15px 310px 20px 0; */
   /* padding-right: 20px; */
 }
 
@@ -1153,7 +1153,7 @@
   width: 280px;
   height: 200px;
   object-fit: contain; /* 이미지 전체가 보이게 */
-  background-color: #f3ece9; /* 원하는 컬러로 채움 */
+  background-color: #a8a8a8; /* 원하는 컬러로 채움 */
   border-radius: 10px;
   cursor: pointer;
 }

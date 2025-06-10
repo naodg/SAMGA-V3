@@ -41,7 +41,7 @@ export default function Header() {
   };
 
   return (
-    <header className={isStoreDetailPage ? 'header white' : 'header'}>
+    <header className={isStoreDetailPage && !isMobile ? 'header white' : 'header'}>
       {/* PC 헤더 */}
       <div className="header-inner-pc">
         {/* 로고 */}
@@ -82,7 +82,8 @@ export default function Header() {
       <div className="header-inner-m">
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
-            <img src={isStoreDetailPage ? "/img/logo/whitelogo.svg" : "/img/logo/logo.svg"} alt="로고" className='logo' />
+            {/* <img src={isStoreDetailPage ? "/img/logo/whitelogo.svg" : "/img/logo/logo.svg"} alt="로고" className='logo' /> */}
+             <img src={"/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
           {/* ✅ 이건 항상 보여야 함 */}
           <nav className="nav">
@@ -93,7 +94,8 @@ export default function Header() {
             </ul>
           </nav>
           <div className={`mobile-menu-icon`} onClick={toggleMenu}>
-            <img src={isStoreDetailPage ? "/img/icon/mypagewhite.svg" : "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
+            {/* <img src={isStoreDetailPage ? "/img/icon/mypagewhite.svg" : "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' /> */}
+            <img src={ "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
           </div>
         </div>
 
