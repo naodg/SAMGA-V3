@@ -166,7 +166,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2px 5px;
   /* 가로/세로 간격 */
-  justify-items: center;
+  justify-items: flex-end;
   align-items: center;
   padding: 10px 0;
   /* border: 1px solid #9e9c9c; */
