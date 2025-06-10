@@ -102,8 +102,21 @@ export default function Floating() {
         </div>
       )}
 
-      <div className="floating-mascot" onClick={handleFloatingClick}>
-        <img src="/img/icon/문자보내기.svg" className="happy-sotal" />
+      <div
+        className="floating-mascot"
+        onClick={() => {
+          if (isMobile) {
+            handleFloatingClick();
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
+      >
+        <img
+          src={isMobile ? "/img/icon/문자보내기.svg" : "/img/icon/up.svg"}
+          className="happy-sotal"
+          alt="플로팅버튼"
+        />
       </div>
 
       {selectedStore && !selectedAction && (
