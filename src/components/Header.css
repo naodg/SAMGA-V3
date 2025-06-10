@@ -165,7 +165,7 @@
   }
 
   .nav-list li+li::before {
-    content: '|';
+    content: '|||||||';
     position: absolute;
     left: -10px;
   }
