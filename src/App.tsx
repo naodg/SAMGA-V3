@@ -58,7 +58,7 @@ function AppContent() {
 
 function App() {
   return (
-    <Router basename="/SAMGA-V3">
+    <Router>
       <AppContent />
     </Router>
   )
