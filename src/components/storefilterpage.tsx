@@ -176,7 +176,6 @@ export default function StoreFilterPage() {
 
   useEffect(() => {
     if (!showMap || !mapRef.current) return;
-    console.log('dfdfdf')
 
     const markersToShow =
       searchQuery.trim() === ''
@@ -277,7 +276,7 @@ export default function StoreFilterPage() {
                   setSelectedStore(results[0] ?? null);
                 }
               }}>
-                <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" />
+                <img src="/img/logo/search.svg" alt="검색 아이콘" />
               </button>
 
               <input
@@ -324,7 +323,7 @@ export default function StoreFilterPage() {
           <div className={`mobile-filter-bar ${isFilterExpanded ? 'expanded' : ''}`}>
 
             <button onClick={() => setShowMap(!showMap)} className="toggle-map-button">
-              <img src='/SAMGA-V3/img/icon/map.svg' width="15px" />
+              <img src='/img/icon/map.svg' width="15px" />
             </button>
 
 
@@ -356,7 +355,7 @@ export default function StoreFilterPage() {
                 }}
               >
                 <img
-                  src={`/SAMGA-V3/img/icon/${isFilterExpanded ? 'up' : 'down'}.svg`}
+                  src={`/img/icon/${isFilterExpanded ? 'up' : 'down'}.svg`}
                   width="15px"
                   alt="펼침 토글"
                 />
@@ -406,7 +405,7 @@ export default function StoreFilterPage() {
                 >
                   <div className="store-item-header">
                     <img
-                      src={store.filterimage || '/SAMGA-V3/img/default.jpg'}
+                      src={store.filterimage || '/img/default.jpg'}
                       alt={store.name}
                       className="m-store-thumbnail"
                     />
@@ -421,11 +420,11 @@ export default function StoreFilterPage() {
                             let imgSrc = ""
 
                             if ((rating?.average ?? 0) >= value) {
-                              imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
+                              imgSrc = "/img/icon/단골등록해제.svg" // 가득 찬 별
                             } else if ((rating?.average ?? 0) + 0.25 >= value) {
-                              imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
+                              imgSrc = "/img/icon/반쪽자리별.svg" // 반쪽 별
                             } else {
-                              imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
+                              imgSrc = "/img/icon/단골등록.svg" // 빈 별
                             }
 
                             return (
@@ -541,7 +540,7 @@ export default function StoreFilterPage() {
                     setSelectedStore(results[0] ?? null);
                   }
                 }}>
-                  <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" />
+                  <img src="/img/logo/search.svg" alt="검색 아이콘" />
                 </button>
 
                 <input
@@ -616,7 +615,7 @@ export default function StoreFilterPage() {
                         onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}
                       >
                         <img
-                          src={store.filterimage || '/SAMGA-V3/img/default.jpg'}
+                          src={store.filterimage || '/img/default.jpg'}
                           alt={store.name}
                           className="store-thumbnail"
                         />
@@ -631,11 +630,11 @@ export default function StoreFilterPage() {
                                 let imgSrc = ""
 
                                 if ((rating?.average ?? 0) >= value) {
-                                  imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg" // 가득 찬 별
+                                  imgSrc = "/img/icon/단골등록해제.svg" // 가득 찬 별
                                 } else if ((rating?.average ?? 0) + 0.25 >= value) {
-                                  imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg" // 반쪽 별
+                                  imgSrc = "/img/icon/반쪽자리별.svg" // 반쪽 별
                                 } else {
-                                  imgSrc = "/SAMGA-V3/img/icon/단골등록.svg" // 빈 별
+                                  imgSrc = "/img/icon/단골등록.svg" // 빈 별
                                 }
 
                                 return (
@@ -739,13 +738,13 @@ export default function StoreFilterPage() {
           <h3>{selectedStore.name} 문의하기</h3>
           <div className="contact-options">
             <div className="option" onClick={() => setSelectedAction("call")}>
-              <img src="/SAMGA-V3/img/icon/전화걸기.svg" alt="전화" />
+              <img src="/img/icon/전화걸기.svg" alt="전화" />
               <span>전화하기</span>
             </div>
 
             {reservableStores.includes(selectedStore.name) && (
               <div className="option" onClick={() => setSelectedAction("message")}>
-                <img src="/SAMGA-V3/img/icon/문자보내기.svg" alt="문자" />
+                <img src="/img/icon/문자보내기.svg" alt="문자" />
                 <span>문자 보내기</span>
               </div>
             )}

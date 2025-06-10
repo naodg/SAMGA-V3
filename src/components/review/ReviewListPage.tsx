@@ -224,13 +224,13 @@ export default function ReviewListPage() {
                   <div className="store-badge">
 
                     {/* <img
-                      src={`/SAMGA-V3/img/review_icons/ex.svg`}
+                      src={`/img/review_icons/ex.svg`}
                       className="store-badge-icon"
                       alt={store.name}
                     /> */}
 
                     <img
-                      src={`/SAMGA-V3/img/review_icons/${store.name}.jpg`}
+                      src={`/img/review_icons/${store.name}.jpg`}
                       className="store-badge-icon"
                       alt={store.name}
                     />
@@ -245,10 +245,10 @@ export default function ReviewListPage() {
                           const value = i + 1;
                           const src =
                             review.star >= value
-                              ? "/SAMGA-V3/img/icon/단골등록해제.svg"
+                              ? "/img/icon/단골등록해제.svg"
                               : review.star + 0.5 >= value
-                                ? "/SAMGA-V3/img/icon/반쪽자리별.svg"
-                                : "/SAMGA-V3/img/icon/단골등록.svg";
+                                ? "/img/icon/반쪽자리별.svg"
+                                : "/img/icon/단골등록.svg";
                           return <img key={i} src={src} className="star-icon" alt="별" />;
                         })}
                         <span className="review-star-value">{(review.star ?? 0).toFixed(1)}점</span>
@@ -264,10 +264,10 @@ export default function ReviewListPage() {
                         const value = i + 1;
                         const src =
                           review.star >= value
-                            ? "/SAMGA-V3/img/icon/단골등록해제.svg"
+                            ? "/img/icon/단골등록해제.svg"
                             : review.star + 0.5 >= value
-                              ? "/SAMGA-V3/img/icon/반쪽자리별.svg"
-                              : "/SAMGA-V3/img/icon/단골등록.svg";
+                              ? "/img/icon/반쪽자리별.svg"
+                              : "/img/icon/단골등록.svg";
                         return <img key={i} src={src} className="star-icon" alt="별" />;
                       })}
                       <span className="review-star-value">{(review.star ?? 0).toFixed(1)}점</span>
@@ -278,8 +278,8 @@ export default function ReviewListPage() {
                         <img
                           src={
                             likeMap[review.id]
-                              ? "/SAMGA-V3/img/icon/좋아용누름.svg"
-                              : "/SAMGA-V3/img/icon/좋아용.svg"
+                              ? "/img/icon/좋아용누름.svg"
+                              : "/img/icon/좋아용.svg"
                           }
                           alt="좋아요"
                           onClick={(e) => {
@@ -293,8 +293,8 @@ export default function ReviewListPage() {
                         <img
                           src={
                             commentsMap[review.id]?.length
-                              ? "/SAMGA-V3/img/icon/댓글있음.svg"
-                              : "/SAMGA-V3/img/icon/댓글.svg"
+                              ? "/img/icon/댓글있음.svg"
+                              : "/img/icon/댓글.svg"
                           }
                           alt="댓글"
                         />

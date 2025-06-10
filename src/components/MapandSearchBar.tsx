@@ -163,7 +163,7 @@ export default function MapandSearchBar() {
                         }
                     }}
                 >
-                    <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
+                    <img src="/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
                 </button>
                 <input
                     type="text"
@@ -223,11 +223,11 @@ export default function MapandSearchBar() {
                                                 let imgSrc = ""
 
                                                 if (rating?.average >= value) {
-                                                    imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg"
+                                                    imgSrc = "/img/icon/단골등록해제.svg"
                                                 } else if (rating?.average + 0.5 >= value) {
-                                                    imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg"
+                                                    imgSrc = "/img/icon/반쪽자리별.svg"
                                                 } else {
-                                                    imgSrc = "/SAMGA-V3/img/icon/단골등록.svg"
+                                                    imgSrc = "/img/icon/단골등록.svg"
                                                 }
 
                                                 return (
@@ -271,7 +271,7 @@ export default function MapandSearchBar() {
                                 <div className='store-detail'>
                                     <span className="phone-text">전화번호 : {selectedStore.phone}</span>
                                     <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
-                                        <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
+                                        <img src="/img/icon/call.svg" alt="전화 아이콘" />
                                     </a>
                                 </div>
 

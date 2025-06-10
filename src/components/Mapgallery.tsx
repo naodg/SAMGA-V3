@@ -203,7 +203,7 @@ export default function MapGallery() {
             {['대가1호점', '대가식육식당', '대가한우', '대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (
               <SwiperSlide key={i}>
                 <img
-                  src={`/SAMGA-V3/img/landing/${name}_1.jpg`}
+                  src={`/img/landing/${name}_1.jpg`}
                   alt={name}
                   className="map-gallery-slide-img"
                   draggable={false}
@@ -232,7 +232,7 @@ export default function MapGallery() {
                 }
               }}
             >
-              <img src="/SAMGA-V3/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
+              <img src="/img/logo/search.svg" alt="검색 아이콘" className="search-icon-img" />
             </button>
             <input
               type="text"
@@ -295,11 +295,11 @@ export default function MapGallery() {
                           let imgSrc = ""
 
                           if (rating?.average >= value) {
-                            imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg"
+                            imgSrc = "/img/icon/단골등록해제.svg"
                           } else if (rating?.average + 0.5 >= value) {
-                            imgSrc = "/SAMGA-V3/img/icon/반쪽자리별.svg"
+                            imgSrc = "/img/icon/반쪽자리별.svg"
                           } else {
-                            imgSrc = "/SAMGA-V3/img/icon/단골등록.svg"
+                            imgSrc = "/img/icon/단골등록.svg"
                           }
 
                           return (
@@ -343,7 +343,7 @@ export default function MapGallery() {
                   <div className='store-detail'>
                     <span className="phone-text">전화번호 : {selectedStore.phone}</span>
                     <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
-                      <img src="/SAMGA-V3/img/icon/call.svg" alt="전화 아이콘" />
+                      <img src="/img/icon/call.svg" alt="전화 아이콘" />
                     </a>
                   </div>
 

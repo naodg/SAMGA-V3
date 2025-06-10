@@ -48,10 +48,10 @@ export default function ReviewWritePage() {
                                 const value = (i + 1) * 1;
                                 let imgSrc = "";
                                 if (star >= value) {
-                                    imgSrc = "/SAMGA-V3/img/icon/단골등록해제.svg"; // ⭐️ 가득 찬 별
+                                    imgSrc = "/img/icon/단골등록해제.svg"; // ⭐️ 가득 찬 별
                                 }
                                 else {
-                                    imgSrc = "/SAMGA-V3/img/icon/단골등록.svg"; // ⭐️ 빈 별
+                                    imgSrc = "/img/icon/단골등록.svg"; // ⭐️ 빈 별
                                 }
                                 return (_jsx("img", { src: imgSrc, alt: `${value}점`, className: "star-svg", onClick: () => setStar(value) }, i));
                             }), _jsxs("span", { className: "star-value", children: [star, "\uC810"] })] }), _jsx("textarea", { placeholder: "\uB0B4\uC6A9", value: content, onChange: (e) => setContent(e.target.value), className: "review-textarea", required: true }), _jsx("div", { className: "review-submit-wrapper", children: _jsx("button", { type: "submit", className: "review-submit-button", children: "\uB9AC\uBDF0 \uC800\uC7A5" }) })] })] }));

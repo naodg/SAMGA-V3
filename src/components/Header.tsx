@@ -47,7 +47,7 @@ export default function Header() {
         {/* 로고 */}
         <div className="logo" onClick={() => navigate('/')}>
           <img
-            src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"}
+            src={isStoreDetailPage ? "/img/logo/whitelogo.svg" : "/img/logo/logo.svg"}
             alt="로고"
             className='logo'
           />
@@ -82,7 +82,7 @@ export default function Header() {
       <div className="header-inner-m">
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
-            <img src={isStoreDetailPage ? "/SAMGA-V3/img/logo/whitelogo.svg" : "/SAMGA-V3/img/logo/logo.svg"} alt="로고" className='logo' />
+            <img src={isStoreDetailPage ? "/img/logo/whitelogo.svg" : "/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
           {/* ✅ 이건 항상 보여야 함 */}
           <nav className="nav">
@@ -93,7 +93,7 @@ export default function Header() {
             </ul>
           </nav>
           <div className={`mobile-menu-icon`} onClick={toggleMenu}>
-            <img src={isStoreDetailPage ? "/SAMGA-V3/img/icon/mypagewhite.svg" : "/SAMGA-V3/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
+            <img src={isStoreDetailPage ? "/img/icon/mypagewhite.svg" : "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
           </div>
         </div>
 

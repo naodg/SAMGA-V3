@@ -87,7 +87,7 @@ export default function Floating() {
       )}
 
       <div className="floating-mascot" onClick={handleFloatingClick}>
-        <img src="/SAMGA-V3/img/icon/문자보내기.svg" className="happy-sotal" />
+        <img src="/img/icon/문자보내기.svg" className="happy-sotal" />
       </div>
 
       {selectedStore && !selectedAction && (
@@ -95,13 +95,13 @@ export default function Floating() {
           <h3>{selectedStore.name} 문의하기</h3>
           <div className="contact-options">
             <div className="option" onClick={() => setSelectedAction("call")}>
-              <img src="/SAMGA-V3/img/icon/전화걸기.svg" alt="전화" />
+              <img src="/img/icon/전화걸기.svg" alt="전화" />
               <span>전화하기</span>
             </div>
 
             {reservableStores.includes(selectedStore.name) && (
               <div className="option" onClick={() => setSelectedAction("message")}>
-                <img src="/SAMGA-V3/img/icon/문자보내기.svg" alt="문자" />
+                <img src="/img/icon/문자보내기.svg" alt="문자" />
                 <span>문자 보내기</span>
               </div>
             )}

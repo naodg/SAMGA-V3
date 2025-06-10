@@ -94,7 +94,7 @@ export default function Footer() {
 
         {/* 1. 로고 + 기본 정보 */}
         <div className="footer-column left">
-          <img src="/SAMGA-V3/img/logo/whitelogo.svg" alt="우리마을삼가 로고" className="footer-logo" />
+          <img src="/img/logo/whitelogo.svg" alt="우리마을삼가 로고" className="footer-logo" />
           <p>
             대표 : 합천군청<br />
             사업자 등록번호 : 611-83-01516<br />
@@ -119,7 +119,7 @@ export default function Footer() {
         <div className="footer-column store" ref={storeRef}>
           <h4 onClick={() => toggleSection('store')}>
             가게 리스트
-            <img src={`/SAMGA-V3/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+            <img src={`/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.store && (
             <ul className="store-list">
@@ -136,7 +136,7 @@ export default function Footer() {
         <div className="footer-column tourism" ref={tourRef}>
           <h4 onClick={() => toggleSection('tour')}>
             주변관광지
-            <img src={`/SAMGA-V3/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+            <img src={`/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.tour && (
             <ul className="tour-list">
@@ -153,7 +153,7 @@ export default function Footer() {
         <div className="footer-column manager" ref={managerRef}>
           <h4 onClick={() => toggleSection('manager')}>
             가게 관리자 페이지
-            <img src={`/SAMGA-V3/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
+            <img src={`/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.manager && (
             <ul className="manager-list">
