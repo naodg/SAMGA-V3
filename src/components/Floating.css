@@ -79,6 +79,7 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 12px;
+  text-decoration: none;
   /* transition: background 0.2s ease; */
 }
 

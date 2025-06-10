@@ -53,6 +53,9 @@ export default function Floating() {
     if (found) {
       setSelectedStore(found);
       setSelectedAction(null);
+      if (!isMobile) {
+        window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ PC에서 상단 이동
+      }
     }
   };
 
@@ -72,6 +75,19 @@ export default function Floating() {
     setSelectedAction(null);
     setMessageText("");
   };
+
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
 
   return (
     <div className="floating-wrapper">
@@ -99,7 +115,7 @@ export default function Floating() {
               <span>전화하기</span>
             </div>
 
-            {reservableStores.includes(selectedStore.name) && (
+            {reservableStores.includes(selectedStore.name) && isMobile && (
               <a
                 href={`sms:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
                 className="option"
@@ -109,6 +125,7 @@ export default function Floating() {
                 <span>문자 보내기</span>
               </a>
             )}
+
 
           </div>
           <button className="close-btn" onClick={handleClose}>닫기</button>
