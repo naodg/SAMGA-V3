@@ -165,7 +165,7 @@
   }
 
   .nav-list li+li::before {
-    content: '|||||||';
+    content: '|';
     position: absolute;
     left: -10px;
   }
@@ -184,7 +184,7 @@
 
   .mobile-menu-icon span {
     display: block;
-    height: 2px;
+    height: 20px;
     background: #896858;
     margin: 5px 0;
     border-radius: 2px;
