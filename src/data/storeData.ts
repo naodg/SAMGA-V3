@@ -178,7 +178,7 @@ export const storeData: Store[] = [
     options: ['무료wifi', '주문배송', '포장가능', '주차장', '남여화장실구분', '일반식사메뉴', '제로페이', '유아의자'],
     image: '/samga/detail/도원식육식당.jpg',
     detailimage: '/samga/store/도원식육식당_landing_detail.jpg',
-    mobiledetailimage:'/samga/store/detailM/도원원식육식당.jpg',
+    mobiledetailimage:'/samga/store/detailM/도원식육식당.jpg',
     filterimage: '/img/landing/도원식육식당_1.jpg',
     description: '평점보다 더 정확한 건,\n 믿고 듣는 입소문. ',
     story: '',
