@@ -125,25 +125,16 @@ export default function Floating() {
       {selectedStore && selectedAction === "message" && (
         <div className="message-popup" ref={popupRef}>
           <h3>{selectedStore.name}에 문자 보내기</h3>
-          <textarea
-            placeholder="문의하실 내용을 입력해주세요."
-            value={messageText}
-            onChange={(e) => setMessageText(e.target.value)}
-            className="message-textarea"
-          />
-          <div className="popup-buttons">
-            <button
-              onClick={() => {
-                alert(`${selectedStore.name}에 보낸 문자:\n\n${messageText}`);
-                handleClose();
-              }}
-            >
-              보내기
-            </button>
-            <button onClick={handleClose}>취소</button>
-          </div>
+          <a
+            href={`sms:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
+            className="message-button"
+          >
+            문자 보내기
+          </a>
+          <button className="close-btn" onClick={handleClose}>닫기</button>
         </div>
       )}
+
     </div>
   );
 }
