@@ -265,8 +265,14 @@ export default function StoreDetail() {
             {/* 👇 대표 이미지 */}
             <div
                 className="store-hero-image"
-                style={{ backgroundImage: `url(${selectedStore.detailimage})` }}
+                style={{
+                    backgroundImage: `url(${window.innerWidth <= 768
+                            ? selectedStore.mobiledetailimage
+                            : selectedStore.detailimage
+                        })`,
+                }}
             />
+
 
             {/* 👇 가게 정보 카드 */}
             <div className="store-info-card">
@@ -313,7 +319,7 @@ export default function StoreDetail() {
                         </a>
                     </div>
 
-                    <div className="action-item"  onClick={handleCopyLink}>
+                    <div className="action-item" onClick={handleCopyLink}>
                         <img src="/img/icon/공유하기.svg" alt="공유하기" />
                         <span>공유하기</span>
                     </div>

@@ -187,7 +187,11 @@ export default function StoreDetail() {
             alert("복사에 실패했습니다 ㅠㅠ");
         });
     };
-    return (_jsxs("div", { className: "store-detail-wrapper", children: [_jsx("div", { className: "store-hero-image", style: { backgroundImage: `url(${selectedStore.detailimage})` } }), _jsxs("div", { className: "store-info-card", children: [_jsxs("div", { className: "store-name-stars", children: [_jsx("h2", { className: "store-name", children: selectedStore.name }), _jsxs("div", { className: "star-icons", children: [[...Array(5)].map((_, i) => {
+    return (_jsxs("div", { className: "store-detail-wrapper", children: [_jsx("div", { className: "store-hero-image", style: {
+                    backgroundImage: `url(${window.innerWidth <= 768
+                        ? selectedStore.mobiledetailimage
+                        : selectedStore.detailimage})`,
+                } }), _jsxs("div", { className: "store-info-card", children: [_jsxs("div", { className: "store-name-stars", children: [_jsx("h2", { className: "store-name", children: selectedStore.name }), _jsxs("div", { className: "star-icons", children: [[...Array(5)].map((_, i) => {
                                         const value = i + 1;
                                         let src = '';
                                         if (average >= value) {
