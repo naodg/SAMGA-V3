@@ -113,7 +113,7 @@ export default function Floating() {
         }}
       >
         <img
-          src={isMobile ? "/img/icon/문자보내기.svg" : "/img/icon/up.svg"}
+          src={isMobile ? "/img/icon/문자보내기.svg" : "/img/icon/top.svg"}
           className="happy-sotal"
           alt="플로팅버튼"
         />
