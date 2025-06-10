@@ -100,11 +100,16 @@ export default function Floating() {
             </div>
 
             {reservableStores.includes(selectedStore.name) && (
-              <div className="option" onClick={() => setSelectedAction("message")}>
+              <a
+                href={`sms:${selectedStore.phone.replace(/[^0-9]/g, "")}`}
+                className="option"
+                onClick={handleClose}
+              >
                 <img src="/img/icon/문자보내기.svg" alt="문자" />
                 <span>문자 보내기</span>
-              </div>
+              </a>
             )}
+
           </div>
           <button className="close-btn" onClick={handleClose}>닫기</button>
         </div>
@@ -122,7 +127,7 @@ export default function Floating() {
         </div>
       )}
 
-      {selectedStore && selectedAction === "message" && (
+      {/* {selectedStore && selectedAction === "message" && (
         <div className="message-popup" ref={popupRef}>
           <h3>{selectedStore.name}에 문자 보내기</h3>
           <a
@@ -133,7 +138,7 @@ export default function Floating() {
           </a>
           <button className="close-btn" onClick={handleClose}>닫기</button>
         </div>
-      )}
+      )} */}
 
     </div>
   );
