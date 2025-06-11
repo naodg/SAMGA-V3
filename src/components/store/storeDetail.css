@@ -1150,11 +1150,10 @@
 }
 
 .store-images .store-tab-image {
-  width: 280px;
-  height: 200px;
-  object-fit: contain; /* 이미지 전체가 보이게 */
+  width: 360px;
+  height: 400px;
+  object-fit: cover; /* 이미지 전체가 보이게 */
   background-color: #a8a8a8; /* 원하는 컬러로 채움 */
-  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -1190,7 +1189,7 @@
 
 .store-review-card {
   border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 16px;
   background-color: #fff;
 }
@@ -1318,7 +1317,7 @@
 /* ✅ 기본 리뷰 박스 */
 .review-placeholder {
   background: #f8f8f8;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   padding: 40px 20px;
   margin-top: 20px;
   color: #666;
@@ -1390,7 +1389,7 @@
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -1499,7 +1498,7 @@
   }
 
   .store-detail-top-wrapper {
-    padding: 40px 20px;
+    padding: 40px 0px;
     min-height: 200px;
     /* ✅ 공간 확보 */
   }
@@ -1508,7 +1507,8 @@
     display: flex;
     justify-content: space-between;
     /* gap: 12px; */
-    margin-bottom: 30px;
+    margin: 0 20px 30px;
+    
   }
 
   .tab-button {
@@ -1517,7 +1517,7 @@
     border: none;
     background-color: #fff;
     color: #333;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     cursor: pointer;
     transition: 0.2s;
     border: 1px solid #ccc;
