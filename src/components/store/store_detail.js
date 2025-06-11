@@ -188,7 +188,7 @@ export default function StoreDetail() {
         });
     };
     return (_jsxs("div", { className: "store-detail-wrapper", children: [_jsx("div", { className: "store-hero-image", style: {
-                    backgroundImage: `url(${window.innerWidth <= 768
+                    backgroundImage: `url(${window.innerWidth <= 900
                         ? selectedStore.mobiledetailimage
                         : selectedStore.detailimage})`,
                 } }), _jsxs("div", { className: "store-info-card", children: [_jsxs("div", { className: "store-name-stars", children: [_jsx("h2", { className: "store-name", children: selectedStore.name }), _jsxs("div", { className: "star-icons", children: [[...Array(5)].map((_, i) => {

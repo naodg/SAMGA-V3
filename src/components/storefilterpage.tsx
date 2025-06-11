@@ -257,6 +257,48 @@ export default function StoreFilterPage() {
 
 
 
+useEffect(() => {
+  if (window.kakao && window.kakao.maps) return; // 이미 로딩됐으면 skip
+
+  const script = document.createElement("script");
+  script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d8e76007c8b0148a086c37901f73bd54`;
+  script.async = true;
+  script.onload = () => {
+    window.kakao.maps.load(() => {
+      console.log("Kakao Maps SDK 로드됨");
+    });
+  };
+  document.head.appendChild(script);
+}, []);
+
+useEffect(() => {
+  if (!isMobile || !showMap) return;
+  if (!window.kakao || !window.kakao.maps) return;
+
+  const container = document.getElementById("mobileMap");
+  if (!container || mapRef.current) return;
+
+  const map = new window.kakao.maps.Map(container, {
+    center: new window.kakao.maps.LatLng(35.413, 128.123),
+    level: 4,
+  });
+  mapRef.current = map;
+
+  const markersToShow =
+    searchQuery.trim() === ''
+      ? (activeFilters.length === 0 ? storeData : filteredStores)
+      : filteredStores;
+
+  updateMarkers(markersToShow);
+
+  setTimeout(() => {
+    window.kakao.maps.event.trigger(map, 'resize');
+  }, 300);
+}, [showMap, isMobile]);
+
+
+
+
   return (
     <div>
       {isMobile ? (

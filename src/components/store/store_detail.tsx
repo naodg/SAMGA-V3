@@ -266,7 +266,7 @@ export default function StoreDetail() {
             <div
                 className="store-hero-image"
                 style={{
-                    backgroundImage: `url(${window.innerWidth <= 768
+                    backgroundImage: `url(${window.innerWidth <= 900
                             ? selectedStore.mobiledetailimage
                             : selectedStore.detailimage
                         })`,
