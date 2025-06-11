@@ -6,7 +6,7 @@
 
 .review-box {
   border: 1px solid #ccc;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   padding: 24px;
   position: relative;
   background: #fff;
@@ -269,7 +269,7 @@
 @media (max-width: 900px) {
   .review-box {
     border: 1px solid #ccc;
-    border-radius: 16px;
+    border-radius: 0px;
     padding: 10px;
     position: relative;
     background: #fff;

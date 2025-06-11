@@ -16,7 +16,7 @@
 .mystore-card {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 16px;
+  border-radius: 0px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

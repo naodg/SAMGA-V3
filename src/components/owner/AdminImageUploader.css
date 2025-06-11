@@ -1,5 +1,5 @@
 .admin-uploader-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0px auto;
     padding: 130px;
     min-height: calc(100vh - 350px);
@@ -62,7 +62,7 @@
 
 .uploaded-image-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* PC: 3열 */
+  grid-template-columns: repeat(2, 1fr); /* PC: 3열 */
   gap: 20px;
   margin-top: 20px;
 }
@@ -80,6 +80,7 @@
   aspect-ratio: 1 / 1; /* 정사각형 모양 */
   max-width: 100%;
   margin-bottom: 10px;
+  border: 1px solid #222
 }
 
 @media (max-width: 768px) {

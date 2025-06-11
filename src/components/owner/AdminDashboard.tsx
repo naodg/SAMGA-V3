@@ -85,7 +85,7 @@ export default function AdminDashboard() {
     <div className="admin-wrapper">
       <div className="admin-header">
         <div className="admin-title">
-          <img src="//img/icon/수퍼히어로랜딩.svg" alt="캐릭터" className="admin-icon" />
+          <img src="/img/icon/수퍼히어로랜딩.svg" alt="캐릭터" className="admin-icon" />
           <span>{storeName} 단골 리스트</span>
         </div>
 
@@ -98,7 +98,7 @@ export default function AdminDashboard() {
             <th>전화번호</th>
             <th>이메일</th>
             <th>
-              <img src="//img/icon/다운로드.svg" alt="다운로드" className="download-icon" onClick={handleDownload} />
+              <img src="/img/icon/다운로드.svg" alt="다운로드" className="download-icon" onClick={handleDownload} />
             </th>
           </tr>
         </thead>
