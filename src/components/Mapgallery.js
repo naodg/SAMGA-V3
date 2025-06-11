@@ -104,7 +104,7 @@ export default function MapGallery() {
         const loadKakaoMap = () => {
             if (!window.kakao || !window.kakao.maps) {
                 const script = document.createElement("script");
-                script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d65716a4db9e8a93aaff1dfc09ee36b8`;
+                script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d8e76007c8b0148a086c37901f73bd54`;
                 script.onload = () => window.kakao.maps.load(initializeMap);
                 document.head.appendChild(script);
             }
