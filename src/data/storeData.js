@@ -61,7 +61,7 @@ export const storeData = [
         lng: 128.125073,
         address: '경남 합천군 삼가면 삼가로 353',
         phone: '055-932-1106',
-        hours: '매일 10:30 - 19:30 / 매주 월요일 휴무',
+        hours: '매일 10:30 - 17:00 /lastorder:15시 / 매주 월요일 휴무',
         options: ['주문배송', '무료wifi', '예약가능', '주차장', '제로페이', '유아의자', '포장가능', '일반식사메뉴', '남여화장실구분', '단체이용예약가능',],
         image: '/samga/detail/대가한우.jpg',
         detailimage: '/samga/store/대가한우_landing_detail.jpg',
