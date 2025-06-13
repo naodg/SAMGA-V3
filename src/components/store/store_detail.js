@@ -91,7 +91,7 @@ export default function StoreDetail() {
         '남여화장실구분': '/img/amenities/남여화장실구분.svg',
         '단체이용예약가능': '/img/amenities/단체이용예약가능.svg',
         '예약가능': '/img/amenities/예약가능.svg',
-        '주차장': '/img/amenities/주차장.svg',
+        '전용주차장': '/img/amenities/전용주차장.svg',
         '제로페이': '/img/amenities/제로페이.svg',
         '유아의자': '/img/amenities/유아의자.svg',
         '포장가능': '/img/amenities/포장가능.svg',

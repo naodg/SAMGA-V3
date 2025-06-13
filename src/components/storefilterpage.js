@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import './storefilterpage.css';
 const filters = [
-    { label: '주차장', key: '주차장' },
+    { label: '전용주차장', key: '전용주차장' },
     { label: '예약 가능', key: '예약가능' },
     { label: '무료 WIFI', key: '무료wifi' },
     { label: '일반 식사 메뉴', key: '일반식사메뉴' },
