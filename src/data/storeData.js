@@ -241,7 +241,7 @@ export const storeData = [
             '/samga/store/samga/삼가명품한우상세페이지_M_1.jpg',
             '/samga/store/samga/삼가명품한우상세페이지_M_2.jpg',
             '/samga/store/samga/삼가명품한우상세페이지_M_3.jpg',
-            '/samga/store/samga/삼가명품한우상세페이지_M_1.jpg',
+            '/samga/store/samga/삼가명품한우상세페이지_SM_1.jpg',
             '/samga/store/samga/삼가명품한우상세페이지_PC_1.jpg',
             '/samga/store/samga/삼가명품한우상세페이지_PC_2.jpg',
             '/samga/store/samga/삼가명품한우상세페이지_PC_3.jpg',
