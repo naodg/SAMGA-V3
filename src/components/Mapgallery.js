@@ -55,7 +55,7 @@ export default function MapGallery() {
         const initializeMap = () => {
             const map = new window.kakao.maps.Map(container, {
                 center: new window.kakao.maps.LatLng(35.413, 128.123),
-                level: 4
+                level: 5
             });
             mapRef.current = map;
             setTimeout(() => {
