@@ -6,7 +6,7 @@ export default function VilageInfo() {
     <div className="vilage-info-page">
       <h1 className="vilage-title">우리 마을 소개</h1>
       <div className="vilage-images">
-          <img src="/samga/store/information/information/information" />
+          <img src="/samga/store/information/information/information.jpg" />
       </div>
     </div>
   );
