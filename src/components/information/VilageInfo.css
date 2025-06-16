@@ -1,7 +1,7 @@
 .vilage-info-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 100px 0px 30px 0;
   text-align: center;
 }
 
@@ -15,6 +15,10 @@
   width: 100%;
   max-width: 800px;
   margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 700px) {
+    .vilage-info-page {
+        padding: 50px 0px 30px 0;
+    }
 }
