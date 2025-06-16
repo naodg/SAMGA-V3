@@ -19,6 +19,7 @@ import MyReview from './components/user/myreview'
 import Myinfo from './components/user/Myinfo'
 import AdminImageUploader from './components/owner/AdminImageUploader'
 import AutoLogoutTimer from './components/auth/AutoLogoutTimer'
+import VilageInfo from './components/information/VilageInfo'
 
 function AppContent() {
   const location = useLocation()
@@ -39,6 +40,8 @@ function AppContent() {
         <Route path='/mypage/mystore' element={<MyStore/>} />
         <Route path='/myreview' element={<MyReview/>} />
         <Route path='/myinfo' element={<Myinfo/>} />
+
+        <Route path='/vilage' element={<VilageInfo/>} />
 
         <Route path="/" element={<Mainthing />} />
         <Route path="/store/:name" element={<StoreDetail />} />
