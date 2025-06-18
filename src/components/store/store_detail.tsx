@@ -612,6 +612,8 @@ export default function StoreDetail() {
                             spaceBetween={16}
                             slidesPerView={1}
                             pagination={{ clickable: true }}
+                            modules={[Navigation, Pagination]}
+                            navigation={true}
                         >
                             {tabImages.map((url, idx) => (
                                 <SwiperSlide key={url}>
