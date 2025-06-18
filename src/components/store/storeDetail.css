@@ -1145,15 +1145,23 @@
 .store-images {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  /* gap: 20px; */
   justify-content: start;
+}
+
+.pc-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 
 .store-images .store-tab-image {
   width: 360px;
   height: 400px;
-  object-fit: cover; /* 이미지 전체가 보이게 */
-  background-color: #a8a8a8; /* 원하는 컬러로 채움 */
+  object-fit: cover;
+  /* 이미지 전체가 보이게 */
+  background-color: #a8a8a8;
+  /* 원하는 컬러로 채움 */
   cursor: pointer;
 }
 
@@ -1508,7 +1516,7 @@
     justify-content: space-between;
     /* gap: 12px; */
     margin: 0 20px 30px;
-    
+
   }
 
   .tab-button {
@@ -1553,6 +1561,11 @@
   .review-placeholder,
   .review-item {
     text-align: center;
+  }
+
+  .swiper {
+    width: 100%;
+    max-width: 100%;
   }
 
 

@@ -8,6 +8,13 @@ import { auth, db, storage } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ref, listAll, getDownloadURL } from "firebase/storage"
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
 const tabs = ['가게메뉴', '상차림', '편의시설'] as const
 type Tab = typeof tabs[number]
 
@@ -51,6 +58,15 @@ export default function StoreDetail() {
     const average = storeRatings[storeId]?.average || 0
 
     const [tabImages, setTabImages] = useState<string[]>([])
+
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 900);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
 
     //  별
@@ -267,8 +283,8 @@ export default function StoreDetail() {
                 className="store-hero-image"
                 style={{
                     backgroundImage: `url(${window.innerWidth <= 900
-                            ? selectedStore.mobiledetailimage
-                            : selectedStore.detailimage
+                        ? selectedStore.mobiledetailimage
+                        : selectedStore.detailimage
                         })`,
                 }}
             />
@@ -590,20 +606,40 @@ export default function StoreDetail() {
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
                     {tabImages.length === 0 ? (
-                        <p style={{ textAlign: 'center', color: '#999' }}>등록된 이미지가 없습니다.</p>
+                        <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
+                    ) : isMobile ? (
+                        <Swiper
+                            spaceBetween={16}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                        >
+                            {tabImages.map((url, idx) => (
+                                <SwiperSlide key={url}>
+                                    <img
+                                        src={url}
+                                        alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                        className="store-tab-image"
+                                        onClick={() => handleImageClick(url)}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     ) : (
-                        tabImages.map((url, idx) => (
-                            <img
-                                key={url}
-                                src={url}
-                                alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                className="store-tab-image"
-                                onClick={() => handleImageClick(url)} // ✅ 클릭 이벤트 추가
-                            />
-                        ))
+                        <div className="pc-image-grid">
+                            {tabImages.map((url, idx) => (
+                                <img
+                                    key={url}
+                                    src={url}
+                                    alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                    className="store-tab-image"
+                                    onClick={() => handleImageClick(url)}
+                                />
+                            ))}
+                        </div>
                     )}
-
                 </div>
+
+
                 {/* ✅ 모달 */}
                 {selectedImage && (
                     <div className="image-modal-overlay" onClick={handleCloseModal}>
