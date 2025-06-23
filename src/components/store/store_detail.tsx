@@ -15,7 +15,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-const tabs = ['가게메뉴', '상차림', '편의시설'] as const
+const tabs = ['메뉴판', '메뉴', '편의시설'] as const
 type Tab = typeof tabs[number]
 
 
@@ -42,7 +42,7 @@ export default function StoreDetail() {
     const { name } = useParams()
     const storeName = decodeURIComponent(name || '')
     const selectedStore = storeData.find((s) => s.name === storeName)
-    const [activeTab, setActiveTab] = useState<Tab>('가게메뉴')
+    const [activeTab, setActiveTab] = useState<Tab>('메뉴판')
     const [showAllFacilities, setShowAllFacilities] = useState(false)
     const titles = storeDetailAssets[selectedStore.name] || []
     const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -164,8 +164,8 @@ export default function StoreDetail() {
 
 
     const tabToFolderMap: Record<Tab, string> = {
-        '가게메뉴': 'menu',
-        '상차림': 'side',
+        '메뉴판': 'menu',
+        '메뉴': 'side',
         '편의시설': 'amenities',
     }
 
