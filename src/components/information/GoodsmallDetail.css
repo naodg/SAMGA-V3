@@ -1,0 +1,81 @@
+.goods-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.goods-image-area {
+  flex: 1;
+}
+
+.goods-image-area img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.goods-info-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.goods-detail-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.goods-detail-desc {
+  font-size: 16px;
+  color: #555;
+}
+
+.goods-detail-price {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.goods-detail-delivery {
+  font-size: 14px;
+  color: #888;
+}
+
+.goods-detail-notice {
+  font-size: 14px;
+  color: #c00;
+}
+
+.goods-detail-soldout {
+  padding: 12px 24px;
+  background-color: #ccc;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .goods-detail-page {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .goods-detail-name {
+    font-size: 20px;
+  }
+
+  .goods-detail-price {
+    font-size: 18px;
+  }
+
+  .goods-detail-soldout {
+    width: 100%;
+  }
+}

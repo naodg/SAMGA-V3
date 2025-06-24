@@ -19,14 +19,14 @@ export default function Header() {
   };
 
   useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 768)
-  }
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
 
-  handleResize() // 초기값 세팅
-  window.addEventListener("resize", handleResize)
-  return () => window.removeEventListener("resize", handleResize)
-}, [])
+    handleResize() // 초기값 세팅
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -56,7 +56,14 @@ export default function Header() {
         {/* 네비게이션 */}
         <nav className="nav">
           <ul className="nav-list">
-            <li onClick={() => navigate('/vilage')}>牛리마을 소개</li>
+            <li className='dropdownH'>
+              <span className="dropdownH-toggle">牛리마을 소개</span>
+              <ul className="dropdownH-menu">
+                <li onClick={() => navigate('/vilage')}>우리마을 브랜드 소개</li>
+                <li onClick={() => navigate('/mascot')}>소탈이 소개</li>
+                <li onClick={() => navigate('/goods')}>굿즈몰</li>
+              </ul>
+            </li>
             <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
             <li onClick={() => navigate('/review')}>리뷰</li>
           </ul>
@@ -83,19 +90,28 @@ export default function Header() {
         <div className="top-row">
           <div className="logo" onClick={() => navigate('/')}>
             {/* <img src={isStoreDetailPage ? "/img/logo/whitelogo.svg" : "/img/logo/logo.svg"} alt="로고" className='logo' /> */}
-             <img src={"/img/logo/logo.svg"} alt="로고" className='logo' />
+            <img src={"/img/logo/logo.svg"} alt="로고" className='logo' />
           </div>
           {/* ✅ 이건 항상 보여야 함 */}
           <nav className="nav">
             <ul className="nav-list">
-              <li onClick={() => navigate('/vilage')}>牛리마을{isMobile && <br />}소개</li>
+
+              <li className="dropdownH">
+              <span className="dropdown-toggle">牛리마을{isMobile && <br />}소개</span>
+              <ul className="dropdown-menu">
+                <li onClick={() => navigate('/vilage')}>우리마을{isMobile && <br />} 브랜드 소개</li>
+                <li onClick={() => navigate('/mascot')}>소탈이 {isMobile && <br />}소개</li>
+                <li onClick={() => navigate('/goods')}>굿즈몰</li>
+              </ul>
+            </li>
+            
               <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
               <li onClick={() => navigate('/review')}>리뷰</li>
             </ul>
           </nav>
           <div className={`mobile-menu-icon`} onClick={toggleMenu}>
             {/* <img src={isStoreDetailPage ? "/img/icon/mypagewhite.svg" : "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' /> */}
-            <img src={ "/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
+            <img src={"/img/icon/mypageicon.svg"} alt="로고" className='mobile-menu-icon ' />
           </div>
         </div>
 

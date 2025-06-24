@@ -20,6 +20,9 @@ import Myinfo from './components/user/Myinfo'
 import AdminImageUploader from './components/owner/AdminImageUploader'
 import AutoLogoutTimer from './components/auth/AutoLogoutTimer'
 import VilageInfo from './components/information/VilageInfo'
+import Sotal from './components/information/Sotal'
+import Goodsmall from './components/information/Goodsmall'
+import GoodsmallDetail from './components/information/GoodsmallDetail'
 
 function AppContent() {
   const location = useLocation()
@@ -37,11 +40,15 @@ function AppContent() {
         <Route path="/login" element={<SignIn />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path="/mypage" element={<><AutoLogoutTimer /><Mypage /></>} />
-        <Route path='/mypage/mystore' element={<MyStore/>} />
-        <Route path='/myreview' element={<MyReview/>} />
-        <Route path='/myinfo' element={<Myinfo/>} />
+        <Route path='/mypage/mystore' element={<MyStore />} />
+        <Route path='/myreview' element={<MyReview />} />
+        <Route path='/myinfo' element={<Myinfo />} />
 
-        <Route path='/vilage' element={<VilageInfo/>} />
+        <Route path='/vilage' element={<VilageInfo />} />
+        <Route path='/mascot' element={<Sotal />} />
+
+        <Route path="/goods" element={<Goodsmall />} />
+        <Route path="/goods/:id" element={<GoodsmallDetail />} />
 
         <Route path="/" element={<Mainthing />} />
         <Route path="/store/:name" element={<StoreDetail />} />

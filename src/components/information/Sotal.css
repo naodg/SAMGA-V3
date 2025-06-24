@@ -1,0 +1,36 @@
+.vilage-info-page {
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  padding: 180px 0px 30px 0;
+  text-align: center;
+}
+
+.vilage-images img {
+  width: 100%;
+  /* max-width: 800px; */
+  margin-bottom: 20px;
+}
+
+.sotal-download-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ad5457;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.sotal-download-button:hover {
+  background-color: #913d40;
+}
+
+
+@media (max-width: 700px) {
+  .vilage-info-page {
+    padding: 50px 0px 30px 0;
+  }
+}

@@ -1,0 +1,72 @@
+.goodsmall-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.goods-card {
+  cursor: pointer;
+  text-align: start;
+}
+
+.goods-card img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.goods-info {
+  margin-top: 10px;
+}
+
+.goods-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.goods-price {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 2px;
+}
+
+.goods-soldout {
+  font-size: 13px;
+  color: #000;
+  font-weight: bold;
+  background-color: #eee;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .goodsmall-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .goodsmall-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .goodsmall-container {
+    grid-template-columns: 1fr;
+  }
+
+  .goods-name {
+    font-size: 15px;
+  }
+
+  .goods-price {
+    font-size: 13px;
+  }
+}
