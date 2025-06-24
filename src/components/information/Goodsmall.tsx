@@ -17,7 +17,10 @@ export default function Goodsmall() {
             <p className="goods-soldout">품절</p>
           </div>
         </div>
+
+        
       ))}
+      
     </div>
   );
 }
