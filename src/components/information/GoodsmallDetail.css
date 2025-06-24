@@ -11,13 +11,6 @@
   margin-bottom: 40px;
 }
 
-/*.goods-image-area img {
-  width: 500px;
-  object-fit: cover;
-  height: auto;
-  border-radius: 8px;
-}*/
-
 .goods-info-table {
   display: flex;
   flex-direction: column;
@@ -113,12 +106,28 @@
 
 .thumbnail-list {
   display: flex;
-  gap: 6px; /* 썸네일 사이 여백 */
-  justify-content: center;
-  flex-wrap: nowrap; /* 한 줄로 쭉 */
-  overflow-x: auto; /* 만약 너무 많으면 스크롤 생김 */
-  max-width: 500px;
+  gap: 6px;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  flex-wrap: nowrap;           /* 무조건 한 줄 */
+  overflow-x: auto;            /* 넘칠 때 가로 스크롤 */
   padding: 4px 0;
+  scrollbar-width: thin;       /* 파이어폭스용 스크롤바 얇게 */
+  scrollbar-color: #888 transparent;
+  max-width: 500px;
+}
+
+/* 크롬, 엣지, 사파리 스크롤바 커스텀 */
+.thumbnail-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+.thumbnail-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .thumbnail-image {
@@ -145,7 +154,7 @@
 
 
 /* 반응형 */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .goods-top-area {
     flex-direction: column;
     align-items: center;
