@@ -1,5 +1,5 @@
 // src/components/Header.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 import { auth } from "../firebase";
@@ -11,6 +11,9 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
 
   const isStoreDetailPage = location.pathname.startsWith('/store/');
 
@@ -35,10 +38,29 @@ export default function Header() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // dropdownRef 내부가 아니면 닫기
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    // 문서 전체 클릭 감지
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/");
   };
+
+  const toggleDropdown = () => {
+  setDropdownOpen(prev => !prev);
+  console.log('isMobile', isMobile);
+};
 
   return (
     <header className={isStoreDetailPage && !isMobile ? 'header white' : 'header'}>
@@ -56,7 +78,7 @@ export default function Header() {
         {/* 네비게이션 */}
         <nav className="nav">
           <ul className="nav-list">
-            <li className='dropdownH'>
+            <li className='dropdownH' >
               <span className="dropdownH-toggle">牛리마을 소개</span>
               <ul className="dropdownH-menu">
                 <li onClick={() => navigate('/vilage')}>우리마을 브랜드 소개</li>
@@ -96,12 +118,14 @@ export default function Header() {
           <nav className="nav">
             <ul className="nav-list">
 
-              <li className="dropdownH">
-              <span className="dropdown-toggle">牛리마을{isMobile && <br />}소개</span>
-              <ul className="dropdown-menu">
-                <li onClick={() => navigate('/vilage')}>우리마을{isMobile && <br />} 브랜드 소개</li>
-                <li onClick={() => navigate('/mascot')}>소탈이 {isMobile && <br />}소개</li>
-                <li onClick={() => navigate('/goods')}>굿즈몰</li>
+              <li className="dropdownH" ref={dropdownRef}>
+              <span className="dropdown-toggle" onClick={toggleDropdown}>
+                  牛리마을{isMobile && <br />}소개
+                </span>
+              <ul className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
+                <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을{isMobile && <br />} 브랜드 소개</li>
+                <li onClick={() => { navigate('/mascot'); setDropdownOpen(false); }}>소탈이 {isMobile && <br />}소개</li>
+                <li onClick={() => { navigate('/goods'); setDropdownOpen(false); }}>굿즈몰</li>
               </ul>
             </li>
             
