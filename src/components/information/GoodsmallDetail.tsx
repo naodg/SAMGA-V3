@@ -16,7 +16,7 @@ export default function GoodsmallDetail() {
   return (
     <div className="goods-detail-page">
       <div className="goods-top-area">
-        <div>
+        <div className="goods-image-area">
           {/* 메인 이미지 */}
           <img src={mainImage} alt={product.name} className="main-product-image" />
 

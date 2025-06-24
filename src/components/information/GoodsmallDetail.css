@@ -113,7 +113,8 @@
   padding: 4px 0;
   scrollbar-width: thin;       /* 파이어폭스용 스크롤바 얇게 */
   scrollbar-color: #888 transparent;
-  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 크롬, 엣지, 사파리 스크롤바 커스텀 */
@@ -131,8 +132,9 @@
 }
 
 .thumbnail-image {
-  width: 100px;
-  height: 100px;
+  width: calc((100% - 6px * 4) / 5);
+  max-width: 100px;
+  aspect-ratio: 1 / 1; /* 정사각형 유지 */
   object-fit: cover;
   cursor: pointer;
   border: 1px solid transparent;
@@ -145,13 +147,17 @@
 }
 
 .main-product-image {
-  width: 500px;
+  width: 100%;
   object-fit: cover;
   height: auto;
   max-height: 500px;
   border-radius: 8px;
 }
 
+.goods-image-area {
+  max-width: 500px;
+  width: 100%;
+}
 
 /* 반응형 */
 @media (max-width: 900px) {
