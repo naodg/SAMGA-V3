@@ -1,19 +1,19 @@
 .goods-detail-page {
-  max-width: 1200px;
+  padding: 180px 24px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 180px 20px;
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
 }
 
-.goods-image-area {
-  flex: 1;
+.goods-top-area {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-bottom: 40px;
 }
 
 .goods-image-area img {
-  width: 100%;
-  max-width: 500px;
+  width: 500px;
+  height: auto;
   border-radius: 8px;
 }
 
@@ -21,61 +21,76 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: center;
 }
 
 .goods-detail-name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-}
-
-.goods-detail-desc {
-  font-size: 16px;
-  color: #555;
+  margin-bottom: 12px;
 }
 
 .goods-detail-price {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .goods-detail-delivery {
   font-size: 14px;
-  color: #888;
+  color: #555;
+  margin-bottom: 8px;
 }
 
 .goods-detail-notice {
   font-size: 14px;
-  color: #c00;
+  color: red;
+  margin-bottom: 20px;
 }
 
 .goods-detail-soldout {
-  padding: 12px 24px;
   background-color: #ccc;
+  color: white;
+  padding: 12px 20px;
   border: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
   border-radius: 6px;
+  font-size: 14px;
   cursor: not-allowed;
+}
+
+.goods-extra-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.goods-extra-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.goods-extra-section img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* 반응형 */
 @media (max-width: 768px) {
-  .goods-detail-page {
+  .goods-top-area {
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+  }
+
+  .goods-image-area img {
+    width: 150px;
   }
 
   .goods-detail-name {
     font-size: 20px;
   }
 
-  .goods-detail-price {
-    font-size: 18px;
-  }
-
-  .goods-detail-soldout {
+  .goods-extra-section img {
     width: 100%;
   }
 }
