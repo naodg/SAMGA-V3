@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import "./MyInfo.css";
+import "./Myinfo.css";
 
 export default function Myinfo() {
   const [nickname, setNickname] = useState("");

@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import { auth, db } from "../../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import "./MyInfo.css";
+import "./Myinfo.css";
 export default function Myinfo() {
     const [nickname, setNickname] = useState("");
     const [phone, setPhone] = useState("");
