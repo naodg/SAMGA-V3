@@ -79,7 +79,7 @@
   font-size: 16px;
   cursor: not-allowed;
   width: 100%;
-  max-width: 300px;
+  max-width: 520px;
   margin-top: 10px;
 }
 
@@ -107,9 +107,8 @@
 
 .goods-extra-section img {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   height: auto;
-  border-radius: 8px;
 }
 
 .thumbnail-list {
