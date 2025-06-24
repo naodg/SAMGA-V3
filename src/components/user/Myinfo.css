@@ -1,67 +1,31 @@
 .myinfo-container {
   max-width: 500px;
-  margin: 0px auto;
-  padding: 120px 24px 180px;
-}
-
-.myinfo-container h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 32px;
-  color: #222;
-  text-align: start;
+  margin: 60px auto;
+  padding: 120px 24px;
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.form-group label {
+label {
   display: block;
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
-.myinfo-input {
+input {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ddd;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 0.2s;
 }
 
-.myinfo-input:focus {
-  outline: none;
-  border-color: #ad5457;
-  box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.2);
-}
-
-.myinfo-button {
-  width: 100%;
-  padding: 14px;
-  background-color: #ad5457;
-  color: white;
+button {
+  padding: 12px 20px;
+  background: #ad5457;
+  color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.myinfo-button:hover {
-  background-color: #8b4245;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-  .myinfo-container {
-    margin: 0px 16px;
-    padding: 70px 20px;
-  }
 }
