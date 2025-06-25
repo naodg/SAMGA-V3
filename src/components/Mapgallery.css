@@ -8,7 +8,7 @@
   background: #f3ece9;
   overflow: hidden;
   position: relative;
-  min-height: calc(var(--default-pixel) * 1.75);
+  min-height: calc(var(--default-pixel) * 1.5);
 }
 
 .map-gallery-inner {
@@ -47,9 +47,9 @@
 /* 패턴 배경 */
 .map-gallery-pattern {
   position: absolute;
-  top: calc(var(--default-pixel) * 1.03);
+  top: calc(var(--default-pixel) * 0.55);
   width: 100vw;
-  height: calc(var(--default-pixel) * 0.35);
+  height: calc(var(--default-pixel) * 0.45);
   background: url('/img/logo/lastp.svg') no-repeat bottom / cover;
   background-color: #B58575;
   z-index: 1;
@@ -378,7 +378,7 @@
 
     .map-gallery-pattern {
       top: calc(115vw * 0.99);
-      height: calc(90vw * 0.25);
+      height: calc(90vw * 0.35);
     }
 
 }
@@ -399,7 +399,7 @@
 
     .map-gallery-pattern {
       top: calc(135vw * 0.99);
-      height: calc(90vw * 0.25);
+      height: calc(90vw * 0.35);
     }
 
 }

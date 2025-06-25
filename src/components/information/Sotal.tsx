@@ -27,7 +27,7 @@ export default function Sotal() {
         rel="noopener noreferrer"
         className="sotal-download-button"
       >
-        소탈이 이미지 다운받기
+        소탈이 캐릭터 사용하러가기
       </a>
     </div>
   );
