@@ -57,17 +57,40 @@ export default function GoodsmallDetail() {
                   <option value="" disabled>
                     - [필수] 옵션을 선택해 주세요 -
                   </option>
-                  <option value="opt1" disabled>
-                    상품명1 (품절)
-                  </option>
-                  <option value="opt2" disabled>
-                    상품명2 (품절)
-                  </option>
-                  <option value="opt3" disabled>
-                    상품명3 (품절)
-                  </option>
+
+                  {product.id === 'keyring' && (
+                    <>
+                      <option value="keyring1" disabled>
+                        소탈이-기본형 (품절)
+                      </option>
+                      <option value="keyring2" disabled>
+                        소탈이-정직함 (품절)
+                      </option>
+                      <option value="keyring3" disabled>
+                        소탈이-행복함 (품절)
+                      </option>
+                      <option value="keyring4" disabled>
+                        소탈이-이로움 (품절)
+                      </option>
+                    </>
+                  )}
+
+                  {product.id === 'figure' && (
+                    <>
+                      <option value="figure1" disabled>
+                        소탈이-기본형 (품절)
+                      </option>
+                      <option value="figure2" disabled>
+                        소탈이-이로움 (품절)
+                      </option>
+                      <option value="figure3" disabled>
+                        소탈이-행복함 (품절)
+                      </option>
+                    </>
+                  )}
                 </select>
               </div>
+
             </div>
           </div>
 
