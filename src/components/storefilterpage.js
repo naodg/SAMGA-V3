@@ -291,42 +291,42 @@ export default function StoreFilterPage() {
                                                             [store.name]: !prev[store.name],
                                                         }));
                                                     }, children: openOptions[store.name] ? '간략히 ▲' : '더보기 ▼' }))] }))] }, store.name));
-                            }), selectedStore && !triggeredFromReservation && (_jsxs("div", { className: "popup-store-card", children: [_jsxs("div", { className: "card-header", children: [_jsx("h3", { className: "filter-store-name", children: selectedStore.name }), _jsx("button", { onClick: () => setSelectedStore(null), className: "close-button", children: "\u2716" })] }), _jsx("p", { className: "store-address", children: selectedStore.address }), _jsx("p", { className: "store-phone", children: selectedStore.phone }), _jsx("a", { href: `https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`, target: "_blank", rel: "noopener noreferrer", className: "filter-map-link", children: "\uAE38\uCC3E\uAE30" })] }))] })] })) : (_jsx(_Fragment, { children: _jsxs("div", { className: "pc-wrapper", children: [_jsx("div", { className: "pc-search-wrapper", children: _jsxs("div", { className: "pc-search-bar", children: [_jsx("button", { className: "search-icon-button-fillter", onClick: () => {
-                                            if (searchQuery.trim() === '') {
-                                                setFilteredStores(storeData);
-                                                setSelectedStore(null);
-                                            }
-                                            else {
-                                                const results = storeData.filter(store => store.name.includes(searchQuery));
-                                                setFilteredStores(results);
-                                                setSelectedStore(results[0] ?? null);
-                                            }
-                                        }, children: _jsx("img", { src: "/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58" }) }), _jsx("input", { type: "text", value: searchQuery, placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", className: "search-input", onFocus: () => {
-                                            setShowMap(true);
-                                            // setTimeout(() => {
-                                            //   updateMarkers(storeData); 
-                                            // }, 100); 
-                                        }, onChange: (e) => {
-                                            const keyword = e.target.value;
-                                            setSearchQuery(keyword);
-                                            if (keyword.trim() === '') {
-                                                setFilteredStores(storeData);
-                                                setSelectedStore(null);
-                                                updateMarkers(storeData);
-                                            }
-                                            else {
-                                                const results = storeData.filter(store => store.name.includes(keyword));
-                                                setFilteredStores(results);
-                                                setSelectedStore(results[0] ?? null);
-                                                updateMarkers(results);
-                                            }
-                                        }, onKeyDown: (e) => {
-                                            if (e.key === 'Enter') {
-                                                const results = storeData.filter(store => store.name.includes(searchQuery));
-                                                setFilteredStores(results);
-                                                setSelectedStore(results[0] ?? null);
-                                            }
-                                        } })] }) }), _jsx("hr", { className: "search-divider" }), _jsx("div", { className: "pc-filter-bar", children: _jsx("div", { className: "filter-content", children: filters.map(({ label, key }) => (_jsxs("button", { onClick: () => toggleFilter(key), className: `filter-button ${activeFilters.includes(key) ? 'active' : ''}`, children: [label, " ", activeFilters.includes(key) && _jsx("span", { className: "remove-x", children: "\u00D7" })] }, key))) }) }), _jsxs("div", { className: "pc-main-layout", children: [_jsx("div", { className: "pc-store-list", children: filteredStores.map((store, index) => {
+                            }), selectedStore && !triggeredFromReservation && (_jsxs("div", { className: "popup-store-card", children: [_jsxs("div", { className: "card-header", children: [_jsx("h3", { className: "filter-store-name", children: selectedStore.name }), _jsx("button", { onClick: () => setSelectedStore(null), className: "close-button", children: "\u2716" })] }), _jsx("p", { className: "store-address", children: selectedStore.address }), _jsx("p", { className: "store-phone", children: selectedStore.phone }), _jsx("a", { href: `https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`, target: "_blank", rel: "noopener noreferrer", className: "filter-map-link", children: "\uAE38\uCC3E\uAE30" })] }))] })] })) : (_jsx(_Fragment, { children: _jsxs("div", { className: "pc-wrapper", children: [_jsxs("div", { className: 'please', children: [_jsx("div", { className: "pc-search-wrapper", children: _jsxs("div", { className: "pc-search-bar", children: [_jsx("button", { className: "search-icon-button-fillter", onClick: () => {
+                                                    if (searchQuery.trim() === '') {
+                                                        setFilteredStores(storeData);
+                                                        setSelectedStore(null);
+                                                    }
+                                                    else {
+                                                        const results = storeData.filter(store => store.name.includes(searchQuery));
+                                                        setFilteredStores(results);
+                                                        setSelectedStore(results[0] ?? null);
+                                                    }
+                                                }, children: _jsx("img", { src: "/img/logo/search.svg", alt: "\uAC80\uC0C9 \uC544\uC774\uCF58" }) }), _jsx("input", { type: "text", value: searchQuery, placeholder: "\uB0B4\uAC00 \uCC3E\uB294 \uC2DD\uB2F9\uC744 \uAC80\uC0C9\uD574\uBCF4\uC138\uC694.", className: "search-input", onFocus: () => {
+                                                    setShowMap(true);
+                                                    // setTimeout(() => {
+                                                    //   updateMarkers(storeData); 
+                                                    // }, 100); 
+                                                }, onChange: (e) => {
+                                                    const keyword = e.target.value;
+                                                    setSearchQuery(keyword);
+                                                    if (keyword.trim() === '') {
+                                                        setFilteredStores(storeData);
+                                                        setSelectedStore(null);
+                                                        updateMarkers(storeData);
+                                                    }
+                                                    else {
+                                                        const results = storeData.filter(store => store.name.includes(keyword));
+                                                        setFilteredStores(results);
+                                                        setSelectedStore(results[0] ?? null);
+                                                        updateMarkers(results);
+                                                    }
+                                                }, onKeyDown: (e) => {
+                                                    if (e.key === 'Enter') {
+                                                        const results = storeData.filter(store => store.name.includes(searchQuery));
+                                                        setFilteredStores(results);
+                                                        setSelectedStore(results[0] ?? null);
+                                                    }
+                                                } })] }) }), _jsx("hr", { className: "search-divider" }), _jsx("div", { className: "pc-filter-bar", children: _jsx("div", { className: "filter-content", children: filters.map(({ label, key }) => (_jsxs("button", { onClick: () => toggleFilter(key), className: `filter-button ${activeFilters.includes(key) ? 'active' : ''}`, children: [label, " ", activeFilters.includes(key) && _jsx("span", { className: "remove-x", children: "\u00D7" })] }, key))) }) })] }), _jsxs("div", { className: "pc-main-layout", children: [_jsx("div", { className: "pc-store-list", children: filteredStores.map((store, index) => {
                                         const storeId = `store${index + 1}`;
                                         const rating = storeRatings[storeId];
                                         return (_jsxs("div", { className: "pc-store-item", children: [_jsxs("div", { className: "pc-store-item-header", onClick: () => navigate(`/store/${encodeURIComponent(store.name)}`), children: [_jsx("img", { src: store.filterimage || '/img/default.jpg', alt: store.name, className: "store-thumbnail" }), _jsxs("div", { className: "store-info-text", children: [_jsx("h3", { className: "store-name", children: store.name }), _jsxs("div", { className: "rating-review", children: [_jsxs("div", { className: "store-stars", children: [[...Array(5)].map((_, i) => {

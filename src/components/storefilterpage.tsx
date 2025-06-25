@@ -257,44 +257,44 @@ export default function StoreFilterPage() {
 
 
 
-useEffect(() => {
-  if (window.kakao && window.kakao.maps) return; // 이미 로딩됐으면 skip
+  useEffect(() => {
+    if (window.kakao && window.kakao.maps) return; // 이미 로딩됐으면 skip
 
-  const script = document.createElement("script");
-  script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d8e76007c8b0148a086c37901f73bd54`;
-  script.async = true;
-  script.onload = () => {
-    window.kakao.maps.load(() => {
-      console.log("Kakao Maps SDK 로드됨");
+    const script = document.createElement("script");
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d8e76007c8b0148a086c37901f73bd54`;
+    script.async = true;
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        console.log("Kakao Maps SDK 로드됨");
+      });
+    };
+    document.head.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !showMap) return;
+    if (!window.kakao || !window.kakao.maps) return;
+
+    const container = document.getElementById("mobileMap");
+    if (!container || mapRef.current) return;
+
+    const map = new window.kakao.maps.Map(container, {
+      center: new window.kakao.maps.LatLng(35.413, 128.123),
+      level: 4,
     });
-  };
-  document.head.appendChild(script);
-}, []);
+    mapRef.current = map;
 
-useEffect(() => {
-  if (!isMobile || !showMap) return;
-  if (!window.kakao || !window.kakao.maps) return;
+    const markersToShow =
+      searchQuery.trim() === ''
+        ? (activeFilters.length === 0 ? storeData : filteredStores)
+        : filteredStores;
 
-  const container = document.getElementById("mobileMap");
-  if (!container || mapRef.current) return;
+    updateMarkers(markersToShow);
 
-  const map = new window.kakao.maps.Map(container, {
-    center: new window.kakao.maps.LatLng(35.413, 128.123),
-    level: 4,
-  });
-  mapRef.current = map;
-
-  const markersToShow =
-    searchQuery.trim() === ''
-      ? (activeFilters.length === 0 ? storeData : filteredStores)
-      : filteredStores;
-
-  updateMarkers(markersToShow);
-
-  setTimeout(() => {
-    window.kakao.maps.event.trigger(map, 'resize');
-  }, 300);
-}, [showMap, isMobile]);
+    setTimeout(() => {
+      window.kakao.maps.event.trigger(map, 'resize');
+    }, 300);
+  }, [showMap, isMobile]);
 
 
 
@@ -567,80 +567,85 @@ useEffect(() => {
           {/* ✅ PC 버전 전체 */}
           <div className="pc-wrapper">
 
-            {/* ✅ 검색창 */}
-            <div className="pc-search-wrapper">
-              <div className="pc-search-bar">
-                <button className="search-icon-button-fillter" onClick={() => {
-                  if (searchQuery.trim() === '') {
-                    setFilteredStores(storeData);
-                    setSelectedStore(null);
-                  } else {
-                    const results = storeData.filter(store =>
-                      store.name.includes(searchQuery)
-                    );
-                    setFilteredStores(results);
-                    setSelectedStore(results[0] ?? null);
-                  }
-                }}>
-                  <img src="/img/logo/search.svg" alt="검색 아이콘" />
-                </button>
-
-                <input
-                  type="text"
-                  value={searchQuery}
-                  placeholder="내가 찾는 식당을 검색해보세요."
-                  className="search-input"
-                  onFocus={() => {
-                    setShowMap(true);
-                    // setTimeout(() => {
-                    //   updateMarkers(storeData); 
-                    // }, 100); 
-                  }}
-                  onChange={(e) => {
-                    const keyword = e.target.value;
-                    setSearchQuery(keyword);
-                    if (keyword.trim() === '') {
+            <div className='please'>
+              {/* ✅ 검색창 */}
+              <div className="pc-search-wrapper">
+                <div className="pc-search-bar">
+                  <button className="search-icon-button-fillter" onClick={() => {
+                    if (searchQuery.trim() === '') {
                       setFilteredStores(storeData);
                       setSelectedStore(null);
-                      updateMarkers(storeData);
                     } else {
-                      const results = storeData.filter(store =>
-                        store.name.includes(keyword)
-                      );
-                      setFilteredStores(results);
-                      setSelectedStore(results[0] ?? null);
-                      updateMarkers(results);
-                    }
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
                       const results = storeData.filter(store =>
                         store.name.includes(searchQuery)
                       );
                       setFilteredStores(results);
                       setSelectedStore(results[0] ?? null);
                     }
-                  }}
-                />
-              </div>
-            </div>
-
-            <hr className="search-divider" />
-
-            {/* ✅ 필터 */}
-            <div className="pc-filter-bar">
-              <div className="filter-content">
-                {filters.map(({ label, key }) => (
-                  <button
-                    key={key}
-                    onClick={() => toggleFilter(key)}
-                    className={`filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
-                  >
-                    {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
+                  }}>
+                    <img src="/img/logo/search.svg" alt="검색 아이콘" />
                   </button>
-                ))}
+
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    placeholder="내가 찾는 식당을 검색해보세요."
+                    className="search-input"
+                    onFocus={() => {
+                      setShowMap(true);
+                      // setTimeout(() => {
+                      //   updateMarkers(storeData); 
+                      // }, 100); 
+                    }}
+                    onChange={(e) => {
+                      const keyword = e.target.value;
+                      setSearchQuery(keyword);
+                      if (keyword.trim() === '') {
+                        setFilteredStores(storeData);
+                        setSelectedStore(null);
+                        updateMarkers(storeData);
+                      } else {
+                        const results = storeData.filter(store =>
+                          store.name.includes(keyword)
+                        );
+                        setFilteredStores(results);
+                        setSelectedStore(results[0] ?? null);
+                        updateMarkers(results);
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        const results = storeData.filter(store =>
+                          store.name.includes(searchQuery)
+                        );
+                        setFilteredStores(results);
+                        setSelectedStore(results[0] ?? null);
+                      }
+                    }}
+                  />
+                </div>
               </div>
+
+              <hr className="search-divider" />
+
+              {/* ✅ 필터 */}
+              <div className="pc-filter-bar">
+                <div className="filter-content">
+                  {filters.map(({ label, key }) => (
+                    <button
+                      key={key}
+                      onClick={() => toggleFilter(key)}
+                      className={`filter-button ${activeFilters.includes(key) ? 'active' : ''}`}
+                    >
+                      {label} {activeFilters.includes(key) && <span className="remove-x">×</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
             </div>
+
+
 
             {/* ✅ 본문: 가게 리스트 + 지도 */}
             <div className="pc-main-layout" >

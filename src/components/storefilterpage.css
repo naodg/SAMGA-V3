@@ -26,7 +26,7 @@
   cursor: pointer;
   height: 40px;
   width: 40px;
-  border-radius: 0px ;
+  border-radius: 0px;
   padding: 0px;
 }
 
@@ -279,6 +279,19 @@
   font-family: sans-serif;
 }
 
+.please {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  /* z-index: 1000; */
+  width: 100%;
+}
+
 /* ✅ 검색창 */
 .pc-search-wrapper {
   width: 100%;
@@ -286,7 +299,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
 }
 
 .pc-search-bar {
@@ -298,7 +310,8 @@
   width: 100%;
   max-width: 650px;
   height: 40px;
-  margin-top: 140px;
+  margin-top: 120px;
+  margin-bottom: 10px;
   box-sizing: border-box;
 }
 
@@ -325,8 +338,10 @@
 
 .search-divider {
   border-top: 1px solid #AD5457;
-  max-width: 1210px;
-  width:80%;
+  /* max-width: 1210px; */
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 20px auto 10px;
   position: fixed;
 }
@@ -338,9 +353,8 @@
   padding: 15px 0px;
   max-width: 1230px;
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   scrollbar-width: thin;
-  position: fixed;
 }
 
 .filter-content {
@@ -396,11 +410,11 @@
 .pc-main-layout {
   display: flex;
   /* height: 700px; */
-  max-width:1230px;
+  max-width: 1230px;
   width: 80%;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 0 auto;
+  margin: 260px auto 50px;
   /* 화면 꽉 채우되, 검색바+필터 높이 감안 */
   /* overflow: hidden; */
 }
@@ -411,7 +425,7 @@
   max-width: 60%;
   /* overflow-y: auto; */
   height: 100%;
-  padding: 20px 20px 20px 0px;
+  padding: 30px 20px 20px 0px;
   box-sizing: border-box;
 }
 
@@ -500,7 +514,7 @@
 /* ✅ 지도 */
 .pc-map-wrapper {
   width: 40%;
-  height: 97%; 
+  height: 97%;
   position: fixed;
   top: 298px;
   left: 56%;
@@ -537,7 +551,7 @@
 }
 
 
-@media(max-width:900px){
+@media(max-width:900px) {
   /* .popup-store-card {
     position: absolute;
     right: 10px;
@@ -555,7 +569,7 @@
     padding: 12px;
     font-size: 14px;
   }
-  
+
 }
 
 .reservation-tag {
