@@ -244,7 +244,9 @@ export default function ReviewDetailPage() {
                         />
                     </div>
                     <div className="review-meta">
-                        작성자: {review.nickname}<br />
+                        작성자: {review.nickname.length <= 2
+                            ? review.nickname[0] + '*'
+                            : review.nickname[0] + '*'.repeat(review.nickname.length - 2) + review.nickname.slice(-1)}<br />
                         {review.createdAt?.toDate().toLocaleString()}
                     </div>
                 </div>

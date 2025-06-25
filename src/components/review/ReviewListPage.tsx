@@ -238,7 +238,9 @@ export default function ReviewListPage() {
 
                   <div className="review-main">
                     <div className="review-header">
-                      <span className="reviewlist-nickname">작성자: {review.nickname}</span>
+                      <span className="reviewlist-nickname">작성자: {review.nickname.length <= 2
+                        ? review.nickname[0] + '*'
+                        : review.nickname[0] + '*'.repeat(review.nickname.length - 2) + review.nickname.slice(-1)}</span>
                       {/* <h3 className="store-name">{store.name}</h3>
                       <div className="review-stars">
                         {[...Array(5)].map((_, i) => {
