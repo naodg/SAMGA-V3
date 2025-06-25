@@ -286,6 +286,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
 }
 
 .pc-search-bar {
@@ -327,6 +328,7 @@
   max-width: 1210px;
   width:80%;
   margin: 20px auto 10px;
+  position: fixed;
 }
 
 /* ✅ 필터 버튼들 */
@@ -338,6 +340,7 @@
   width: 80%;
   margin: 0 auto;
   scrollbar-width: thin;
+  position: fixed;
 }
 
 .filter-content {

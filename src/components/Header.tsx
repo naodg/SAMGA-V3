@@ -1,11 +1,11 @@
 // src/components/Header.tsx
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
-export default function Header() {
+export default function Header({ isFixed = false }) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,12 +58,17 @@ export default function Header() {
   };
 
   const toggleDropdown = () => {
-  setDropdownOpen(prev => !prev);
-  console.log('isMobile', isMobile);
-};
+    setDropdownOpen(prev => !prev);
+    console.log('isMobile', isMobile);
+  };
 
   return (
-    <header className={isStoreDetailPage && !isMobile ? 'header white' : 'header'}>
+    <header
+      className={`header
+    ${isStoreDetailPage && !isMobile ? 'white' : ''}
+    ${location.pathname === '/storefilterpage' ? 'fixed-header' : ''}
+  `}
+    >
       {/* PC 헤더 */}
       <div className="header-inner-pc">
         {/* 로고 */}
@@ -119,16 +124,16 @@ export default function Header() {
             <ul className="nav-list">
 
               <li className="dropdownH" ref={dropdownRef}>
-              <span className="dropdownM-toggle" onClick={toggleDropdown}>
+                <span className="dropdownM-toggle" onClick={toggleDropdown}>
                   牛리마을{isMobile && <br />}소개
                 </span>
-              <ul className={`dropdownM-menu ${dropdownOpen ? 'open' : ''}`}>
-                <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을 브랜드 소개</li>
-                <li onClick={() => { navigate('/mascot'); setDropdownOpen(false); }}>소탈이 소개</li>
-                <li onClick={() => { navigate('/goods'); setDropdownOpen(false); }}>굿즈몰</li>
-              </ul>
-            </li>
-            
+                <ul className={`dropdownM-menu ${dropdownOpen ? 'open' : ''}`}>
+                  <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을 브랜드 소개</li>
+                  <li onClick={() => { navigate('/mascot'); setDropdownOpen(false); }}>소탈이 소개</li>
+                  <li onClick={() => { navigate('/goods'); setDropdownOpen(false); }}>굿즈몰</li>
+                </ul>
+              </li>
+
               <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
               <li onClick={() => navigate('/review')}>리뷰</li>
             </ul>

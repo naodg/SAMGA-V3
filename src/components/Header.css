@@ -9,6 +9,19 @@
   margin: 0;
 }
 
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  background: white;
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+}
+
+
 .header.white {
   color: #fff !important;
   /* 스토어 상세페이지에서는 흰색 */

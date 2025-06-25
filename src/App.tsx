@@ -28,11 +28,12 @@ function AppContent() {
   const location = useLocation()
   const hideFloatingRoutes = ["/login", "/signup", "/review"]
   const shouldHideFloating = hideFloatingRoutes.some(path => location.pathname.startsWith(path))
+  const isStoreFilterPage = location.pathname === "/storefilterpage"
 
 
   return (
     <>
-      <Header />
+      <Header isFixed={isStoreFilterPage} />
       <ScrollToTop />
 
       <Routes>
