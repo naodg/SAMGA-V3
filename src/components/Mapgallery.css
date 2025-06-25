@@ -132,6 +132,7 @@
 .search-icon-button {
   background: #ad5457;
   border: none;
+  border-radius: 0px ;
   padding: 10px 10px;
   cursor: pointer;
   display: flex;
@@ -634,7 +635,8 @@
 
   .search-icon-button {
     background: #ad5457;
-    border: none;
+    border: none !important;
+    border-radius: 0px ;
     padding: 10px 10px;
     cursor: pointer;
     display: flex;

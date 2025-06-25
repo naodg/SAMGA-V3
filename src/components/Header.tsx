@@ -119,12 +119,12 @@ export default function Header() {
             <ul className="nav-list">
 
               <li className="dropdownH" ref={dropdownRef}>
-              <span className="dropdown-toggle" onClick={toggleDropdown}>
+              <span className="dropdownM-toggle" onClick={toggleDropdown}>
                   牛리마을{isMobile && <br />}소개
                 </span>
-              <ul className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
-                <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을{isMobile && <br />} 브랜드 소개</li>
-                <li onClick={() => { navigate('/mascot'); setDropdownOpen(false); }}>소탈이 {isMobile && <br />}소개</li>
+              <ul className={`dropdownM-menu ${dropdownOpen ? 'open' : ''}`}>
+                <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을 브랜드 소개</li>
+                <li onClick={() => { navigate('/mascot'); setDropdownOpen(false); }}>소탈이 소개</li>
                 <li onClick={() => { navigate('/goods'); setDropdownOpen(false); }}>굿즈몰</li>
               </ul>
             </li>
