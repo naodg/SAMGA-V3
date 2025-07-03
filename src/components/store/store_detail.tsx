@@ -710,11 +710,17 @@ export default function StoreDetail() {
                                             <span>{comments.length}</span>
                                         </div>
                                         <div className="review-meta">
-                                            <span className="review-nickname">{review.nickname}</span>
-                                            <span className="review-date">
-                                                {review.createdAt?.toDate().toLocaleString()}
-                                            </span>
+                                          <span className="review-nickname">
+                                            작성자: {review.nickname.length <= 2
+                                              ? review.nickname[0] + '*'
+                                              : review.nickname[0] + '*'.repeat(review.nickname.length - 2) + review.nickname.slice(-1)
+                                            }
+                                          </span>
+                                          <span className="review-date">
+                                            {review.createdAt?.toDate().toLocaleString()}
+                                          </span>
                                         </div>
+
                                     </div>
 
 
