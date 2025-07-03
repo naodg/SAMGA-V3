@@ -8,6 +8,7 @@ export default function Floating() {
     const [selectedStore, setSelectedStore] = useState(null);
     const [selectedAction, setSelectedAction] = useState(null);
     const [messageText, setMessageText] = useState("");
+    const dropdownRef = useRef(null);
     const location = useLocation();
     const pathname = location.pathname;
     const popupRef = useRef(null);
@@ -25,20 +26,28 @@ export default function Floating() {
     // 팝업 바깥 클릭 시 닫기
     useEffect(() => {
         const handleClickOutside = (e) => {
-            if (popupRef.current &&
-                !popupRef.current.contains(e.target)) {
+            const target = e.target;
+            const isInsidePopup = popupRef.current?.contains(target);
+            const isInsideDropdown = dropdownRef.current?.contains(target);
+            // 1. popup이 열려 있고, 바깥을 클릭했다면 popup만 닫기
+            if (selectedStore && !isInsidePopup) {
                 setSelectedStore(null);
                 setSelectedAction(null);
                 setMessageText("");
+                return; // 👉 드롭다운은 그대로 둠
+            }
+            // 2. 드롭다운만 열려 있고, 바깥을 클릭했다면 드롭다운 닫기
+            if (open && !isInsideDropdown) {
+                setOpen(false);
             }
         };
-        if (selectedStore) {
+        if (selectedStore || open) {
             document.addEventListener("mousedown", handleClickOutside);
         }
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [selectedStore]);
+    }, [selectedStore, open]);
     const handleStoreClick = (storeName) => {
         const found = storeData.find((store) => store.name === storeName);
         if (found) {
@@ -73,7 +82,7 @@ export default function Floating() {
     //     window.addEventListener("resize", handleResize);
     //     return () => window.removeEventListener("resize", handleResize);
     //   }, []);
-    return (_jsxs("div", { className: "floating-wrapper", children: [open && !isDetailPage && (_jsx("div", { className: "dropdown-menu", children: storeData.map((store, i) => (_jsx("div", { className: "dropdown-item", onClick: () => handleStoreClick(store.name), children: store.name }, i))) })), _jsx("div", { className: "floating-mascot", onClick: () => {
+    return (_jsxs("div", { className: "floating-wrapper", children: [open && !isDetailPage && (_jsx("div", { className: "dropdown-menu", ref: dropdownRef, children: storeData.map((store, i) => (_jsx("div", { className: "dropdown-item", onClick: () => handleStoreClick(store.name), children: store.name }, i))) })), _jsx("div", { className: "floating-mascot", onClick: () => {
                     if (isMobile) {
                         handleFloatingClick();
                     }

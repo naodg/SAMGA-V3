@@ -8,6 +8,7 @@ export default function Floating() {
   const [selectedStore, setSelectedStore] = useState<typeof storeData[0] | null>(null);
   const [selectedAction, setSelectedAction] = useState<"call" | "message" | null>(null);
   const [messageText, setMessageText] = useState<string>("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -28,25 +29,36 @@ export default function Floating() {
 
   // 팝업 바깥 클릭 시 닫기
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        popupRef.current &&
-        !popupRef.current.contains(e.target as Node)
-      ) {
-        setSelectedStore(null);
-        setSelectedAction(null);
-        setMessageText("");
-      }
-    };
+  const handleClickOutside = (e: MouseEvent) => {
+    const target = e.target as Node;
+    const isInsidePopup = popupRef.current?.contains(target);
+    const isInsideDropdown = dropdownRef.current?.contains(target);
 
-    if (selectedStore) {
-      document.addEventListener("mousedown", handleClickOutside);
+    // 1. popup이 열려 있고, 바깥을 클릭했다면 popup만 닫기
+    if (selectedStore && !isInsidePopup) {
+      setSelectedStore(null);
+      setSelectedAction(null);
+      setMessageText("");
+      return; // 👉 드롭다운은 그대로 둠
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [selectedStore]);
+    // 2. 드롭다운만 열려 있고, 바깥을 클릭했다면 드롭다운 닫기
+    if (open && !isInsideDropdown) {
+      setOpen(false);
+    }
+  };
+
+  if (selectedStore || open) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [selectedStore, open]);
+
+
+
 
   const handleStoreClick = (storeName: string) => {
     const found = storeData.find((store) => store.name === storeName);
@@ -93,7 +105,7 @@ export default function Floating() {
     <div className="floating-wrapper">
       {/* 전체 페이지에서 플로팅 항상 보임 */}
       {open && !isDetailPage && (
-        <div className="dropdown-menu">
+        <div className="dropdown-menu" ref={dropdownRef}>
           {storeData.map((store, i) => (
             <div key={i} className="dropdown-item" onClick={() => handleStoreClick(store.name)}>
               {store.name}
