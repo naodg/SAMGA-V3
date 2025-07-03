@@ -1150,6 +1150,7 @@
 }
 
 .pc-image-grid {
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
@@ -1158,7 +1159,7 @@
 .store-images .store-tab-image {
   width: 360px;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   /* 이미지 전체가 보이게 */
   background-color: #a8a8a8;
   /* 원하는 컬러로 채움 */
@@ -1168,8 +1169,10 @@
 
 /* ✅ 리뷰 영역 전체 */
 .store-review-wrapper {
-  padding: 60px 370px 100px 410px;
+  padding: 60px 20px 100px 20px; /* 좌우 패딩 줄임 */
   text-align: start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .review-item {
@@ -1196,10 +1199,14 @@
 }
 
 .store-review-card {
-  border: 1px solid #ccc;
-  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 280px; /* 필요시 조절 */
   padding: 16px;
   background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0px;
 }
 
 .review-titles {
@@ -1214,9 +1221,11 @@
   margin-bottom: 6px;
 }
 
+
 .review-content {
+  flex-grow: 1;
+  margin-bottom: 12px;
   font-size: 14px;
-  margin-bottom: 10px;
   color: #444;
 }
 
@@ -1460,13 +1469,11 @@
 
 @media (max-width: 1100px) {
   .store-info-card {
-    position: absolute;
-    left: 50%;
     top: 290px;
+    left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 400px;
-    z-index: 10;
   }
 
   .store-main-logo {

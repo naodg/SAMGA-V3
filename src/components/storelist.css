@@ -220,10 +220,12 @@
 /* 슬라이드 카드 */
 .banner-slide {
   position: relative;
-  width: 500px;
-  height: 340px;
+  width: 100%;
+  height: auto; /* ✅ 자동 높이 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 /* 배너 링크 & 이미지 */
 .banner-link {
   position: relative;

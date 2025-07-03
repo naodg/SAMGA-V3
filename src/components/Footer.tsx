@@ -11,13 +11,16 @@ export default function Footer() {
   const navigate = useNavigate()
   const [userStoreId, setUserStoreId] = useState("")
   const [showPrivacy, setShowPrivacy] = useState(false);
-
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [openSections, setOpenSections] = useState({
     store: false,
     tour: false,
     manager: false
   });
-
+  const dropdownRef = useRef(null);
+  const storeDropdownRef = useRef<HTMLUListElement>(null);
+    const tourDropdownRef = useRef<HTMLUListElement>(null);
+    const managerDropdownRef = useRef<HTMLUListElement>(null);
   const storeRef = useRef<HTMLDivElement>(null)
   const tourRef = useRef<HTMLDivElement>(null)
   const managerRef = useRef<HTMLDivElement>(null)
@@ -35,6 +38,20 @@ export default function Footer() {
 
     fetchUserStoreId()
   }, [])
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // dropdownRef 내부가 아니면 닫기
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    // 문서 전체 클릭 감지
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleClick = async (storeId: string) => {
     const user = auth.currentUser
@@ -60,32 +77,38 @@ export default function Footer() {
     navigate(`/admin/${storeId}`)
   }
 
-  const toggleSection = (section: string) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }))
-  }
+const toggleSection = (section: string) => {
+  setOpenSections(prev => {
+    const newState = {
+      store: false,
+      tour: false,
+      manager: false,
+    };
+    return {
+      ...newState,
+      [section]: !prev[section],
+    };
+  });
+};
 
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        storeRef.current?.contains(e.target as Node) ||
-        tourRef.current?.contains(e.target as Node) ||
-        managerRef.current?.contains(e.target as Node)
-      ) {
-        return // 내부 클릭이면 무시
-      }
-      setOpenSections({ store: false, tour: false, manager: false }) // 바깥 클릭 시 닫기
+useEffect(() => {
+  const handleClickOutside = (e: MouseEvent) => {
+    const isInsideDropdown =
+      storeDropdownRef.current?.contains(e.target as Node) ||
+      tourDropdownRef.current?.contains(e.target as Node) ||
+      managerDropdownRef.current?.contains(e.target as Node);
+
+    if (!isInsideDropdown) {
+      setOpenSections({ store: false, tour: false, manager: false });
     }
+  };
 
-    document.addEventListener("click", handleClickOutside)
-    return () => {
-      document.removeEventListener("click", handleClickOutside)
-    }
-  }, [])
-
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
 
   return (
@@ -122,9 +145,12 @@ export default function Footer() {
             <img src={`/img/icon/${openSections.store ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.store && (
-            <ul className="store-list">
+            <ul
+                className={`store-list ${openSections.store ? 'open' : ''}`}
+                ref={storeDropdownRef}
+              >
               {storeData.map((store, i) => (
-                <li key={i} onClick={() => navigate(`/store/${encodeURIComponent(store.name)}`)}>
+                <li key={i} onClick={() => {navigate(`/store/${encodeURIComponent(store.name)}`); setDropdownOpen(false);}}>
                   {store.name}
                 </li>
               ))}
@@ -139,7 +165,10 @@ export default function Footer() {
             <img src={`/img/icon/${openSections.tour ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.tour && (
-            <ul className="tour-list">
+            <ul
+                className={`tour-list ${openSections.tour ? 'open' : ''}`}
+                ref={storeDropdownRef}
+              >
               <li><a href="https://blog.naver.com/hc-urc/222571944010" target="_blank" rel="noopener noreferrer">삼가특화거리</a></li>
               <li><a href="https://www.hc.go.kr/09418/09425/09833.web" target="_blank" rel="noopener noreferrer">황매산</a></li>
               <li><a href="https://www.youtube.com/watch?v=DjprccTSapc" target="_blank" rel="noopener noreferrer">정양늪</a></li>
@@ -156,7 +185,10 @@ export default function Footer() {
             <img src={`/img/icon/${openSections.manager ? 'up' : 'down'}.svg`} width="14" alt="toggle" />
           </h4>
           {openSections.manager && (
-            <ul className="manager-list">
+            <ul
+                className={`manager-list ${openSections.manager ? 'open' : ''}`}
+                ref={storeDropdownRef}
+              >
               {storeData.map((store, index) => (
                 <li key={index} onClick={() => handleClick(`store${index + 1}`)}>
                   {store.name}
