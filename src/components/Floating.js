@@ -9,6 +9,7 @@ export default function Floating() {
     const [selectedAction, setSelectedAction] = useState(null);
     const [messageText, setMessageText] = useState("");
     const dropdownRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(true);
     const location = useLocation();
     const pathname = location.pathname;
     const popupRef = useRef(null);
@@ -74,14 +75,14 @@ export default function Floating() {
         setSelectedAction(null);
         setMessageText("");
     };
-    const [isMobile, setIsMobile] = useState(true);
-    //   useEffect(() => {
-    //     const handleResize = () => {
-    //       setIsMobile(window.innerWidth <= 768);
-    //     };
-    //     window.addEventListener("resize", handleResize);
-    //     return () => window.removeEventListener("resize", handleResize);
-    //   }, []);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (_jsxs("div", { className: "floating-wrapper", children: [open && !isDetailPage && (_jsx("div", { className: "dropdown-menu", ref: dropdownRef, children: storeData.map((store, i) => (_jsx("div", { className: "dropdown-item", onClick: () => handleStoreClick(store.name), children: store.name }, i))) })), _jsx("div", { className: "floating-mascot", onClick: () => {
                     if (isMobile) {
                         handleFloatingClick();

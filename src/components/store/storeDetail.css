@@ -1161,7 +1161,7 @@
   height: 400px;
   object-fit: contain;
   /* 이미지 전체가 보이게 */
-  background-color: #a8a8a8;
+  background-color: #fff;
   /* 원하는 컬러로 채움 */
   cursor: pointer;
 }

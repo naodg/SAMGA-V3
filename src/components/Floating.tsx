@@ -9,6 +9,7 @@ export default function Floating() {
   const [selectedAction, setSelectedAction] = useState<"call" | "message" | null>(null);
   const [messageText, setMessageText] = useState<string>("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(true);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -89,15 +90,16 @@ export default function Floating() {
   };
 
 
-  const [isMobile, setIsMobile] = useState(true);
 
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth <= 768);
-//     };
-//     window.addEventListener("resize", handleResize);
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+     handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
 
 
