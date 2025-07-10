@@ -1158,7 +1158,7 @@
 
 .store-images .store-tab-image {
   width: 360px;
-  height: 400px;
+  height: 360px;
   object-fit: contain;
   /* 이미지 전체가 보이게 */
   background-color: #fff;
