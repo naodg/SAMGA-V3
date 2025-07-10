@@ -95,3 +95,88 @@
     grid-template-columns: 1fr; /* 모바일: 1열 */
   }
 }
+
+.admin-uploader-container .description-input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.admin-uploader-container .description-input:focus {
+  outline: none;
+  border-color: #ad5457;
+  box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.2);
+}
+
+.image-description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.edit-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 0px 0px 10px 0px;
+}
+
+.description-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 공통 버튼 스타일 */
+.image-action-button {
+  padding: 2px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 각 버튼 색상 */
+.edit-start-button {
+  background-color: #e6f0ff;
+  color: #003366;
+}
+
+.edit-confirm-button {
+  background-color: #d4f8d4;
+  color: #27632a;
+}
+
+.edit-cancel-button {
+  background-color: #ffecec;
+  color: #aa0000;
+}
+
+/* 인풋 필드 최소 크기 설정 */
+.edit-input {
+  padding: 3px 6px;
+  font-size: 13px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* 단, .image-action-button 클래스를 가진 버튼은 width: auto로 */
+.admin-uploader-container .image-action-button {
+  width: auto !important; /* !important로 강제 override */
+  padding: 2px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+
+  cursor: pointer;
+  white-space: nowrap;
+}

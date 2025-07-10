@@ -6,7 +6,7 @@ import { storeDetailAssets } from '../../data/storeDetailAssets'
 import { doc, setDoc, deleteDoc, getDoc, query, collection, where, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, arrayRemove, arrayUnion, } from "firebase/firestore"
 import { auth, db, storage } from "../../firebase"
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ref, listAll, getDownloadURL } from "firebase/storage"
+import { ref, listAll, getDownloadURL, getMetadata } from "firebase/storage"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -58,7 +58,7 @@ export default function StoreDetail() {
     const average = storeRatings[storeId]?.average || 0
 
     const [tabImages, setTabImages] = useState<string[]>([])
-
+    const [imageData, setImageData] = useState<{ url: string; description: string }[]>([])
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
@@ -242,15 +242,20 @@ export default function StoreDetail() {
                 const folderRef = ref(storage, `stores/${storeId}/${folder}`)
                 const res = await listAll(folderRef)
 
-                const urls = await Promise.all(
-                    res.items.map((itemRef) => getDownloadURL(itemRef))
+                const items = await Promise.all(
+                  res.items.map(async (item) => {
+                    const url = await getDownloadURL(item)
+                    const metadata = await getMetadata(item)
+                    const description = metadata.customMetadata?.description || "설명 없음"
+                    return { url, description }
+                  })
                 )
 
-                setTabImages(urls)
-            } catch (err) {
-                console.error("이미지 불러오기 오류:", err)
-                setTabImages([])
-            }
+                setImageData(items)
+              } catch (error) {
+                console.error("이미지 불러오기 실패", error)
+                setImageData([])
+              }
         }
 
         if (storeId) fetchImages()
@@ -605,37 +610,34 @@ export default function StoreDetail() {
 
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
-                    {tabImages.length === 0 ? (
+                    {imageData.length === 0 ? (
                         <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
                     ) : isMobile ? (
-                        <Swiper
-                            spaceBetween={16}
-                            slidesPerView={1}
-                            pagination={{ clickable: true }}
-                            modules={[Navigation, Pagination]}
-                            navigation={true}
-                        >
-                            {tabImages.map((url, idx) => (
-                                <SwiperSlide key={url}>
-                                    <img
-                                        src={url}
-                                        alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                        className="store-tab-image"
-                                        onClick={() => handleImageClick(url)}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <div className="image-grid">
+                          {imageData.map(({ url, description }, idx) => (
+                            <div key={url} className="store-image-wrapper">
+                              <img
+                                src={url}
+                                alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                className="store-tab-image"
+                                onClick={() => handleImageClick(url)}
+                              />
+                              <p className="image-description">{description}</p>
+                            </div>
+                          ))}
+                        </div>
                     ) : (
                         <div className="pc-image-grid">
-                            {tabImages.map((url, idx) => (
-                                <img
-                                    key={url}
-                                    src={url}
-                                    alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                    className="store-tab-image"
-                                    onClick={() => handleImageClick(url)}
-                                />
+                            {imageData.map(({url, description}, idx) => (
+                                <div key={url} className="store-image-wrapper">
+                                    <img
+                                      src={url}
+                                      alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                      className="store-tab-image"
+                                      onClick={() => handleImageClick(url)}
+                                    />
+                                    <p className="image-description">{description}</p>
+                                  </div>
                             ))}
                         </div>
                     )}

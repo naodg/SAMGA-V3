@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from "firebase/storage";
+import { ref, listAll, getDownloadURL, uploadBytes, deleteObject, getMetadata, updateMetadata } from "firebase/storage";
 import { storage, auth } from "../../firebase";
 import "./AdminImageUploader.css";
 export default function AdminImageUploader() {
@@ -10,7 +10,31 @@ export default function AdminImageUploader() {
     const [file, setFile] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [imageUrls, setImageUrls] = useState([]);
+    const [imageData, setImageData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [description, setDescription] = useState("");
+    const [editingDescriptions, setEditingDescriptions] = useState({});
+    const [editingStates, setEditingStates] = useState({});
+    const handleUpdateDescription = async (url) => {
+        try {
+            const newDescription = editingDescriptions[url];
+            const filePath = decodeURIComponent(url.split("/o/")[1].split("?")[0]);
+            const fileRef = ref(storage, filePath);
+            await updateMetadata(fileRef, {
+                customMetadata: {
+                    description: newDescription || "설명 없음"
+                }
+            });
+            alert("설명 업데이트 완료!");
+            // 수정모드 해제
+            setEditingStates((prev) => ({ ...prev, [url]: false }));
+            fetchImagesFromStorage();
+        }
+        catch (error) {
+            console.error("설명 업데이트 실패", error);
+            alert("설명 업데이트 중 오류 발생");
+        }
+    };
     const fetchImagesFromStorage = async () => {
         if (!storeId)
             return;
@@ -18,12 +42,17 @@ export default function AdminImageUploader() {
         const pathRef = ref(storage, `stores/${storeId}/${tab}`);
         try {
             const res = await listAll(pathRef);
-            const urls = await Promise.all(res.items.map((item) => getDownloadURL(item)));
-            setImageUrls(urls);
+            const items = await Promise.all(res.items.map(async (item) => {
+                const url = await getDownloadURL(item);
+                const metadata = await getMetadata(item);
+                const description = metadata.customMetadata?.description || "설명 없음";
+                return { url, description };
+            }));
+            setImageData(items);
         }
         catch (error) {
             console.error("이미지 불러오기 실패", error);
-            setImageUrls([]);
+            setImageData([]);
         }
         finally {
             setLoading(false);
@@ -43,7 +72,13 @@ export default function AdminImageUploader() {
             const sanitizedStoreId = storeId.replaceAll("/", "_");
             const path = `stores/${sanitizedStoreId}/${tab}/${sanitizedFileName}`;
             const storageRef = ref(storage, path);
-            await uploadBytes(storageRef, file);
+            const metadata = {
+                contentType: file.type,
+                customMetadata: {
+                    description: description || "설명 없음"
+                }
+            };
+            await uploadBytes(storageRef, file, metadata);
             alert("업로드 완료!");
             setFile(null);
             fetchImagesFromStorage();
@@ -78,5 +113,12 @@ export default function AdminImageUploader() {
     };
     if (!storeId)
         return _jsx("div", { children: "\uAC00\uAC8C \uC815\uBCF4\uB97C \uBD88\uB7EC\uC624\uB294 \uC911\uC785\uB2C8\uB2E4..." });
-    return (_jsxs("div", { className: "admin-uploader-container", children: [_jsx("h2", { children: "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC \uBC0F \uAD00\uB9AC" }), _jsxs("div", { className: "tab-select", children: [_jsx("label", { children: "\uD0ED \uC120\uD0DD: " }), _jsxs("select", { value: tab, onChange: (e) => setTab(e.target.value), children: [_jsx("option", { value: "menu", children: "\uBA54\uB274" }), _jsx("option", { value: "side", children: "\uC0C1\uCC28\uB9BC" }), _jsx("option", { value: "amenities", children: "\uD3B8\uC758\uC2DC\uC124" })] })] }), _jsx("input", { type: "file", accept: "image/*", onChange: (e) => setFile(e.target.files?.[0] || null), disabled: uploading }), _jsx("button", { onClick: handleUpload, disabled: uploading || !file, children: uploading ? "업로드 중..." : "업로드" }), _jsx("hr", {}), _jsx("div", { className: "uploaded-image-list", children: loading ? (_jsx("p", { children: "\uC774\uBBF8\uC9C0 \uBD88\uB7EC\uC624\uB294 \uC911..." })) : imageUrls.length === 0 ? (_jsx("p", { children: "\uC774\uBBF8\uC9C0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (imageUrls.map((url, idx) => (_jsxs("div", { className: "uploaded-image-item", children: [_jsx("img", { className: "preview-image", src: url, alt: "\uC5C5\uB85C\uB4DC \uC774\uBBF8\uC9C0" }), _jsx("button", { onClick: () => handleDelete(url), children: "\uC0AD\uC81C" })] }, idx)))) })] }));
+    return (_jsxs("div", { className: "admin-uploader-container", children: [_jsx("h2", { children: "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC \uBC0F \uAD00\uB9AC" }), _jsxs("div", { className: "tab-select", children: [_jsx("label", { children: "\uD0ED \uC120\uD0DD: " }), _jsxs("select", { value: tab, onChange: (e) => setTab(e.target.value), children: [_jsx("option", { value: "menu", children: "\uBA54\uB274" }), _jsx("option", { value: "side", children: "\uC0C1\uCC28\uB9BC" }), _jsx("option", { value: "amenities", children: "\uD3B8\uC758\uC2DC\uC124" })] })] }), _jsx("input", { type: "file", accept: "image/*", onChange: (e) => setFile(e.target.files?.[0] || null), disabled: uploading }), _jsx("input", { type: "text", placeholder: "\uC774\uBBF8\uC9C0 \uC124\uBA85\uC744 \uC785\uB825\uD558\uC138\uC694", value: description, onChange: (e) => setDescription(e.target.value), className: "description-input" }), _jsx("button", { onClick: handleUpload, disabled: uploading || !file, children: uploading ? "업로드 중..." : "업로드" }), _jsx("hr", {}), _jsx("div", { className: "uploaded-image-list", children: loading ? (_jsx("p", { children: "\uC774\uBBF8\uC9C0 \uBD88\uB7EC\uC624\uB294 \uC911..." })) : imageData.length === 0 ? (_jsx("p", { children: "\uC774\uBBF8\uC9C0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (imageData.map(({ url, description }, idx) => {
+                    const isEditing = editingStates[url] || false;
+                    const currentValue = editingDescriptions[url] ?? description;
+                    return (_jsxs("div", { className: "uploaded-image-item", children: [_jsx("img", { className: "preview-image", src: url, alt: "\uC5C5\uB85C\uB4DC \uC774\uBBF8\uC9C0" }), _jsx("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: _jsxs("div", { className: "edit-controls", children: [_jsx("input", { type: "text", value: currentValue, onChange: (e) => setEditingDescriptions((prev) => ({
+                                                ...prev,
+                                                [url]: e.target.value
+                                            })), className: "edit-input" }), _jsx("button", { className: "edit-confirm-button image-action-button", onClick: () => handleUpdateDescription(url), children: "\uC218\uC815" })] }) }), _jsx("button", { onClick: () => handleDelete(url), children: "\uC0AD\uC81C" })] }, idx));
+                })) })] }));
 }
