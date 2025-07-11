@@ -40,6 +40,11 @@
   color: #000;
 }
 
+.header.white .dropdownM-menu,
+.header.white .dropdownH-menu {
+  color: black;
+}
+
 .clickable {
   cursor: pointer;
 }
