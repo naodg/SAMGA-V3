@@ -1025,29 +1025,28 @@
 .store-image-wrapper img {
   max-width: 100%;
   display: block;
-  border-radius: 6px;
   cursor: pointer;
   object-fit: contain;
   /* 짧은 이미지는 실제 높이 그대로 유지 */
   margin-top: auto;
-  margin-bottom: auto;
+  margin-bottom: 10px;
 }
 
 .store-image-wrapper .image-description {
-  margin-top: 6px;
+  margin-top: 10px;
   font-size: 14px;
   color: #555;
-  text-align: center;
+  text-align: right;
   /* 아래쪽에 붙도록 설정 */
   margin-top: auto; /* 여기가 핵심, 텍스트를 아래로 밀어줌 */
 }
 
 
 .image-description {
-  margin-top: 6px;
+  margin-top: 10px;
   font-size: 14px;
   color: #555;
-  text-align: center;
+  text-align: right;
   /* 이미지 높이와 별개로 텍스트는 아래에 고정됨 */
 }
 
