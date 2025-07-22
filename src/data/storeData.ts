@@ -64,7 +64,7 @@ export const storeData: Store[] = [
     lng: 128.122724,
     address: '경남 합천군 삼가면 삼가중앙길 24-7',
     phone: '010-4588-5278',
-    hours: '매일 11:00 - 19:30 / 매주 월요일 휴무',
+    hours: '매일 11:00 - 19:30 / 매주 일요일 휴무',
     options: ['주문배송', '단체이용예약가능', '무료wifi', '예약가능', '제로페이', '일반식사메뉴', '전용주차장', '남여화장실구분', '유아의자', '포장가능'],
     image: '/samga/detail/대가식육식당.jpg',
     detailimage: '/samga/store/대가식육식당_landing_detail.jpg',
