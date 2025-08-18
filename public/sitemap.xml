@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <!-- 루트 페이지 -->
+   <url>
+      <loc>https://samgabeef.com/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+   <!-- 회원 관련 -->
+   <url>
+      <loc>https://samgabeef.com/signup</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/login</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+
+   <!-- 개인정보/마이페이지 관련 -->
+   <url>
+      <loc>https://samgabeef.com/privacy</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/mypage</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/mypage/mystore</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/myreview</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/myinfo</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+
+   <!-- 정보 페이지 -->
+   <url>
+      <loc>https://samgabeef.com/vilage</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/mascot</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+
+   <!-- 상품 관련 -->
+   <url>
+      <loc>https://samgabeef.com/goods</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <!-- goods/:id 는 dynamic URL, 필요시 사이트맵 생성 시 개별 ID 포함 -->
+
+   <!-- 스토어 -->
+   <url>
+      <loc>https://samgabeef.com/storefilterpage</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+
+   <!-- 리뷰 -->
+   <url>
+      <loc>https://samgabeef.com/review</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/write</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+
+</urlset>
