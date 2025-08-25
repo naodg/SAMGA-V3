@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>牛리마을 삼가</title>
+    <link>https://samgabeef.com</link>
+    <description>삼가 한우와 마을 소식, 스토어 정보 제공</description>
+    <language>ko</language>
+
+    <!-- 마을 소개 -->
+    <item>
+      <title>우리마을 브랜드 소개</title>
+      <link>https://samgabeef.com/vilage</link>
+      <description>합천 우리마을 삼가, 삼가한우의 역사와 정보를 확인하세요</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/vilage</guid>
+    </item>
+
+    <!-- 스토어 목록 -->
+    <item>
+      <title>대가1호점</title>
+      <link>https://samgabeef.com/store/대가1호점</link>
+      <description>합천 삼가 한우, 대가1호점 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/대가1호점</guid>
+    </item>
+
+    <item>
+      <title>대가식육식당</title>
+      <link>https://samgabeef.com/store/대가식육식당</link>
+      <description>합천 삼가 한우, 대가식육식당 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/대가식육식당</guid>
+    </item>
+
+    <item>
+      <title>대가한우</title>
+      <link>https://samgabeef.com/store/대가한우</link>
+      <description>합천 삼가 한우, 대가한우 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/대가한우</guid>
+    </item>
+
+    <item>
+      <title>대산식육식당</title>
+      <link>https://samgabeef.com/store/대산식육식당</link>
+      <description>합천 삼가 한우, 대산식육식당 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/대산식육식당</guid>
+    </item>
+
+    <item>
+      <title>대웅식육식당</title>
+      <link>https://samgabeef.com/store/대웅식육식당</link>
+      <description>합천 삼가 한우, 대웅식육식당 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/대웅식육식당</guid>
+    </item>
+
+    <item>
+      <title>도원식육식당</title>
+      <link>https://samgabeef.com/store/도원식육식당</link>
+      <description>합천 삼가 한우, 도원식육식당 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/도원식육식당</guid>
+    </item>
+
+    <item>
+      <title>미로식육식당</title>
+      <link>https://samgabeef.com/store/미로식육식당</link>
+      <description>합천 삼가 한우, 미로식육식당 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/미로식육식당</guid>
+    </item>
+
+    <item>
+      <title>불난가 한우</title>
+      <link>https://samgabeef.com/store/불난가한우</link>
+      <description>합천 삼가 한우, 불난가 한우 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/불난가한우</guid>
+    </item>
+
+    <item>
+      <title>삼가명품한우</title>
+      <link>https://samgabeef.com/store/삼가명품한우</link>
+      <description>합천 삼가 한우, 삼가명품한우 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/삼가명품한우</guid>
+    </item>
+
+    <item>
+      <title>상구한우</title>
+      <link>https://samgabeef.com/store/상구한우</link>
+      <description>합천 삼가 한우, 상구한우 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/상구한우</guid>
+    </item>
+
+    <item>
+      <title>태영한우</title>
+      <link>https://samgabeef.com/store/태영한우</link>
+      <description>합천 삼가 한우, 태영한우 소개</description>
+      <pubDate>Mon, 25 Aug 2025 09:00:00 +0900</pubDate>
+      <guid>https://samgabeef.com/store/태영한우</guid>
+    </item>
+
+  </channel>
+</rss>
