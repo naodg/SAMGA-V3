@@ -3,7 +3,7 @@
 
    <!-- 루트 페이지 -->
    <url>
-      <loc>https://samgabeef.com/</loc>
+      <loc>https://samgabeef.com/#/</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
@@ -73,7 +73,7 @@
       <priority>0.7</priority>
    </url>
 
-    <!-- 스토어 개별 페이지 -->
+       <!-- 스토어 개별 페이지 -->
    <url>
       <loc>https://samgabeef.com/#/store/대가1호점</loc>
       <changefreq>weekly</changefreq>
@@ -134,4 +134,12 @@
    <url>
       <loc>https://samgabeef.com/#/review</loc>
       <changefreq>weekly</changefreq>
-      <priority>0
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://samgabeef.com/#/write</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+   </url>
+
+</urlset>
