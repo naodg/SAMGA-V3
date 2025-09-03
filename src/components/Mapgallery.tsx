@@ -184,6 +184,23 @@ export default function MapGallery() {
 
   const isMobile = window.innerWidth <= 768;
 
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+  const names = [
+    '대가1호점', '대가식육식당', '대가한우','도원식육식당',
+    '대산식육식당', '대웅식육식당', '미로식육식당',
+    '불난가한우', '삼가명품한우', '상구한우', '태영한우'
+  ];
+
+  // 페이지 로드할 때 한 번만 랜덤 섞기
+  const shuffledNames = shuffleArray(names);
+
   return (
     <div className="map-gallery-wrapper">
       <div className="map-gallery-inner">
@@ -200,7 +217,7 @@ export default function MapGallery() {
             touchRatio={1}               // 👈 기본값 1 (반응 감도 조절용)
             allowTouchMove={true}       // 👈 혹시 어디서 false 된 거 있으면 override
           >
-            {['대가1호점', '대가식육식당', '대가한우','도원식육식당' ,'대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (
+            {shuffledNames.map((name, i) => (
               <SwiperSlide key={i}>
                 <img
                   src={`/img/landing/${name}_1.jpg`}
