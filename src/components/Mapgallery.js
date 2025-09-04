@@ -135,7 +135,22 @@ export default function MapGallery() {
     //   return () => document.removeEventListener('mousedown', handleClickOutside);
     // }, []);
     const isMobile = window.innerWidth <= 768;
-    return (_jsxs("div", { className: "map-gallery-wrapper", children: [_jsxs("div", { className: "map-gallery-inner", children: [_jsx("div", { className: "map-gallery-swiper-container", children: _jsx(Swiper, { className: "map-gallery-swiper", modules: [Navigation, Pagination, Autoplay], navigation: true, pagination: { clickable: true }, autoplay: { delay: 2000, disableOnInteraction: false, }, loop: true, grabCursor: true, simulateTouch: true, touchRatio: 1, allowTouchMove: true, children: ['대가1호점', '대가식육식당', '대가한우', '도원식육식당', '대산식육식당', '대웅식육식당', '미로식육식당', '불난가한우', '삼가명품한우', '상구한우', '태영한우'].map((name, i) => (_jsx(SwiperSlide, { children: _jsx("img", { src: `/img/landing/${name}_1.jpg`, alt: name, className: "map-gallery-slide-img", draggable: false }) }, i))) }) }), _jsxs("div", { className: "map-gallery-floating-box", children: [_jsxs("div", { className: "map-gallery-searchbar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
+    function shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    const names = [
+        '대가1호점', '대가식육식당', '대가한우', '도원식육식당',
+        '대산식육식당', '대웅식육식당', '미로식육식당',
+        '불난가한우', '삼가명품한우', '상구한우', '태영한우'
+    ];
+    // 페이지 로드할 때 한 번만 랜덤 섞기
+    const shuffledNames = shuffleArray(names);
+    return (_jsxs("div", { className: "map-gallery-wrapper", children: [_jsxs("div", { className: "map-gallery-inner", children: [_jsx("div", { className: "map-gallery-swiper-container", children: _jsx(Swiper, { className: "map-gallery-swiper", modules: [Navigation, Pagination, Autoplay], navigation: true, pagination: { clickable: true }, autoplay: { delay: 2000, disableOnInteraction: false, }, loop: true, grabCursor: true, simulateTouch: true, touchRatio: 1, allowTouchMove: true, children: shuffledNames.map((name, i) => (_jsx(SwiperSlide, { children: _jsx("img", { src: `/img/landing/${name}_1.jpg`, alt: name, className: "map-gallery-slide-img", draggable: false }) }, i))) }) }), _jsxs("div", { className: "map-gallery-floating-box", children: [_jsxs("div", { className: "map-gallery-searchbar", children: [_jsx("button", { className: "search-icon-button", onClick: () => {
                                             if (searchQuery.trim() === '') {
                                                 setFilteredStores(storeData);
                                                 setSelectedStore(null);
