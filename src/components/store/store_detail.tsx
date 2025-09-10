@@ -392,6 +392,7 @@ export default function StoreDetail() {
             </div>
 
             {/* 👇 가게 소개 스토리 */}
+
             <div className={`store-story-wrapper ${selectedStore.name === "대가한우" ? "no-bg" : ""}`}>
 
                 <div className="store-slogan">

@@ -59,6 +59,7 @@ export default function StoreList() {
 
 
   return (
+
     <div className="storelist-landing">
 
       <div className="landing-video-wrapper">
@@ -87,7 +88,18 @@ export default function StoreList() {
 
 
 
+      <div
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            width: "1px",
+            height: "1px",
 
+            overflow: "hidden",
+          }}
+        >
+          한우, 우리마을 삼가, 삼가한우, 합천 삼가, 소고기, 합천 소고기, 비프소믈리에, 합천 한우, 삼가, 합천, 마을 삼가
+        </div>
 
       <div className="store-card-grid">
         {shuffledStores.map((store, index) => {

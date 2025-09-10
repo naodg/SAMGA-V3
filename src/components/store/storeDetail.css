@@ -260,18 +260,20 @@
   line-height: 1.3;
   color: #4d4d4d;
   white-space: pre-line;
-  /* ⭐️ \n 줄바꿈 적용 */
   font-weight: 700;
-  padding: 30px 385px;
+  padding: 30px 20px;   /* 좌우는 고정 20px만 주고 */
   font-family: 'PurunMyungjo', serif;
+  text-align: left;   /* 가운데 정렬 */
+  max-width: 700px;     /* 넓이 제한 */
+  margin: 0 auto;       /* 가운데 배치 */
 }
 
 .store-name-line {
   max-width: 700px;
   display: flex;
   align-items: center;
-  margin-top: 60px;
-  margin-left: 385px;
+  justify-content: center; /* 가로 가운데 정렬 */
+  margin: 60px auto 0;     /* 가운데로 */
 }
 
 .extra-padding {
@@ -371,6 +373,8 @@
 
 .store-detail-images-separated {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -1033,21 +1037,15 @@
 }
 
 .store-image-wrapper .image-description {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
-  text-align: right;
-  /* 아래쪽에 붙도록 설정 */
-  margin-top: auto; /* 여기가 핵심, 텍스트를 아래로 밀어줌 */
-}
-
-
-.image-description {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
-  text-align: right;
-  /* 이미지 높이와 별개로 텍스트는 아래에 고정됨 */
+  margin-top: 8px;             /* 간격 살짝 줄여서 여백 균형 */
+  font-size: 18px;             /* 살짝 작게 해서 보조 텍스트 느낌 */
+  color: #666;                 /* 너무 진하지 않은 중간 톤 */
+  text-align: center;          /* 오른쪽보다 중앙 정렬이 더 자연스러움 */
+  line-height: 1.4;            /* 가독성 향상 */
+  font-style: italic;          /* 설명 느낌을 주기 위해 살짝 기울임 */
+  max-width: 90%;              /* 텍스트 길면 줄바꿈 */
+  margin-left: auto;           /* 가운데 정렬 보조 */
+  margin-right: auto;          /* 가운데 정렬 보조 */
 }
 
 
@@ -1147,9 +1145,16 @@
 
 
 .store-detail-top-wrapper {
-  padding: 60px 20px 100px 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* 안의 자식들 가운데 */
+  padding: 60px 20px;
   background: #f3ece9;
-  text-align: start;
+
+  width: 1924px;           /* 고정 폭 */
+  max-width: 100%;         /* 작은 화면에서는 줄어듦 */
+  margin: 0 auto;          /* 화면에서 가운데 정렬 */
+  box-sizing: border-box;  /* padding 포함 계산 */
 }
 
 .section-title {
@@ -1160,8 +1165,9 @@
 }
 
 .tab-buttons {
+   width: 350px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 30px;
 }
@@ -1188,7 +1194,7 @@
   display: flex;
   flex-wrap: wrap;
   /* gap: 20px; */
-  justify-content: start;
+  justify-content: center;
 }
 
 .pc-image-grid {
