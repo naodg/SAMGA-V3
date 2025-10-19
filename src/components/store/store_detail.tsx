@@ -62,6 +62,10 @@ export default function StoreDetail() {
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
+    // 가게 상세 이미지 모달 제목 입력
+    const [selectedDescription, setSelectedDescription] = useState<string | null>(null);
+
+
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 900);
         window.addEventListener("resize", handleResize);
@@ -262,12 +266,14 @@ export default function StoreDetail() {
     }, [activeTab, storeId])
 
     // 이미지 확대
-    const handleImageClick = (url: string) => {
-        setSelectedImage(url)
-    }
+    const handleImageClick = (url: string, description?: string) => {
+      setSelectedImage(url);
+      setSelectedDescription(description ?? null);
+    };
 
     const handleCloseModal = () => {
         setSelectedImage(null)
+        setSelectedDescription(null);
     }
 
     const handleCopyLink = () => {
@@ -611,49 +617,54 @@ export default function StoreDetail() {
 
                 {/* 탭별 이미지 리스트 */}
                 <div className="store-images">
-                    {imageData.length === 0 ? (
-                        <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
-                    ) : isMobile ? (
-                        <div className="image-grid">
-                          {imageData.map(({ url, description }, idx) => (
-                            <div key={url} className="store-image-wrapper">
-                              <img
-                                src={url}
-                                alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                className="store-tab-image"
-                                onClick={() => handleImageClick(url)}
-                              />
-                              <p className="image-description">{description}</p>
-                            </div>
-                          ))}
+                  {imageData.length === 0 ? (
+                    <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
+                  ) : isMobile ? (
+                    <div className="image-grid">
+                      {imageData.map(({ url, description }, idx) => (
+                        <div key={url} className="store-image-wrapper">
+                          <img
+                            src={url}
+                            alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                            className="store-tab-image"
+                            onClick={() => handleImageClick(url, description)}
+                          />
+                          {/* 목록에서는 제목(설명) 숨김 */}
                         </div>
-                    ) : (
-                        <div className="pc-image-grid">
-                            {imageData.map(({url, description}, idx) => (
-                                <div key={url} className="store-image-wrapper">
-                                    <img
-                                      src={url}
-                                      alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                                      className="store-tab-image"
-                                      onClick={() => handleImageClick(url)}
-                                    />
-                                    <p className="image-description">{description}</p>
-                                  </div>
-                            ))}
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="pc-image-grid">
+                      {imageData.map(({ url, description }, idx) => (
+                        <div key={url} className="store-image-wrapper">
+                          <img
+                            src={url}
+                            alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                            className="store-tab-image"
+                            onClick={() => handleImageClick(url, description)}
+                          />
+                          {/* 목록에서는 제목(설명) 숨김 */}
                         </div>
-                    )}
+                      ))}
+                    </div>
+                  )}
                 </div>
+
 
 
                 {/* ✅ 모달 */}
                 {selectedImage && (
-                    <div className="image-modal-overlay" onClick={handleCloseModal}>
-                        <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-                            <img src={selectedImage} alt="확대 이미지" />
-                            <button className="image-modal-close" onClick={handleCloseModal}>×</button>
-                        </div>
+                  <div className="image-modal-overlay" onClick={handleCloseModal}>
+                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                      <img src={selectedImage} alt="확대 이미지" />
+                      {selectedDescription && (
+                        <p className="image-modal-caption">{selectedDescription}</p>
+                      )}
+                      <button className="image-modal-close" onClick={handleCloseModal}>×</button>
                     </div>
+                  </div>
                 )}
+
 
             </div>
 
