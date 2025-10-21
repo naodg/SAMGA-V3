@@ -261,19 +261,25 @@
   color: #4d4d4d;
   white-space: pre-line;
   font-weight: 700;
-  padding: 30px 20px;   /* 좌우는 고정 20px만 주고 */
+  padding: 30px 20px;
+  /* 좌우는 고정 20px만 주고 */
   font-family: 'PurunMyungjo', serif;
-  text-align: left;   /* 가운데 정렬 */
-  max-width: 700px;     /* 넓이 제한 */
-  margin: 0 auto;       /* 가운데 배치 */
+  text-align: left;
+  /* 가운데 정렬 */
+  max-width: 700px;
+  /* 넓이 제한 */
+  margin: 0 auto;
+  /* 가운데 배치 */
 }
 
 .store-name-line {
   max-width: 700px;
   display: flex;
   align-items: center;
-  justify-content: center; /* 가로 가운데 정렬 */
-  margin: 60px auto 0;     /* 가운데로 */
+  justify-content: center;
+  /* 가로 가운데 정렬 */
+  margin: 60px auto 0;
+  /* 가운데로 */
 }
 
 .extra-padding {
@@ -1037,15 +1043,24 @@
 }
 
 .store-image-wrapper .image-description {
-  margin-top: 8px;             /* 간격 살짝 줄여서 여백 균형 */
-  font-size: 18px;             /* 살짝 작게 해서 보조 텍스트 느낌 */
-  color: #666;                 /* 너무 진하지 않은 중간 톤 */
-  text-align: center;          /* 오른쪽보다 중앙 정렬이 더 자연스러움 */
-  line-height: 1.4;            /* 가독성 향상 */
-  font-style: italic;          /* 설명 느낌을 주기 위해 살짝 기울임 */
-  max-width: 90%;              /* 텍스트 길면 줄바꿈 */
-  margin-left: auto;           /* 가운데 정렬 보조 */
-  margin-right: auto;          /* 가운데 정렬 보조 */
+  margin-top: 8px;
+  /* 간격 살짝 줄여서 여백 균형 */
+  font-size: 18px;
+  /* 살짝 작게 해서 보조 텍스트 느낌 */
+  color: #666;
+  /* 너무 진하지 않은 중간 톤 */
+  text-align: center;
+  /* 오른쪽보다 중앙 정렬이 더 자연스러움 */
+  line-height: 1.4;
+  /* 가독성 향상 */
+  font-style: italic;
+  /* 설명 느낌을 주기 위해 살짝 기울임 */
+  max-width: 90%;
+  /* 텍스트 길면 줄바꿈 */
+  margin-left: auto;
+  /* 가운데 정렬 보조 */
+  margin-right: auto;
+  /* 가운데 정렬 보조 */
 }
 
 
@@ -1147,14 +1162,19 @@
 .store-detail-top-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;     /* 안의 자식들 가운데 */
+  align-items: center;
+  /* 안의 자식들 가운데 */
   padding: 60px 20px;
   background: #f3ece9;
 
-  width: 1924px;           /* 고정 폭 */
-  max-width: 100%;         /* 작은 화면에서는 줄어듦 */
-  margin: 0 auto;          /* 화면에서 가운데 정렬 */
-  box-sizing: border-box;  /* padding 포함 계산 */
+  width: 1924px;
+  /* 고정 폭 */
+  max-width: 100%;
+  /* 작은 화면에서는 줄어듦 */
+  margin: 0 auto;
+  /* 화면에서 가운데 정렬 */
+  box-sizing: border-box;
+  /* padding 포함 계산 */
 }
 
 .section-title {
@@ -1165,7 +1185,7 @@
 }
 
 .tab-buttons {
-   width: 350px;
+  width: 350px;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -1199,21 +1219,26 @@
 
 .pc-image-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4열 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 4열 */
   gap: 15px;
-  justify-content: center; /* 가운데 정렬 X, 원래대로 */
+  justify-content: center;
+  /* 가운데 정렬 X, 원래대로 */
 }
 
 /* 모달 디테일 수정 */
 .image-modal-caption {
   position: absolute;
-  bottom: 20px;               /* 이미지 하단 여백 */
+  bottom: 20px;
+  /* 이미지 하단 여백 */
   left: 50%;
   transform: translateX(-50%);
   max-width: 90%;
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.6);  /* 어두운 반투명 배경 */
-  color: #fff;                     /* 밝은 글자 */
+  background: rgba(0, 0, 0, 0.6);
+  /* 어두운 반투명 배경 */
+  color: #fff;
+  /* 밝은 글자 */
   font-size: 16px;
   line-height: 1.5;
   border-radius: 6px;
@@ -1237,7 +1262,8 @@
 
 /* ✅ 리뷰 영역 전체 */
 .store-review-wrapper {
-  padding: 60px 20px 100px 20px; /* 좌우 패딩 줄임 */
+  padding: 60px 20px 100px 20px;
+  /* 좌우 패딩 줄임 */
   text-align: start;
   max-width: 1200px;
   margin: 0 auto;
@@ -1270,7 +1296,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 280px; /* 필요시 조절 */
+  height: 280px;
+  /* 필요시 조절 */
   padding: 16px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -1472,7 +1499,8 @@
 
 .image-modal-content img {
   width: 100%;
-  max-width: 500px;
+  max-width: 92vw;
+  max-height: 86vh;
   height: auto;
   /* border-radius: 12px; */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -1644,4 +1672,143 @@
   }
 
 
+}
+
+/* 화살표/도트 색 */
+.slick-prev:before,
+.slick-next:before {
+  color: #222;
+  opacity: 0.9;
+}
+
+.slick-dots li button:before {
+  color: #bbb;
+  opacity: .6;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #333;
+  opacity: 1;
+}
+
+/* 너가 쓰는 카드 스타일 그대로 유지 */
+.sd-carousel {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 0 20px;
+}
+
+.sd-slide {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+.sd-slide-img {
+  width: 100%;
+  height: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  user-select: none;
+  cursor: zoom-in;
+}
+
+/* 3장 이하 중앙 정렬(4분할과 동일 높이, 폭은 전체 비율로 분배) */
+.sd-inline {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  /* ✅ 높이 균일하게 */
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+/* ✅ 폭: 1개면 100%, 2개면 50%-간격/2, 3개면 1/3씩 꽉 채움 */
+.sd-inline-item {
+  flex: 1 1 0;
+  /* ✅ 자동 비율 분배 */
+  box-sizing: border-box;
+  padding: 4px;
+  height: 260px;
+  /* ✅ 슬라이더와 동일 높이 */
+  display: flex;
+}
+
+/* ✅ 이미지가 타일 전체를 채움 */
+.sd-inline-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  user-select: none;
+  cursor: zoom-in;
+}
+
+
+
+
+@media (max-width: 900px) {
+  /* 컨테이너 전체는 화면 폭에 맞게 유지 */
+  .store-detail-top-wrapper,
+  .store-images,
+  .sd-carousel,
+  .sd-inline {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sd-carousel .slick-track {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .sd-carousel .slick-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ✅ 이미지 크기를 기존 대비 66%로 축소 + 정사각형 유지 */
+  .sd-slide {
+    width: 66%;               /* 전체 폭의 66% */
+    aspect-ratio: 1 / 1;      /* 정사각형 유지 */
+    height: auto !important;
+    margin: 0 auto;           /* 가운데 정렬 */
+    transform: scale(1);      /* 혹시 기존 transform 있는 경우 초기화 */
+  }
+
+  .sd-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /* 3장 이하 (인라인)도 동일하게 축소 */
+  .sd-inline-item {
+    width: 66%;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+  }
+
+  .sd-inline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
 }

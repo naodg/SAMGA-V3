@@ -14,8 +14,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
-const tabs = ['메뉴판', '메뉴', '편의시설'] as const
+const tabs = ['메뉴', '음식', '편의시설'] as const
 type Tab = typeof tabs[number]
 
 
@@ -42,7 +45,7 @@ export default function StoreDetail() {
     const { name } = useParams()
     const storeName = decodeURIComponent(name || '')
     const selectedStore = storeData.find((s) => s.name === storeName)
-    const [activeTab, setActiveTab] = useState<Tab>('메뉴판')
+    const [activeTab, setActiveTab] = useState<Tab>('메뉴')
     const [showAllFacilities, setShowAllFacilities] = useState(false)
     const titles = storeDetailAssets[selectedStore.name] || []
     const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -168,8 +171,8 @@ export default function StoreDetail() {
 
 
     const tabToFolderMap: Record<Tab, string> = {
-        '메뉴판': 'menu',
-        '메뉴': 'side',
+        '메뉴': 'menu',
+        '음식': 'side',
         '편의시설': 'amenities',
     }
 
@@ -247,19 +250,19 @@ export default function StoreDetail() {
                 const res = await listAll(folderRef)
 
                 const items = await Promise.all(
-                  res.items.map(async (item) => {
-                    const url = await getDownloadURL(item)
-                    const metadata = await getMetadata(item)
-                    const description = metadata.customMetadata?.description || "설명 없음"
-                    return { url, description }
-                  })
+                    res.items.map(async (item) => {
+                        const url = await getDownloadURL(item)
+                        const metadata = await getMetadata(item)
+                        const description = metadata.customMetadata?.description || "설명 없음"
+                        return { url, description }
+                    })
                 )
 
                 setImageData(items)
-              } catch (error) {
+            } catch (error) {
                 console.error("이미지 불러오기 실패", error)
                 setImageData([])
-              }
+            }
         }
 
         if (storeId) fetchImages()
@@ -267,8 +270,8 @@ export default function StoreDetail() {
 
     // 이미지 확대
     const handleImageClick = (url: string, description?: string) => {
-      setSelectedImage(url);
-      setSelectedDescription(description ?? null);
+        setSelectedImage(url);
+        setSelectedDescription(description ?? null);
     };
 
     const handleCloseModal = () => {
@@ -603,66 +606,152 @@ export default function StoreDetail() {
                 {/* <h2 className="section-title">가게 상세 이미지</h2> */}
 
                 {/* 탭 버튼들 */}
-                <div className="tab-buttons">
-                    {tabs.map(tab => (
-                        <button
-                            key={tab}
-                            className={`tab-button ${activeTab === tab ? 'active' : ''}`}
-                            onClick={() => setActiveTab(tab)}
-                        >
-                            {tab}
-                        </button>
-                    ))}
+                <div className="store-detail-top-wrapper">
+                    {/* 탭 버튼들 */}
+                    <div className="tab-buttons">
+                        {tabs.map(tab => (
+                            <button
+                                key={tab}
+                                className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+                                onClick={() => setActiveTab(tab)}
+                            >
+                                {tab}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="store-images">
+                        {imageData.length === 0 ? (
+                            <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
+                        ) : (() => {
+                            const isPc = !isMobile;
+                            const count = imageData.length;
+
+                            // ✅ 정확히 4장일 때 react-slick이 무한 루프에서 헷갈리는 경우가 있어
+                            //    이때만 내부적으로 한 번 복제해서 8장처럼 만들어 무한 루프 보장
+                            const displayImages =
+                                isPc && count === 4 ? [...imageData, ...imageData] : imageData;
+
+                            // if (isMobile) {
+                            //     const mSettings = {
+                            //         infinite: true,
+                            //         slidesToShow: 1,
+                            //         slidesToScroll: 1,
+                            //         autoplay: true,
+                            //         autoplaySpeed: 3500,
+                            //         arrows: true,
+                            //         dots: true,
+                            //         pauseOnHover: false,
+                            //         speed: 600,
+                            //         swipeToSlide: true,
+
+                            //         variableWidth: false,     // ✅ 가변 너비 끔
+                            //         adaptiveHeight: true,     // ✅ 이미지 세로에 맞춰 래퍼 높이 조절
+                            //         centerMode: true,          // ✅ 추가
+                            //         centerPadding: "0px",      // ✅ 함께
+                            //     } as const;
+
+                            //     return (
+                            //         <div className="sd-carousel">
+                            //             <Slider key={`${activeTab}-${isMobile ? 'm' : 'pc'}-${imageData.length}`}  {...mSettings}>
+                            //                 {imageData.map((it, idx) => (
+                            //                     <div key={`${it.url}-${idx}`} className="sd-slide">
+                            //                         <img
+                            //                             src={it.url}
+                            //                             alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                            //                             className="sd-slide-img"
+                            //                             onClick={() => handleImageClick(it.url, it.description)}
+                            //                             draggable={false}
+                            //                         />
+                            //                     </div>
+                            //                 ))}
+                            //             </Slider>
+                            //         </div>
+                            //     );
+                            // }
+
+                            // 3장 이하: 슬라이더 대신 중앙 정렬(4-up과 동일 사이즈)
+                            if (isPc && count <= 3) {
+                                return (
+                                    <div className="sd-carousel">
+                                        <div className="sd-inline">
+                                            {imageData.map((it, idx) => (
+                                                <div className="sd-inline-item" key={`${it.url}-${idx}`}>
+                                                    <img
+                                                        src={it.url}
+                                                        alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                                        className="sd-inline-img"
+                                                        onClick={() => handleImageClick(it.url, it.description)}
+                                                        draggable={false}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            }
+
+                            const settings = {
+                                infinite: true,            // ✅ 무한 루프
+                                slidesToShow: isPc ? 4 : 1,
+                                slidesToScroll: 1,         // ✅ 한 칸씩 이동
+                                autoplay: true,
+                                autoplaySpeed: 3500,
+                                arrows: true,
+                                dots: true,
+                                pauseOnHover: false,
+                                speed: 600,
+                                // 드래그 끊김 없이 자연스럽게
+                                swipeToSlide: true,
+                                // 반응형
+                                responsive: [
+                                    {
+                                        breakpoint: 900,
+                                        settings: {
+                                            slidesToShow: 1,
+                                        },
+                                    },
+                                ],
+                            } as const;
+
+                            return (
+                                <div className="sd-carousel">{/* react-slick 컨테이너 */}
+                                    <Slider key={`${activeTab}-${isMobile ? 'm' : 'pc'}-${displayImages.length}`} {...settings}>
+                                        {displayImages.map((it, idx) => (
+                                            <div key={`${it.url}-${idx}`} className="sd-slide">
+                                                <img
+                                                    src={it.url}
+                                                    alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                                    className="sd-slide-img"
+                                                    onClick={() => handleImageClick(it.url, it.description)}
+                                                    draggable={false}
+                                                />
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                </div>
+                            );
+                        })()}
+                    </div>
                 </div>
 
-                {/* 탭별 이미지 리스트 */}
-                <div className="store-images">
-                  {imageData.length === 0 ? (
-                    <p style={{ textAlign: "center", color: "#999" }}>등록된 이미지가 없습니다.</p>
-                  ) : isMobile ? (
-                    <div className="image-grid">
-                      {imageData.map(({ url, description }, idx) => (
-                        <div key={url} className="store-image-wrapper">
-                          <img
-                            src={url}
-                            alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                            className="store-tab-image"
-                            onClick={() => handleImageClick(url, description)}
-                          />
-                          {/* 목록에서는 제목(설명) 숨김 */}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="pc-image-grid">
-                      {imageData.map(({ url, description }, idx) => (
-                        <div key={url} className="store-image-wrapper">
-                          <img
-                            src={url}
-                            alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
-                            className="store-tab-image"
-                            onClick={() => handleImageClick(url, description)}
-                          />
-                          {/* 목록에서는 제목(설명) 숨김 */}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+
+
+
 
 
 
                 {/* ✅ 모달 */}
                 {selectedImage && (
-                  <div className="image-modal-overlay" onClick={handleCloseModal}>
-                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-                      <img src={selectedImage} alt="확대 이미지" />
-                      {selectedDescription && (
-                        <p className="image-modal-caption">{selectedDescription}</p>
-                      )}
-                      <button className="image-modal-close" onClick={handleCloseModal}>×</button>
+                    <div className="image-modal-overlay" onClick={handleCloseModal}>
+                        <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                            <img src={selectedImage} alt="확대 이미지" />
+                            {selectedDescription && (
+                                <p className="image-modal-caption">{selectedDescription}</p>
+                            )}
+                            <button className="image-modal-close" onClick={handleCloseModal}>×</button>
+                        </div>
                     </div>
-                  </div>
                 )}
 
 
@@ -724,15 +813,15 @@ export default function StoreDetail() {
                                             <span>{comments.length}</span>
                                         </div>
                                         <div className="review-meta">
-                                          <span className="review-nickname">
-                                            작성자: {review.nickname.length <= 2
-                                              ? review.nickname[0] + '*'
-                                              : review.nickname[0] + '*'.repeat(review.nickname.length - 2) + review.nickname.slice(-1)
-                                            }
-                                          </span>
-                                          <span className="review-date">
-                                            {review.createdAt?.toDate().toLocaleString()}
-                                          </span>
+                                            <span className="review-nickname">
+                                                작성자: {review.nickname.length <= 2
+                                                    ? review.nickname[0] + '*'
+                                                    : review.nickname[0] + '*'.repeat(review.nickname.length - 2) + review.nickname.slice(-1)
+                                                }
+                                            </span>
+                                            <span className="review-date">
+                                                {review.createdAt?.toDate().toLocaleString()}
+                                            </span>
                                         </div>
 
                                     </div>

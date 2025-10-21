@@ -11,12 +11,15 @@ import { ref, listAll, getDownloadURL, getMetadata } from "firebase/storage";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-const tabs = ['메뉴판', '메뉴', '편의시설'];
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+const tabs = ['메뉴', '음식', '편의시설'];
 export default function StoreDetail() {
     const { name } = useParams();
     const storeName = decodeURIComponent(name || '');
     const selectedStore = storeData.find((s) => s.name === storeName);
-    const [activeTab, setActiveTab] = useState('메뉴판');
+    const [activeTab, setActiveTab] = useState('메뉴');
     const [showAllFacilities, setShowAllFacilities] = useState(false);
     const titles = storeDetailAssets[selectedStore.name] || [];
     const [selectedImage, setSelectedImage] = useState(null);
@@ -29,6 +32,8 @@ export default function StoreDetail() {
     const [tabImages, setTabImages] = useState([]);
     const [imageData, setImageData] = useState([]);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+    // 가게 상세 이미지 모달 제목 입력
+    const [selectedDescription, setSelectedDescription] = useState(null);
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 900);
         window.addEventListener("resize", handleResize);
@@ -108,8 +113,8 @@ export default function StoreDetail() {
         '일반식사메뉴': '/img/amenities/일반식사메뉴.svg',
     };
     const tabToFolderMap = {
-        '메뉴판': 'menu',
-        '메뉴': 'side',
+        '메뉴': 'menu',
+        '음식': 'side',
         '편의시설': 'amenities',
     };
     const MAX_IMAGES = 10;
@@ -186,11 +191,13 @@ export default function StoreDetail() {
             fetchImages();
     }, [activeTab, storeId]);
     // 이미지 확대
-    const handleImageClick = (url) => {
+    const handleImageClick = (url, description) => {
         setSelectedImage(url);
+        setSelectedDescription(description ?? null);
     };
     const handleCloseModal = () => {
         setSelectedImage(null);
+        setSelectedDescription(null);
     };
     const handleCopyLink = () => {
         const currentUrl = window.location.href;
@@ -242,7 +249,75 @@ export default function StoreDetail() {
                             .filter((src) => /상세페이지_M_\d+\.(jpg|png)$/i.test(src))
                             .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) }), _jsx("div", { className: "detail-images-smobile only-smobile", children: selectedStore.detailImagelist
                             .filter((src) => /상세페이지_SM_\d+\.(jpg|png)$/i.test(src))
-                            .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) })] }), selectedStore.name === "도원식육식당" && (_jsxs("div", { className: "dowon-product-section", children: [_jsxs("div", { className: "dowon-product-inner", children: [_jsxs("div", { className: "dowon-product-title", children: ["\uC544\uC774\uB514\uC5B4\uC2A4 \uC778\uAE30\uC81C\uD488 ", _jsx("span", { className: "highlight", children: "\uAD6C\uB9E4\uD558\uAE30" })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-pc", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/bd28e21e-e78c-4296-ae61-1f48da56bbe2?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/5.png", alt: "5\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uBA85\uD488\uD55C\uC6B0\uC120\uBB3C)\uD55C\uC6B0\uD2B9\uBAA8\uB4EC0.6KG" })] }) })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-mobile", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) })] })] }), _jsx("div", { className: "idius-all", children: _jsxs("a", { href: "https://www.idus.com/v2/search?keyword=%EB%8F%84%EC%9B%90%20%ED%95%9C%EC%9A%B0&keyword_channel=user", target: "_blank", rel: "noopener noreferrer", children: ["\uBAA8\uB4E0 \uC0C1\uD488 \uBCF4\uAE30 ", _jsx("span", { className: "arrow", children: ">" })] }) })] })), _jsxs("div", { className: "store-detail-top-wrapper", children: [_jsx("div", { className: "tab-buttons", children: tabs.map(tab => (_jsx("button", { className: `tab-button ${activeTab === tab ? 'active' : ''}`, onClick: () => setActiveTab(tab), children: tab }, tab))) }), _jsx("div", { className: "store-images", children: imageData.length === 0 ? (_jsx("p", { style: { textAlign: "center", color: "#999" }, children: "\uB4F1\uB85D\uB41C \uC774\uBBF8\uC9C0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : isMobile ? (_jsx("div", { className: "image-grid", children: imageData.map(({ url, description }, idx) => (_jsxs("div", { className: "store-image-wrapper", children: [_jsx("img", { src: url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "store-tab-image", onClick: () => handleImageClick(url) }), _jsx("p", { className: "image-description", children: description })] }, url))) })) : (_jsx("div", { className: "pc-image-grid", children: imageData.map(({ url, description }, idx) => (_jsxs("div", { className: "store-image-wrapper", children: [_jsx("img", { src: url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "store-tab-image", onClick: () => handleImageClick(url) }), _jsx("p", { className: "image-description", children: description })] }, url))) })) }), selectedImage && (_jsx("div", { className: "image-modal-overlay", onClick: handleCloseModal, children: _jsxs("div", { className: "image-modal-content", onClick: (e) => e.stopPropagation(), children: [_jsx("img", { src: selectedImage, alt: "\uD655\uB300 \uC774\uBBF8\uC9C0" }), _jsx("button", { className: "image-modal-close", onClick: handleCloseModal, children: "\u00D7" })] }) }))] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
+                            .map((src, idx) => (_jsx("img", { src: src, alt: `모바일 상세 이미지 ${idx + 1}`, className: "store-image" }, `m-${idx}`))) })] }), selectedStore.name === "도원식육식당" && (_jsxs("div", { className: "dowon-product-section", children: [_jsxs("div", { className: "dowon-product-inner", children: [_jsxs("div", { className: "dowon-product-title", children: ["\uC544\uC774\uB514\uC5B4\uC2A4 \uC778\uAE30\uC81C\uD488 ", _jsx("span", { className: "highlight", children: "\uAD6C\uB9E4\uD558\uAE30" })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-pc", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/bd28e21e-e78c-4296-ae61-1f48da56bbe2?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/5.png", alt: "5\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uBA85\uD488\uD55C\uC6B0\uC120\uBB3C)\uD55C\uC6B0\uD2B9\uBAA8\uB4EC0.6KG" })] }) })] }), _jsxs("div", { className: "dowon-product-grid dowon-only-mobile", children: [_jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/25792545-088d-4d5c-bb89-762a3b6533b0?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/1.png", alt: "1\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB300\uD328)\uB85C\uC2A4\uAD6C\uC774(2-3\uC778)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/d0e10218-942c-4664-b1b3-0c6c770c9e7e?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/2.png", alt: "2\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "\uD55C\uC6B0(\uB9CC\uB2A5)\uC790\uD22C\uB9AC1\uD0A4\uB85C" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/1953a42a-00ca-4418-af1b-576b2876e7f5?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/3.png", alt: "3\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uB208\uAF43)(1++9)\uD55C\uC6B0 \uB4F1\uC2EC(300G)" })] }) }), _jsx("div", { className: "dowon-product-item", children: _jsxs("a", { target: "_blank", rel: "noopener noreferrer", href: "https://www.idus.com/v2/product/4ee9f37c-16ff-4457-aab2-e823035a4b4d?search_word=%EB%8F%84%EC%9B%90+%ED%95%9C%EC%9A%B0&keyword_channel=user", children: [_jsx("img", { src: "/samga/store/dowon/4.png", alt: "4\uBC88 \uC0C1\uD488" }), _jsx("div", { className: "dowon-product-name", children: "(\uAD6D\uB0B4\uC0B0)\uB3FC\uC9C0 \uAC08\uBE44\uCC1C" })] }) })] })] }), _jsx("div", { className: "idius-all", children: _jsxs("a", { href: "https://www.idus.com/v2/search?keyword=%EB%8F%84%EC%9B%90%20%ED%95%9C%EC%9A%B0&keyword_channel=user", target: "_blank", rel: "noopener noreferrer", children: ["\uBAA8\uB4E0 \uC0C1\uD488 \uBCF4\uAE30 ", _jsx("span", { className: "arrow", children: ">" })] }) })] })), _jsxs("div", { className: "store-detail-top-wrapper", children: [_jsxs("div", { className: "store-detail-top-wrapper", children: [_jsx("div", { className: "tab-buttons", children: tabs.map(tab => (_jsx("button", { className: `tab-button ${activeTab === tab ? 'active' : ''}`, onClick: () => setActiveTab(tab), children: tab }, tab))) }), _jsx("div", { className: "store-images", children: imageData.length === 0 ? (_jsx("p", { style: { textAlign: "center", color: "#999" }, children: "\uB4F1\uB85D\uB41C \uC774\uBBF8\uC9C0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." })) : (() => {
+                                    const isPc = !isMobile;
+                                    const count = imageData.length;
+                                    // ✅ 정확히 4장일 때 react-slick이 무한 루프에서 헷갈리는 경우가 있어
+                                    //    이때만 내부적으로 한 번 복제해서 8장처럼 만들어 무한 루프 보장
+                                    const displayImages = isPc && count === 4 ? [...imageData, ...imageData] : imageData;
+                                    // if (isMobile) {
+                                    //     const mSettings = {
+                                    //         infinite: true,
+                                    //         slidesToShow: 1,
+                                    //         slidesToScroll: 1,
+                                    //         autoplay: true,
+                                    //         autoplaySpeed: 3500,
+                                    //         arrows: true,
+                                    //         dots: true,
+                                    //         pauseOnHover: false,
+                                    //         speed: 600,
+                                    //         swipeToSlide: true,
+                                    //         variableWidth: false,     // ✅ 가변 너비 끔
+                                    //         adaptiveHeight: true,     // ✅ 이미지 세로에 맞춰 래퍼 높이 조절
+                                    //         centerMode: true,          // ✅ 추가
+                                    //         centerPadding: "0px",      // ✅ 함께
+                                    //     } as const;
+                                    //     return (
+                                    //         <div className="sd-carousel">
+                                    //             <Slider key={`${activeTab}-${isMobile ? 'm' : 'pc'}-${imageData.length}`}  {...mSettings}>
+                                    //                 {imageData.map((it, idx) => (
+                                    //                     <div key={`${it.url}-${idx}`} className="sd-slide">
+                                    //                         <img
+                                    //                             src={it.url}
+                                    //                             alt={`${storeName} ${activeTab} 이미지 ${idx + 1}`}
+                                    //                             className="sd-slide-img"
+                                    //                             onClick={() => handleImageClick(it.url, it.description)}
+                                    //                             draggable={false}
+                                    //                         />
+                                    //                     </div>
+                                    //                 ))}
+                                    //             </Slider>
+                                    //         </div>
+                                    //     );
+                                    // }
+                                    // 3장 이하: 슬라이더 대신 중앙 정렬(4-up과 동일 사이즈)
+                                    if (isPc && count <= 3) {
+                                        return (_jsx("div", { className: "sd-carousel", children: _jsx("div", { className: "sd-inline", children: imageData.map((it, idx) => (_jsx("div", { className: "sd-inline-item", children: _jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-inline-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }) }, `${it.url}-${idx}`))) }) }));
+                                    }
+                                    const settings = {
+                                        infinite: true, // ✅ 무한 루프
+                                        slidesToShow: isPc ? 4 : 1,
+                                        slidesToScroll: 1, // ✅ 한 칸씩 이동
+                                        autoplay: true,
+                                        autoplaySpeed: 3500,
+                                        arrows: true,
+                                        dots: true,
+                                        pauseOnHover: false,
+                                        speed: 600,
+                                        // 드래그 끊김 없이 자연스럽게
+                                        swipeToSlide: true,
+                                        // 반응형
+                                        responsive: [
+                                            {
+                                                breakpoint: 900,
+                                                settings: {
+                                                    slidesToShow: 1,
+                                                },
+                                            },
+                                        ],
+                                    };
+                                    return (_jsx("div", { className: "sd-carousel", children: _jsx(Slider, { ...settings, children: displayImages.map((it, idx) => (_jsx("div", { className: "sd-slide", children: _jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-slide-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }) }, `${it.url}-${idx}`))) }, `${activeTab}-${isMobile ? 'm' : 'pc'}-${displayImages.length}`) }));
+                                })() })] }), selectedImage && (_jsx("div", { className: "image-modal-overlay", onClick: handleCloseModal, children: _jsxs("div", { className: "image-modal-content", onClick: (e) => e.stopPropagation(), children: [_jsx("img", { src: selectedImage, alt: "\uD655\uB300 \uC774\uBBF8\uC9C0" }), selectedDescription && (_jsx("p", { className: "image-modal-caption", children: selectedDescription })), _jsx("button", { className: "image-modal-close", onClick: handleCloseModal, children: "\u00D7" })] }) }))] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
                     // 리뷰가 있을 때
                     _jsx("div", { className: "store-review-list", children: storeReviews.map((review, idx) => {
                             const comments = reviewComments[review.id] || [];
