@@ -84,15 +84,15 @@ export default function Header({ isFixed = false }) {
         <nav className="nav">
           <ul className="nav-list">
             <li className='dropdownH' >
-              <span className="dropdownH-toggle">牛리마을 소개</span>
+              <span className="dropdownH-toggle">牛리마을 이야기</span>
               <ul className="dropdownH-menu">
                 <li onClick={() => navigate('/vilage')}>우리마을 브랜드 소개</li>
                 <li onClick={() => navigate('/mascot')}>소탈이 소개</li>
                 <li onClick={() => navigate('/goods')}>굿즈몰</li>
               </ul>
             </li>
-            <li onClick={() => navigate('/storefilterpage')}>식육식당</li>
-            <li onClick={() => navigate('/review')}>리뷰</li>
+            <li onClick={() => navigate('/storefilterpage')}>牛슐랭</li>
+            <li onClick={() => navigate('/review')}>美식가들의 이야기</li>
           </ul>
         </nav>
 
@@ -125,7 +125,7 @@ export default function Header({ isFixed = false }) {
 
               <li className="dropdownH" ref={dropdownRef}>
                 <span className="dropdownM-toggle" onClick={toggleDropdown}>
-                  牛리마을{isMobile && <br />}소개
+                  牛리마을 {isMobile && <br />}이야기
                 </span>
                 <ul className={`dropdownM-menu ${dropdownOpen ? 'open' : ''}`}>
                   <li onClick={() => { navigate('/vilage'); setDropdownOpen(false); }}>우리마을 브랜드 소개</li>
@@ -134,8 +134,8 @@ export default function Header({ isFixed = false }) {
                 </ul>
               </li>
 
-              <li onClick={() => navigate('/storefilterpage')}>식육{isMobile && <br />}식당</li>
-              <li onClick={() => navigate('/review')}>리뷰</li>
+              <li onClick={() => navigate('/storefilterpage')}>牛슐랭</li>
+              <li onClick={() => navigate('/review')}>美식가들의 {isMobile && <br />}이야기</li>
             </ul>
           </nav>
           <div className={`mobile-menu-icon`} onClick={toggleMenu}>

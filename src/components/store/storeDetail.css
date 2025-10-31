@@ -1812,3 +1812,75 @@
     border-radius: 8px;
   }
 }
+/* === 이미지 캡션 카드 === */
+.sd-caption-card{
+  background: rgba(255, 255, 255, 0.96);
+  text-align: center;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  /* border-top: 2px solid #ddd; */
+}
+
+.sd-caption-text{
+  font-size: 13px;
+  line-height: 1.48;
+  color: #222;
+  word-break: keep-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* 설명이 길면 2줄까지만 */
+  -webkit-box-orient: vertical;
+}
+
+/* inline(<=3)에서 텍스트가 옆으로 붙던 문제 방지: 세로 쌓기 강제 */
+.sd-inline{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+.sd-inline-item{
+  display: flex;
+  flex-direction: column; /* 이미지 아래로 캡션 카드 배치 */
+  align-items: stretch;
+  max-width: 320px;       /* 카드 폭 안정화 (필요 시 조절) */
+}
+.sd-inline-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;     /* 이미지도 살짝 둥글게 (선택) */
+}
+
+/* slick 슬라이드 안에서도 세로로 쌓이게 */
+.sd-slide{
+  display: flex !important;       /* slick 내부가 inline-block이라 flex 강제 */
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 8px;                 /* 양옆 간격 */
+}
+.sd-slide .sd-slide-img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* 배경이 어두운 섹션일 때 대비 상승 */
+.store-detail-top-wrapper .sd-caption-card{
+  backdrop-filter: saturate(120%) blur(0.5px);
+}
+
+/* 모바일에서 캡션 글씨 약간 키우기 */
+@media (max-width: 900px){
+  .sd-caption-text{
+    font-size: 14px;
+    -webkit-line-clamp: 3;  /* 모바일은 최대 3줄 */
+  }
+}
+
+/* 모서리 이음새 없애기(선택) */
+.sd-inline-item .sd-inline-img,
+.sd-slide .sd-slide-img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+.sd-inline-item > .sd-caption-card,
+.sd-slide > .sd-caption-card { border-top-left-radius: 0; border-top-right-radius: 0; }

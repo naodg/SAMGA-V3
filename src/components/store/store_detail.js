@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-const tabs = ['메뉴', '음식', '편의시설'];
+const tabs = ['메뉴', '메인디쉬', '다이닝 어메니티'];
 export default function StoreDetail() {
     const { name } = useParams();
     const storeName = decodeURIComponent(name || '');
@@ -114,8 +114,8 @@ export default function StoreDetail() {
     };
     const tabToFolderMap = {
         '메뉴': 'menu',
-        '음식': 'side',
-        '편의시설': 'amenities',
+        '메인디쉬': 'side',
+        '다이닝 어메니티': 'amenities',
     };
     const MAX_IMAGES = 10;
     if (!selectedStore)
@@ -254,7 +254,7 @@ export default function StoreDetail() {
                                     const count = imageData.length;
                                     // ✅ 정확히 4장일 때 react-slick이 무한 루프에서 헷갈리는 경우가 있어
                                     //    이때만 내부적으로 한 번 복제해서 8장처럼 만들어 무한 루프 보장
-                                    const displayImages = isPc && count === 4 ? [...imageData, ...imageData] : imageData;
+                                    const displayImages = isPc && count === 4 ? [...imageData] : imageData;
                                     // if (isMobile) {
                                     //     const mSettings = {
                                     //         infinite: true,
@@ -292,7 +292,7 @@ export default function StoreDetail() {
                                     // }
                                     // 3장 이하: 슬라이더 대신 중앙 정렬(4-up과 동일 사이즈)
                                     if (isPc && count <= 3) {
-                                        return (_jsx("div", { className: "sd-carousel", children: _jsx("div", { className: "sd-inline", children: imageData.map((it, idx) => (_jsx("div", { className: "sd-inline-item", children: _jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-inline-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }) }, `${it.url}-${idx}`))) }) }));
+                                        return (_jsx("div", { className: "sd-carousel", children: _jsx("div", { className: "sd-inline", children: imageData.map((it, idx) => (_jsxs("div", { className: "sd-inline-item", children: [_jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-inline-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }), it.description && it.description !== '설명 없음' && (_jsx("div", { className: "sd-caption-card", children: _jsx("p", { className: "sd-caption-text", children: it.description }) }))] }, `${it.url}-${idx}`))) }) }));
                                     }
                                     const settings = {
                                         infinite: true, // ✅ 무한 루프
@@ -316,8 +316,8 @@ export default function StoreDetail() {
                                             },
                                         ],
                                     };
-                                    return (_jsx("div", { className: "sd-carousel", children: _jsx(Slider, { ...settings, children: displayImages.map((it, idx) => (_jsx("div", { className: "sd-slide", children: _jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-slide-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }) }, `${it.url}-${idx}`))) }, `${activeTab}-${isMobile ? 'm' : 'pc'}-${displayImages.length}`) }));
-                                })() })] }), selectedImage && (_jsx("div", { className: "image-modal-overlay", onClick: handleCloseModal, children: _jsxs("div", { className: "image-modal-content", onClick: (e) => e.stopPropagation(), children: [_jsx("img", { src: selectedImage, alt: "\uD655\uB300 \uC774\uBBF8\uC9C0" }), selectedDescription && (_jsx("p", { className: "image-modal-caption", children: selectedDescription })), _jsx("button", { className: "image-modal-close", onClick: handleCloseModal, children: "\u00D7" })] }) }))] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
+                                    return (_jsx("div", { className: "sd-carousel", children: _jsx(Slider, { ...settings, children: displayImages.map((it, idx) => (_jsxs("div", { className: "sd-slide", children: [_jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-slide-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }), it.description && it.description !== '설명 없음' && (_jsx("div", { className: "sd-caption-card", children: _jsx("p", { className: "sd-caption-text", children: it.description }) }))] }, `${it.url}-${idx}`))) }, `${activeTab}-${isMobile ? 'm' : 'pc'}-${displayImages.length}`) }));
+                                })() })] }), selectedImage && (_jsx("div", { className: "image-modal-overlay", onClick: handleCloseModal, children: _jsxs("div", { className: "image-modal-content", onClick: (e) => e.stopPropagation(), children: [_jsx("img", { src: selectedImage, alt: "\uD655\uB300 \uC774\uBBF8\uC9C0" }), _jsx("button", { className: "image-modal-close", onClick: handleCloseModal, children: "\u00D7" })] }) }))] }), _jsxs("div", { className: "store-review-wrapper", children: [_jsxs("div", { className: 'review-item', children: [_jsx("img", { src: '/img/icon/\uB9AC\uBDF0\uC4F0\uAE30.svg', alt: "\uB9AC\uBDF0\uC81C\uBAA9" }), _jsx("span", { children: "\uB9AC\uBDF0" })] }), storeReviews.length > 0 ? (
                     // 리뷰가 있을 때
                     _jsx("div", { className: "store-review-list", children: storeReviews.map((review, idx) => {
                             const comments = reviewComments[review.id] || [];
