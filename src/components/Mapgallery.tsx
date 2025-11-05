@@ -184,16 +184,16 @@ export default function MapGallery() {
 
   const isMobile = window.innerWidth <= 768;
 
-function shuffleArray(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
   }
-  return arr;
-}
   const names = [
-    '대가1호점', '대가식육식당', '대가한우','도원식육식당',
+    '대가1호점', '대가식육식당', '대가한우', '도원식육식당',
     '대산식육식당', '대웅식육식당', '미로식육식당',
     '불난가한우', '삼가명품한우', '상구한우', '태영한우'
   ];
@@ -282,118 +282,120 @@ function shuffleArray(array) {
               }}
             />
           </div>
-        {/* 지도 */}
-        {showMap && (
-          <div className="map-gallery-map-container">
+          {/* 지도 */}
+          {showMap && (
+            <div className="map-gallery-map-container">
 
-            {isMobile ? (
-              <div id="map" ref={mapContainerRef} />
-            ) : (
-              <div></div>
-            )}
+              {isMobile ? (
+                <div id="map" ref={mapContainerRef} />
+              ) : (
+                <div></div>
+              )}
 
-            {/* ✅ 지도 위에 겹쳐진 정보 카드 */}
-            {selectedStore && (() => {
-              const storeIndex = storeData.findIndex(s => s.name === selectedStore.name)
-              if (storeIndex === -1) return null;
-              const storeId = `store${storeIndex + 1}`
-              const rating = storeRatings[storeId]
+              {/* ✅ 지도 위에 겹쳐진 정보 카드 */}
+              {selectedStore && (() => {
+                const storeIndex = storeData.findIndex(s => s.name === selectedStore.name)
+                if (storeIndex === -1) return null;
+                const storeId = `store${storeIndex + 1}`
+                const rating = storeRatings[storeId]
 
-              return (
-                <div className="map-gallery-info-card">
+                return (
+                  <div className="map-gallery-info-card">
 
-                  {/* ⬇️ 가게명 + 별점 + 메뉴링크 한 줄 정렬 */}
-                  <div className="info-header">
-                    <h3 className="store-name">
-                      {selectedStore.name}
-                      <span className="rating">
-                        {[...Array(5)].map((_, i) => {
-                          const value = i + 1
-                          let imgSrc = ""
+                    {/* ⬇️ 가게명 + 별점 + 메뉴링크 한 줄 정렬 */}
+                    <div className="info-header">
+                      <h3 className="store-name">
+                        {selectedStore.name}
+                        <span className="rating">
+                          {[...Array(5)].map((_, i) => {
+                            const value = i + 1
+                            let imgSrc = ""
 
-                          if (rating?.average >= value) {
-                            imgSrc = "/img/icon/단골등록해제.svg"
-                          } else if (rating?.average + 0.5 >= value) {
-                            imgSrc = "/img/icon/반쪽자리별.svg"
-                          } else {
-                            imgSrc = "/img/icon/단골등록.svg"
-                          }
+                            if (rating?.average >= value) {
+                              imgSrc = "/img/icon/단골등록해제.svg"
+                            } else if (rating?.average + 0.5 >= value) {
+                              imgSrc = "/img/icon/반쪽자리별.svg"
+                            } else {
+                              imgSrc = "/img/icon/단골등록.svg"
+                            }
 
-                          return (
-                            <img
-                              key={i}
-                              src={imgSrc}
-                              alt="별점"
-                              className="star-icon"
-                              style={{ width: 16, height: 16 }}
-                            />
-                          )
-                        })}
-                        <span className="review-score">{rating?.average?.toFixed(1) || "0.0"}점</span>
-                        <span className="review-count">({rating?.count || 0}개 리뷰)</span>
-                      </span>
-                    </h3>
+                            return (
+                              <img
+                                key={i}
+                                src={imgSrc}
+                                alt="별점"
+                                className="star-icon"
+                                style={{ width: 16, height: 16 }}
+                              />
+                            )
+                          })}
+                          <span className="review-score">{rating?.average?.toFixed(1) || "0.0"}점</span>
+                          <span className="review-count">({rating?.count || 0}개 리뷰)</span>
+                        </span>
+                      </h3>
 
-                    <div className="menu-links">
-                      <div className="link" onClick={() => navigate("/review")}>Review</div>
-                      <span className="divider">|</span>
-                      <div className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)}>상세페이지 바로가기</div>
+
+
                     </div>
 
-                  </div>
+                    <div className="store-detail">
+                      <div className="store-address">
+                        <span className="label">주소 :</span> {selectedStore.address}
+                        <a
+                          href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="map-link"
+                        >
+                          길찾기
+                        </a>
+                      </div>
+                    </div>
 
-                  <div className="store-detail">
-                    <div className="store-address">
-                      <span className="label">주소 :</span> {selectedStore.address}
-                      <a
-                        href={`https://map.kakao.com/link/to/${selectedStore.name},${selectedStore.lat},${selectedStore.lng}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="map-link"
-                      >
-                        길찾기
+
+                    <div className='store-detail'>
+                      <span className="phone-text">전화번호 : {selectedStore.phone}</span>
+                      <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
+                        <img src="/img/icon/call.svg" alt="전화 아이콘" />
                       </a>
                     </div>
+
+                    <p className="store-detail">
+                      <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
+                      {selectedStore.point && (
+                        <span className="point"> ※ {selectedStore.point}</span>
+                      )}
+                    </p>
+
+                    <p className="store-detail">
+                      <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
+                    </p>
+
+                    <div className="store-detail menu-links">
+                      <div className="link" onClick={() => navigate("/review")} style={{ fontWeight: 'bold', color: '#333' }}>Review</div>
+                      <span className="divider">|</span>
+                      <div className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)} style={{ fontWeight: 'bold', color: '#333' }}>상세페이지 바로가기</div>
+                    </div>
+
+
+
+
                   </div>
+                )
+              })()}
 
 
-                  <div className='store-detail'>
-                    <span className="phone-text">전화번호 : {selectedStore.phone}</span>
-                    <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
-                      <img src="/img/icon/call.svg" alt="전화 아이콘" />
-                    </a>
-                  </div>
-
-                  <p className="store-detail">
-                    <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
-                    {selectedStore.point && (
-                      <span className="point"> ※ {selectedStore.point}</span>
-                    )}
-                  </p>
-
-                  <p className="store-detail">
-                    <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
-                  </p>
+              {isMobile ? (
+                <div></div>
+              ) : (
+                <div id="map" ref={mapContainerRef} />
+              )}
 
 
 
 
-                </div>
-              )
-            })()}
-
-
-            {isMobile ? (
-              <div></div>
-            ) : (
-              <div id="map" ref={mapContainerRef} />
-            )}
-
-
-
-
-          </div>
-        )}
+            </div>
+          )}
 
         </div>
 
