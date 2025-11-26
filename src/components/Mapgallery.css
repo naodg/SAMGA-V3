@@ -132,7 +132,7 @@
 .search-icon-button {
   background: #ad5457;
   border: none;
-  border-radius: 0px ;
+  border-radius: 0px;
   padding: 10px 10px;
   cursor: pointer;
   display: flex;
@@ -238,14 +238,17 @@
 
 /* 🔧 메뉴 링크 묶음 */
 .menu-links {
-  display: flex;
-  flex-wrap: wrap;
-  /* ✅ 좁아지면 줄바꿈 */
-  align-items: center;
+  display: inline-flex;
+  margin: 0px 0 10px 10px;
+  flex-wrap: nowrap;
+  /* 🔥 줄바꿈 방지 */
+  white-space: nowrap;
+  /* 🔥 텍스트 줄바꿈 방지 */
   gap: 8px;
   font-size: 14px;
   color: #444;
   flex-shrink: 0;
+  overflow-x: auto;
 }
 
 .menu-links .link {
@@ -337,70 +340,70 @@
 /* test 여기*/
 @media (max-width: 1000px) {
 
-    .map-gallery-wrapper {
+  .map-gallery-wrapper {
     min-height: calc(110vw * 1.5);
-    }
+  }
 
-    .map-gallery-floating-box {
-      top: calc(100vw * 0.65);
-    }
+  .map-gallery-floating-box {
+    top: calc(100vw * 0.65);
+  }
 
-    #map {
-      min-height: calc(100vw * 0.35);
-    }
+  #map {
+    min-height: calc(100vw * 0.35);
+  }
 
-    .map-gallery-pattern {
-      top: calc(100vw * 0.99);
-      height: calc(100vw * 0.25);
-    }
+  .map-gallery-pattern {
+    top: calc(100vw * 0.99);
+    height: calc(100vw * 0.25);
+  }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-        top: calc(100vw * 0.35);
-        color: white;
-    }
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: calc(100vw * 0.35);
+    color: white;
+  }
 
 }
 
 @media (max-width: 500px) {
 
-    .map-gallery-wrapper {
+  .map-gallery-wrapper {
     min-height: calc(130vw * 1.55);
-    }
+  }
 
-    .map-gallery-floating-box {
-      top: calc(110vw * 0.65);
-    }
+  .map-gallery-floating-box {
+    top: calc(110vw * 0.65);
+  }
 
-    #map {
-      min-height: calc(100vw * 0.37);
-    }
+  #map {
+    min-height: calc(100vw * 0.37);
+  }
 
-    .map-gallery-pattern {
-      top: calc(115vw * 0.99);
-      height: calc(90vw * 0.35);
-    }
+  .map-gallery-pattern {
+    top: calc(115vw * 0.99);
+    height: calc(90vw * 0.35);
+  }
 
 }
 
 @media (max-width: 400px) {
 
-    .map-gallery-wrapper {
+  .map-gallery-wrapper {
     min-height: calc(155vw * 1.35);
-    }
+  }
 
-    .map-gallery-floating-box {
-      top: calc(120vw * 0.65);
-    }
+  .map-gallery-floating-box {
+    top: calc(120vw * 0.65);
+  }
 
-    #map {
-      min-height: calc(100vw * 0.37);
-    }
+  #map {
+    min-height: calc(100vw * 0.37);
+  }
 
-    .map-gallery-pattern {
-      top: calc(135vw * 0.99);
-      height: calc(90vw * 0.35);
-    }
+  .map-gallery-pattern {
+    top: calc(135vw * 0.99);
+    height: calc(90vw * 0.35);
+  }
 
 }
 
@@ -408,22 +411,22 @@
 
 @media (max-width: 370px) {
 
-    .map-gallery-wrapper {
+  .map-gallery-wrapper {
     min-height: calc(165vw * 1.35);
-    }
+  }
 
-    .map-gallery-floating-box {
-      top: calc(120vw * 0.65);
-    }
+  .map-gallery-floating-box {
+    top: calc(120vw * 0.65);
+  }
 
-    #map {
-      min-height: calc(100vw * 0.35);
-    }
+  #map {
+    min-height: calc(100vw * 0.35);
+  }
 
-    .map-gallery-pattern {
-      top: calc(125vw * 0.99);
-      height: calc(90vw * 0.25);
-    }
+  .map-gallery-pattern {
+    top: calc(125vw * 0.99);
+    height: calc(90vw * 0.25);
+  }
 
 }
 
@@ -458,6 +461,9 @@
 
 
 @media (max-width: 900px) {
+  .menu-links {
+    margin: 0px 0 10px 0px;
+  }
 
   .map-gallery-wrapper {
     width: 100%;
@@ -524,6 +530,11 @@
 
 
 
+}
+
+.phone-text .call-icon {
+  margin-left: 4px;
+  /* 원하는 만큼 줄이기 (2~6px 추천) */
 }
 
 .store-detail {
@@ -636,7 +647,7 @@
   .search-icon-button {
     background: #ad5457;
     border: none !important;
-    border-radius: 0px ;
+    border-radius: 0px;
     padding: 10px 10px;
     cursor: pointer;
     display: flex;
@@ -658,36 +669,34 @@
 
 
   .map-gallery-info-card .store-detail {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 5px 0;
-  color: #333;
-}
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 5px 0;
+    color: #333;
+  }
 
-.map-gallery-info-card .point {
-  color: #AD5457;
-  font-size: 12px;
-  margin: 2px 0 0 6px;
-}
+  .map-gallery-info-card .point {
+    color: #AD5457;
+    font-size: 12px;
+    margin: 2px 0 0 6px;
+  }
 
-.map-link {
-  all: unset;
-  background: none;
-  border: none;
-  color: #AD5457;
-  /* ✅ 이게 빠졌을 수도 있음 */
-  font-size: 13px;
-  cursor: pointer;
-  padding-left: 10px;
-  text-decoration: underline;
-}
-
-}
-
-
-@media (max-width: 500px) {
+  .map-link {
+    all: unset;
+    background: none;
+    border: none;
+    color: #AD5457;
+    /* ✅ 이게 빠졌을 수도 있음 */
+    font-size: 13px;
+    cursor: pointer;
+    padding-left: 10px;
+    text-decoration: underline;
+  }
 
 }
+
+
+@media (max-width: 500px) {}
 
 
 

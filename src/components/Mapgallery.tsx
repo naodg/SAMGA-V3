@@ -354,24 +354,25 @@ export default function MapGallery() {
 
 
                     <div className='store-detail'>
-                      <span className="phone-text">전화번호 : {selectedStore.phone}</span>
-                      <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
-                        <img src="/img/icon/call.svg" alt="전화 아이콘" />
-                      </a>
+                      <span className="phone-text">전화번호 : {selectedStore.phone}
+                        <a href={`tel:${selectedStore.phone.replace(/[^0-9]/g, '')}`} className="call-icon" aria-label="전화 걸기">
+                          <img src="/img/icon/call.svg" alt="전화 아이콘" />
+                        </a>
+                      </span>
                     </div>
 
                     <p className="store-detail">
-                      <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
-                      {selectedStore.point && (
-                        <span className="point"> ※ {selectedStore.point}</span>
-                      )}
+                      <span className="label">영업시간 : {selectedStore.hours.split('/')[0]}
+                        {selectedStore.point && (
+                          <span className="point"> ※ {selectedStore.point}</span>
+                        )}</span>
                     </p>
 
                     <p className="store-detail">
-                      <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
+                      <span className="label">휴무 : {selectedStore.hours.split('/')[1].replace('휴무', '')}</span>
                     </p>
 
-                    <div className="store-detail menu-links">
+                    <div className="menu-links">
                       <div className="link" onClick={() => navigate("/review")} style={{ fontWeight: 'bold', color: '#333' }}>Review</div>
                       <span className="divider">|</span>
                       <div className="link" onClick={() => navigate(`/store/${encodeURIComponent(selectedStore.name)}`)} style={{ fontWeight: 'bold', color: '#333' }}>상세페이지 바로가기</div>
