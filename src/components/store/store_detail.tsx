@@ -629,8 +629,7 @@ export default function StoreDetail() {
 
                             // ✅ 정확히 4장일 때 react-slick이 무한 루프에서 헷갈리는 경우가 있어
                             //    이때만 내부적으로 한 번 복제해서 8장처럼 만들어 무한 루프 보장
-                            const displayImages =
-                                isPc && count === 4 ? [...imageData] : imageData;
+                            const displayImages = imageData;
 
                             // if (isMobile) {
                             //     const mSettings = {
@@ -671,7 +670,7 @@ export default function StoreDetail() {
                             // }
 
                             // 3장 이하: 슬라이더 대신 중앙 정렬(4-up과 동일 사이즈)
-                            if (isPc && count <= 3) {
+                            if (isPc && count <= 4) {
                                 return (
                                     <div className="sd-carousel">
                                         <div className="sd-inline">

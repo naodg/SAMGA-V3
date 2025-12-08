@@ -254,7 +254,7 @@ export default function StoreDetail() {
                                     const count = imageData.length;
                                     // ✅ 정확히 4장일 때 react-slick이 무한 루프에서 헷갈리는 경우가 있어
                                     //    이때만 내부적으로 한 번 복제해서 8장처럼 만들어 무한 루프 보장
-                                    const displayImages = isPc && count === 4 ? [...imageData] : imageData;
+                                    const displayImages = imageData;
                                     // if (isMobile) {
                                     //     const mSettings = {
                                     //         infinite: true,
@@ -291,7 +291,7 @@ export default function StoreDetail() {
                                     //     );
                                     // }
                                     // 3장 이하: 슬라이더 대신 중앙 정렬(4-up과 동일 사이즈)
-                                    if (isPc && count <= 3) {
+                                    if (isPc && count <= 4) {
                                         return (_jsx("div", { className: "sd-carousel", children: _jsx("div", { className: "sd-inline", children: imageData.map((it, idx) => (_jsxs("div", { className: "sd-inline-item", children: [_jsx("img", { src: it.url, alt: `${storeName} ${activeTab} 이미지 ${idx + 1}`, className: "sd-inline-img", onClick: () => handleImageClick(it.url, it.description), draggable: false }), it.description && it.description !== '설명 없음' && (_jsx("div", { className: "sd-caption-card", children: _jsx("p", { className: "sd-caption-text", children: it.description }) }))] }, `${it.url}-${idx}`))) }) }));
                                     }
                                     const settings = {

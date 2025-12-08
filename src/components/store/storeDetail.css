@@ -1265,7 +1265,7 @@
   padding: 60px 20px 100px 20px;
   /* 좌우 패딩 줄임 */
   text-align: start;
-  max-width: 1200px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -1318,11 +1318,27 @@
 
 
 .review-content {
+  margin-top: 0px;
   flex-grow: 1;
   margin-bottom: 12px;
   font-size: 14px;
   color: #444;
 }
+
+.review-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;      /* 보여줄 줄 수 */
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-break: keep-all;
+}
+
 
 .review-meta {
   font-size: 12px;
@@ -1836,20 +1852,23 @@
 /* inline(<=3)에서 텍스트가 옆으로 붙던 문제 방지: 세로 쌓기 강제 */
 .sd-inline{
   display: flex;
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
 }
 .sd-inline-item{
   display: flex;
-  flex-direction: column; /* 이미지 아래로 캡션 카드 배치 */
+  flex-direction: column;    /* 이미지 아래로 캡션 카드 배치 */
   align-items: stretch;
-  max-width: 320px;       /* 카드 폭 안정화 (필요 시 조절) */
+
+  width: 232px;              /* 항상 240 */
+  flex: 0 0 232px;           /* flex: 1 1 0; 덮어쓰기 */
 }
 .sd-inline-img{
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: 10px;     /* 이미지도 살짝 둥글게 (선택) */
+  height: 232px;
+  object-fit: cover;
+  border-radius: 10px;       /* 필요 없으면 빼도 됨 */
 }
 
 /* slick 슬라이드 안에서도 세로로 쌓이게 */
