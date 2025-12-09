@@ -1754,7 +1754,7 @@
   /* ✅ 자동 비율 분배 */
   box-sizing: border-box;
   padding: 4px;
-  height: 260px;
+  height: 280px;
   /* ✅ 슬라이더와 동일 높이 */
   display: flex;
 }
