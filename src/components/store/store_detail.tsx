@@ -328,12 +328,16 @@ export default function StoreDetail() {
 
                 </div>
                 <div className="store-detail">
-                    <span className="label">영업시간 :</span> {selectedStore.hours.split('/')[0]}
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <span className="label">영업시간 :</span>
+                        {selectedStore.hours.split('/')[0]}
+                    </div>
+
                     {selectedStore.point && (
-                        <span className="point"> ※ {selectedStore.point}</span>
+                        <div className="point">※ {selectedStore.point}</div>
                     )}
                 </div>
-                <div className="store-detail">
+                <div className="store-detail" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <span className="label">휴무 :</span> {selectedStore.hours.split('/')[1].replace('휴무', '')}
                 </div>
 

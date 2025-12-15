@@ -166,7 +166,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2px 5px;
   /* 가로/세로 간격 */
-  justify-items: flex-end;
+  /* justify-items: flex-end; */
   align-items: center;
   padding: 10px 0;
   /* border: 1px solid #9e9c9c; */
@@ -184,11 +184,14 @@
   /* 아이콘과 텍스트 사이 */
   font-size: 14px;
   color: #333;
-  min-width: 160px;
+  /* min-width: 120px; */
   /* ✅ 너비 고정해서 정렬 맞추기 */
   justify-content: flex-start;
+  margin-left: 10px;
+  margin-right: 10px;
   /* 아이콘+텍스트 묶음 왼쪽 정렬 */
 }
+
 
 /* 아이콘 이미지 래퍼 */
 .facility-icon-img-wrapper {
