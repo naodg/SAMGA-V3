@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      ;(() => {
+        const redirectPath = window.location.pathname + window.location.search + window.location.hash
+        sessionStorage.setItem('spa_redirect_path', redirectPath)
+        window.location.replace('/')
+      })()
+    </script>
   </head>
   <body></body>
 </html>
