@@ -66,7 +66,7 @@ export default function StoreList() {
         <img src="/img/logo/videologo.svg" alt="삼가한우로고" className="landing-logo" />
 
         <iframe className="video"
-          src="https://drive.google.com/file/d/1WF-K2Nu6Jer87imLhWAyKXeWraxIkvVP/preview"
+          src="https://drive.google.com/file/d/1-hFx_Bn-ORzG8mQQOWdx1mxrra2lAYHU/preview"
           width="92%"
           height="400px"
           frameBorder="0"
